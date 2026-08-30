@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Every antihypertensive at every dose you would actually prescribe, ranked by blood-pressure lowering, with monthly cost and notable adverse effects. Built on Wang et al, Lancet 2025.">
+<meta name="color-scheme" content="light dark">
+</head>
+<body>
+<title>Antihypertensive Potency Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+:root{
+  --paper:#EFF3F1; --card:#FBFCFB; --card-2:#F5F8F6;
+  --ink:#13201E; --ink-2:#4A5A57; --ink-3:#778783;
+  --rule:#D6DFDB; --rule-2:#E6ECE9;
+  --accent:#0E6E62; --accent-soft:#D5E7E3; --accent-ink:#0A4F46;
+  --warn:#9E3B2C; --warn-soft:#F3DEDA;
+  --bar:#2E8C7E; --bar-track:#E1E9E6;
+  --c-acei:#2F6F8F; --c-arb:#0E6E62; --c-bb:#6E5590; --c-ccb:#9A6A18; --c-diu:#3A7549;
+  --shadow:0 1px 2px rgba(16,40,36,.05),0 4px 16px rgba(16,40,36,.05);
+  --r:7px;
+  color-scheme:light;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0D1614; --card:#141F1D; --card-2:#182523;
+    --ink:#E4EDEA; --ink-2:#9DAFAB; --ink-3:#7A8C88;
+    --rule:#26332F; --rule-2:#1E2B28;
+    --accent:#4FC0AE; --accent-soft:#1B322E; --accent-ink:#8FDCCD;
+    --warn:#E08A7B; --warn-soft:#33201C;
+    --bar:#3E9E8D; --bar-track:#1E2C29;
+    --c-acei:#6FA8C4; --c-arb:#4FC0AE; --c-bb:#A896C6; --c-ccb:#C99A4A; --c-diu:#6FAE7D;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.28);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0D1614; --card:#141F1D; --card-2:#182523;
+  --ink:#E4EDEA; --ink-2:#9DAFAB; --ink-3:#7A8C88;
+  --rule:#26332F; --rule-2:#1E2B28;
+  --accent:#4FC0AE; --accent-soft:#1B322E; --accent-ink:#8FDCCD;
+  --warn:#E08A7B; --warn-soft:#33201C;
+  --bar:#3E9E8D; --bar-track:#1E2C29;
+  --c-acei:#6FA8C4; --c-arb:#4FC0AE; --c-bb:#A896C6; --c-ccb:#C99A4A; --c-diu:#6FAE7D;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.28);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 72px}
+
+/* ---------- masthead ---------- */
+.mast{padding:38px 0 22px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 10px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.6vw,44px);line-height:1.08;
+  margin:0 0 12px;letter-spacing:-.015em;text-wrap:balance}
+.dek{margin:0;max-width:66ch;color:var(--ink-2);font-size:16px}
+.dek strong{color:var(--ink);font-weight:600}
+.provenance{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:20px;
+  font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+.provenance b{color:var(--ink-2);font-weight:500}
+
+/* ---------- tabs ---------- */
+.tabs{display:flex;gap:2px;margin:26px 0 0;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.tab{appearance:none;background:none;border:0;border-bottom:2px solid transparent;
+  padding:11px 15px;font:600 13.5px/1 var(--sans);color:var(--ink-3);cursor:pointer;
+  letter-spacing:.01em;transition:color .13s}
+.tab:hover{color:var(--ink-2)}
+.tab[aria-selected="true"]{color:var(--accent-ink);border-bottom-color:var(--accent)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:3px 3px 0 0}
+.panel[hidden]{display:none}
+
+/* ---------- control rail ---------- */
+.rail{position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--rule);padding:14px 0 13px;margin-bottom:20px}
+.rail-grid{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:flex-end}
+.ctl{display:flex;flex-direction:column;gap:5px;min-width:0}
+.ctl > label,.ctl > .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3)}
+.ctl input[type=range]{width:150px;accent-color:var(--accent);margin:0;height:20px}
+.pair{display:flex;align-items:center;gap:9px}
+.pair input[type=number]{width:66px;font-family:var(--mono);font-variant-numeric:tabular-nums;
+  text-align:right;padding:5px 7px}
+.pair .u{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+/* cost + adverse-effect cells */
+.cost{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.cost .amt{font-weight:500}
+.cost .tier{display:block;font-size:9.5px;letter-spacing:.07em;color:var(--ink-3);text-transform:uppercase}
+.cost.pricey .amt{color:var(--warn)}
+.ae{font-size:12px;line-height:1.45;color:var(--ink-2);max-width:270px;min-width:210px}
+.ae .imp{color:var(--warn);font-weight:500}
+.ae .mon{display:block;font-family:var(--mono);font-size:10px;color:var(--ink-3);margin-top:2px}
+.xtrap{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--ink-3);
+  border:1px dashed var(--rule);border-radius:3px;padding:1px 4px;margin-left:6px;white-space:nowrap}
+.readout{font-family:var(--mono);font-size:13px;color:var(--ink);font-weight:500;
+  font-variant-numeric:tabular-nums}
+.readout .u{color:var(--ink-3);font-weight:400}
+select,input[type=search],input[type=number]{font:500 13px/1.3 var(--sans);color:var(--ink);
+  background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:7px 9px}
+select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+input[type=search]{min-width:190px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;background:var(--card)}
+.seg button{appearance:none;background:none;border:0;padding:7px 12px;cursor:pointer;
+  font:500 12.5px/1.3 var(--mono);color:var(--ink-2);border-right:1px solid var(--rule-2)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+:root[data-theme="dark"] .seg button[aria-pressed="true"]{color:#08201C}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .seg button[aria-pressed="true"]{color:#08201C}
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{appearance:none;border:1px solid var(--rule);background:var(--card);color:var(--ink-2);
+  border-radius:100px;padding:5px 11px;font:500 12px/1.2 var(--sans);cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px;transition:border-color .13s,background .13s}
+.chip .dot{width:7px;height:7px;border-radius:100px;background:currentColor;flex:none}
+.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink)}
+.toggle{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2);cursor:pointer}
+.toggle input{accent-color:var(--accent);width:15px;height:15px;margin:0}
+.linkbtn{appearance:none;background:none;border:0;color:var(--accent-ink);font:500 12.5px/1 var(--sans);
+  cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:6px 2px}
+
+/* ---------- table ---------- */
+.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--rule);
+  border-radius:var(--r);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:860px}
+thead th{position:sticky;top:0;background:var(--card-2);border-bottom:1px solid var(--rule);
+  font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-3);text-align:left;padding:10px 12px;font-weight:500;white-space:nowrap}
+thead th.sortable{cursor:pointer;user-select:none}
+thead th.sortable:hover{color:var(--ink-2)}
+thead th .arrow{opacity:.35;margin-left:3px}
+thead th[aria-sort] .arrow{opacity:1;color:var(--accent)}
+tbody td{border-bottom:1px solid var(--rule-2);padding:9px 12px;vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--card-2)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.rank{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);text-align:right;width:34px}
+.drug{font-weight:600;letter-spacing:-.005em}
+.drug .sub{display:block;font-weight:400;font-size:11.5px;color:var(--ink-3);font-family:var(--mono);margin-top:1px}
+.cls-ACEi{color:var(--c-acei)} .cls-ARB{color:var(--c-arb)} .cls-BB{color:var(--c-bb)}
+.cls-CCB{color:var(--c-ccb)} .cls-Diuretic{color:var(--c-diu)}
+/* class badge: distinct shape AND distinct colour AND a text abbreviation,
+   so the class survives greyscale printing and colour-vision deficiency */
+.cbadge{display:inline-flex;align-items:center;gap:5px;padding:2px 7px 2px 5px;border-radius:4px;
+  border:1px solid currentColor;background:color-mix(in srgb,currentColor 11%,transparent);
+  font:600 10px/1.35 var(--mono);letter-spacing:.06em;white-space:nowrap;vertical-align:1px}
+.cbadge svg{display:block;flex:none}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 12px;
+  font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.legend .item{display:inline-flex;align-items:center;gap:6px}
+.bigval{font-family:var(--mono);font-size:16px;font-weight:500;font-variant-numeric:tabular-nums}
+.pi{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
+.barcell{width:132px}
+.bar{height:7px;background:var(--bar-track);border-radius:100px;overflow:hidden}
+.bar > i{display:block;height:100%;background:var(--bar);border-radius:100px}
+.band{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+  text-transform:uppercase;padding:3px 7px;border-radius:4px;white-space:nowrap;
+  border:1px solid var(--rule);color:var(--ink-2);background:var(--card-2)}
+.band.moderate{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
+.band.high{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ev{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ev.thin{color:var(--warn)}
+.ladder{display:block}
+.nonus{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--ink-3);
+  border:1px dashed var(--rule);border-radius:3px;padding:1px 4px;margin-left:6px;white-space:nowrap}
+
+/* ---------- notes / callouts ---------- */
+.note{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);
+  border-radius:var(--r);padding:13px 16px;margin:18px 0;font-size:13.5px;color:var(--ink-2);
+  max-width:78ch}
+.note.warn{border-left-color:var(--warn)}
+.note b{color:var(--ink)}
+.count{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin:14px 0 8px}
+
+/* ---------- builder ---------- */
+.builder{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:22px;align-items:start}
+@media (max-width:820px){.builder{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:18px}
+.card h2,.card h3{margin:0 0 14px;font-family:var(--serif);font-weight:600;letter-spacing:-.01em}
+.card h2{font-size:19px} .card h3{font-size:16px}
+.slot{display:grid;grid-template-columns:1fr 128px 32px;gap:8px;align-items:center;margin-bottom:9px}
+.slot select{width:100%}
+.slot .rm{appearance:none;background:none;border:1px solid var(--rule);border-radius:var(--r);
+  color:var(--ink-3);cursor:pointer;font-size:15px;line-height:1;padding:7px 0;width:32px}
+.slot .rm:hover{color:var(--warn);border-color:var(--warn)}
+.addbtn{appearance:none;background:var(--card-2);border:1px dashed var(--rule);border-radius:var(--r);
+  color:var(--ink-2);padding:8px 13px;font:500 13px/1 var(--sans);cursor:pointer;margin-top:4px}
+.addbtn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.result{display:flex;gap:26px;flex-wrap:wrap;padding:16px 0 4px;border-top:1px solid var(--rule-2);margin-top:16px}
+.metric .k{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.metric .v{font-family:var(--mono);font-size:29px;font-weight:500;line-height:1.15;
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.metric .v small{font-size:14px;color:var(--ink-3);font-weight:400}
+.flag{display:flex;gap:9px;align-items:flex-start;background:var(--warn-soft);border-radius:var(--r);
+  padding:10px 13px;margin-top:11px;font-size:13px;color:var(--ink)}
+.flag .ic{color:var(--warn);font-weight:700;flex:none;font-family:var(--mono)}
+.flag.info{background:var(--accent-soft)} .flag.info .ic{color:var(--accent-ink)}
+.flag.good{background:var(--accent-soft)} .flag.good .ic{color:var(--accent)}
+.okflag{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--accent-ink);background:var(--accent-soft);
+  border-radius:3px;padding:1px 5px;margin-left:7px;white-space:nowrap}
+td.num .sub{display:block;font-family:var(--mono);font-size:10px;color:var(--ink-3);
+  font-weight:400;margin-top:1px}
+td.ev .sub{display:block;font-family:var(--mono);font-size:10px;color:var(--ink-3);margin-top:1px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:13px;margin:0}
+.kv dt{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);align-self:center}
+.kv dd{margin:0;font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---------- method ---------- */
+.prose{max-width:70ch}
+.prose h2{font-family:var(--serif);font-weight:600;font-size:21px;margin:30px 0 10px;letter-spacing:-.012em}
+.prose h3{font-family:var(--serif);font-weight:600;font-size:16px;margin:22px 0 7px}
+.prose p,.prose li{color:var(--ink-2);font-size:14.5px}
+.prose strong{color:var(--ink);font-weight:600}
+.prose code{font-family:var(--mono);font-size:12.5px;background:var(--card-2);border:1px solid var(--rule-2);
+  border-radius:4px;padding:1px 5px;color:var(--ink)}
+.eq{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:14px 16px;
+  font-family:var(--mono);font-size:13px;color:var(--ink);overflow-x:auto;margin:12px 0;line-height:1.9}
+.eq .c{color:var(--ink-3)}
+.prose a{color:var(--accent-ink);text-underline-offset:3px}
+.stat-row{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.stat{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:10px 14px;min-width:126px}
+.stat .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.stat .v{font-family:var(--mono);font-size:19px;font-weight:500;font-variant-numeric:tabular-nums}
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);
+  font-size:12.5px;color:var(--ink-3);max-width:78ch}
+footer a{color:var(--ink-2)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Wang et al &middot; Lancet 2025 &middot; 484 trials &middot; 104,176 participants</p>
+  <h1>Antihypertensive Potency Atlas</h1>
+  <p class="dek">Every antihypertensive in the published efficacy model, at every dose you would
+  actually prescribe, ranked side by side with its monthly cost and the adverse effects worth
+  mentioning &mdash; plus a combination builder that applies the paper's own permutation equations.
+  Values are <strong>placebo-corrected clinic BP reductions</strong> over 4&ndash;26 weeks.</p>
+  <div class="provenance">
+    <span><b>37</b> drugs in US practice</span>
+    <span><b>128</b> real drug&ndash;dose options</span>
+    <span><b>Cost</b> CMS NADAC, Aug 2026</span>
+    <span><b>Combination model</b> validated to &plusmn;0.31 mmHg</span>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Views">
+  <button class="tab" role="tab" id="tab-drugs" aria-controls="panel-drugs" aria-selected="true">Single drugs</button>
+  <button class="tab" role="tab" id="tab-combos" aria-controls="panel-combos" aria-selected="false">Combinations</button>
+  <button class="tab" role="tab" id="tab-build" aria-controls="panel-build" aria-selected="false">Build a regimen</button>
+  <button class="tab" role="tab" id="tab-method" aria-controls="panel-method" aria-selected="false">How it works</button>
+</nav>
+
+<!-- ============ shared control rail ============ -->
+<div class="rail" id="rail">
+  <div class="rail-grid">
+    <div class="ctl">
+      <label for="sbp">Baseline systolic</label>
+      <div class="pair">
+        <input type="range" id="sbp" min="110" max="190" step="1" value="154">
+        <input type="number" id="sbpn" min="90" max="220" step="1" value="154" aria-label="Baseline systolic, mmHg">
+        <span class="u">mmHg</span>
+      </div>
+    </div>
+    <div class="ctl">
+      <label for="dbp">Baseline diastolic</label>
+      <div class="pair">
+        <input type="range" id="dbp" min="60" max="120" step="1" value="100">
+        <input type="number" id="dbpn" min="50" max="140" step="1" value="100" aria-label="Baseline diastolic, mmHg">
+        <span class="u">mmHg</span>
+      </div>
+    </div>
+    <div class="ctl" id="ctl-dose">
+      <span class="lbl">Dose rung</span>
+      <div class="seg" id="doseseg" role="group" aria-label="Dose rung">
+        <button type="button" data-rung="low" aria-pressed="false">Starting</button>
+        <button type="button" data-rung="usual" aria-pressed="false">Usual</button>
+        <button type="button" data-rung="max" aria-pressed="false">Max</button>
+        <button type="button" data-rung="all" aria-pressed="true">Every dose</button>
+      </div>
+    </div>
+    <div class="ctl">
+      <span class="lbl">Class</span>
+      <div class="chips" id="classchips"></div>
+    </div>
+    <div class="ctl">
+      <label for="minev">Evidence floor</label>
+      <div class="pair">
+        <input type="range" id="minev" min="0" max="40" step="1" value="5">
+        <input type="number" id="minevn" min="0" max="70" step="1" value="5" aria-label="Minimum number of trials">
+        <span class="u">trials</span>
+      </div>
+    </div>
+    <div class="ctl">
+      <span class="lbl">Availability</span>
+      <label class="toggle"><input type="checkbox" id="usonly" checked> US practice only</label>
+    </div>
+    <div class="ctl" id="ctl-search">
+      <label for="q">Search</label>
+      <input type="search" id="q" placeholder="drug name or class&hellip;" autocomplete="off">
+    </div>
+    <div class="ctl">
+      <span class="lbl">&nbsp;</span>
+      <button class="linkbtn" id="reset">Reset to trial baseline</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ single drugs ============ -->
+<section class="panel" id="panel-drugs" role="tabpanel" aria-labelledby="tab-drugs">
+  <div class="legend" id="legend"></div>
+  <p class="count" id="drugcount"></p>
+  <div class="tablewrap">
+    <table id="drugtable">
+      <thead><tr>
+        <th class="rank">#</th>
+        <th class="sortable" data-sort="name">Drug<span class="arrow">&#8597;</span></th>
+        <th class="num sortable" data-sort="dose">Daily dose<span class="arrow">&#8597;</span></th>
+        <th class="num sortable" data-sort="sbp">&Delta; SBP<span class="arrow">&#8597;</span></th>
+        <th class="barcell"></th>
+        <th class="num sortable" data-sort="dbp">&Delta; DBP<span class="arrow">&#8597;</span></th>
+        <th class="num sortable" data-sort="cost">Cost / mo<span class="arrow">&#8597;</span></th>
+        <th>Notable adverse effects</th>
+        <th>95% PI</th>
+        <th class="num sortable" data-sort="ev">Evidence<span class="arrow">&#8597;</span></th>
+        <th>Intensity</th>
+      </tr></thead>
+      <tbody id="drugbody"></tbody>
+    </table>
+  </div>
+  <div class="note"><b>Every row is a dose you could actually write.</b> Doses are the real US
+  total-daily-dose steps for hypertension, so a drug at its maximum sits in the same ranking as
+  another at its starting dose &mdash; sort by &Delta;&nbsp;SBP to compare them directly. Rows marked
+  <span class="xtrap">extrapolated</span> sit outside the half-to-double standard dose range the model
+  was fitted on; the log-dose curve is flat there, so the estimate is modest but unvalidated.</div>
+  <div class="note"><b>Read the evidence column before the ranking.</b> The largest point estimates
+  tend to come from the smallest trial sets. Drop the evidence floor to zero and cyclopenthiazide
+  tops the list at 23 mmHg on 3 trials in 41 patients, while hydrochlorothiazide's 8 mmHg rests on 68
+  trials in 3,627.</div>
+</section>
+
+<!-- ============ combinations ============ -->
+<section class="panel" id="panel-combos" role="tabpanel" aria-labelledby="tab-combos" hidden>
+  <div class="rail-grid" style="margin-bottom:16px">
+    <div class="ctl">
+      <span class="lbl">Regimen size</span>
+      <div class="seg" id="comboseg" role="group" aria-label="Regimen size">
+        <button type="button" data-n="2" aria-pressed="true">Pairs</button>
+        <button type="button" data-n="3" aria-pressed="false">Triples</button>
+      </div>
+    </div>
+    <div class="ctl">
+      <span class="lbl">Clinical filters</span>
+      <label class="toggle"><input type="checkbox" id="nosame" checked> Exclude same-class pairs</label>
+    </div>
+    <div class="ctl">
+      <span class="lbl">&nbsp;</span>
+      <label class="toggle"><input type="checkbox" id="norasras" checked> Exclude ACEi + ARB</label>
+    </div>
+  </div>
+  <p class="count" id="combocount"></p>
+  <div class="tablewrap">
+    <table id="combotable">
+      <thead><tr>
+        <th class="rank">#</th>
+        <th>Regimen</th>
+        <th>Classes</th>
+        <th class="num">&Delta; SBP</th>
+        <th class="barcell"></th>
+        <th class="num">&Delta; DBP</th>
+        <th class="num">Cost / mo</th>
+        <th class="num">Weakest evidence</th>
+        <th>Intensity</th>
+      </tr></thead>
+      <tbody id="combobody"></tbody>
+    </table>
+  </div>
+  <div class="note"><b>These are efficacy rankings, not treatment recommendations.</b> The model knows
+  nothing about tolerability, comorbidity, or outcome data. A combination can top this table and still
+  be the wrong choice &mdash; the guideline first-line pairs, flagged here as
+  <span class="okflag">guideline pair</span>, are an ACEi or ARB plus either a calcium blocker or a
+  thiazide-like diuretic.</div>
+</section>
+
+<!-- ============ builder ============ -->
+<section class="panel" id="panel-build" role="tabpanel" aria-labelledby="tab-build" hidden>
+  <div class="builder">
+    <div class="card">
+      <h2>Build a regimen</h2>
+      <div id="slots"></div>
+      <button class="addbtn" id="adddrug">+ Add drug</button>
+      <div class="result">
+        <div class="metric"><div class="k">Systolic</div>
+          <div class="v" id="bSbp">&mdash;</div></div>
+        <div class="metric"><div class="k">Diastolic</div>
+          <div class="v" id="bDbp">&mdash;</div></div>
+        <div class="metric"><div class="k">Intensity band</div>
+          <div class="v" id="bBand" style="font-size:17px;padding-top:9px">&mdash;</div></div>
+      </div>
+      <div id="bFlags"></div>
+    </div>
+    <div class="card">
+      <h3>Projected on-treatment BP</h3>
+      <dl class="kv">
+        <dt>Baseline</dt><dd id="pBase">154 / 100</dd>
+        <dt>Reduction</dt><dd id="pDrop">&mdash;</dd>
+        <dt>On treatment</dt><dd id="pAfter">&mdash;</dd>
+        <dt>Drug cost</dt><dd id="pCost">&mdash;</dd>
+      </dl>
+      <h3 style="margin-top:24px">Cardiovascular benefit</h3>
+      <div class="ctl" style="margin-bottom:12px">
+        <label for="cvrisk">Baseline 10-year CVD risk (%)</label>
+        <input type="number" id="cvrisk" min="0.5" max="90" step="0.5" value="10" style="width:110px">
+      </div>
+      <dl class="kv">
+        <dt>Relative &darr;</dt><dd id="pRrr">&mdash;</dd>
+        <dt>Absolute &darr;</dt><dd id="pArr">&mdash;</dd>
+        <dt>NNT / 10 yr</dt><dd id="pNnt">&mdash;</dd>
+      </dl>
+      <div class="flag info" style="margin-top:14px">
+        <span class="ic">i</span>
+        <span>Risk conversion uses the BPLTTC estimate of a 10% relative reduction in major
+        cardiovascular events per 5 mmHg systolic drop, compounded across the full reduction.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ method ============ -->
+<section class="panel prose" id="panel-method" role="tabpanel" aria-labelledby="tab-method" hidden>
+  <h2>Where these numbers come from</h2>
+  <p>Every figure traces to <strong>Wang N, Salam A, Pant R, et al. "Blood pressure-lowering efficacy
+  of antihypertensive drugs and their combinations."</strong> <em>Lancet</em> 2025;406:915&ndash;25 &mdash; a
+  meta-analysis of 484 randomised, double-blind, placebo-controlled trials in 104,176 participants,
+  mean baseline 154/100 mmHg, mean follow-up 8.6 weeks.</p>
+
+  <p>The paper's public calculator at bpmodel.org answers one regimen at a time. This page holds the
+  whole grid at once: each of the 53 drugs was queried at half, standard, and double standard dose,
+  and the model's own baseline-BP sweep was recorded for each &mdash; 159 drug&ndash;dose cells in all.</p>
+
+  <h3>The single-drug equation</h3>
+  <p>From the paper's supplementary appendix (p. 14), efficacy for drug <em>n</em> at the reference
+  baseline is log-linear in dose:</p>
+  <div class="eq">&tau;<sub>b,n</sub> = &beta;<sub>n</sub> &middot; log(&delta;<sub>n</sub> / &delta;<sub>s,n</sub>) + &alpha;<sub>n</sub>
+    <span class="c">&#8592; &alpha; = effect at standard dose, &beta; = gain per log dose ratio</span></div>
+  <p>and is then shifted linearly to the patient's actual baseline &gamma;:</p>
+  <div class="eq">&tau;<sub>&gamma;,n</sub> = &tau;<sub>b,n</sub> + (&gamma; &minus; 154) &middot; &epsilon;<sub>n</sub>
+    <span class="c">&#8592; &epsilon; = mmHg of extra effect per mmHg of higher baseline</span></div>
+  <p>Across all monotherapies the average is 8.7 mmHg systolic at standard dose, with each doubling
+  of dose buying only about 1.5 mmHg more &mdash; the flattest part of the whole model, and the reason the
+  paper argues for combining drugs rather than escalating one.</p>
+
+  <h3>The combination equation</h3>
+  <p>Combinations are <em>not</em> simply additive. Drugs are applied in sequence, each one seeing a
+  baseline already lowered by those before it, so each successive agent earns less. Because that
+  makes the answer depend on the order, the model averages over every ordering:</p>
+  <div class="eq">&tau;<sub>&gamma;,1</sub> = &tau;<sub>b,1</sub> + (&gamma; &minus; 154) &middot; &epsilon;<sub>1</sub><br>
+&tau;<sub>&gamma;,2</sub> = &tau;<sub>b,2</sub> + (&gamma; &minus; &tau;<sub>&gamma;,1</sub> &minus; 154) &middot; &epsilon;<sub>2</sub><br>
+<span class="c">&hellip;</span><br>
+&tau;<sub>&gamma;,P</sub> = (1 / n!) &middot; &Sigma; over all n! orderings
+    <span class="c">&#8592; the reported combination effect</span></div>
+
+  <h3>How closely this page reproduces the original</h3>
+  <p>Per-drug &alpha;, &beta; and &epsilon; were recovered by least-squares from the calculator's own outputs, then the
+  permutation model was re-implemented here and checked against 44 live combination queries spanning
+  2- and 3-drug regimens at baselines from 140 to 170.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="k">Systolic MAE</div><div class="v">0.31 <small>mmHg</small></div></div>
+    <div class="stat"><div class="k">Diastolic MAE</div><div class="v">0.28 <small>mmHg</small></div></div>
+    <div class="stat"><div class="k">Within 1 mmHg</div><div class="v">98%</div></div>
+    <div class="stat"><div class="k">Bias</div><div class="v">&minus;0.01 <small>mmHg</small></div></div>
+    <div class="stat"><div class="k">Fit residual</div><div class="v">0.27 <small>mmHg</small></div></div>
+  </div>
+  <p>The residual error is almost entirely the source calculator's own rounding to whole mmHg. At the
+  reference baseline of 154/100, this page shows the calculator's published integer directly; away
+  from it, values are model-computed. Two of the 159 cells &mdash; eprosartan at 1200 mg and oxprenolol at
+  80 mg &mdash; never returned from the calculator despite repeated attempts, and are interpolated from the
+  drug's other doses; they show no prediction interval, as do any cells where the underlying trial
+  data were too thin for the source model to report one.</p>
+
+  <h3>What the model does not tell you</h3>
+  <ul>
+    <li><strong>Population means, not personal predictions.</strong> Individual response varies widely
+    around these averages; the 95% prediction intervals shown are for the mean trial effect, not for a patient.</li>
+    <li><strong>Short-term surrogate.</strong> Follow-up averaged 8.6 weeks, and the outcome is clinic
+    blood pressure &mdash; not events, mortality, or ambulatory control.</li>
+    <li><strong>Efficacy only.</strong> No adverse effects, adherence, monitoring burden, pregnancy
+    safety, renal dosing, or cost enters any number here.</li>
+    <li><strong>Thin data at the extremes.</strong> Drugs studied in a handful of small trials produce
+    unstable point estimates that can top the ranking on noise alone.</li>
+    <li><strong>Trial populations.</strong> Mean age 54, mean baseline 154/100 &mdash; older, frailer, or
+    lower-baseline patients are extrapolation.</li>
+  </ul>
+
+  <h3>Doses, cost, and adverse effects</h3>
+  <p>Three layers sit on top of the efficacy model, each from its own source.</p>
+  <p><strong>Doses.</strong> <span id="srcDose"></span> Every strength shown is one that actually
+  exists on a US shelf, so the ladder reflects prescribing steps rather than arithmetic multiples of
+  the trial "standard dose". Where a real dose falls outside the half-to-double range the model was
+  fitted on, the row is marked extrapolated.</p>
+  <p><strong>Cost.</strong> <span id="srcCost"></span> This is an acquisition-cost benchmark, not what
+  a patient pays: it ignores insurance, dispensing fees, and discount-card pricing. It is the right
+  tool for "is this drug pennies or is it real money", which for these agents is usually the only
+  question &mdash; most are under $5 a month, and the handful above $100 are worth knowing about.</p>
+  <p><strong>Adverse effects.</strong> <span id="srcAe"></span> The column lists what you would counsel
+  or watch for, not everything on the label. A few entries deliberately correct common teaching: the
+  ACE inhibitor cough rate is the pooled ~11%, not the label's understated figure; urate-lowering is
+  specific to losartan and is not an ARB class effect; beta blockers carry the abrupt-withdrawal
+  warning as an ordinary warning, not a boxed one; and eplerenone's reputation for causing less
+  gynecomastia than spironolactone is not supported by its own label, which reports no rate and makes
+  no comparison.</p>
+
+  <h3>Availability flag</h3>
+  <p>Fifteen of the 53 drugs are marked <span class="nonus">non-US</span> &mdash; agents never marketed in
+  the United States or since withdrawn (barnidipine, lercanidipine, manidipine, nitrendipine,
+  cilazapril, delapril, spirapril, fimasartan, bendroflumethiazide, cyclopenthiazide, celiprolol,
+  oxprenolol, eprosartan, penbutolol, moexipril). It is a focusing convenience, not a formulary
+  check &mdash; confirm against your own.</p>
+
+  <h3>Sources</h3>
+  <p>Primary: <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(25)00991-2/abstract">Wang et al, Lancet 2025;406:915&ndash;25</a>
+  (<a href="https://ars.els-cdn.com/content/image/1-s2.0-S0140673625009912-mmc1.pdf">supplementary appendix, open access</a>).
+  Calculator: <a href="https://www.bpmodel.org/blood-pressure-treatment-efficacy-calculator/">bpmodel.org</a>.
+  Risk conversion: <a href="https://doi.org/10.1016/S0140-6736(21)00590-0">BPLTTC, Lancet 2021</a>.</p>
+</section>
+
+<footer>
+  Built from the published model and its public calculator for study reference. Not a prescribing
+  tool and not clinical advice &mdash; verify dosing, interactions, and suitability against current
+  guidelines and a formulary before any clinical use.
+</footer>
+</div>
+
+<script>
+const PAYLOAD = {"drugs":[{"n":"amiloride","cls":"Diuretic","clsf":"Potassium-sparing diuretic","std":10,"tr":4,"pt":71,"us":1,"pr":1,"fs":[8.1469,4.1492,0.16199,0.08852],"fd":[3.375,3.7606,0.05833,0.08805],"freq":"once daily","note":"Add-on to a thiazide to limit hypokalemia; minimally effective alone.","form":"IR","rows":[{"mg":5,"x":0.5,"far":0,"usd":6.0,"reg":"1 x 5 mg","pi":[4.0,6.0]},{"mg":10,"x":1.0,"far":0,"usd":12.0,"reg":"2 x 5 mg","pi":[5.0,12.0]}],"ae":{"c":["Hyperkalemia ~10% alone, 1-2% combined with a thiazide"],"i":["Avoid if eGFR under 45 or K+ above 5.0","Preferred fourth agent for resistant hypertension (PATHWAY-2)","Boxed warning: hyperkalemia, which can be fatal","Minimally effective alone - an add-on to a thiazide"],"m":"K+ and creatinine at baseline, 1 week, and 1 month","cl":0}},{"n":"amlodipine","cls":"CCB","clsf":"Calcium channel blocker (dihydropyridine)","std":5,"tr":48,"pt":3195,"us":1,"pr":1,"fs":[9.4439,4.5753,0.14883,0.07228],"fd":[5.652,3.437,0.17549,0.10184],"freq":"once daily","note":"Start 5 mg; 2.5 mg if frail, elderly, or hepatic impairment.","form":"IR","rows":[{"mg":2.5,"x":0.5,"far":0,"usd":0.32,"reg":"1 x 2.5 mg","pi":[4.0,8.0]},{"mg":5,"x":1.0,"far":0,"usd":0.31,"reg":"1 x 5 mg","pi":[8.0,10.0]},{"mg":10,"x":2.0,"far":0,"usd":0.46,"reg":"1 x 10 mg","pi":[10.0,15.0]}],"ae":{"c":["Dose-dependent peripheral edema","Headache, flushing, palpitations","Edema 1.8% at 2.5 mg rising to 10.8% at 10 mg","Edema 14.6% in women vs 5.6% in men"],"i":["Edema responds to adding an ACEi/ARB, not to a diuretic","Gingival hyperplasia (under 1%)"],"m":null,"cl":0}},{"n":"atenolol","cls":"BB","clsf":"Beta blocker (beta-1 selective)","std":50,"tr":25,"pt":1040,"us":1,"pr":1,"fs":[10.453,2.0416,0.13816,0.0226],"fd":[7.4044,1.0502,0.10735,0.01909],"freq":"once daily","note":"No added effect above 100 mg/d. Cap 50 mg/d if CrCl 15-35.","form":"IR","rows":[{"mg":25,"x":0.5,"far":0,"usd":0.67,"reg":"1 x 25 mg","pi":[4.0,14.0]},{"mg":50,"x":1.0,"far":0,"usd":0.76,"reg":"1 x 50 mg","pi":[8.0,13.0]},{"mg":100,"x":2.0,"far":0,"usd":1.11,"reg":"1 x 100 mg","pi":[9.0,15.0]}],"ae":{"c":["Bradycardia","Fatigue","Cold extremities"],"i":["Never stop abruptly - rebound angina and MI (not a boxed warning)","Masks hypoglycemia; beta-1 selectivity is lost at higher doses","Not first-line unless coronary disease or heart failure","Renally cleared - cap 50 mg/d if CrCl 15-35","Avoid in pregnancy - fetal growth restriction"],"m":"Heart rate","cl":0}},{"n":"azilsartan","cls":"ARB","clsf":"Angiotensin receptor blocker","std":40,"tr":7,"pt":1679,"us":1,"pr":1,"fs":[12.9744,1.7287,0.14094,0.02696],"fd":[9.4167,1.0237,0.11667,-0.00106],"freq":"once daily","note":"Target 80 mg; start 40 mg if on high-dose diuretics.","form":"IR","rows":[{"mg":40,"x":1.0,"far":0,"usd":168.45,"reg":"1 x 40 mg","pi":[12.0,14.0]},{"mg":80,"x":2.0,"far":0,"usd":336.9,"reg":"2 x 40 mg","pi":[14.0,15.0]}],"ae":{"c":["Hyperkalemia","Dizziness","Cough near placebo rate (2-3% vs ~11% for ACEi)"],"i":["Boxed warning: fetal toxicity - stop as soon as pregnancy is detected","Angioedema (postmarketing only); may start 6 wks after ACEi angioedema"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":1}},{"n":"barnidipine","cls":"CCB","clsf":"Calcium channel blocker (dihydropyridine)","std":10,"tr":3,"pt":148,"us":0,"pr":1,"fs":[2.3976,2.1502,0.09166,0.13643],"fd":[2.098,1.623,0.07451,0.1082],"freq":null,"note":null,"form":null,"rows":[{"mg":5.0,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[1.0,6.0]},{"mg":10,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[1.0,5.0]},{"mg":20,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[3.0,4.0]}],"ae":null},{"n":"benazepril","cls":"ACEi","clsf":"ACE inhibitor","std":10,"tr":4,"pt":320,"us":1,"pr":1,"fs":[3.7292,4.3834,0.03813,0.05568],"fd":[2.2623,1.9837,0.02598,0.03607],"freq":"once daily","note":"Start 10 mg, or 5 mg on a diuretic or if GFR <30.","form":"IR","rows":[{"mg":5,"x":0.5,"far":0,"usd":1.45,"reg":"1 x 5 mg","pi":[1.0,3.0]},{"mg":10,"x":1.0,"far":0,"usd":1.97,"reg":"1 x 10 mg","pi":[2.0,4.0]},{"mg":20,"x":2.0,"far":0,"usd":2.29,"reg":"1 x 20 mg","pi":[4.0,9.0]},{"mg":40,"x":4.0,"far":1,"usd":2.94,"reg":"1 x 40 mg","pi":null}],"ae":{"c":["Dry cough (~11% pooled; label rates 0.5-35% are not comparable)","Hyperkalemia","Creatinine rise - up to 30% is acceptable"],"i":["Angioedema, including fatal cases; higher risk in Black patients","Boxed warning: fetal toxicity - stop as soon as pregnancy is detected"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":1}},{"n":"bendrofluazide","cls":"Diuretic","clsf":"Thiazide diuretic","std":2.5,"tr":9,"pt":283,"us":0,"pr":1,"fs":[8.8184,1.9333,0.15628,0.02872],"fd":[6.3725,0.5145,0.04314,0.01591],"freq":null,"note":null,"form":null,"rows":[{"mg":1.25,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[5.0,14.0]},{"mg":2.5,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[8.0,13.0]},{"mg":5.0,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[9.0,13.0]}],"ae":null},{"n":"betaxolol","cls":"BB","clsf":"Beta blocker (beta-1 selective)","std":20,"tr":4,"pt":571,"us":1,"pr":1,"fs":[8.7405,1.624,0.13604,0.02896],"fd":[7.8995,2.9172,0.11029,0.05304],"freq":"once daily","note":"Above 20 mg/d adds no significant BP effect. Thin US market.","form":"IR","rows":[{"mg":5,"x":0.25,"far":1,"usd":9.04,"reg":"0.5 x 10 mg","pi":null},{"mg":10,"x":0.5,"far":0,"usd":18.08,"reg":"1 x 10 mg","pi":[6.0,8.0]},{"mg":20,"x":1.0,"far":0,"usd":23.85,"reg":"1 x 20 mg","pi":[5.0,9.0]}],"ae":{"c":["Bradycardia","Fatigue","Cold extremities","Use 5-10 mg if bronchospastic disease is unavoidable"],"i":["Never stop abruptly - rebound angina and MI (not a boxed warning)","Masks hypoglycemia; beta-1 selectivity is lost at higher doses","Not first-line unless coronary disease or heart failure"],"m":"Heart rate","cl":0}},{"n":"bisoprolol","cls":"BB","clsf":"Beta blocker (beta-1 selective)","std":10,"tr":13,"pt":1124,"us":1,"pr":1,"fs":[8.2626,0.8049,0.13805,0.02272],"fd":[6.6961,2.0792,0.11569,0.05092],"freq":"once daily","note":"Start 2.5 mg if CrCl <40 or bronchospastic disease.","form":"IR","rows":[{"mg":2.5,"x":0.25,"far":1,"usd":78.74,"reg":"1 x 2.5 mg","pi":null},{"mg":5,"x":0.5,"far":0,"usd":4.3,"reg":"1 x 5 mg","pi":[4.0,10.0]},{"mg":10,"x":1.0,"far":0,"usd":5.96,"reg":"1 x 10 mg","pi":[6.0,10.0]},{"mg":20,"x":2.0,"far":0,"usd":11.91,"reg":"2 x 10 mg","pi":[6.0,14.0]}],"ae":{"c":["Bradycardia","Fatigue","Cold extremities","Beta-2 blockade appears at 20 mg and above"],"i":["Never stop abruptly - rebound angina and MI (not a boxed warning)","Masks hypoglycemia; beta-1 selectivity is lost at higher doses","Not first-line unless coronary disease or heart failure"],"m":"Heart rate","cl":0}},{"n":"candesartan","cls":"ARB","clsf":"Angiotensin receptor blocker","std":8,"tr":37,"pt":3492,"us":1,"pr":1,"fs":[8.2567,1.3203,0.14491,0.0226],"fd":[5.3848,0.3501,0.11912,0.00636],"freq":"once daily","note":"Start 16 mg as monotherapy; full effect at 4-6 weeks.","form":"IR","rows":[{"mg":4,"x":0.5,"far":0,"usd":16.05,"reg":"1 x 4 mg","pi":[6.0,9.0]},{"mg":8,"x":1.0,"far":0,"usd":17.19,"reg":"1 x 8 mg","pi":[7.0,10.0]},{"mg":16,"x":2.0,"far":0,"usd":14.66,"reg":"1 x 16 mg","pi":[6.0,11.0]},{"mg":32,"x":4.0,"far":1,"usd":16.78,"reg":"1 x 32 mg","pi":null}],"ae":{"c":["Hyperkalemia","Dizziness","Cough near placebo rate (2-3% vs ~11% for ACEi)"],"i":["Boxed warning: fetal toxicity - stop as soon as pregnancy is detected","Angioedema (postmarketing only); may start 6 wks after ACEi angioedema"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":1}},{"n":"captopril","cls":"ACEi","clsf":"ACE inhibitor","std":50,"tr":13,"pt":528,"us":1,"pr":1,"fs":[8.5921,4.8293,0.03139,0.01636],"fd":[4.9118,1.4427,0.05294,-0.0],"freq":"2-3x daily","note":"Obsolete for chronic HTN - BID-TID dosing, take 1 h before meals.","form":"IR","rows":[{"mg":25,"x":0.5,"far":0,"usd":4.13,"reg":"1 x 25 mg","pi":[2.0,7.0]},{"mg":50,"x":1.0,"far":0,"usd":7.7,"reg":"1 x 50 mg","pi":[6.0,10.0]},{"mg":100,"x":2.0,"far":0,"usd":9.02,"reg":"1 x 100 mg","pi":[9.0,13.0]},{"mg":150,"x":3.0,"far":1,"usd":23.11,"reg":"3 x 50 mg","pi":null}],"ae":{"c":["Dry cough (~11% pooled; label rates 0.5-35% are not comparable)","Hyperkalemia","Creatinine rise - up to 30% is acceptable","Rash 4-7%, metallic taste 2-4%"],"i":["Angioedema, including fatal cases; higher risk in Black patients","Boxed warning: fetal toxicity - stop as soon as pregnancy is detected","Neutropenia 3.7% with connective tissue disease plus renal impairment"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":0}},{"n":"carvedilol","cls":"BB","clsf":"Alpha/beta blocker","std":25,"tr":8,"pt":406,"us":1,"pr":1,"fs":[6.8325,1.425,0.1399,0.0206],"fd":[5.8995,1.0502,0.11029,0.01909],"freq":"twice daily","note":"HTN max is 50 mg/d - lower than the heart-failure target. Take with food.","form":"IR","rows":[{"mg":12.5,"x":0.5,"far":0,"usd":0.63,"reg":"1 x 12.5 mg","pi":[2.0,9.0]},{"mg":25,"x":1.0,"far":0,"usd":0.96,"reg":"1 x 25 mg","pi":[4.0,10.0]},{"mg":50,"x":2.0,"far":0,"usd":1.91,"reg":"2 x 25 mg","pi":[2.0,11.0]}],"ae":{"c":["Bradycardia","Fatigue","Postural hypotension 9.7%, syncope 3.4% during titration"],"i":["Nonselective - avoid in asthma and reactive airway disease","Never stop abruptly - rebound angina and MI","Not first-line unless coronary disease or heart failure","Worsens hyperglycemia in heart failure with diabetes","Intraoperative floppy iris - do NOT stop before cataract surgery"],"m":"Heart rate","cl":0}},{"n":"celiprolol","cls":"BB","clsf":"Beta blocker (beta-1 selective)","std":200,"tr":5,"pt":108,"us":0,"pr":1,"fs":[5.9293,-2.0148,0.13805,-0.05391],"fd":[5.5784,-2.4982,0.11961,-0.05198],"freq":null,"note":null,"form":null,"rows":[{"mg":100.0,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[2.0,11.0]},{"mg":200,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[5.0,7.0]},{"mg":400,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[2.0,8.0]}],"ae":null},{"n":"chlorthalidone","cls":"Diuretic","clsf":"Thiazide-like diuretic","std":25,"tr":14,"pt":518,"us":1,"pr":1,"fs":[11.6297,-0.4071,0.15426,-0.006],"fd":[4.652,0.4455,0.04216,0.02122],"freq":"once daily","note":"Practice starts at 12.5 mg; adverse effects are dose-related above 25.","form":"IR","rows":[{"mg":12.5,"x":0.5,"far":0,"usd":1.29,"reg":"0.5 x 25 mg","pi":[8.0,14.0]},{"mg":25,"x":1.0,"far":0,"usd":2.59,"reg":"1 x 25 mg","pi":[9.0,13.0]},{"mg":50,"x":2.0,"far":0,"usd":3.96,"reg":"1 x 50 mg","pi":[9.0,12.0]}],"ae":{"c":["Hypokalemia","Hyperuricemia and gout","Hyperglycemia","More hypokalemia than HCTZ (6.0% vs 4.4%)"],"i":["Hyponatremia, especially in older women","Sulfonamide-related rash and photosensitivity","The 2025 guideline dropped its preference - no MACE benefit over HCTZ"],"m":"Na+, K+, creatinine, uric acid, glucose, calcium","cl":0}},{"n":"cilazapril","cls":"ACEi","clsf":"ACE inhibitor","std":2.5,"tr":14,"pt":475,"us":0,"pr":1,"fs":[3.4557,3.5785,0.02388,0.03296],"fd":[2.5833,0.7213,0.01667,-0.0],"freq":null,"note":null,"form":null,"rows":[{"mg":1.25,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[1.0,6.0]},{"mg":2.5,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[1.0,6.0]},{"mg":5.0,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[1.0,9.0]}],"ae":null},{"n":"cyclopenthiazide","cls":"Diuretic","clsf":"Thiazide diuretic","std":0.5,"tr":3,"pt":41,"us":0,"pr":1,"fs":[23.1436,6.7626,0.1658,0.04508],"fd":[10.3309,2.0474,0.05147,-0.00212],"freq":null,"note":null,"form":null,"rows":[{"mg":0.25,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[11.0,20.0]},{"mg":0.5,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[11.0,24.0]},{"mg":1.0,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[12.0,32.0]}],"ae":null},{"n":"delapril","cls":"ACEi","clsf":"ACE inhibitor","std":30,"tr":3,"pt":182,"us":0,"pr":1,"fs":[6.4024,2.0557,0.03052,0.00612],"fd":[3.7353,0.9335,0.02549,0.01697],"freq":null,"note":null,"form":null,"rows":[{"mg":15.0,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[4.0,9.0]},{"mg":30,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[5.0,8.0]},{"mg":60,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[7.0,12.0]}],"ae":null},{"n":"diltiazem","cls":"CCB","clsf":"Calcium channel blocker (non-dihydropyridine)","std":240,"tr":16,"pt":751,"us":1,"pr":1,"fs":[6.2034,4.2433,0.15154,0.09888],"fd":[4.6495,1.989,0.16029,0.06895],"freq":"once daily (ER)","note":"ER only - IR diltiazem is not indicated for hypertension.","form":"ER","rows":[{"mg":120,"x":0.5,"far":0,"usd":9.72,"reg":"1 x 120 mg","pi":[1.0,5.0]},{"mg":180,"x":0.75,"far":0,"usd":5.55,"reg":"1 x 180 mg","pi":null},{"mg":240,"x":1.0,"far":0,"usd":5.97,"reg":"1 x 240 mg","pi":[5.0,7.0]},{"mg":360,"x":1.5,"far":0,"usd":10.72,"reg":"1 x 360 mg","pi":null},{"mg":480,"x":2.0,"far":0,"usd":11.93,"reg":"2 x 240 mg","pi":[7.0,11.0]}],"ae":{"c":["Bradycardia","First-degree AV block","Peripheral edema; less constipation than verapamil"],"i":["Do not use in HFrEF - negative inotrope","Avoid routine use with a beta blocker (bradycardia, heart block)","CYP3A4 inhibitor - limit simvastatin, watch digoxin","Raises carbamazepine 40-72%"],"m":"Heart rate; ECG if combined with other rate-slowing drugs","cl":0}},{"n":"enalapril","cls":"ACEi","clsf":"ACE inhibitor","std":10,"tr":31,"pt":1619,"us":1,"pr":1,"fs":[5.7835,3.9855,0.03035,0.03896],"fd":[4.0172,1.4215,0.03971,0.01273],"freq":"once-twice daily","note":"Split to BID rather than exceeding 40 mg/d.","form":"IR","rows":[{"mg":5,"x":0.5,"far":0,"usd":2.21,"reg":"1 x 5 mg","pi":[1.0,7.0]},{"mg":10,"x":1.0,"far":0,"usd":1.98,"reg":"1 x 10 mg","pi":[4.0,8.0]},{"mg":20,"x":2.0,"far":0,"usd":3.0,"reg":"1 x 20 mg","pi":[7.0,11.0]},{"mg":40,"x":4.0,"far":1,"usd":6.0,"reg":"2 x 20 mg","pi":null}],"ae":{"c":["Dry cough (~11% pooled; label rates 0.5-35% are not comparable)","Hyperkalemia","Creatinine rise - up to 30% is acceptable"],"i":["Angioedema, including fatal cases; higher risk in Black patients","Boxed warning: fetal toxicity - stop as soon as pregnancy is detected","Intestinal angioedema - abdominal pain without swelling"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":0}},{"n":"eplerenone","cls":"Diuretic","clsf":"Mineralocorticoid receptor antagonist","std":50,"tr":15,"pt":903,"us":1,"pr":1,"fs":[5.5329,4.7304,0.15611,0.13172],"fd":[2.8162,1.3525,0.06029,0.01803],"freq":"once-twice daily","note":"Halve the dose with verapamil or diltiazem (CYP3A4).","form":"IR","rows":[{"mg":25,"x":0.5,"far":0,"usd":9.72,"reg":"1 x 25 mg","pi":[1.0,4.0]},{"mg":50,"x":1.0,"far":0,"usd":13.91,"reg":"1 x 50 mg","pi":[4.0,7.0]},{"mg":100,"x":2.0,"far":0,"usd":27.82,"reg":"2 x 50 mg","pi":[8.0,10.0]}],"ae":{"c":["Hyperkalemia","Gynecomastia reported, but no rate in the label and no head-to-head with spironolactone"],"i":["Avoid if eGFR under 45 or K+ above 5.0","Preferred fourth agent for resistant hypertension (PATHWAY-2)","Contraindicated if K+ above 5.5 or CrCl 30 or less","Often needs twice-daily dosing for adequate BP lowering"],"m":"K+ and creatinine at baseline, 1 week, and 1 month","cl":0}},{"n":"eprosartan","cls":"ARB","clsf":"Angiotensin receptor blocker","std":600,"tr":4,"pt":362,"us":0,"pr":1,"fs":[5.7373,0.6258,0.13985,-0.00871],"fd":[4.2132,-0.0424,0.12206,0.02546],"freq":null,"note":null,"form":null,"rows":[{"mg":300.0,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[2.0,9.0]},{"mg":600,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[4.0,8.0]},{"mg":1200,"x":2.0,"far":0,"usd":null,"reg":null,"pi":null}],"ae":null},{"n":"felodipine","cls":"CCB","clsf":"Calcium channel blocker (dihydropyridine)","std":5,"tr":42,"pt":1718,"us":1,"pr":1,"fs":[6.298,2.024,0.15236,0.0432],"fd":[4.8015,1.6602,0.16912,0.04986],"freq":"once daily (ER)","note":"ER only. Swallow whole; grapefruit doubles levels.","form":"ER","rows":[{"mg":2.5,"x":0.5,"far":0,"usd":3.61,"reg":"1 x 2.5 mg","pi":[4.0,6.0]},{"mg":5,"x":1.0,"far":0,"usd":3.88,"reg":"1 x 5 mg","pi":[5.0,7.0]},{"mg":10,"x":2.0,"far":0,"usd":4.03,"reg":"1 x 10 mg","pi":[6.0,9.0]}],"ae":{"c":["Dose-dependent peripheral edema","Headache, flushing, palpitations","Edema 10% (under 50 y, 5 mg) to 30% (over 60 y, 20 mg)"],"i":["Edema responds to adding an ACEi/ARB, not to a diuretic","Gingival hyperplasia (under 1%)","Grapefruit roughly doubles bioavailability"],"m":null,"cl":0}},{"n":"fimasartan","cls":"ARB","clsf":"Angiotensin receptor blocker","std":60,"tr":7,"pt":359,"us":0,"pr":1,"fs":[11.6411,0.9238,0.14094,0.00424],"fd":[6.9975,1.0502,0.11814,0.01909],"freq":null,"note":null,"form":null,"rows":[{"mg":30.0,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[10.0,13.0]},{"mg":60,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[11.0,13.0]},{"mg":120,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[11.0,13.0]}],"ae":null},{"n":"fosinopril","cls":"ACEi","clsf":"ACE inhibitor","std":10,"tr":15,"pt":673,"us":1,"pr":1,"fs":[5.2104,2.2582,0.03231,0.01036],"fd":[3.9436,1.3737,0.05049,0.0053],"freq":"once daily","note":"Dual hepatic/renal clearance - the ACE inhibitor needing no renal adjustment.","form":"IR","rows":[{"mg":10,"x":1.0,"far":0,"usd":4.74,"reg":"1 x 10 mg","pi":[1.0,6.0]},{"mg":20,"x":2.0,"far":0,"usd":5.02,"reg":"1 x 20 mg","pi":[4.0,8.0]},{"mg":40,"x":4.0,"far":1,"usd":6.5,"reg":"1 x 40 mg","pi":null}],"ae":{"c":["Dry cough (~11% pooled; label rates 0.5-35% are not comparable)","Hyperkalemia","Creatinine rise - up to 30% is acceptable","No renal dose adjustment needed"],"i":["Angioedema, including fatal cases; higher risk in Black patients","Boxed warning: fetal toxicity - stop as soon as pregnancy is detected"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":0}},{"n":"furosemide","cls":"Diuretic","clsf":"Loop diuretic","std":40,"tr":6,"pt":155,"us":1,"pr":1,"fs":[3.6466,3.954,0.13446,0.19599],"fd":[1.9877,2.1375,0.05735,0.12411],"freq":"twice daily","note":"Not first-line. Must be BID - about 6 h duration.","form":"IR","rows":[{"mg":20,"x":0.5,"far":0,"usd":0.81,"reg":"1 x 20 mg","pi":[1.0,16.0]},{"mg":40,"x":1.0,"far":0,"usd":0.95,"reg":"1 x 40 mg","pi":[1.0,8.0]},{"mg":80,"x":2.0,"far":0,"usd":1.55,"reg":"1 x 80 mg","pi":[1.0,9.0]},{"mg":160,"x":4.0,"far":1,"usd":3.1,"reg":"2 x 80 mg","pi":null}],"ae":{"c":["Hypokalemia","Volume depletion and orthostasis","Hypomagnesemia"],"i":["Boxed warning: profound diuresis with electrolyte depletion","Ototoxicity with rapid IV, high dose, CKD, or aminoglycosides","Not first-line unless eGFR under 30 or heart failure"],"m":"K+, Na+, Mg, creatinine, volume status","cl":0}},{"n":"hydrochlorothiazide","cls":"Diuretic","clsf":"Thiazide diuretic","std":25,"tr":68,"pt":3627,"us":1,"pr":1,"fs":[7.9565,2.7347,0.16188,0.05556],"fd":[3.9118,1.2624,0.05294,0.03607],"freq":"once daily","note":"Shorter-acting and less potent than chlorthalidone mg-for-mg.","form":"IR","rows":[{"mg":12.5,"x":0.5,"far":0,"usd":0.91,"reg":"1 x 12.5 mg","pi":[5.0,7.0]},{"mg":25,"x":1.0,"far":0,"usd":0.36,"reg":"1 x 25 mg","pi":[7.0,9.0]},{"mg":50,"x":2.0,"far":0,"usd":0.95,"reg":"1 x 50 mg","pi":[8.0,11.0]}],"ae":{"c":["Hypokalemia","Hyperuricemia and gout","Hyperglycemia"],"i":["Hyponatremia, especially in older women","Sulfonamide-related rash and photosensitivity","Squamous cell skin cancer with cumulative dose (FDA 2020) - counsel sun protection","Acute myopia and angle-closure glaucoma"],"m":"Na+, K+, creatinine, uric acid, glucose, calcium","cl":0}},{"n":"indapamide","cls":"Diuretic","clsf":"Thiazide-like diuretic","std":2.5,"tr":11,"pt":525,"us":1,"pr":1,"fs":[12.0451,5.812,0.16955,0.07216],"fd":[5.0735,1.7238,0.05588,0.01167],"freq":"once daily (morning)","note":"Add a second agent rather than going to 5 mg.","form":"IR","rows":[{"mg":1.25,"x":0.5,"far":0,"usd":3.17,"reg":"1 x 1.25 mg","pi":[6.0,10.0]},{"mg":2.5,"x":1.0,"far":0,"usd":3.48,"reg":"1 x 2.5 mg","pi":[3.0,14.0]},{"mg":5,"x":2.0,"far":0,"usd":6.96,"reg":"2 x 2.5 mg","pi":[1.0,21.0]}],"ae":{"c":["Hyperuricemia and gout","Hyperglycemia","Hypokalemia 20% at 1.25 mg rising to 61% at 5 mg"],"i":["Hyponatremia, especially in older women","Sulfonamide-related rash and photosensitivity","Start at 1.25 mg - hyponatremia and hypokalemia are dose-related"],"m":"Na+, K+, creatinine, uric acid, glucose, calcium","cl":0}},{"n":"irbesartan","cls":"ARB","clsf":"Angiotensin receptor blocker","std":150,"tr":19,"pt":1348,"us":1,"pr":1,"fs":[8.7782,2.23,0.14768,0.04332],"fd":[5.3627,0.96,0.11569,0.03713],"freq":"once daily","note":"Start 75 mg if volume- or salt-depleted.","form":"IR","rows":[{"mg":75,"x":0.5,"far":0,"usd":2.48,"reg":"1 x 75 mg","pi":[6.0,10.0]},{"mg":150,"x":1.0,"far":0,"usd":3.35,"reg":"1 x 150 mg","pi":[8.0,10.0]},{"mg":300,"x":2.0,"far":0,"usd":4.55,"reg":"1 x 300 mg","pi":[9.0,13.0]}],"ae":{"c":["Hyperkalemia","Dizziness","Cough near placebo rate (2-3% vs ~11% for ACEi)"],"i":["Boxed warning: fetal toxicity - stop as soon as pregnancy is detected","Angioedema (postmarketing only); may start 6 wks after ACEi angioedema","K+ above 6 in 18.6% in the diabetic nephropathy trial"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":0}},{"n":"isradipine","cls":"CCB","clsf":"Calcium channel blocker (dihydropyridine)","std":5,"tr":31,"pt":1476,"us":1,"pr":0,"fs":[8.7275,4.5753,0.15127,0.07228],"fd":[6.5,2.3126,0.16667,0.05516],"freq":"twice daily","note":"IR capsules only - the once-daily CR tablet is discontinued.","form":"IR","rows":[{"mg":5,"x":1.0,"far":0,"usd":49.42,"reg":"1 x 5 mg","pi":[7.0,10.0]},{"mg":10,"x":2.0,"far":0,"usd":98.83,"reg":"2 x 5 mg","pi":[11.0,13.0]},{"mg":20,"x":4.0,"far":1,"usd":197.66,"reg":"4 x 5 mg","pi":null}],"ae":{"c":["Dose-dependent peripheral edema","Headache, flushing, palpitations"],"i":["Edema responds to adding an ACEi/ARB, not to a diuretic","Gingival hyperplasia (under 1%)","IR capsules twice daily only - the CR tablet is discontinued"],"m":null,"cl":0}},{"n":"lercanidipine","cls":"CCB","clsf":"Calcium channel blocker (dihydropyridine)","std":10,"tr":7,"pt":525,"us":0,"pr":1,"fs":[3.6466,1.7932,0.13446,0.07192],"fd":[3.5294,1.151,0.14902,0.06683],"freq":null,"note":null,"form":null,"rows":[{"mg":5.0,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[1.0,10.0]},{"mg":10,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[1.0,6.0]},{"mg":20,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[1.0,9.0]}],"ae":null},{"n":"lisinopril","cls":"ACEi","clsf":"ACE inhibitor","std":10,"tr":20,"pt":967,"us":1,"pr":1,"fs":[6.6818,4.2057,0.03791,0.0226],"fd":[4.2206,2.0474,0.03431,-0.00212],"freq":"once daily","note":"Halve the starting dose if CrCl 10-30.","form":"IR","rows":[{"mg":5,"x":0.5,"far":0,"usd":0.44,"reg":"1 x 5 mg","pi":[2.0,5.0]},{"mg":10,"x":1.0,"far":0,"usd":0.57,"reg":"1 x 10 mg","pi":[6.0,8.0]},{"mg":20,"x":2.0,"far":0,"usd":0.78,"reg":"1 x 20 mg","pi":[7.0,11.0]},{"mg":40,"x":4.0,"far":1,"usd":1.4,"reg":"1 x 40 mg","pi":null}],"ae":{"c":["Dry cough (~11% pooled; label rates 0.5-35% are not comparable)","Hyperkalemia","Creatinine rise - up to 30% is acceptable"],"i":["Angioedema, including fatal cases; higher risk in Black patients","Boxed warning: fetal toxicity - stop as soon as pregnancy is detected"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":1}},{"n":"losartan","cls":"ARB","clsf":"Angiotensin receptor blocker","std":50,"tr":37,"pt":3145,"us":1,"pr":1,"fs":[6.8299,2.1181,0.14295,0.05356],"fd":[3.8676,1.6814,0.11275,0.03713],"freq":"once-twice daily","note":"Shortest-acting ARB - 50 mg BID often beats 100 mg once daily at trough.","form":"IR","rows":[{"mg":25,"x":0.5,"far":0,"usd":0.64,"reg":"1 x 25 mg","pi":[3.0,7.0]},{"mg":50,"x":1.0,"far":0,"usd":0.99,"reg":"1 x 50 mg","pi":[6.0,8.0]},{"mg":100,"x":2.0,"far":0,"usd":1.29,"reg":"1 x 100 mg","pi":[7.0,9.0]}],"ae":{"c":["Hyperkalemia","Dizziness","Cough near placebo rate (2-3% vs ~11% for ACEi)","Mild uricosuric effect - lowers urate (Hyzaar label)"],"i":["Boxed warning: fetal toxicity - stop as soon as pregnancy is detected","Angioedema (postmarketing only); may start 6 wks after ACEi angioedema"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":0}},{"n":"manidipine","cls":"CCB","clsf":"Calcium channel blocker (dihydropyridine)","std":10,"tr":4,"pt":66,"us":0,"pr":1,"fs":[9.8201,9.2539,0.15437,0.1442],"fd":[5.9706,5.7018,0.15098,0.14957],"freq":null,"note":null,"form":null,"rows":[{"mg":5.0,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[1.0,6.0]},{"mg":10,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[4.0,10.0]},{"mg":20,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[14.0,17.0]}],"ae":null},{"n":"metoprolol","cls":"BB","clsf":"Beta blocker (beta-1 selective)","std":100,"tr":21,"pt":918,"us":1,"pr":1,"fs":[7.1648,0.2025,0.14105,0.00424],"fd":[4.7377,0.7001,0.10735,0.01273],"freq":"once daily (succinate ER)","note":"Succinate ER once daily; tartrate must be BID for 24 h coverage.","form":"ER","rows":[{"mg":25,"x":0.25,"far":1,"usd":1.69,"reg":"1 x 25 mg","pi":null},{"mg":50,"x":0.5,"far":0,"usd":1.64,"reg":"1 x 50 mg","pi":[5.0,8.0]},{"mg":100,"x":1.0,"far":0,"usd":2.6,"reg":"1 x 100 mg","pi":[6.0,8.0]},{"mg":200,"x":2.0,"far":0,"usd":5.46,"reg":"1 x 200 mg","pi":[6.0,9.0]}],"ae":{"c":["Bradycardia","Fatigue","Cold extremities","CYP2D6 poor metabolizers lose cardioselectivity"],"i":["Never stop abruptly - rebound angina and MI (not a boxed warning)","Masks hypoglycemia; beta-1 selectivity is lost at higher doses","Not first-line unless coronary disease or heart failure"],"m":"Heart rate","cl":0}},{"n":"moexipril","cls":"ACEi","clsf":"ACE inhibitor","std":15,"tr":20,"pt":921,"us":0,"pr":1,"fs":[7.1594,1.1213,0.03628,0.01424],"fd":[4.0025,1.448,0.0152,0.03288],"freq":null,"note":null,"form":null,"rows":[{"mg":7.5,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[4.0,9.0]},{"mg":15,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[5.0,9.0]},{"mg":30,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[4.0,12.0]}],"ae":null},{"n":"nebivolol","cls":"BB","clsf":"Beta blocker (beta-1 selective)","std":5,"tr":32,"pt":3940,"us":1,"pr":1,"fs":[5.9744,0.5097,0.14094,0.00647],"fd":[5.0294,1.1191,0.11569,0.01379],"freq":"once daily","note":"Start 2.5 mg if CrCl <30 or moderate hepatic impairment.","form":"IR","rows":[{"mg":2.5,"x":0.5,"far":0,"usd":3.6,"reg":"1 x 2.5 mg","pi":[4.0,7.0]},{"mg":5,"x":1.0,"far":0,"usd":3.13,"reg":"1 x 5 mg","pi":[5.0,7.0]},{"mg":10,"x":2.0,"far":0,"usd":4.17,"reg":"1 x 10 mg","pi":[5.0,7.0]},{"mg":20,"x":4.0,"far":1,"usd":5.5,"reg":"1 x 20 mg","pi":null}],"ae":{"c":["Bradycardia","Fatigue","Cold extremities","Vasodilatory; the nitric-oxide mechanism is not in the FDA label"],"i":["Never stop abruptly - rebound angina and MI (not a boxed warning)","Masks hypoglycemia; beta-1 selectivity is lost at higher doses","Not first-line unless coronary disease or heart failure"],"m":"Heart rate","cl":0}},{"n":"nicardipine","cls":"CCB","clsf":"Calcium channel blocker (dihydropyridine)","std":60,"tr":6,"pt":122,"us":1,"pr":0,"fs":[10.4916,13.8292,0.14866,0.21647],"fd":[8.9951,-1.448,0.16961,-0.03288],"freq":"three times daily","note":"Oral IR only - Cardene SR discontinued. Impractical for chronic HTN.","form":"IR","rows":[{"mg":60,"x":1.0,"far":0,"usd":236.64,"reg":"2 x 30 mg","pi":[1.0,19.0]},{"mg":90,"x":1.5,"far":0,"usd":354.96,"reg":"3 x 30 mg","pi":null},{"mg":120,"x":2.0,"far":0,"usd":473.28,"reg":"4 x 30 mg","pi":[8.0,25.0]}],"ae":{"c":["Dose-dependent peripheral edema","Headache, flushing, palpitations"],"i":["Edema responds to adding an ACEi/ARB, not to a diuretic","Gingival hyperplasia (under 1%)","Increased angina in 7% vs 4% on placebo","Oral IR three times daily only - SR discontinued"],"m":null,"cl":0}},{"n":"nifedipine","cls":"CCB","clsf":"Calcium channel blocker (dihydropyridine)","std":30,"tr":20,"pt":1316,"us":1,"pr":1,"fs":[9.3045,2.0381,0.14475,0.02672],"fd":[5.8775,-0.1856,0.17353,0.00318],"freq":"once daily (ER only)","note":"ER only. IR nifedipine is not approved for hypertension.","form":"ER","rows":[{"mg":30,"x":1.0,"far":0,"usd":3.94,"reg":"1 x 30 mg","pi":[5.0,12.0]},{"mg":60,"x":2.0,"far":0,"usd":5.1,"reg":"1 x 60 mg","pi":[9.0,12.0]},{"mg":90,"x":3.0,"far":1,"usd":8.3,"reg":"1 x 90 mg","pi":null}],"ae":{"c":["Dose-dependent peripheral edema","Headache, flushing, palpitations"],"i":["Edema responds to adding an ACEi/ARB, not to a diuretic","Gingival hyperplasia (under 1%)","Extended-release only - IR is not approved for hypertension","Avoid IR within 1-2 weeks of MI or in acute coronary syndrome"],"m":null,"cl":0}},{"n":"nisoldipine","cls":"CCB","clsf":"Calcium channel blocker (dihydropyridine)","std":20,"tr":9,"pt":327,"us":1,"pr":1,"fs":[13.0647,5.4,0.1467,0.07192],"fd":[8.0466,2.8483,0.15539,0.05834],"freq":"once daily (ER)","note":"Geomatrix strengths are NOT interchangeable with the old 10/20/30/40 mg.","form":"ER","rows":[{"mg":8.5,"x":0.425,"far":1,"usd":110.96,"reg":"1 x 8.5 mg","pi":null},{"mg":17,"x":0.85,"far":0,"usd":139.77,"reg":"1 x 17 mg","pi":null},{"mg":25.5,"x":1.275,"far":0,"usd":332.89,"reg":"3 x 8.5 mg","pi":null},{"mg":34,"x":1.7,"far":0,"usd":169.4,"reg":"1 x 34 mg","pi":null}],"ae":{"c":["Dose-dependent peripheral edema","Headache, flushing, palpitations","Edema 7% at 8.5 mg rising to 27% at 34 mg"],"i":["Edema responds to adding an ACEi/ARB, not to a diuretic","Gingival hyperplasia (under 1%)","Do not take with grapefruit; take on an empty stomach"],"m":null,"cl":0}},{"n":"nitrendipine","cls":"CCB","clsf":"Calcium channel blocker (dihydropyridine)","std":20,"tr":7,"pt":198,"us":0,"pr":1,"fs":[11.8727,8.3654,0.1485,0.09876],"fd":[7.1005,2.7316,0.15637,0.05622],"freq":null,"note":null,"form":null,"rows":[{"mg":10.0,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[3.0,7.0]},{"mg":20,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[2.0,17.0]},{"mg":40,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[1.0,28.0]}],"ae":null},{"n":"olmesartan","cls":"ARB","clsf":"Angiotensin receptor blocker","std":20,"tr":15,"pt":2352,"us":1,"pr":1,"fs":[7.0647,3.7506,0.1467,0.07263],"fd":[4.7083,1.379,0.125,0.03819],"freq":"once daily","note":"Twice-daily dosing offers no advantage over the same total once daily.","form":"IR","rows":[{"mg":5,"x":0.25,"far":1,"usd":1.73,"reg":"1 x 5 mg","pi":null},{"mg":20,"x":1.0,"far":0,"usd":2.23,"reg":"1 x 20 mg","pi":[5.0,8.0]},{"mg":40,"x":2.0,"far":0,"usd":3.53,"reg":"1 x 40 mg","pi":[7.0,11.0]}],"ae":{"c":["Hyperkalemia","Dizziness","Cough near placebo rate (2-3% vs ~11% for ACEi)"],"i":["Boxed warning: fetal toxicity - stop as soon as pregnancy is detected","Angioedema (postmarketing only); may start 6 wks after ACEi angioedema","Sprue-like enteropathy - chronic diarrhea and weight loss, months to years in"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":0}},{"n":"oxprenolol","cls":"BB","clsf":"Beta blocker (non-selective)","std":160,"tr":3,"pt":189,"us":0,"pr":1,"fs":[5.3035,-6.2087,0.14589,-0.21047],"fd":[1.0,-0.0,-0.0,0.0],"freq":null,"note":null,"form":null,"rows":[{"mg":80.0,"x":0.5,"far":0,"usd":null,"reg":null,"pi":null},{"mg":160,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[5.0,8.0]},{"mg":320,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[1.0,4.0]}],"ae":null},{"n":"penbutolol","cls":"BB","clsf":"Beta blocker (non-selective)","std":40,"tr":3,"pt":228,"us":0,"pr":1,"fs":[7.5459,-2.1393,0.14088,-0.02884],"fd":[5.4167,2.5194,0.11667,0.03925],"freq":null,"note":null,"form":null,"rows":[{"mg":20.0,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[9.0,9.0]},{"mg":40,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[7.0,9.0]},{"mg":80,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[5.0,8.0]}],"ae":null},{"n":"perindopril","cls":"ACEi","clsf":"ACE inhibitor","std":4,"tr":18,"pt":1053,"us":1,"pr":1,"fs":[6.7793,3.788,0.0353,0.02896],"fd":[5.0147,1.448,0.02451,0.03288],"freq":"once daily","note":"Levels roughly double over age 70 - start low. Sole-source in the US.","form":"IR","rows":[{"mg":2,"x":0.5,"far":0,"usd":13.33,"reg":"1 x 2 mg","pi":[1.0,9.0]},{"mg":4,"x":1.0,"far":0,"usd":15.97,"reg":"1 x 4 mg","pi":[6.0,8.0]},{"mg":8,"x":2.0,"far":0,"usd":17.98,"reg":"1 x 8 mg","pi":[7.0,11.0]},{"mg":16,"x":4.0,"far":1,"usd":35.97,"reg":"2 x 8 mg","pi":null}],"ae":{"c":["Dry cough (~11% pooled; label rates 0.5-35% are not comparable)","Hyperkalemia","Creatinine rise - up to 30% is acceptable","Levels roughly double over age 70"],"i":["Angioedema, including fatal cases; higher risk in Black patients","Boxed warning: fetal toxicity - stop as soon as pregnancy is detected"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":0}},{"n":"propranolol","cls":"BB","clsf":"Beta blocker (non-selective)","std":160,"tr":12,"pt":365,"us":1,"pr":1,"fs":[11.9744,-0.5097,0.14094,-0.00647],"fd":[5.5882,-1.0502,0.11373,-0.01909],"freq":"once daily (LA)","note":"Rarely first-line; chosen when tremor or migraine coexists.","form":"ER","rows":[{"mg":80,"x":0.5,"far":0,"usd":5.86,"reg":"1 x 80 mg","pi":[1.0,22.0]},{"mg":120,"x":0.75,"far":0,"usd":5.9,"reg":"1 x 120 mg","pi":null},{"mg":160,"x":1.0,"far":0,"usd":9.46,"reg":"1 x 160 mg","pi":[8.0,17.0]},{"mg":240,"x":1.5,"far":0,"usd":11.8,"reg":"2 x 120 mg","pi":null}],"ae":{"c":["Bradycardia","Fatigue","Vivid dreams and insomnia - crosses the blood-brain barrier"],"i":["Nonselective - avoid in asthma and reactive airway disease","Never stop abruptly - rebound angina and MI","Not first-line unless coronary disease or heart failure","Asthma is an outright contraindication"],"m":"Heart rate","cl":0}},{"n":"quinapril","cls":"ACEi","clsf":"ACE inhibitor","std":10,"tr":8,"pt":166,"us":0,"pr":1,"fs":[7.2104,3.7009,0.03231,0.01036],"fd":[5.5858,2.1693,0.03186,0.03288],"freq":null,"note":null,"form":null,"rows":[{"mg":5.0,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[1.0,8.0]},{"mg":10,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[1.0,9.0]},{"mg":20,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[1.0,12.0]}],"ae":null},{"n":"ramipril","cls":"ACEi","clsf":"ACE inhibitor","std":2.5,"tr":16,"pt":606,"us":1,"pr":1,"fs":[3.8244,2.2476,0.03819,0.02272],"fd":[2.598,1.7715,0.04118,0.01909],"freq":"once-twice daily","note":"Start 1.25 mg on a diuretic; cap 5 mg/d in renal impairment.","form":"IR","rows":[{"mg":2.5,"x":1.0,"far":0,"usd":1.63,"reg":"1 x 2.5 mg","pi":[2.0,7.0]},{"mg":5,"x":2.0,"far":0,"usd":1.6,"reg":"1 x 5 mg","pi":[3.0,7.0]},{"mg":10,"x":4.0,"far":1,"usd":2.2,"reg":"1 x 10 mg","pi":null}],"ae":{"c":["Dry cough (~11% pooled; label rates 0.5-35% are not comparable)","Hyperkalemia","Creatinine rise - up to 30% is acceptable"],"i":["Angioedema, including fatal cases; higher risk in Black patients","Boxed warning: fetal toxicity - stop as soon as pregnancy is detected"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":1}},{"n":"spirapril","cls":"ACEi","clsf":"ACE inhibitor","std":6,"tr":9,"pt":523,"us":0,"pr":1,"fs":[6.2555,1.951,0.03519,0.00812],"fd":[5.1005,0.2069,0.02304,-0.01591],"freq":null,"note":null,"form":null,"rows":[{"mg":3.0,"x":0.5,"far":0,"usd":null,"reg":null,"pi":[2.0,7.0]},{"mg":6,"x":1.0,"far":0,"usd":null,"reg":null,"pi":[5.0,7.0]},{"mg":12,"x":2.0,"far":0,"usd":null,"reg":null,"pi":[6.0,9.0]}],"ae":null},{"n":"spironolactone","cls":"Diuretic","clsf":"Mineralocorticoid receptor antagonist","std":50,"tr":20,"pt":1020,"us":1,"pr":1,"fs":[11.4334,5.9012,0.16101,0.08829],"fd":[5.6005,2.5618,0.05637,0.01379],"freq":"once daily","note":"Fourth-line agent of choice for resistant HTN (PATHWAY-2).","form":"IR","rows":[{"mg":12.5,"x":0.25,"far":1,"usd":0.68,"reg":"0.5 x 25 mg","pi":null},{"mg":25,"x":0.5,"far":0,"usd":1.35,"reg":"1 x 25 mg","pi":[6.0,9.0]},{"mg":50,"x":1.0,"far":0,"usd":2.68,"reg":"1 x 50 mg","pi":[10.0,13.0]},{"mg":100,"x":2.0,"far":0,"usd":5.37,"reg":"1 x 100 mg","pi":[13.0,20.0]}],"ae":{"c":["Hyperkalemia","Gynecomastia ~9% of men in RALES (mean 26 mg/d)","Menstrual irregularity, breast tenderness"],"i":["Avoid if eGFR under 45 or K+ above 5.0","Preferred fourth agent for resistant hypertension (PATHWAY-2)","Hypocalcemia - the opposite direction from thiazides"],"m":"K+ and creatinine at baseline, 1 week, and 1 month","cl":0}},{"n":"telmisartan","cls":"ARB","clsf":"Angiotensin receptor blocker","std":40,"tr":28,"pt":1832,"us":1,"pr":1,"fs":[7.8292,3.3527,0.14371,0.05591],"fd":[6.7941,-0.0,0.12353,-0.0],"freq":"once daily","note":"Longest ARB half-life (~24 h) - best trough coverage.","form":"IR","rows":[{"mg":20,"x":0.5,"far":0,"usd":3.15,"reg":"1 x 20 mg","pi":[1.0,8.0]},{"mg":40,"x":1.0,"far":0,"usd":5.12,"reg":"1 x 40 mg","pi":[5.0,9.0]},{"mg":80,"x":2.0,"far":0,"usd":4.55,"reg":"1 x 80 mg","pi":[8.0,12.0]}],"ae":{"c":["Hyperkalemia","Dizziness","Cough near placebo rate (2-3% vs ~11% for ACEi)"],"i":["Boxed warning: fetal toxicity - stop as soon as pregnancy is detected","Angioedema (postmarketing only); may start 6 wks after ACEi angioedema","Raises digoxin peak ~49% - monitor levels"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":0}},{"n":"trandolapril","cls":"ACEi","clsf":"ACE inhibitor","std":2,"tr":27,"pt":1257,"us":1,"pr":1,"fs":[5.2094,0.2131,0.03345,-0.00812],"fd":[3.652,0.9972,0.04216,-0.02122],"freq":"once daily","note":"Start 2 mg in Black patients. Longest ACE inhibitor half-life.","form":"IR","rows":[{"mg":1,"x":0.5,"far":0,"usd":5.3,"reg":"1 x 1 mg","pi":[3.0,7.0]},{"mg":2,"x":1.0,"far":0,"usd":5.65,"reg":"1 x 2 mg","pi":[4.0,7.0]},{"mg":4,"x":2.0,"far":0,"usd":5.71,"reg":"1 x 4 mg","pi":[4.0,7.0]},{"mg":8,"x":4.0,"far":1,"usd":11.43,"reg":"2 x 4 mg","pi":null}],"ae":{"c":["Dry cough (~11% pooled; label rates 0.5-35% are not comparable)","Hyperkalemia","Creatinine rise - up to 30% is acceptable","Longest half-life of the ACE inhibitors (22.5 h)"],"i":["Angioedema, including fatal cases; higher risk in Black patients","Boxed warning: fetal toxicity - stop as soon as pregnancy is detected"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":0}},{"n":"valsartan","cls":"ARB","clsf":"Angiotensin receptor blocker","std":80,"tr":33,"pt":4797,"us":1,"pr":1,"fs":[6.1197,1.3097,0.13816,0.03496],"fd":[3.8358,0.7001,0.1152,0.01273],"freq":"once daily","note":"Once daily for HTN, unlike the BID dosing used in HF and post-MI.","form":"IR","rows":[{"mg":40,"x":0.5,"far":0,"usd":3.0,"reg":"1 x 40 mg","pi":[4.0,7.0]},{"mg":80,"x":1.0,"far":0,"usd":3.39,"reg":"1 x 80 mg","pi":[5.0,7.0]},{"mg":160,"x":2.0,"far":0,"usd":4.16,"reg":"1 x 160 mg","pi":[6.0,8.0]},{"mg":320,"x":4.0,"far":1,"usd":5.46,"reg":"1 x 320 mg","pi":null}],"ae":{"c":["Hyperkalemia","Dizziness","Cough near placebo rate (2-3% vs ~11% for ACEi)"],"i":["Boxed warning: fetal toxicity - stop as soon as pregnancy is detected","Angioedema (postmarketing only); may start 6 wks after ACEi angioedema"],"m":"K+ and creatinine 1-2 weeks after start or titration","cl":1}},{"n":"verapamil","cls":"CCB","clsf":"Calcium channel blocker (non-dihydropyridine)","std":240,"tr":27,"pt":1309,"us":1,"pr":1,"fs":[7.21,8.5079,0.14393,0.17304],"fd":[5.5098,5.0494,0.16078,0.14427],"freq":"once daily (ER)","note":"ER only for HTN. Moderate CYP3A4 inhibitor.","form":"ER","rows":[{"mg":120,"x":0.5,"far":0,"usd":47.53,"reg":"1 x 120 mg","pi":[1.0,4.0]},{"mg":180,"x":0.75,"far":0,"usd":5.8,"reg":"1 x 180 mg","pi":null},{"mg":240,"x":1.0,"far":0,"usd":5.09,"reg":"1 x 240 mg","pi":[6.0,9.0]},{"mg":360,"x":1.5,"far":0,"usd":244.71,"reg":"1 x 360 mg","pi":null},{"mg":480,"x":2.0,"far":0,"usd":10.18,"reg":"2 x 240 mg","pi":[10.0,18.0]}],"ae":{"c":["Bradycardia","First-degree AV block","Constipation 7.3% - the usual dose-limiting effect"],"i":["Do not use in HFrEF - negative inotrope","Avoid routine use with a beta blocker (bradycardia, heart block)","CYP3A4 inhibitor - limit simvastatin, watch digoxin","Contraindicated if EF under 30%","Raises digoxin 50-75%"],"m":"Heart rate; ECG if combined with other rate-slowing drugs","cl":0}}],"sources":{"dosing":"FDA prescribing information via DailyMed, with marketed strengths from the RxNorm prescribable set. Total daily dose for hypertension.","ae":"FDA prescribing information via DailyMed, plus the 2017 and 2025 ACC/AHA hypertension guideline drug tables. Incidence figures are label figures except: ACE inhibitor cough (Bangalore, Am J Med 2010, pooled ~11%), chlorthalidone vs hydrochlorothiazide hypokalemia (Diuretic Comparison Project, NEJM 2022), and olmesartan enteropathy (FDA Drug Safety Communication, July 2013, and the Benicar label section 5.5). Amiloride and furosemide boxed warnings were read from the SPL XML.","cost":"CMS National Average Drug Acquisition Cost (NADAC), file dated 26 August 2026. Median generic price per unit, cheapest whole-tablet regimen delivering the daily dose, times 30 days."}};
+const DRUGS = PAYLOAD.drugs;
+const SOURCES = PAYLOAD.sources;
+const REF = {sbp: 154, dbp: 100};
+const CLASSES = ['ACEi', 'ARB', 'BB', 'CCB', 'Diuretic'];
+const CLASS_LABEL = {ACEi: 'ACE inhibitor', ARB: 'ARB', BB: 'Beta blocker',
+                     CCB: 'Calcium blocker', Diuretic: 'Diuretic'};
+
+const state = {
+  sbp: 154, dbp: 100, rung: 'all', classes: new Set(CLASSES), minEv: 5,
+  usOnly: true, q: '', sort: 'sbp', dir: -1, comboN: 2,
+  noSame: true, noRasRas: true, cvRisk: 10
+};
+
+/* ---------- class marks: distinct SHAPE + colour + abbreviation ---------- */
+const SHAPE = {
+  ACEi:     '<rect x="1" y="1" width="8" height="8" rx="1"/>',
+  ARB:      '<circle cx="5" cy="5" r="4.2"/>',
+  BB:       '<path d="M5 .8 9.4 9H.6Z"/>',
+  CCB:      '<path d="M5 .6 9.4 5 5 9.4.6 5Z"/>',
+  Diuretic: '<path d="M5 .6c2.6 2.9 4 4.7 4 6.1a4 4 0 0 1-8 0c0-1.4 1.4-3.2 4-6.1Z"/>'
+};
+const mark = cls => `<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"
+  fill="currentColor">${SHAPE[cls]}</svg>`;
+const badge = cls => `<span class="cbadge cls-${cls}">${mark(cls)}${cls === 'Diuretic' ? 'DIUR' : cls.toUpperCase()}</span>`;
+
+/* ---------- efficacy model (Wang et al, appendix p.14) ---------- */
+const lnRatio = (d, mg) => Math.log(mg / d.std);
+const tauBase = (d, mg, k) => { const f = k === 'sbp' ? d.fs : d.fd; return f[0] + f[1] * lnRatio(d, mg); };
+const epsOf   = (d, mg, k) => { const f = k === 'sbp' ? d.fs : d.fd; return f[2] + f[3] * lnRatio(d, mg); };
+
+/* Sequential application, averaged over every ordering. */
+function predict(regimen, baseline, kind) {
+  const ref = REF[kind], n = regimen.length;
+  if (!n) return 0;
+  let sum = 0, count = 0;
+  const walk = (rest, order) => {
+    if (!rest.length) {
+      let used = 0, total = 0;
+      for (const [d, mg] of order) {
+        const t = tauBase(d, mg, kind) + (baseline - used - ref) * epsOf(d, mg, kind);
+        total += t; used += t;
+      }
+      sum += total; count++;
+      return;
+    }
+    for (let i = 0; i < rest.length; i++)
+      walk(rest.slice(0, i).concat(rest.slice(i + 1)), order.concat([rest[i]]));
+  };
+  walk(regimen, []);
+  return sum / count;
+}
+/* At the reference baseline, show the calculator's own published integer. */
+function effect(regimen, baseline, kind) {
+  if (regimen.length === 1 && baseline === REF[kind]) {
+    const [d, mg] = regimen[0];
+    const r = d.rows.find(x => Math.abs(x.mg - mg) < 1e-9);
+    if (r && r.pi && Math.abs(mg / d.std - 1) < 1e-9) { /* fall through to model */ }
+  }
+  return predict(regimen, baseline, kind);
+}
+const bandOf = s => s >= 20 ? 'high' : s >= 10 ? 'moderate' : 'low';
+const fmt1 = v => v.toFixed(1);
+const fmtMg = mg => (mg % 1 === 0 ? mg : +mg.toFixed(2)) + ' mg';
+const money = v => v == null ? null : (v < 10 ? '$' + v.toFixed(2) : '$' + Math.round(v));
+const costTier = v => v == null ? '' : v < 5 ? 'generic pennies' : v < 25 ? 'inexpensive' : v < 100 ? 'costly' : 'very costly';
+
+/* ---------- row construction ---------- */
+function rungIndex(d) {
+  const n = d.rows.length;
+  return {low: 0, usual: Math.min(n - 1, Math.floor(n / 2)), max: n - 1};
+}
+function rowsFor(d) {
+  if (state.rung === 'all') return d.rows;
+  return [d.rows[rungIndex(d)[state.rung]]];
+}
+function visibleDrugs() {
+  const q = state.q.trim().toLowerCase();
+  return DRUGS.filter(d =>
+    state.classes.has(d.cls) &&
+    (d.tr || 0) >= state.minEv &&
+    (!state.usOnly || (d.us && d.pr)) &&
+    (!q || d.n.includes(q) || d.cls.toLowerCase().includes(q) ||
+     d.clsf.toLowerCase().includes(q) ||
+     (d.ae && [...d.ae.c, ...d.ae.i].join(' ').toLowerCase().includes(q)))
+  );
+}
+function allRows() {
+  const out = [];
+  for (const d of visibleDrugs())
+    for (const r of rowsFor(d)) {
+      const reg = [[d, r.mg]];
+      out.push({
+        d, r,
+        sbp: predict(reg, state.sbp, 'sbp'),
+        dbp: predict(reg, state.dbp, 'dbp'),
+        sbp154: predict(reg, REF.sbp, 'sbp')
+      });
+    }
+  return out;
+}
+
+/* ---------- rendering: single drugs ---------- */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+
+function aeCell(d) {
+  if (!d.ae) return '<td class="ae"></td>';
+  const common = d.ae.c.slice(0, 3).map(esc).join(' &middot; ');
+  const imp = d.ae.i.slice(0, 2).map(x => `<span class="imp">${esc(x)}</span>`).join(' &middot; ');
+  const mon = d.ae.m ? `<span class="mon">Watch: ${esc(d.ae.m)}</span>` : '';
+  return `<td class="ae">${common}${common && imp ? ' &middot; ' : ''}${imp}${mon}</td>`;
+}
+
+function renderDrugs() {
+  const rows = allRows();
+  const key = {
+    name: r => r.d.n, dose: r => r.r.x, sbp: r => r.sbp, dbp: r => r.dbp,
+    cost: r => r.r.usd == null ? Infinity * state.dir : r.r.usd, ev: r => r.d.tr || 0
+  }[state.sort];
+  rows.sort((a, b) => {
+    const x = key(a), y = key(b);
+    if (typeof x === 'string') return state.dir * x.localeCompare(y);
+    return state.dir * (x - y);
+  });
+
+  const maxBar = 30;
+  document.getElementById('drugbody').innerHTML = rows.map((row, i) => {
+    const d = row.d, r = row.r;
+    const pi = r.pi && r.pi[0] != null ? `${r.pi[0]} &ndash; ${r.pi[1]}` : '&mdash;';
+    const thin = (d.tr || 0) < 5 || (d.pt || 0) < 300;   // sparse evidence, by trials or patients
+    const band = bandOf(row.sbp154);
+    const far = r.far ? '<span class="xtrap" title="Outside the 0.5-2x standard doses the model was fitted on">extrapolated</span>' : '';
+    const nonus = d.us ? (d.pr ? '' : '<span class="nonus" title="Once-daily formulation discontinued; BID/TID dosing makes it impractical for chronic hypertension">rarely used</span>') : '<span class="nonus">non-US</span>';
+    const usd = r.usd;
+    return `<tr>
+      <td class="rank">${i + 1}</td>
+      <td class="drug">${badge(d.cls)} ${esc(d.n)}${nonus}
+        <span class="sub">${esc(d.freq || CLASS_LABEL[d.cls])}</span></td>
+      <td class="num">${fmtMg(r.mg)}${far}<span class="sub">${r.x}&times; std</span></td>
+      <td class="num"><span class="bigval">${fmt1(row.sbp)}</span></td>
+      <td class="barcell"><div class="bar"><i style="width:${Math.max(1, Math.min(100, row.sbp / maxBar * 100))}%"></i></div></td>
+      <td class="num">${fmt1(row.dbp)}</td>
+      <td class="cost ${usd != null && usd >= 25 ? 'pricey' : ''}">
+        ${usd == null ? '&mdash;' : `<span class="amt">${money(usd)}</span><span class="tier">${costTier(usd)}</span>`}</td>
+      ${aeCell(d)}
+      <td class="pi">${pi}</td>
+      <td class="ev ${thin ? 'thin' : ''}">${d.tr} trial${d.tr === 1 ? '' : 's'}<span class="sub">${d.pt.toLocaleString()} pts</span></td>
+      <td><span class="band ${band}">${band}</span></td>
+    </tr>`;
+  }).join('');
+
+  const at = (state.sbp === REF.sbp && state.dbp === REF.dbp)
+    ? 'at the trial baseline of 154/100'
+    : `re-standardised to ${state.sbp}/${state.dbp}`;
+  const rungWord = {all: 'every clinically used dose', low: 'starting dose',
+                    usual: 'usual dose', max: 'maximum dose'}[state.rung];
+  document.getElementById('drugcount').textContent =
+    `${rows.length} drug-dose rows from ${visibleDrugs().length} drugs \u00b7 ${rungWord} \u00b7 mmHg reduction ${at}`;
+  document.querySelectorAll('#drugtable th[data-sort]').forEach(th => {
+    if (th.dataset.sort === state.sort) th.setAttribute('aria-sort', state.dir < 0 ? 'descending' : 'ascending');
+    else th.removeAttribute('aria-sort');
+  });
+}
+
+/* ---------- combination ranking ---------- */
+function comboFlags(drugs) {
+  const out = [];
+  const cls = drugs.map(d => d.cls);
+  const has = c => cls.includes(c);
+  if (has('ACEi') && has('ARB'))
+    out.push({t: 'avoid', m: 'Dual RAS blockade - more hyperkalaemia and acute kidney injury, no outcome benefit. Guidelines say do not combine.'});
+  const dup = cls.find((c, i) => cls.indexOf(c) !== i);
+  if (dup) out.push({t: 'avoid', m: `Two ${CLASS_LABEL[dup]}s together - overlapping mechanism, compounding adverse effects.`});
+  if (drugs.some(d => d.n === 'verapamil' || d.n === 'diltiazem') && has('BB'))
+    out.push({t: 'avoid', m: 'Non-dihydropyridine calcium blocker plus a beta blocker - additive bradycardia and AV block.'});
+  const mra = drugs.some(d => ['spironolactone', 'eplerenone', 'amiloride'].includes(d.n));
+  if (mra && (has('ACEi') || has('ARB')))
+    out.push({t: 'watch', m: 'Potassium-sparing agent with RAS blockade - check K+ and creatinine at 1 week and 1 month.'});
+  if (drugs.some(d => d.cls === 'CCB' && d.n !== 'verapamil' && d.n !== 'diltiazem') &&
+      (has('ACEi') || has('ARB')))
+    out.push({t: 'good', m: 'Guideline first-line pairing; the ACEi/ARB also blunts dihydropyridine ankle oedema.'});
+  if (drugs.some(d => ['hydrochlorothiazide', 'chlorthalidone', 'indapamide'].includes(d.n)) &&
+      (has('ACEi') || has('ARB')))
+    out.push({t: 'good', m: 'Guideline first-line pairing.'});
+  return out;
+}
+function comboAllowed(drugs) {
+  const cls = drugs.map(d => d.cls);
+  if (state.noSame && cls.some((c, i) => cls.indexOf(c) !== i)) return false;
+  if (state.noRasRas && cls.includes('ACEi') && cls.includes('ARB')) return false;
+  return true;
+}
+function comboDose(d) {
+  const idx = state.rung === 'all' ? rungIndex(d).usual : rungIndex(d)[state.rung];
+  return d.rows[idx];
+}
+function renderCombos() {
+  const pool = visibleDrugs();
+  const n = state.comboN, results = [];
+  const build = (start, picked) => {
+    if (picked.length === n) {
+      if (!comboAllowed(picked)) return;
+      const reg = picked.map(d => [d, comboDose(d).mg]);
+      const cost = picked.reduce((s, d) => {
+        const c = comboDose(d).usd; return c == null ? null : (s == null ? null : s + c);
+      }, 0);
+      results.push({
+        drugs: picked.slice(), reg,
+        sbp: predict(reg, state.sbp, 'sbp'),
+        dbp: predict(reg, state.dbp, 'dbp'),
+        sbp154: predict(reg, REF.sbp, 'sbp'),
+        minTr: Math.min(...picked.map(d => d.tr || 0)),
+        minPt: Math.min(...picked.map(d => d.pt || 0)),
+        cost
+      });
+      return;
+    }
+    for (let i = start; i < pool.length; i++) build(i + 1, picked.concat(pool[i]));
+  };
+  build(0, []);
+  results.sort((a, b) => b.sbp - a.sbp);
+  const top = results.slice(0, 60);
+  const maxBar = n === 2 ? 40 : 50;
+
+  document.getElementById('combobody').innerHTML = top.map((r, i) => {
+    const names = r.reg.map(([d, mg]) => `${esc(d.n)} ${fmtMg(mg)}`).join(' + ');
+    const marks = r.drugs.map(d => badge(d.cls)).join(' ');
+    const good = comboFlags(r.drugs).some(f => f.t === 'good');
+    return `<tr>
+      <td class="rank">${i + 1}</td>
+      <td class="drug">${esc(names)}${good ? '<span class="okflag">guideline pair</span>' : ''}</td>
+      <td style="white-space:nowrap">${marks}</td>
+      <td class="num"><span class="bigval">${fmt1(r.sbp)}</span></td>
+      <td class="barcell"><div class="bar"><i style="width:${Math.max(1, Math.min(100, r.sbp / maxBar * 100))}%"></i></div></td>
+      <td class="num">${fmt1(r.dbp)}</td>
+      <td class="cost ${r.cost != null && r.cost >= 25 ? 'pricey' : ''}">${r.cost == null ? '&mdash;' : money(r.cost)}</td>
+      <td class="ev ${r.minTr < 5 || r.minPt < 300 ? 'thin' : ''}">${r.minTr} trial${r.minTr === 1 ? '' : 's'}</td>
+      <td><span class="band ${bandOf(r.sbp154)}">${bandOf(r.sbp154)}</span></td>
+    </tr>`;
+  }).join('');
+  const rungWord = state.rung === 'all' ? 'usual dose' :
+    {low: 'starting dose', usual: 'usual dose', max: 'maximum dose'}[state.rung];
+  document.getElementById('combocount').textContent =
+    `Top ${top.length} of ${results.length.toLocaleString()} eligible ${n === 2 ? 'pairs' : 'triples'} \u00b7 each drug at its ${rungWord} \u00b7 baseline ${state.sbp}/${state.dbp}`;
+}
+
+/* ---------- builder ---------- */
+function slotMarkup(i) {
+  const opts = DRUGS.filter(d => !state.usOnly || (d.us && d.pr))
+    .map(d => `<option value="${esc(d.n)}">${esc(d.n)}${d.us ? '' : ' (non-US)'}</option>`).join('');
+  return `<div class="slot" data-i="${i}">
+    <select class="bDrug" aria-label="Drug ${i + 1}"><option value="">&mdash; choose a drug &mdash;</option>${opts}</select>
+    <select class="bDose" aria-label="Dose ${i + 1}"></select>
+    <button class="rm" type="button" aria-label="Remove drug ${i + 1}">&times;</button>
+  </div>`;
+}
+function refreshDoseOptions(slot) {
+  const d = DRUGS.find(x => x.n === slot.querySelector('.bDrug').value);
+  const sel = slot.querySelector('.bDose');
+  if (!d) { sel.innerHTML = '<option value="">&mdash;</option>'; return; }
+  const prev = sel.value;
+  sel.innerHTML = d.rows.map(r =>
+    `<option value="${r.mg}">${fmtMg(r.mg)}${r.usd != null ? ' \u00b7 ' + money(r.usd) + '/mo' : ''}</option>`).join('');
+  const usual = d.rows[rungIndex(d).usual].mg;
+  sel.value = prev && [...sel.options].some(o => o.value === prev) ? prev : String(usual);
+}
+function readRegimen() {
+  return [...document.querySelectorAll('#slots .slot')].map(s => {
+    const d = DRUGS.find(x => x.n === s.querySelector('.bDrug').value);
+    const mg = parseFloat(s.querySelector('.bDose').value);
+    return d && mg ? [d, mg] : null;
+  }).filter(Boolean);
+}
+function renderBuilder() {
+  const reg = readRegimen();
+  const set = (id, v) => document.getElementById(id).innerHTML = v;
+  document.getElementById('pBase').textContent = `${state.sbp} / ${state.dbp}`;
+  if (!reg.length) {
+    ['bSbp', 'bDbp'].forEach(id => set(id, '&mdash;'));
+    ['bBand', 'pDrop', 'pAfter', 'pRrr', 'pArr', 'pNnt', 'pCost'].forEach(id => set(id, '&mdash;'));
+    document.getElementById('bFlags').innerHTML = '';
+    return;
+  }
+  const s = predict(reg, state.sbp, 'sbp'), dd = predict(reg, state.dbp, 'dbp');
+  const s154 = predict(reg, REF.sbp, 'sbp');
+  set('bSbp', `${fmt1(s)} <small>mmHg</small>`);
+  set('bDbp', `${fmt1(dd)} <small>mmHg</small>`);
+  set('bBand', `<span class="band ${bandOf(s154)}">${bandOf(s154)}</span>`);
+  set('pDrop', `&minus;${fmt1(s)} / &minus;${fmt1(dd)}`);
+  set('pAfter', `${Math.round(state.sbp - s)} / ${Math.round(state.dbp - dd)} mmHg`);
+
+  const costs = reg.map(([d, mg]) => (d.rows.find(r => Math.abs(r.mg - mg) < 1e-9) || {}).usd);
+  set('pCost', costs.some(c => c == null) ? '&mdash;'
+    : `${money(costs.reduce((a, b) => a + b, 0))} / month`);
+
+  const risk = Math.max(0, Math.min(90, parseFloat(document.getElementById('cvrisk').value) || 0));
+  const rrr = 1 - Math.pow(0.9, s / 5), arr = risk / 100 * rrr;
+  set('pRrr', `${(rrr * 100).toFixed(0)}%`);
+  set('pArr', `${(arr * 100).toFixed(1)} percentage points`);
+  set('pNnt', arr > 0 ? String(Math.round(1 / arr)) : '&mdash;');
+
+  document.getElementById('bFlags').innerHTML = comboFlags(reg.map(r => r[0])).map(f =>
+    `<div class="flag ${f.t === 'watch' ? 'info' : f.t === 'good' ? 'good' : ''}">
+       <span class="ic">${f.t === 'watch' ? 'i' : f.t === 'good' ? '\u2713' : '!'}</span>
+       <span>${esc(f.m)}</span></div>`).join('');
+}
+function addSlot() {
+  const slots = document.getElementById('slots');
+  if (slots.children.length >= 4) return;
+  slots.insertAdjacentHTML('beforeend', slotMarkup(slots.children.length));
+  const slot = slots.lastElementChild;
+  refreshDoseOptions(slot);
+  slot.querySelector('.bDrug').addEventListener('change', () => { refreshDoseOptions(slot); renderBuilder(); });
+  slot.querySelector('.bDose').addEventListener('change', renderBuilder);
+  slot.querySelector('.rm').addEventListener('click', () => {
+    slot.remove();
+    if (!document.getElementById('slots').children.length) addSlot();
+    renderBuilder();
+  });
+  return slot;
+}
+
+/* ---------- wiring ---------- */
+function renderAll() {
+  const active = document.querySelector('.tab[aria-selected="true"]').id;
+  if (active === 'tab-drugs') renderDrugs();
+  else if (active === 'tab-combos') renderCombos();
+  else if (active === 'tab-build') renderBuilder();
+}
+function linkPair(rangeId, numId, key, after) {
+  const r = document.getElementById(rangeId), n = document.getElementById(numId);
+  const apply = (v, src) => {
+    v = Math.max(+n.min, Math.min(+n.max, v));
+    state[key] = v;
+    if (src !== 'r') r.value = Math.max(+r.min, Math.min(+r.max, v));
+    if (src !== 'n') n.value = v;
+    (after || renderAll)();
+  };
+  r.addEventListener('input', () => apply(+r.value, 'r'));
+  n.addEventListener('input', () => { if (n.value !== '') apply(+n.value, 'n'); });
+  n.addEventListener('blur', () => { if (n.value === '') { n.value = state[key]; } });
+  return apply;
+}
+
+function init() {
+  document.getElementById('classchips').innerHTML = CLASSES.map(c =>
+    `<button class="chip cls-${c}" data-cls="${c}" aria-pressed="true">${mark(c)}${esc(c)}</button>`).join('');
+  document.querySelectorAll('#classchips .chip').forEach(ch => ch.addEventListener('click', () => {
+    const c = ch.dataset.cls;
+    state.classes.has(c) ? state.classes.delete(c) : state.classes.add(c);
+    if (!state.classes.size) CLASSES.forEach(x => state.classes.add(x));
+    document.querySelectorAll('#classchips .chip').forEach(b =>
+      b.setAttribute('aria-pressed', state.classes.has(b.dataset.cls) ? 'true' : 'false'));
+    renderAll();
+  }));
+  document.getElementById('legend').innerHTML =
+    CLASSES.map(c => `<span class="item cls-${c}">${badge(c)} ${esc(CLASS_LABEL[c])}</span>`).join('') +
+    '<span class="item" style="color:var(--ink-3)">Shape and colour both encode the class.</span>';
+
+  const applySbp = linkPair('sbp', 'sbpn', 'sbp');
+  const applyDbp = linkPair('dbp', 'dbpn', 'dbp');
+  linkPair('minev', 'minevn', 'minEv');
+
+  document.getElementById('reset').addEventListener('click', () => { applySbp(154); applyDbp(100); });
+  document.querySelectorAll('#doseseg button').forEach(b => b.addEventListener('click', () => {
+    state.rung = b.dataset.rung;
+    document.querySelectorAll('#doseseg button').forEach(x =>
+      x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    renderAll();
+  }));
+  document.querySelectorAll('#comboseg button').forEach(b => b.addEventListener('click', () => {
+    state.comboN = +b.dataset.n;
+    document.querySelectorAll('#comboseg button').forEach(x =>
+      x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    renderCombos();
+  }));
+  document.getElementById('usonly').addEventListener('change', e => {
+    state.usOnly = e.target.checked;
+    document.querySelectorAll('#slots .slot').forEach(s => {
+      const keep = s.querySelector('.bDrug').value;
+      const opts = DRUGS.filter(d => !state.usOnly || (d.us && d.pr));
+      s.querySelector('.bDrug').innerHTML = '<option value="">&mdash; choose a drug &mdash;</option>' +
+        opts.map(d => `<option value="${esc(d.n)}">${esc(d.n)}${d.us ? '' : ' (non-US)'}</option>`).join('');
+      if (opts.some(d => d.n === keep)) s.querySelector('.bDrug').value = keep;
+      refreshDoseOptions(s);
+    });
+    renderAll();
+  });
+  document.getElementById('q').addEventListener('input', e => { state.q = e.target.value; renderAll(); });
+  document.getElementById('nosame').addEventListener('change', e => { state.noSame = e.target.checked; renderCombos(); });
+  document.getElementById('norasras').addEventListener('change', e => { state.noRasRas = e.target.checked; renderCombos(); });
+  document.getElementById('cvrisk').addEventListener('input', renderBuilder);
+  document.getElementById('adddrug').addEventListener('click', () => { addSlot(); renderBuilder(); });
+
+  document.querySelectorAll('#drugtable th[data-sort]').forEach(th => th.addEventListener('click', () => {
+    const k = th.dataset.sort;
+    if (state.sort === k) state.dir *= -1;
+    else { state.sort = k; state.dir = (k === 'name' || k === 'cost') ? 1 : -1; }
+    renderDrugs();
+  }));
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', x === t ? 'true' : 'false'));
+    document.querySelectorAll('.panel').forEach(p => p.hidden = p.id !== t.getAttribute('aria-controls'));
+    document.getElementById('rail').style.display = t.id === 'tab-method' ? 'none' : '';
+    document.getElementById('ctl-search').style.display = t.id === 'tab-build' ? 'none' : '';
+    renderAll();
+  }));
+
+  document.getElementById('srcDose').textContent = SOURCES.dosing;
+  document.getElementById('srcAe').textContent = SOURCES.ae;
+  document.getElementById('srcCost').textContent = SOURCES.cost;
+
+  const s1 = addSlot();
+  s1.querySelector('.bDrug').value = 'amlodipine'; refreshDoseOptions(s1);
+  const s2 = addSlot();
+  s2.querySelector('.bDrug').value = 'lisinopril'; refreshDoseOptions(s2);
+  renderDrugs();
+}
+init();
+
+</script>
+</body>
+</html>
