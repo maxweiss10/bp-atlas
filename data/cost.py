@@ -8,8 +8,12 @@ import json
 PRICES = json.load(open('nadac_prices.json'))
 
 
-def monthly_cost(drug, daily_mg, form_pref=None):
-    """Return (usd_per_30d, strength_mg, tabs_per_day) or None."""
+def monthly_cost(drug, daily_mg, form_pref=None, perday=1):
+    """Return (usd_per_30d, strength_mg, tabs_per_day, form) or None.
+
+    perday is the number of administrations a day, so a twice-daily drug is
+    costed as at least two tablets rather than one large one.
+    """
     forms = PRICES.get(drug) or {}
     if not forms:
         return None
@@ -20,8 +24,11 @@ def monthly_cost(drug, daily_mg, form_pref=None):
     for f in ('ER', 'IR', 'TARTRATE-IR', 'SUCCINATE-ER'):
         if f in forms and f not in order:
             order.append(f)
-    # Prefer whole tablets in the clinically-used form; only split if nothing else fits.
-    for n in (1, 2, 3, 4, 0.5):
+    # Prefer whole tablets in the clinically-used form; only split if nothing else
+    # fits. A BID/TID drug needs one whole tablet per administration.
+    counts = [n for n in (1, 2, 3, 4, 6) if n >= perday and n % perday == 0]
+    counts.append(0.5 * perday)
+    for n in counts:
         for f in order:
             best = None
             for s_str, rec in forms[f].items():

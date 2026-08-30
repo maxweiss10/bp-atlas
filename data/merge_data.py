@@ -18,10 +18,11 @@ for d in model:
     if dose_info:
         doses = dose_info['doses']
         form, freq, note = dose_info['form'], dose_info['freq'], dose_info['note']
+        perday = dose_info.get('perday', 1)
     else:
         # Not used in US practice: fall back to the paper's own dose rungs.
         doses = [std / 2, std, std * 2]
-        form, freq, note = None, None, None
+        form, freq, note, perday = None, None, None, 1
 
     rows = []
     for mg in doses:
@@ -35,7 +36,7 @@ for d in model:
             beyond = 1
         else:
             beyond = 2
-        c = monthly_cost(name, mg, form) if us else None
+        c = monthly_cost(name, mg, form, perday) if us else None
         obs = next((o for o in d['obs'] if abs(o[0] - mg) < 1e-9), None)
         rows.append({
             'mg': mg,

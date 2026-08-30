@@ -8,7 +8,7 @@ DRUGS = ['amiloride', 'amlodipine', 'atenolol', 'azilsartan', 'benazepril', 'bet
          'bisoprolol', 'candesartan', 'captopril', 'carvedilol', 'chlorthalidone', 'diltiazem',
          'enalapril', 'eplerenone', 'felodipine', 'fosinopril', 'furosemide',
          'hydrochlorothiazide', 'indapamide', 'irbesartan', 'isradipine', 'lisinopril',
-         'losartan', 'metoprolol', 'nebivolol', 'nicardipine', 'nifedipine', 'nisoldipine',
+         'losartan', 'metoprolol', 'moexipril', 'nebivolol', 'nicardipine', 'nifedipine', 'nisoldipine',
          'olmesartan', 'perindopril', 'propranolol', 'quinapril', 'ramipril', 'spironolactone',
          'telmisartan', 'trandolapril', 'valsartan', 'verapamil']
 
