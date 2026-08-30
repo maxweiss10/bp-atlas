@@ -1,0 +1,814 @@
+[
+ {
+  "reg": [
+   [
+    "atenolol",
+    100
+   ]
+  ],
+  "tier": 0,
+  "sbp": 130,
+  "dbp": 90,
+  "app_sbp": 8.0,
+  "app_dbp": 7.0,
+  "mine_sbp": 8.17632625309547,
+  "mine_dbp": 6.92652137225516,
+  "ds": 0.17632625309546945,
+  "dd": -0.07347862774483982,
+  "regimen": "100mg atenolol"
+ },
+ {
+  "reg": [
+   [
+    "chlorthalidone",
+    50
+   ]
+  ],
+  "tier": 0,
+  "sbp": 160,
+  "dbp": 100,
+  "app_sbp": 12.0,
+  "app_dbp": 5.0,
+  "mine_sbp": 12.248126484293888,
+  "mine_dbp": 4.960797068939455,
+  "ds": 0.24812648429388773,
+  "dd": -0.03920293106054462,
+  "regimen": "50mg chlorthalidone"
+ },
+ {
+  "reg": [
+   [
+    "lisinopril",
+    10
+   ]
+  ],
+  "tier": 0,
+  "sbp": 175,
+  "dbp": 90,
+  "app_sbp": 7.0,
+  "app_dbp": 4.0,
+  "mine_sbp": 7.47791,
+  "mine_dbp": 3.8775,
+  "ds": 0.4779099999999996,
+  "dd": -0.12250000000000005,
+  "regimen": "10mg lisinopril"
+ },
+ {
+  "reg": [
+   [
+    "betaxolol",
+    10
+   ]
+  ],
+  "tier": 0,
+  "sbp": 175,
+  "dbp": 100,
+  "app_sbp": 10.0,
+  "app_dbp": 6.0,
+  "mine_sbp": 10.050124589441314,
+  "mine_dbp": 5.8774510448705275,
+  "ds": 0.050124589441313816,
+  "dd": -0.1225489551294725,
+  "regimen": "10mg betaxolol"
+ },
+ {
+  "reg": [
+   [
+    "ramipril",
+    5
+   ]
+  ],
+  "tier": 0,
+  "sbp": 140,
+  "dbp": 90,
+  "app_sbp": 5.0,
+  "app_dbp": 3.0,
+  "mine_sbp": 4.627181347834025,
+  "mine_dbp": 3.2817884335930496,
+  "ds": -0.3728186521659751,
+  "dd": 0.2817884335930496,
+  "regimen": "5mg ramipril"
+ },
+ {
+  "reg": [
+   [
+    "spironolactone",
+    50
+   ]
+  ],
+  "tier": 0,
+  "sbp": 140,
+  "dbp": 100,
+  "app_sbp": 9.0,
+  "app_dbp": 6.0,
+  "mine_sbp": 9.179260000000001,
+  "mine_dbp": 5.6005,
+  "ds": 0.17926000000000109,
+  "dd": -0.39949999999999974,
+  "regimen": "50mg spironolactone"
+ },
+ {
+  "reg": [
+   [
+    "amlodipine",
+    10
+   ]
+  ],
+  "tier": 0,
+  "sbp": 140,
+  "dbp": 100,
+  "app_sbp": 10.0,
+  "app_dbp": 8.0,
+  "mine_sbp": 9.830226800263699,
+  "mine_dbp": 8.03434685958453,
+  "ds": -0.16977319973630145,
+  "dd": 0.034346859584530876,
+  "regimen": "10mg amlodipine"
+ },
+ {
+  "reg": [
+   [
+    "nebivolol",
+    10
+   ]
+  ],
+  "tier": 0,
+  "sbp": 140,
+  "dbp": 90,
+  "app_sbp": 4.0,
+  "app_dbp": 5.0,
+  "mine_sbp": 4.291751846316284,
+  "mine_dbp": 4.552616013565419,
+  "ds": 0.29175184631628426,
+  "dd": -0.44738398643458144,
+  "regimen": "10mg nebivolol"
+ },
+ {
+  "reg": [
+   [
+    "olmesartan",
+    20
+   ]
+  ],
+  "tier": 0,
+  "sbp": 154,
+  "dbp": 100,
+  "app_sbp": 7.0,
+  "app_dbp": 5.0,
+  "mine_sbp": 7.0647,
+  "mine_dbp": 4.7083,
+  "ds": 0.0647000000000002,
+  "dd": -0.2916999999999996,
+  "regimen": "20mg olmesartan"
+ },
+ {
+  "reg": [
+   [
+    "verapamil",
+    240
+   ]
+  ],
+  "tier": 0,
+  "sbp": 130,
+  "dbp": 80,
+  "app_sbp": 4.0,
+  "app_dbp": 2.0,
+  "mine_sbp": 3.75568,
+  "mine_dbp": 2.2942,
+  "ds": -0.2443200000000001,
+  "dd": 0.2942,
+  "regimen": "240mg verapamil"
+ },
+ {
+  "reg": [
+   [
+    "enalapril",
+    10
+   ]
+  ],
+  "tier": 0,
+  "sbp": 175,
+  "dbp": 90,
+  "app_sbp": 6.0,
+  "app_dbp": 4.0,
+  "mine_sbp": 6.42085,
+  "mine_dbp": 3.6201,
+  "ds": 0.4208499999999997,
+  "dd": -0.3799000000000001,
+  "regimen": "10mg enalapril"
+ },
+ {
+  "reg": [
+   [
+    "eplerenone",
+    100
+   ]
+  ],
+  "tier": 0,
+  "sbp": 140,
+  "dbp": 108,
+  "app_sbp": 5.0,
+  "app_dbp": 4.0,
+  "mine_sbp": 5.3480045701937815,
+  "mine_dbp": 4.335981111031292,
+  "ds": 0.3480045701937815,
+  "dd": 0.335981111031292,
+  "regimen": "100mg eplerenone"
+ },
+ {
+  "reg": [
+   [
+    "enalapril",
+    40
+   ]
+  ],
+  "tier": 1,
+  "sbp": 140,
+  "dbp": 80,
+  "app_sbp": 11.0,
+  "app_dbp": 5.0,
+  "mine_sbp": 10.12753577991409,
+  "mine_dbp": 4.840666889990801,
+  "ds": -0.8724642200859094,
+  "dd": -0.15933311000919925,
+  "regimen": "40mg enalapril"
+ },
+ {
+  "reg": [
+   [
+    "lisinopril",
+    40
+   ]
+  ],
+  "tier": 1,
+  "sbp": 140,
+  "dbp": 80,
+  "app_sbp": 12.0,
+  "app_dbp": 6.0,
+  "mine_sbp": 11.54277465870359,
+  "mine_dbp": 6.431477955868347,
+  "ds": -0.4572253412964091,
+  "dd": 0.43147795586834725,
+  "regimen": "40mg lisinopril"
+ },
+ {
+  "reg": [
+   [
+    "ramipril",
+    10
+   ]
+  ],
+  "tier": 1,
+  "sbp": 140,
+  "dbp": 100,
+  "app_sbp": 6.0,
+  "app_dbp": 5.0,
+  "mine_sbp": 5.964622695668051,
+  "mine_dbp": 5.053820460723886,
+  "ds": -0.03537730433194941,
+  "dd": 0.05382046072388569,
+  "regimen": "10mg ramipril"
+ },
+ {
+  "reg": [
+   [
+    "captopril",
+    150
+   ]
+  ],
+  "tier": 1,
+  "sbp": 154,
+  "dbp": 100,
+  "app_sbp": 14.0,
+  "app_dbp": 6.0,
+  "mine_sbp": 13.897628325664904,
+  "mine_dbp": 6.496767948861482,
+  "ds": -0.10237167433509597,
+  "dd": 0.496767948861482,
+  "regimen": "150mg captopril"
+ },
+ {
+  "reg": [
+   [
+    "furosemide",
+    160
+   ]
+  ],
+  "tier": 1,
+  "sbp": 140,
+  "dbp": 100,
+  "app_sbp": 2.0,
+  "app_dbp": 6.0,
+  "mine_sbp": 3.441770258165625,
+  "mine_dbp": 4.950904196893767,
+  "ds": 1.4417702581656249,
+  "dd": -1.0490958031062334,
+  "regimen": "160mg furosemide"
+ },
+ {
+  "reg": [
+   [
+    "fosinopril",
+    40
+   ]
+  ],
+  "tier": 1,
+  "sbp": 130,
+  "dbp": 90,
+  "app_sbp": 7.0,
+  "app_dbp": 5.0,
+  "mine_sbp": 7.220801696332088,
+  "mine_dbp": 5.269578962731039,
+  "ds": 0.2208016963320878,
+  "dd": 0.269578962731039,
+  "regimen": "40mg fosinopril"
+ },
+ {
+  "reg": [
+   [
+    "valsartan",
+    320
+   ]
+  ],
+  "tier": 1,
+  "sbp": 130,
+  "dbp": 90,
+  "app_sbp": 3.0,
+  "app_dbp": 4.0,
+  "mine_sbp": 3.456333304004688,
+  "mine_dbp": 3.4778694100494736,
+  "ds": 0.45633330400468797,
+  "dd": -0.5221305899505264,
+  "regimen": "320mg valsartan"
+ },
+ {
+  "reg": [
+   [
+    "metoprolol",
+    25
+   ]
+  ],
+  "tier": 1,
+  "sbp": 130,
+  "dbp": 108,
+  "app_sbp": 4.0,
+  "app_dbp": 4.0,
+  "mine_sbp": 3.639944706060782,
+  "mine_dbp": 4.484775100043516,
+  "ds": -0.36005529393921787,
+  "dd": 0.48477510004351565,
+  "regimen": "25mg metoprolol"
+ },
+ {
+  "reg": [
+   [
+    "betaxolol",
+    5
+   ]
+  ],
+  "tier": 1,
+  "sbp": 140,
+  "dbp": 100,
+  "app_sbp": 5.0,
+  "app_dbp": 4.0,
+  "mine_sbp": 5.146657143313747,
+  "mine_dbp": 3.8554020897410552,
+  "ds": 0.1466571433137469,
+  "dd": -0.14459791025894475,
+  "regimen": "5mg betaxolol"
+ },
+ {
+  "reg": [
+   [
+    "spironolactone",
+    12.5
+   ]
+  ],
+  "tier": 1,
+  "sbp": 130,
+  "dbp": 90,
+  "app_sbp": 2.0,
+  "app_dbp": 2.0,
+  "mine_sbp": 2.325862015597906,
+  "mine_dbp": 1.6765610980814976,
+  "ds": 0.32586201559790595,
+  "dd": -0.32343890191850244,
+  "regimen": "12.5mg spironolactone"
+ },
+ {
+  "reg": [
+   [
+    "benazepril",
+    40
+   ]
+  ],
+  "tier": 1,
+  "sbp": 175,
+  "dbp": 80,
+  "app_sbp": 14.0,
+  "app_dbp": 4.0,
+  "mine_sbp": 12.227578973103194,
+  "mine_dbp": 3.492619372041638,
+  "ds": -1.7724210268968061,
+  "dd": -0.5073806279583621,
+  "regimen": "40mg benazepril"
+ },
+ {
+  "reg": [
+   [
+    "perindopril",
+    16
+   ]
+  ],
+  "tier": 1,
+  "sbp": 175,
+  "dbp": 90,
+  "app_sbp": 13.0,
+  "app_dbp": 6.0,
+  "mine_sbp": 13.614971818580818,
+  "mine_dbp": 6.321140648965382,
+  "ds": 0.614971818580818,
+  "dd": 0.32114064896538164,
+  "regimen": "16mg perindopril"
+ },
+ {
+  "reg": [
+   [
+    "fosinopril",
+    10
+   ],
+   [
+    "hydrochlorothiazide",
+    25
+   ]
+  ],
+  "tier": "combo2",
+  "sbp": 135,
+  "dbp": 92,
+  "app_sbp": 8.0,
+  "app_dbp": 7.0,
+  "mine_sbp": 9.0263994797,
+  "mine_dbp": 6.8462030418,
+  "ds": 1.0263994797000002,
+  "dd": -0.15379695820000006,
+  "regimen": "10mg fosinopril + 25mg hydrochlorothiazide"
+ },
+ {
+  "reg": [
+   [
+    "carvedilol",
+    50
+   ],
+   [
+    "enalapril",
+    40
+   ]
+  ],
+  "tier": "combo2",
+  "sbp": 135,
+  "dbp": 82,
+  "app_sbp": 14.0,
+  "app_dbp": 9.0,
+  "mine_sbp": 13.64206750161372,
+  "mine_dbp": 8.927073554882675,
+  "ds": -0.3579324983862797,
+  "dd": -0.07292644511732504,
+  "regimen": "50mg carvedilol + 40mg enalapril"
+ },
+ {
+  "reg": [
+   [
+    "nebivolol",
+    10
+   ],
+   [
+    "amlodipine",
+    5
+   ]
+  ],
+  "tier": "combo2",
+  "sbp": 135,
+  "dbp": 92,
+  "app_sbp": 9.0,
+  "app_dbp": 8.0,
+  "mine_sbp": 9.434422467238022,
+  "mine_dbp": 8.363711038363967,
+  "ds": 0.43442246723802214,
+  "dd": 0.36371103836396657,
+  "regimen": "10mg nebivolol + 5mg amlodipine"
+ },
+ {
+  "reg": [
+   [
+    "bisoprolol",
+    10
+   ],
+   [
+    "amlodipine",
+    10
+   ]
+  ],
+  "tier": "combo2",
+  "sbp": 145,
+  "dbp": 105,
+  "app_sbp": 16.0,
+  "app_dbp": 15.0,
+  "mine_sbp": 16.399581235791302,
+  "mine_dbp": 15.108317062361904,
+  "ds": 0.39958123579130245,
+  "dd": 0.10831706236190364,
+  "regimen": "10mg bisoprolol + 10mg amlodipine"
+ },
+ {
+  "reg": [
+   [
+    "irbesartan",
+    150
+   ],
+   [
+    "amiloride",
+    10
+   ]
+  ],
+  "tier": "combo2",
+  "sbp": 180,
+  "dbp": 105,
+  "app_sbp": 23.0,
+  "app_dbp": 9.0,
+  "mine_sbp": 23.0419728318,
+  "mine_dbp": 9.222428991000001,
+  "ds": 0.041972831799999,
+  "dd": 0.22242899100000102,
+  "regimen": "150mg irbesartan + 10mg amiloride"
+ },
+ {
+  "reg": [
+   [
+    "atenolol",
+    100
+   ],
+   [
+    "spironolactone",
+    100
+   ]
+  ],
+  "tier": "combo2",
+  "sbp": 165,
+  "dbp": 82,
+  "app_sbp": 29.0,
+  "app_dbp": 11.0,
+  "mine_sbp": 28.6397288904981,
+  "mine_dbp": 11.581655831451467,
+  "ds": -0.3602711095019018,
+  "dd": 0.5816558314514673,
+  "regimen": "100mg atenolol + 100mg spironolactone"
+ },
+ {
+  "reg": [
+   [
+    "spironolactone",
+    100
+   ],
+   [
+    "indapamide",
+    1.25
+   ]
+  ],
+  "tier": "combo2",
+  "sbp": 154,
+  "dbp": 82,
+  "app_sbp": 22.0,
+  "app_dbp": 9.0,
+  "mine_sbp": 21.721861162459014,
+  "mine_dbp": 8.960506134422152,
+  "ds": -0.2781388375409861,
+  "dd": -0.03949386557784784,
+  "regimen": "100mg spironolactone + 1.25mg indapamide"
+ },
+ {
+  "reg": [
+   [
+    "enalapril",
+    10
+   ],
+   [
+    "hydrochlorothiazide",
+    25
+   ]
+  ],
+  "tier": "combo2",
+  "sbp": 154,
+  "dbp": 92,
+  "app_sbp": 13.0,
+  "app_dbp": 7.0,
+  "mine_sbp": 13.1511436225,
+  "mine_dbp": 7.0206139061999995,
+  "ds": 0.15114362249999935,
+  "dd": 0.020613906199999477,
+  "regimen": "10mg enalapril + 25mg hydrochlorothiazide"
+ },
+ {
+  "reg": [
+   [
+    "nifedipine",
+    60
+   ],
+   [
+    "enalapril",
+    20
+   ]
+  ],
+  "tier": "combo2",
+  "sbp": 180,
+  "dbp": 105,
+  "app_sbp": 25.0,
+  "app_dbp": 11.0,
+  "mine_sbp": 23.751038114480814,
+  "mine_dbp": 11.250992583154671,
+  "ds": -1.2489618855191864,
+  "dd": 0.2509925831546713,
+  "regimen": "60mg nifedipine + 20mg enalapril"
+ },
+ {
+  "reg": [
+   [
+    "amiloride",
+    5
+   ],
+   [
+    "nebivolol",
+    10
+   ],
+   [
+    "chlorthalidone",
+    12.5
+   ]
+  ],
+  "tier": "combo3",
+  "sbp": 165,
+  "dbp": 92,
+  "app_sbp": 24.0,
+  "app_dbp": 8.0,
+  "mine_sbp": 24.44179547474349,
+  "mine_dbp": 9.344571306760818,
+  "ds": 0.4417954747434898,
+  "dd": 1.3445713067608178,
+  "regimen": "5mg amiloride + 10mg nebivolol + 12.5mg chlorthalidone"
+ },
+ {
+  "reg": [
+   [
+    "furosemide",
+    160
+   ],
+   [
+    "carvedilol",
+    25
+   ],
+   [
+    "diltiazem",
+    480
+   ]
+  ],
+  "tier": "combo3",
+  "sbp": 180,
+  "dbp": 82,
+  "app_sbp": 34.0,
+  "app_dbp": 4.0,
+  "mine_sbp": 34.939305603703225,
+  "mine_dbp": 5.731712445910984,
+  "ds": 0.9393056037032252,
+  "dd": 1.7317124459109836,
+  "regimen": "160mg furosemide + 25mg carvedilol + 480mg diltiazem"
+ },
+ {
+  "reg": [
+   [
+    "spironolactone",
+    25
+   ],
+   [
+    "enalapril",
+    20
+   ],
+   [
+    "nebivolol",
+    10
+   ]
+  ],
+  "tier": "combo3",
+  "sbp": 180,
+  "dbp": 82,
+  "app_sbp": 28.0,
+  "app_dbp": 10.0,
+  "mine_sbp": 27.14684705730707,
+  "mine_dbp": 9.894915635693943,
+  "ds": -0.8531529426929296,
+  "dd": -0.10508436430605705,
+  "regimen": "25mg spironolactone + 20mg enalapril + 10mg nebivolol"
+ },
+ {
+  "reg": [
+   [
+    "losartan",
+    50
+   ],
+   [
+    "carvedilol",
+    12.5
+   ],
+   [
+    "verapamil",
+    240
+   ]
+  ],
+  "tier": "combo3",
+  "sbp": 145,
+  "dbp": 82,
+  "app_sbp": 14.0,
+  "app_dbp": 7.0,
+  "mine_sbp": 14.055740020276339,
+  "mine_dbp": 6.938448783063404,
+  "ds": 0.05574002027633895,
+  "dd": -0.061551216936596376,
+  "regimen": "50mg losartan + 12.5mg carvedilol + 240mg verapamil"
+ },
+ {
+  "reg": [
+   [
+    "felodipine",
+    10
+   ],
+   [
+    "verapamil",
+    180
+   ],
+   [
+    "lisinopril",
+    20
+   ]
+  ],
+  "tier": "combo3",
+  "sbp": 154,
+  "dbp": 105,
+  "app_sbp": 20.0,
+  "app_dbp": 15.0,
+  "mine_sbp": 19.686643545285573,
+  "mine_dbp": 15.476932930627553,
+  "ds": -0.31335645471442675,
+  "dd": 0.4769329306275534,
+  "regimen": "10mg felodipine + 180mg verapamil + 20mg lisinopril"
+ },
+ {
+  "reg": [
+   [
+    "amlodipine",
+    5
+   ],
+   [
+    "atenolol",
+    100
+   ],
+   [
+    "irbesartan",
+    75
+   ]
+  ],
+  "tier": "combo3",
+  "sbp": 145,
+  "dbp": 92,
+  "app_sbp": 21.0,
+  "app_dbp": 13.0,
+  "mine_sbp": 21.48774609801754,
+  "mine_dbp": 13.487219778287814,
+  "ds": 0.48774609801753854,
+  "dd": 0.48721977828781426,
+  "regimen": "5mg amlodipine + 100mg atenolol + 75mg irbesartan"
+ },
+ {
+  "reg": [
+   [
+    "metoprolol",
+    100
+   ],
+   [
+    "losartan",
+    100
+   ],
+   [
+    "amlodipine",
+    2.5
+   ]
+  ],
+  "tier": "combo3",
+  "sbp": 145,
+  "dbp": 100,
+  "app_sbp": 16.0,
+  "app_dbp": 12.0,
+  "mine_sbp": 15.581388402398431,
+  "mine_dbp": 11.585868828610314,
+  "ds": -0.4186115976015685,
+  "dd": -0.4141311713896858,
+  "regimen": "100mg metoprolol + 100mg losartan + 2.5mg amlodipine"
+ }
+]
