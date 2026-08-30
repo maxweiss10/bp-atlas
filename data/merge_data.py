@@ -23,26 +23,31 @@ for d in model:
         doses = [std / 2, std, std * 2]
         form, freq, note = None, None, None
 
-    # Beyond 4x the trial standard dose the log-dose extrapolation stops being
-    # defensible, so those rungs are dropped rather than shown with a caveat.
-    doses = [mg for mg in doses if mg / std <= 4.0001]
-
     rows = []
     for mg in doses:
         ratio = mg / std
-        beyond = ratio > 2.0001 or ratio < 0.4999
+        # 0 = inside the 0.5-2x range the model was fitted on
+        # 1 = a modest extrapolation along the log-dose curve
+        # 2 = far outside it; a real prescribable dose, but the estimate is soft
+        if 0.4999 <= ratio <= 2.0001:
+            beyond = 0
+        elif 0.2499 <= ratio <= 4.0001:
+            beyond = 1
+        else:
+            beyond = 2
         c = monthly_cost(name, mg, form) if us else None
         obs = next((o for o in d['obs'] if abs(o[0] - mg) < 1e-9), None)
         rows.append({
             'mg': mg,
             'x': round(ratio, 3),                       # multiple of the trial standard dose
-            'far': 1 if beyond else 0,                  # outside the studied 0.5-2x range
+            'far': beyond,                              # 0 inside / 1 near / 2 far outside studied range
             'usd': c[0] if c else None,                 # $ per 30 days
             'reg': f'{c[2]:g} x {c[1]:g} mg' if c else None,
             'pi': [obs[2], obs[3]] if obs else None,    # published 95% prediction interval
         })
         total_rows += 1
         extrapolated += 1 if beyond else 0
+        far_out = 0
 
     def dedupe(items):
         """Drop a generic class entry when a drug-specific one restates it with detail."""
