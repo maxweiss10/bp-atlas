@@ -117,14 +117,20 @@ DRUG_TEXT = {
 # sel: 'cls:X' matches a display class, 'sub:X' a finer subclass, plain text a drug
 PROFILES = [
     # ---- cardiac ----------------------------------------------------------
-    dict(id='hfref', label='Heart failure, reduced EF', group='Cardiac',
+    dict(id='hfref', label='Heart failure, reduced EF (\u226440%)', group='Cardiac',
          exclude=[('sub:nonDHP', 'Negative inotropes - avoid in HFrEF')],
          promote=[('carvedilol', 'One of the three beta blockers with mortality benefit'),
                   ('metoprolol', 'Succinate ER has mortality benefit in HFrEF'),
                   ('bisoprolol', 'One of the three beta blockers with mortality benefit'),
-                  ('sub:MRA', 'Mortality benefit as part of guideline-directed therapy')],
+                  ('sub:MRA', 'Class 1: spironolactone or eplerenone, mortality benefit (RALES, EMPHASIS-HF)')],
          note='Treat this as heart-failure therapy, not blood-pressure therapy - the regimen is '
               'driven by mortality benefit, not mmHg.'),
+    dict(id='hfpef', label='Heart failure, EF \u226540%', group='Cardiac',
+         promote=[('sub:MRA', 'MRA benefit at EF \u226540% is finerenone-led (FINEARTS-HF); spironolactone cut '
+                              'HF admissions in TOPCAT but its primary endpoints were neutral')],
+         note='The agents that move outcomes at EF \u226540% - SGLT2 inhibitors and finerenone (FDA-approved '
+              'for EF \u226540%, 2025) - are not in this model. Unlike HFrEF, verapamil and diltiazem are not '
+              'contraindicated here. Decongest with a diuretic; treat the pressure to goal.'),
     dict(id='cad', label='Coronary disease or prior MI', group='Cardiac',
          promote=[('cls:BB', 'The setting where a beta blocker is genuinely first-line'),
                   ('cls:ACEi', 'Mortality benefit after MI'),
