@@ -3,8 +3,42 @@ into the single payload the artifact embeds."""
 import json
 from clinical import DOSING, NOT_US_PRACTICE, RARE_IN_PRACTICE, AE, SOURCES
 from cost import monthly_cost
+from patient import CLASS_TEXT, DRUG_TEXT, PROFILES
 
 model = json.load(open('embed_data.json'))          # efficacy fits, per drug
+SINGLE_PILL = json.load(open('single_pill.json'))   # fixed-dose combos on the US market
+FORMULATIONS = json.load(open('formulations.json'))  # oral forms actually dispensable
+
+def freq_abbr(freq):
+    """QD / BID / TID from the prose, ignoring any parenthetical about the form."""
+    if not freq:
+        return None
+    base = freq.split('(')[0].strip()
+    return {'once daily': 'QD', 'twice daily': 'BID', 'three times daily': 'TID',
+            '2-3x daily': 'BID-TID', 'once-twice daily': 'QD-BID'}.get(base)
+# Diuretics are dosed in the morning so the diuresis does not run overnight.
+MORNING = {'hydrochlorothiazide', 'chlorthalidone', 'indapamide', 'furosemide',
+           'spironolactone', 'eplerenone', 'amiloride'}
+
+
+def patient_text(name, cls, sub):
+    """Plain-language content for the handout: class text plus drug-specific lines."""
+    key = ('CCB-DHP' if (cls == 'CCB' and sub == 'DHP')
+           else 'CCB-nonDHP' if cls == 'CCB'
+           else sub if sub in CLASS_TEXT else cls)
+    base = CLASS_TEXT.get(key) or CLASS_TEXT.get(cls)
+    if not base:
+        return None
+    ov = DRUG_TEXT.get(name, {})
+    common = list(base['common']) + ov.get('add_common', [])
+    # a drug-specific line that restates a class line, with numbers, wins
+    common = [a for i, a in enumerate(common)
+              if not any(j != i and a.lower().rstrip('.') in b.lower()
+                         for j, b in enumerate(common))]
+    return {'what': base['what'],
+            'common': common,
+            'call': list(base['call']),
+            'rules': list(base['rules']) + ov.get('add_rules', [])}
 out = []
 extrapolated = 0
 total_rows = 0
@@ -56,6 +90,15 @@ for d in model:
                 if not any(j != i and b.lower().startswith(a.lower()) and len(b) > len(a)
                            for j, b in enumerate(items))]
 
+    clsf_l = d['clsf'].lower()
+    if d['cls'] == 'CCB':
+        sub = 'nonDHP' if 'non-dihydropyridine' in clsf_l else 'DHP'
+    elif d['cls'] == 'Diuretic':
+        sub = ('thiazide' if 'thiazide' in clsf_l else 'loop' if 'loop' in clsf_l
+               else 'MRA' if 'mineralocorticoid' in clsf_l else 'kSparing')
+    else:
+        sub = d['cls']
+
     ae = AE.get(name)
     if ae:
         ae = dict(ae, common=dedupe(ae['common']), important=dedupe(ae['important']))
@@ -68,10 +111,17 @@ for d in model:
         'rows': rows,
         'ae': ({'c': ae['common'], 'i': ae['important'], 'm': ae['monitoring'],
                 'cl': 1 if ae.get('cls') else 0} if ae else None),
+        'sub': sub,
+        'abbr': freq_abbr(freq),
+        'when': 'morning' if (name in MORNING or 'morning' in (freq or '')) else None,
+        'forms': FORMULATIONS.get(name) if us else None,
+        'pth': patient_text(name, d['cls'], sub) if us else None,
     })
 
 out.sort(key=lambda x: x['n'])
-json.dump({'drugs': out, 'sources': SOURCES}, open('embed_v2.json', 'w'), separators=(',', ':'))
+json.dump({'drugs': out, 'sources': SOURCES,
+           'singlePill': sorted(SINGLE_PILL.keys()), 'profiles': PROFILES},
+          open('embed_v2.json', 'w'), separators=(',', ':'))
 
 us_drugs = [x for x in out if x['us']]
 print(f'{len(out)} drugs ({len(us_drugs)} US practice), {total_rows} drug-dose rows')
