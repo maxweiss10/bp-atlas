@@ -279,7 +279,9 @@ for name, spec in SPECIFIC.items():
 SOURCES = {
     'dosing': ('FDA prescribing information via DailyMed, with marketed strengths from the '
                'RxNorm prescribable set. Total daily dose for hypertension.'),
-    'ae': ('FDA prescribing information via DailyMed, plus the 2017 and 2025 ACC/AHA '
+    'ae': ('FDA prescribing information via DailyMed for class effects and drug-specific '
+           'differentiators, with named trials from PubMed for comparative claims. Within-class '
+           'entries were adversarially verified; 47 of 124 candidates were rejected. Also draws on the 2017 and 2025 ACC/AHA '
            'hypertension guideline drug tables. Incidence figures are label figures except: '
            'ACE inhibitor cough (Bangalore, Am J Med 2010, pooled ~11%), chlorthalidone vs '
            'hydrochlorothiazide hypokalemia (Diuretic Comparison Project, NEJM 2022), and '

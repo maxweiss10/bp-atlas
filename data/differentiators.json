@@ -1,0 +1,492 @@
+{
+ "diff": {
+  "captopril": [
+   {
+    "t": "Only ACEI labeled BID-TID for HTN (start 25 mg 2-3x/d); all 9 classmates start once daily",
+    "k": "dosing",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a43a5373-ded9-4912-8c98-edaec8352836"
+   },
+   {
+    "t": "Neutropenia 3.7% w/ collagen vascular dz + renal impairment vs 1 in >8,600 if renal fxn normal",
+    "k": "adverse-effect",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a43a5373-ded9-4912-8c98-edaec8352836"
+   },
+   {
+    "t": "Rash 4-7% in first 4 wks vs 1.4% enalapril, 1.4% quinapril, 1.6% moexipril",
+    "k": "adverse-effect",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a43a5373-ded9-4912-8c98-edaec8352836"
+   },
+   {
+    "t": "Dysgeusia 2-4% (only sulfhydryl ACEI); no classmate label quantifies taste loss",
+    "k": "adverse-effect",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a43a5373-ded9-4912-8c98-edaec8352836"
+   }
+  ],
+  "enalapril": [
+   {
+    "t": "Only ACEi available IV (as enalaprilat), for hypertension when oral therapy isn't practical",
+    "k": "formulation",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=eabae489-e254-4987-ab90-7cda20a6f856"
+   },
+   {
+    "t": "Labeled for pediatric HTN from 1 month; lisinopril and benazepril start at 6 years",
+    "k": "population",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=59f44ba0-a323-493f-e063-6394a90a1c3c"
+   }
+  ],
+  "fosinopril": [
+   {
+    "t": "Dual renal+biliary clearance: usual dose at any CrCl incl ESRD; all other ACEIs need reduction",
+    "k": "dosing",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=aee04f17-8ee9-42f5-861f-b6ba17220ca4"
+   }
+  ],
+  "lisinopril": [
+   {
+    "t": "Non-prodrug (only it + captopril); no hepatic activation, excreted 100% unchanged in urine",
+    "k": "pharmacokinetics",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=34bb4602-ccff-4939-91b9-26a63bfd40f7"
+   },
+   {
+    "t": "Only ACEI labeled for acute MI itself: 5 mg within 24 h, not just post-MI LV dysfunction",
+    "k": "indication",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=34bb4602-ccff-4939-91b9-26a63bfd40f7"
+   }
+  ],
+  "moexipril": [
+   {
+    "t": "Take 1 h before meals \u2014 food cuts Cmax ~70%, AUC ~40%; largest food effect in the class",
+    "k": "administration",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5d4078f3-b621-475f-a4e6-005de2e62b32"
+   }
+  ],
+  "perindopril": [
+   {
+    "t": "Labeled for stable CAD (EUROPA): CV death/MI/arrest 9.9% to 8.0%; lisinopril lacks this",
+    "k": "indication",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=87768fbf-7c63-47da-8925-0316f343d6ef"
+   },
+   {
+    "t": "Elderly: sparse data >8 mg/day though max is 16; lisinopril needs no age adjustment",
+    "k": "dosing",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=87768fbf-7c63-47da-8925-0316f343d6ef"
+   }
+  ],
+  "quinapril": [
+   {
+    "t": "Quinapril tablet's magnesium content cuts tetracycline absorption 28-37%; only ACEI so labeled",
+    "k": "drug-interaction",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a62d0ed3-8fcc-45fb-9246-b57b08a11f60"
+   },
+   {
+    "t": "Only ACEI on FDA shortage list - Current since 1/2023, still listed 8/2026",
+    "k": "availability",
+    "s": "https://api.fda.gov/drug/shortages.json?search=generic_name:%22quinapril%22&limit=20"
+   }
+  ],
+  "ramipril": [
+   {
+    "t": "HOPE: 10 mg cut MI/stroke/CV death 17.8% to 14.0%; only ACEI indicated in DM/PAD, not just CAD",
+    "k": "outcomes-trial indication",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d5c58fb5-b415-4567-9790-55631705c5cd"
+   }
+  ],
+  "trandolapril": [
+   {
+    "t": "Label starting dose is race-stratified: 1 mg non-Black, 2 mg Black \u2014 unique among ACEIs",
+    "k": "dosing",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8143a6cf-dadc-4ef7-a8db-d16d7150ad34"
+   },
+   {
+    "t": "PEACE was neutral in stable CAD (21.9% vs 22.5%, P=0.43); perindopril's EUROPA was positive",
+    "k": "outcome-trial",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/15531767/"
+   }
+  ],
+  "azilsartan": [
+   {
+    "t": "80 mg cut placebo-adj 24-h SBP -14.3 mmHg vs olmesartan 40 -11.7 and valsartan 320 -10.0",
+    "k": "efficacy",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/21282560/"
+   },
+   {
+    "t": "First true US generic Jun 2026 (Lupin, 180-day exclusivity); other 6 ARBs generic for years",
+    "k": "access",
+    "s": "https://www.lupin.com/media/press-releases/lupin-launches-azilsartan-medoxomil-tablets-in-the-united-states"
+   }
+  ],
+  "candesartan": [
+   {
+    "t": "Only ARB with 2 positive migraine-prevention RCTs; 16 mg non-inferior to propranolol 160 mg",
+    "k": "rct_evidence_offlabel",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/24335848/"
+   },
+   {
+    "t": "CHARM-Alternative: HR 0.77 for CV death/HF admit in 2028 ACEi-intolerant HFrEF pts",
+    "k": "outcomes_trial",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/13678870/"
+   }
+  ],
+  "irbesartan": [
+   {
+    "t": "IDNT: 37% less Cr doubling vs amlodipine, matched BP; only ARB w/ active-comparator renal RCT",
+    "k": "outcomes_trial",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/11565517/"
+   }
+  ],
+  "losartan": [
+   {
+    "t": "Uricosuric via URAT1: SUA -63 vs -12 umol/L on irbesartan at 8 wk, n=351",
+    "k": "pharmacodynamic effect (head-to-head RCT)",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/16281062/"
+   },
+   {
+    "t": "Only ARB labeled to cut stroke in HTN+LVH; label says benefit not in Black patients",
+    "k": "labeled indication",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e5886220-43b7-46e1-9034-5242ba245bd1"
+   },
+   {
+    "t": "Shortest t1/2 in class (2 h; E-3174 6-9 h); label: BID beats same total once-daily dose",
+    "k": "pharmacokinetics / dosing",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e5886220-43b7-46e1-9034-5242ba245bd1"
+   },
+   {
+    "t": "Only ARB needing CYP2C9 activation: fluconazole cuts active E-3174 AUC 40%",
+    "k": "drug interaction / bioactivation",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e5886220-43b7-46e1-9034-5242ba245bd1"
+   }
+  ],
+  "olmesartan": [
+   {
+    "t": "Only ARB labeled for sprue-like enteropathy: severe diarrhea + weight loss, months-years in",
+    "k": "adverse effect",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3c001b8d-f6c1-4316-b8c0-590b2fa7f2e5"
+   },
+   {
+    "t": "ROADMAP: fatal CV events 15 (0.7%) vs 3 (0.1%) on placebo, p=0.01, in normoalbuminuric T2DM",
+    "k": "outcome trial safety signal",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/21388309/"
+   },
+   {
+    "t": "No CV outcome indication, unlike telmisartan, losartan, valsartan and candesartan",
+    "k": "indication",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3c001b8d-f6c1-4316-b8c0-590b2fa7f2e5"
+   }
+  ],
+  "telmisartan": [
+   {
+    "t": "Longest t\u00bd in class ~24 h vs candesartan 9 h, valsartan 6 h, losartan 2 h",
+    "k": "pharmacokinetics",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3bb7bc69-7752-4c16-9c60-e61eb5355a4d"
+   },
+   {
+    "t": "Only ARB with a digoxin interaction: Cmax +49%, trough +20% \u2014 check levels on start/stop",
+    "k": "drug interaction",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3bb7bc69-7752-4c16-9c60-e61eb5355a4d"
+   },
+   {
+    "t": "Only ARB indicated to cut MI/stroke/CV death in high-risk pts unable to take an ACEi",
+    "k": "indication",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3bb7bc69-7752-4c16-9c60-e61eb5355a4d"
+   }
+  ],
+  "valsartan": [
+   {
+    "t": "Food cuts AUC ~40%, Cmax ~50%; irbesartan, candesartan, azilsartan food-independent",
+    "k": "pharmacokinetics",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5ddba454-f3e6-43c2-a7a6-58365d297213"
+   },
+   {
+    "t": "Only ARB with a labeled post-MI indication: cuts CV mortality with LV dysfunction (VALIANT)",
+    "k": "indication",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5ddba454-f3e6-43c2-a7a6-58365d297213"
+   },
+   {
+    "t": "HF and post-MI dosing is BID (to 160 mg BID); candesartan's HF dose stays once daily",
+    "k": "dosing",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5ddba454-f3e6-43c2-a7a6-58365d297213"
+   }
+  ],
+  "atenolol": [
+   {
+    "t": "Renal cap: max 50 mg/d if CrCl 15-35, 25 mg/d if <15 - only BB here with a hard dose ceiling",
+    "k": "label-dosing",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=741f328d-21a1-3b19-e053-2a91aa0aa327&type=display"
+   },
+   {
+    "t": "Hemodialysis: 25-50 mg after each session, under supervision - marked BP falls",
+    "k": "label-dosing",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=741f328d-21a1-3b19-e053-2a91aa0aa327&type=display"
+   }
+  ],
+  "betaxolol": [
+   {
+    "t": "Half-life 14-22 h, longest in class; metoprolol tartrate 3-7 h, propranolol 3-6 h",
+    "k": "pharmacokinetics",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=e198244d-fda3-4015-8c01-390f3f88e238&type=display"
+   }
+  ],
+  "bisoprolol": [
+   {
+    "t": "~50% renal / 50% hepatic elimination \u2014 atenolol is renal-only, metoprolol/carvedilol hepatic",
+    "k": "pharmacokinetics",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=6ebe6ec0-6223-425c-9f3b-8ab8dd8b3f5f&type=display"
+   }
+  ],
+  "carvedilol": [
+   {
+    "t": "Digoxin levels +15%; cyclosporine dose cut ~20% in 30% of pts; classmates show no such PK hits",
+    "k": "drug_interaction",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fdb12700-116b-4203-8d74-9a94b9401fe6"
+   },
+   {
+    "t": "GEMINI: metoprolol raised HbA1c, carvedilol did not; carvedilol improved HOMA-IR",
+    "k": "comparative_trial_evidence",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/19040589/"
+   }
+  ],
+  "metoprolol": [
+   {
+    "t": "Only succinate ER is once-daily + HF-approved; tartrate is HTN/angina/MI only, not swappable",
+    "k": "label",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=2d948600-35d8-4490-983b-918bdce488c8"
+   },
+   {
+    "t": "POISE: periop metoprolol cut MI 5.7 to 4.2% but doubled stroke 0.5 to 1.0%",
+    "k": "trial",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/18479744/"
+   }
+  ],
+  "nebivolol": [
+   {
+    "t": "Label: no controlled trials showing risk reduction, unlike metoprolol succinate or carvedilol",
+    "k": "label_indication",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=07ed02ff-523f-437e-bddc-5c41a4bb0062"
+   }
+  ],
+  "propranolol": [
+   {
+    "t": "Labeled for migraine prophylaxis, essential tremor and HOCM - no classmate carries these",
+    "k": "indication",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b94dcec7-7633-4a33-9cea-48161adeaf93"
+   }
+  ],
+  "amlodipine": [
+   {
+    "t": "t\u00bd 30\u201350 h \u2014 longest of the DHPs (felodipine 11\u201316 h, isradipine 8 h); forgives missed doses",
+    "k": "pharmacokinetics",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=abd6a2ca-40c2-485c-bc53-db1c652505ed"
+   },
+   {
+    "t": "Only DHP with a labeled statin cap: simvastatin \u226420 mg/day (verapamil/diltiazem cap at 10 mg)",
+    "k": "drug interaction",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=abd6a2ca-40c2-485c-bc53-db1c652505ed"
+   },
+   {
+    "t": "Label carries CAMELOT: CV events 16.6% vs 23.1% placebo in CAD (HR 0.69) \u2014 unique in class",
+    "k": "outcome evidence",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=abd6a2ca-40c2-485c-bc53-db1c652505ed"
+   },
+   {
+    "t": "Grapefruit has no effect on amlodipine exposure; felodipine >2\u00d7 AUC, nifedipine 2\u00d7 (avoid)",
+    "k": "drug/food interaction",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=abd6a2ca-40c2-485c-bc53-db1c652505ed"
+   }
+  ],
+  "felodipine": [
+   {
+    "t": "Background therapy in HOT (n=18,790) \u2014 outcome data isradipine and nisoldipine lack",
+    "k": "outcome_evidence",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/9635947/"
+   }
+  ],
+  "nifedipine": [
+   {
+    "t": "IR capsule label: angina only \u2014 explicitly says not for control of essential hypertension",
+    "k": "labeling/indication restriction",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a3daa0fc-7ec3-42c2-91b2-8418331dd0fc"
+   },
+   {
+    "t": "3 \u00d7 30 mg ER tablets are not interchangeable with one 90 mg ER tablet \u2014 Cmax 29% higher",
+    "k": "formulation/dose-equivalence warning",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=4d02eba2-e964-4fa7-aaae-25949b5f0316"
+   }
+  ],
+  "nisoldipine": [
+   {
+    "t": "Cmax up to +245% with high-fat meal (AUC -25%); 4x nifedipine ER/felodipine, dose fasting",
+    "k": "pharmacokinetics-food-effect",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=589157fa-d129-4de3-be3d-e0e1c22c5873"
+   },
+   {
+    "t": "ABCD trial in T2DM: 25 MIs on nisoldipine vs 5 on enalapril (RR 9.5); secondary endpoint",
+    "k": "outcomes-trial-safety-signal",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/9486993/"
+   }
+  ],
+  "isradipine": [
+   {
+    "t": "MIDAS: major vascular events 5.65% vs 3.17% on HCTZ (n=883, p=0.07)",
+    "k": "outcome_trial",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/8769587/"
+   }
+  ],
+  "nicardipine": [
+   {
+    "t": "Mild renal impairment ~doubles Cmax/AUC; other oral DHPs need no renal adjustment",
+    "k": "pharmacokinetics",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c6fd802a-136a-455d-9bff-9a28583ffa6d"
+   }
+  ],
+  "diltiazem": [
+   {
+    "t": "Raises digoxin ~20% vs 50\u201375% with verapamil \u2014 the easier non-DHP for digoxin patients",
+    "k": "drug-interaction",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f3e7ecef-f360-4987-a4f5-933214130ab2"
+   }
+  ],
+  "verapamil": [
+   {
+    "t": "Raises serum digoxin 50-75% in week 1; diltiazem raises it only ~20%",
+    "k": "drug interaction",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=90841684-4f00-450f-b366-6fc914ca8c54"
+   },
+   {
+    "t": "Only oral non-DHP labeled for AF/flutter rate control and PSVT prophylaxis",
+    "k": "labeled indication",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=90841684-4f00-450f-b366-6fc914ca8c54"
+   },
+   {
+    "t": "INVEST (n=22,576): verapamil-based strategy equalled atenolol-based in CAD + HTN",
+    "k": "outcome trial evidence",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/14657064/"
+   }
+  ],
+  "hydrochlorothiazide": [
+   {
+    "t": "Only class member labeled for NMSC: +1 SCC/6,700 white pts/yr at cumulative dose \u226550,000 mg",
+    "k": "FDA label",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8e0683e2-5473-4246-97ae-b71c21c39ac7"
+   },
+   {
+    "t": "t\u00bd 5.6-14.8 h, diuresis 6-12 h vs chlorthalidone 40-60 h, up to 72 h - misses end of 24 h",
+    "k": "FDA label",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8e0683e2-5473-4246-97ae-b71c21c39ac7"
+   },
+   {
+    "t": "HCTZ 50 mg cut night SBP 6.4 vs 13.5 mm Hg for chlorthalidone 25 mg (ABPM crossover, P=0.009)",
+    "k": "randomized crossover trial",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/16432050/"
+   }
+  ],
+  "chlorthalidone": [
+   {
+    "t": "DCP n=13,523: switch HCTZ\u2192chlorthalidone, no MACE benefit, HR 1.04 (0.94-1.16), 2.4 yr",
+    "k": "head-to-head outcome trial",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/36516076/"
+   },
+   {
+    "t": "t\u00bd 40-60 h vs 5.6-14.8 h HCTZ, ~14 h indapamide; dose changes take ~1-2 wk to show fully",
+    "k": "pharmacokinetics",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bc5a0299-115b-4e60-bb3f-c75a95c51c15"
+   },
+   {
+    "t": "Thalitone (15 mg, w/ food) is labeled NOT substitutable with other chlorthalidone formulations",
+    "k": "formulation / prescribing",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bc5a0299-115b-4e60-bb3f-c75a95c51c15"
+   }
+  ],
+  "indapamide": [
+   {
+    "t": "HYVET, age 80+: indapamide\u00b1perindopril cut all-cause death 21%, HF 64% - classmates lack this",
+    "k": "outcome evidence",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/18378519/"
+   },
+   {
+    "t": "HYVET's SR 1.5 mg isn't sold in the US; label lists only IR 1.25 and 2.5 mg",
+    "k": "formulation caveat",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5c098a1b-cca0-4c27-8e0e-3a27cb2fc003"
+   }
+  ],
+  "furosemide": [
+   {
+    "t": "PO bioavailability 64% vs torsemide 80% (CI 75-89%); underpins ~2:1 IV-to-PO conversion",
+    "k": "pharmacokinetics",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2c9b4d8f-0770-482d-a9e6-9c616a440b1a"
+   },
+   {
+    "t": "Sucralfate blunts response - separate by 2 h; phenytoin cuts absorption and effect",
+    "k": "drug-interaction",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2c9b4d8f-0770-482d-a9e6-9c616a440b1a"
+   }
+  ],
+  "spironolactone": [
+   {
+    "t": "Gynecomastia 21.2% vs eplerenone 4.5% head-to-head; dose-dependent, onset 1-2 mo to >1 yr",
+    "k": "adverse-effect",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/21451421/"
+   },
+   {
+    "t": "Beat eplerenone in primary aldo: DBP -12.5 vs -5.6 mmHg/16 wk, at lower mg doses",
+    "k": "efficacy",
+    "s": "https://pubmed.ncbi.nlm.nih.gov/21451421/"
+   },
+   {
+    "t": "Food raises AUC ~95% - label says take consistently with respect to meals",
+    "k": "pharmacokinetics",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0fed2822-3a03-4b64-9857-c682fcd462bc"
+   },
+   {
+    "t": "Falsely elevates digoxin radioimmunoassay - use a non-interfering assay",
+    "k": "lab-interference",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0fed2822-3a03-4b64-9857-c682fcd462bc"
+   }
+  ],
+  "eplerenone": [
+   {
+    "t": "Contraindicated w/ strong CYP3A inhibitors (ketoconazole AUC 5.4x); spironolactone has no bar",
+    "k": "drug_interaction",
+    "s": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=25a1c77c-7008-4b07-af14-5522a282783a"
+   }
+  ],
+  "amiloride": [
+   {
+    "t": "PATHWAY-2 open-label phase: clinic SBP -20.4 mmHg on amiloride 10mg vs -18.3 on spiro 25mg",
+    "k": "efficacy",
+    "s": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5966620/"
+   }
+  ]
+ },
+ "dropExisting": {
+  "captopril": [
+   "Rash 4-7%, metallic taste 2-4%",
+   "Neutropenia 3.7% with connective tissue disease plus renal impairment"
+  ],
+  "telmisartan": [
+   "Raises digoxin peak ~49% - monitor levels"
+  ],
+  "olmesartan": [
+   "Sprue-like enteropathy - chronic diarrhea and weight loss, months to years in"
+  ],
+  "quinapril": [
+   "High magnesium content cuts tetracycline absorption 28-37%",
+   "In FDA-listed shortage since 2023 - do not start new patients"
+  ],
+  "hydrochlorothiazide": [
+   "Squamous cell skin cancer with cumulative dose (FDA 2020) - counsel sun protection"
+  ],
+  "chlorthalidone": [
+   "The 2025 guideline dropped its preference - no MACE benefit over HCTZ",
+   "More hypokalemia than HCTZ (6.0% vs 4.4%)"
+  ],
+  "atenolol": [
+   "Renally cleared - cap 50 mg/d if CrCl 15-35"
+  ],
+  "verapamil": [
+   "Raises digoxin 50-75%"
+  ],
+  "trandolapril": [
+   "Long effective half-life, 22.5 h"
+  ]
+ }
+}

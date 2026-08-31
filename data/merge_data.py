@@ -9,6 +9,9 @@ from patient import CLASS_TEXT, DRUG_TEXT, PROFILES
 model = json.load(open('embed_data.json'))          # efficacy fits, per drug
 SINGLE_PILL = json.load(open('single_pill.json'))   # fixed-dose combos on the US market
 FORMULATIONS = json.load(open('formulations.json'))  # oral forms actually dispensable
+_DIFF = json.load(open('differentiators.json'))       # researched within-class differentiators
+DIFFERENTIATORS = _DIFF['diff']
+DROP_EXISTING = _DIFF['dropExisting']                 # superseded by a better-sourced version
 
 def freq_abbr(freq):
     """QD / BID / TID from the prose, ignoring any parenthetical about the form."""
@@ -113,6 +116,9 @@ for d in model:
         else:
             # no shared template, so everything this drug carries is its own
             own_c, own_i = list(ae['common']), list(ae['important'])
+        dropped = set(DROP_EXISTING.get(name, []))
+        own_c = [x for x in own_c if x not in dropped]
+        own_i = [x for x in own_i if x not in dropped]
     out.append({
         'n': name, 'cls': d['cls'], 'clsf': d['clsf'], 'std': std,
         'tr': d['tr'], 'pt': d['pt'], 'us': 1 if us else 0,
@@ -121,7 +127,8 @@ for d in model:
         'freq': freq, 'note': note, 'form': form,
         'rows': rows,
         'ae': ({'c': ae['common'], 'i': ae['important'], 'm': ae['monitoring']} if ae else None),
-        'own': ({'c': own_c, 'i': own_i} if ae else None),   # within-class differentiators
+        # within-class differentiators: curated (c/i) plus researched (d, with sources)
+        'own': ({'c': own_c, 'i': own_i, 'd': DIFFERENTIATORS.get(name, [])} if ae else None),
         'tmpl': tmpl_key,
         'sub': sub,
         'abbr': freq_abbr(freq),
@@ -143,7 +150,8 @@ print(f'{len(out)} drugs ({len(us_drugs)} US practice), {total_rows} drug-dose r
 print(f'{extrapolated} rows beyond the studied 0.5-2x range')
 print('US rows:', sum(len(x["rows"]) for x in us_drugs))
 print('drugs missing adverse effects:', [x['n'] for x in us_drugs if not x['ae']])
-no_own = [x['n'] for x in us_drugs if x['pr'] and not (x['own'] and (x['own']['c'] or x['own']['i']))]
+no_own = [x['n'] for x in us_drugs if x['pr'] and not (x['own'] and
+          (x['own']['c'] or x['own']['i'] or x['own']['d']))]
 print(f'drugs with NO within-class differentiator: {len(no_own)} -> {no_own}')
 print('rows missing cost:', [(x['n'], r['mg']) for x in us_drugs for r in x['rows'] if r['usd'] is None])
 import os

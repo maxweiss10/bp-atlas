@@ -1,0 +1,706 @@
+{
+ "differentiators": {
+  "benazepril": [],
+  "captopril": [
+   {
+    "text": "Only ACEI labeled BID-TID for HTN (start 25 mg 2-3x/d); all 9 classmates start once daily",
+    "kind": "dosing",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a43a5373-ded9-4912-8c98-edaec8352836"
+   },
+   {
+    "text": "Neutropenia 3.7% w/ collagen vascular dz + renal impairment vs 1 in >8,600 if renal fxn normal",
+    "kind": "adverse-effect",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a43a5373-ded9-4912-8c98-edaec8352836"
+   },
+   {
+    "text": "Rash 4-7% in first 4 wks vs 1.4% enalapril, 1.4% quinapril, 1.6% moexipril",
+    "kind": "adverse-effect",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a43a5373-ded9-4912-8c98-edaec8352836"
+   },
+   {
+    "text": "Dysgeusia 2-4% (only sulfhydryl ACEI); no classmate label quantifies taste loss",
+    "kind": "adverse-effect",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a43a5373-ded9-4912-8c98-edaec8352836"
+   }
+  ],
+  "enalapril": [
+   {
+    "text": "Only ACEi available IV (as enalaprilat), for hypertension when oral therapy isn't practical",
+    "kind": "formulation",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=eabae489-e254-4987-ab90-7cda20a6f856"
+   },
+   {
+    "text": "Labeled for pediatric HTN from 1 month; lisinopril and benazepril start at 6 years",
+    "kind": "population",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=59f44ba0-a323-493f-e063-6394a90a1c3c"
+   }
+  ],
+  "fosinopril": [
+   {
+    "text": "Dual renal+biliary clearance: usual dose at any CrCl incl ESRD; all other ACEIs need reduction",
+    "kind": "dosing",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=aee04f17-8ee9-42f5-861f-b6ba17220ca4"
+   }
+  ],
+  "lisinopril": [
+   {
+    "text": "Non-prodrug (only it + captopril); no hepatic activation, excreted 100% unchanged in urine",
+    "kind": "pharmacokinetics",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=34bb4602-ccff-4939-91b9-26a63bfd40f7"
+   },
+   {
+    "text": "Only ACEI labeled for acute MI itself: 5 mg within 24 h, not just post-MI LV dysfunction",
+    "kind": "indication",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=34bb4602-ccff-4939-91b9-26a63bfd40f7"
+   }
+  ],
+  "moexipril": [
+   {
+    "text": "Take 1 h before meals \u2014 food cuts Cmax ~70%, AUC ~40%; largest food effect in the class",
+    "kind": "administration",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5d4078f3-b621-475f-a4e6-005de2e62b32"
+   }
+  ],
+  "perindopril": [
+   {
+    "text": "Labeled for stable CAD (EUROPA): CV death/MI/arrest 9.9% to 8.0%; lisinopril lacks this",
+    "kind": "indication",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=87768fbf-7c63-47da-8925-0316f343d6ef"
+   },
+   {
+    "text": "Elderly: sparse data >8 mg/day though max is 16; lisinopril needs no age adjustment",
+    "kind": "dosing",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=87768fbf-7c63-47da-8925-0316f343d6ef"
+   }
+  ],
+  "quinapril": [
+   {
+    "text": "Quinapril tablet's magnesium content cuts tetracycline absorption 28-37%; only ACEI so labeled",
+    "kind": "drug-interaction",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a62d0ed3-8fcc-45fb-9246-b57b08a11f60"
+   },
+   {
+    "text": "Only ACEI on FDA shortage list - Current since 1/2023, still listed 8/2026",
+    "kind": "availability",
+    "src": "https://api.fda.gov/drug/shortages.json?search=generic_name:%22quinapril%22&limit=20"
+   }
+  ],
+  "ramipril": [
+   {
+    "text": "HOPE: 10 mg cut MI/stroke/CV death 17.8% to 14.0%; only ACEI indicated in DM/PAD, not just CAD",
+    "kind": "outcomes-trial indication",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d5c58fb5-b415-4567-9790-55631705c5cd"
+   }
+  ],
+  "trandolapril": [
+   {
+    "text": "Label starting dose is race-stratified: 1 mg non-Black, 2 mg Black \u2014 unique among ACEIs",
+    "kind": "dosing",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8143a6cf-dadc-4ef7-a8db-d16d7150ad34"
+   },
+   {
+    "text": "PEACE was neutral in stable CAD (21.9% vs 22.5%, P=0.43); perindopril's EUROPA was positive",
+    "kind": "outcome-trial",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/15531767/"
+   }
+  ],
+  "azilsartan": [
+   {
+    "text": "80 mg cut placebo-adj 24-h SBP -14.3 mmHg vs olmesartan 40 -11.7 and valsartan 320 -10.0",
+    "kind": "efficacy",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/21282560/"
+   },
+   {
+    "text": "First true US generic Jun 2026 (Lupin, 180-day exclusivity); other 6 ARBs generic for years",
+    "kind": "access",
+    "src": "https://www.lupin.com/media/press-releases/lupin-launches-azilsartan-medoxomil-tablets-in-the-united-states"
+   }
+  ],
+  "candesartan": [
+   {
+    "text": "Only ARB with 2 positive migraine-prevention RCTs; 16 mg non-inferior to propranolol 160 mg",
+    "kind": "rct_evidence_offlabel",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/24335848/"
+   },
+   {
+    "text": "CHARM-Alternative: HR 0.77 for CV death/HF admit in 2028 ACEi-intolerant HFrEF pts",
+    "kind": "outcomes_trial",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/13678870/"
+   }
+  ],
+  "irbesartan": [
+   {
+    "text": "IDNT: 37% less Cr doubling vs amlodipine, matched BP; only ARB w/ active-comparator renal RCT",
+    "kind": "outcomes_trial",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/11565517/"
+   }
+  ],
+  "losartan": [
+   {
+    "text": "Uricosuric via URAT1: SUA -63 vs -12 umol/L on irbesartan at 8 wk, n=351",
+    "kind": "pharmacodynamic effect (head-to-head RCT)",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/16281062/"
+   },
+   {
+    "text": "Only ARB labeled to cut stroke in HTN+LVH; label says benefit not in Black patients",
+    "kind": "labeled indication",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e5886220-43b7-46e1-9034-5242ba245bd1"
+   },
+   {
+    "text": "Shortest t1/2 in class (2 h; E-3174 6-9 h); label: BID beats same total once-daily dose",
+    "kind": "pharmacokinetics / dosing",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e5886220-43b7-46e1-9034-5242ba245bd1"
+   },
+   {
+    "text": "Only ARB needing CYP2C9 activation: fluconazole cuts active E-3174 AUC 40%",
+    "kind": "drug interaction / bioactivation",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e5886220-43b7-46e1-9034-5242ba245bd1"
+   }
+  ],
+  "olmesartan": [
+   {
+    "text": "Only ARB labeled for sprue-like enteropathy: severe diarrhea + weight loss, months-years in",
+    "kind": "adverse effect",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3c001b8d-f6c1-4316-b8c0-590b2fa7f2e5"
+   },
+   {
+    "text": "ROADMAP: fatal CV events 15 (0.7%) vs 3 (0.1%) on placebo, p=0.01, in normoalbuminuric T2DM",
+    "kind": "outcome trial safety signal",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/21388309/"
+   },
+   {
+    "text": "No CV outcome indication, unlike telmisartan, losartan, valsartan and candesartan",
+    "kind": "indication",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3c001b8d-f6c1-4316-b8c0-590b2fa7f2e5"
+   }
+  ],
+  "telmisartan": [
+   {
+    "text": "Longest t\u00bd in class ~24 h vs candesartan 9 h, valsartan 6 h, losartan 2 h",
+    "kind": "pharmacokinetics",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3bb7bc69-7752-4c16-9c60-e61eb5355a4d"
+   },
+   {
+    "text": "Only ARB with a digoxin interaction: Cmax +49%, trough +20% \u2014 check levels on start/stop",
+    "kind": "drug interaction",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3bb7bc69-7752-4c16-9c60-e61eb5355a4d"
+   },
+   {
+    "text": "Only ARB indicated to cut MI/stroke/CV death in high-risk pts unable to take an ACEi",
+    "kind": "indication",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3bb7bc69-7752-4c16-9c60-e61eb5355a4d"
+   }
+  ],
+  "valsartan": [
+   {
+    "text": "Food cuts AUC ~40%, Cmax ~50%; irbesartan, candesartan, azilsartan food-independent",
+    "kind": "pharmacokinetics",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5ddba454-f3e6-43c2-a7a6-58365d297213"
+   },
+   {
+    "text": "Only ARB with a labeled post-MI indication: cuts CV mortality with LV dysfunction (VALIANT)",
+    "kind": "indication",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5ddba454-f3e6-43c2-a7a6-58365d297213"
+   },
+   {
+    "text": "HF and post-MI dosing is BID (to 160 mg BID); candesartan's HF dose stays once daily",
+    "kind": "dosing",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5ddba454-f3e6-43c2-a7a6-58365d297213"
+   }
+  ],
+  "atenolol": [
+   {
+    "text": "Renal cap: max 50 mg/d if CrCl 15-35, 25 mg/d if <15 - only BB here with a hard dose ceiling",
+    "kind": "label-dosing",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=741f328d-21a1-3b19-e053-2a91aa0aa327&type=display"
+   },
+   {
+    "text": "Hemodialysis: 25-50 mg after each session, under supervision - marked BP falls",
+    "kind": "label-dosing",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=741f328d-21a1-3b19-e053-2a91aa0aa327&type=display"
+   }
+  ],
+  "betaxolol": [
+   {
+    "text": "Half-life 14-22 h, longest in class; metoprolol tartrate 3-7 h, propranolol 3-6 h",
+    "kind": "pharmacokinetics",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=e198244d-fda3-4015-8c01-390f3f88e238&type=display"
+   }
+  ],
+  "bisoprolol": [
+   {
+    "text": "~50% renal / 50% hepatic elimination \u2014 atenolol is renal-only, metoprolol/carvedilol hepatic",
+    "kind": "pharmacokinetics",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=6ebe6ec0-6223-425c-9f3b-8ab8dd8b3f5f&type=display"
+   }
+  ],
+  "carvedilol": [
+   {
+    "text": "Digoxin levels +15%; cyclosporine dose cut ~20% in 30% of pts; classmates show no such PK hits",
+    "kind": "drug_interaction",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fdb12700-116b-4203-8d74-9a94b9401fe6"
+   },
+   {
+    "text": "GEMINI: metoprolol raised HbA1c, carvedilol did not; carvedilol improved HOMA-IR",
+    "kind": "comparative_trial_evidence",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/19040589/"
+   }
+  ],
+  "metoprolol": [
+   {
+    "text": "Only succinate ER is once-daily + HF-approved; tartrate is HTN/angina/MI only, not swappable",
+    "kind": "label",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=2d948600-35d8-4490-983b-918bdce488c8"
+   },
+   {
+    "text": "POISE: periop metoprolol cut MI 5.7 to 4.2% but doubled stroke 0.5 to 1.0%",
+    "kind": "trial",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/18479744/"
+   }
+  ],
+  "nebivolol": [
+   {
+    "text": "Label: no controlled trials showing risk reduction, unlike metoprolol succinate or carvedilol",
+    "kind": "label_indication",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=07ed02ff-523f-437e-bddc-5c41a4bb0062"
+   }
+  ],
+  "propranolol": [
+   {
+    "text": "Labeled for migraine prophylaxis, essential tremor and HOCM - no classmate carries these",
+    "kind": "indication",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b94dcec7-7633-4a33-9cea-48161adeaf93"
+   }
+  ],
+  "amlodipine": [
+   {
+    "text": "t\u00bd 30\u201350 h \u2014 longest of the DHPs (felodipine 11\u201316 h, isradipine 8 h); forgives missed doses",
+    "kind": "pharmacokinetics",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=abd6a2ca-40c2-485c-bc53-db1c652505ed"
+   },
+   {
+    "text": "Only DHP with a labeled statin cap: simvastatin \u226420 mg/day (verapamil/diltiazem cap at 10 mg)",
+    "kind": "drug interaction",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=abd6a2ca-40c2-485c-bc53-db1c652505ed"
+   },
+   {
+    "text": "Label carries CAMELOT: CV events 16.6% vs 23.1% placebo in CAD (HR 0.69) \u2014 unique in class",
+    "kind": "outcome evidence",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=abd6a2ca-40c2-485c-bc53-db1c652505ed"
+   },
+   {
+    "text": "Grapefruit has no effect on amlodipine exposure; felodipine >2\u00d7 AUC, nifedipine 2\u00d7 (avoid)",
+    "kind": "drug/food interaction",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=abd6a2ca-40c2-485c-bc53-db1c652505ed"
+   }
+  ],
+  "felodipine": [
+   {
+    "text": "Background therapy in HOT (n=18,790) \u2014 outcome data isradipine and nisoldipine lack",
+    "kind": "outcome_evidence",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/9635947/"
+   }
+  ],
+  "nifedipine": [
+   {
+    "text": "IR capsule label: angina only \u2014 explicitly says not for control of essential hypertension",
+    "kind": "labeling/indication restriction",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a3daa0fc-7ec3-42c2-91b2-8418331dd0fc"
+   },
+   {
+    "text": "3 \u00d7 30 mg ER tablets are not interchangeable with one 90 mg ER tablet \u2014 Cmax 29% higher",
+    "kind": "formulation/dose-equivalence warning",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=4d02eba2-e964-4fa7-aaae-25949b5f0316"
+   }
+  ],
+  "nisoldipine": [
+   {
+    "text": "Cmax up to +245% with high-fat meal (AUC -25%); 4x nifedipine ER/felodipine, dose fasting",
+    "kind": "pharmacokinetics-food-effect",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=589157fa-d129-4de3-be3d-e0e1c22c5873"
+   },
+   {
+    "text": "ABCD trial in T2DM: 25 MIs on nisoldipine vs 5 on enalapril (RR 9.5); secondary endpoint",
+    "kind": "outcomes-trial-safety-signal",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/9486993/"
+   }
+  ],
+  "isradipine": [
+   {
+    "text": "MIDAS: major vascular events 5.65% vs 3.17% on HCTZ (n=883, p=0.07)",
+    "kind": "outcome_trial",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/8769587/"
+   }
+  ],
+  "nicardipine": [
+   {
+    "text": "Mild renal impairment ~doubles Cmax/AUC; other oral DHPs need no renal adjustment",
+    "kind": "pharmacokinetics",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c6fd802a-136a-455d-9bff-9a28583ffa6d"
+   }
+  ],
+  "diltiazem": [
+   {
+    "text": "Raises digoxin ~20% vs 50\u201375% with verapamil \u2014 the easier non-DHP for digoxin patients",
+    "kind": "drug-interaction",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f3e7ecef-f360-4987-a4f5-933214130ab2"
+   }
+  ],
+  "verapamil": [
+   {
+    "text": "Raises serum digoxin 50-75% in week 1; diltiazem raises it only ~20%",
+    "kind": "drug interaction",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=90841684-4f00-450f-b366-6fc914ca8c54"
+   },
+   {
+    "text": "Only oral non-DHP labeled for AF/flutter rate control and PSVT prophylaxis",
+    "kind": "labeled indication",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=90841684-4f00-450f-b366-6fc914ca8c54"
+   },
+   {
+    "text": "INVEST (n=22,576): verapamil-based strategy equalled atenolol-based in CAD + HTN",
+    "kind": "outcome trial evidence",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/14657064/"
+   }
+  ],
+  "hydrochlorothiazide": [
+   {
+    "text": "Only class member labeled for NMSC: +1 SCC/6,700 white pts/yr at cumulative dose \u226550,000 mg",
+    "kind": "FDA label",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8e0683e2-5473-4246-97ae-b71c21c39ac7"
+   },
+   {
+    "text": "t\u00bd 5.6-14.8 h, diuresis 6-12 h vs chlorthalidone 40-60 h, up to 72 h - misses end of 24 h",
+    "kind": "FDA label",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8e0683e2-5473-4246-97ae-b71c21c39ac7"
+   },
+   {
+    "text": "HCTZ 50 mg cut night SBP 6.4 vs 13.5 mm Hg for chlorthalidone 25 mg (ABPM crossover, P=0.009)",
+    "kind": "randomized crossover trial",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/16432050/"
+   }
+  ],
+  "chlorthalidone": [
+   {
+    "text": "DCP n=13,523: switch HCTZ\u2192chlorthalidone, no MACE benefit, HR 1.04 (0.94-1.16), 2.4 yr",
+    "kind": "head-to-head outcome trial",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/36516076/"
+   },
+   {
+    "text": "t\u00bd 40-60 h vs 5.6-14.8 h HCTZ, ~14 h indapamide; dose changes take ~1-2 wk to show fully",
+    "kind": "pharmacokinetics",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bc5a0299-115b-4e60-bb3f-c75a95c51c15"
+   },
+   {
+    "text": "Thalitone (15 mg, w/ food) is labeled NOT substitutable with other chlorthalidone formulations",
+    "kind": "formulation / prescribing",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bc5a0299-115b-4e60-bb3f-c75a95c51c15"
+   }
+  ],
+  "indapamide": [
+   {
+    "text": "HYVET, age 80+: indapamide\u00b1perindopril cut all-cause death 21%, HF 64% - classmates lack this",
+    "kind": "outcome evidence",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/18378519/"
+   },
+   {
+    "text": "HYVET's SR 1.5 mg isn't sold in the US; label lists only IR 1.25 and 2.5 mg",
+    "kind": "formulation caveat",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5c098a1b-cca0-4c27-8e0e-3a27cb2fc003"
+   }
+  ],
+  "furosemide": [
+   {
+    "text": "PO bioavailability 64% vs torsemide 80% (CI 75-89%); underpins ~2:1 IV-to-PO conversion",
+    "kind": "pharmacokinetics",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2c9b4d8f-0770-482d-a9e6-9c616a440b1a"
+   },
+   {
+    "text": "Sucralfate blunts response - separate by 2 h; phenytoin cuts absorption and effect",
+    "kind": "drug-interaction",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2c9b4d8f-0770-482d-a9e6-9c616a440b1a"
+   }
+  ],
+  "spironolactone": [
+   {
+    "text": "Gynecomastia 21.2% vs eplerenone 4.5% head-to-head; dose-dependent, onset 1-2 mo to >1 yr",
+    "kind": "adverse-effect",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/21451421/"
+   },
+   {
+    "text": "Beat eplerenone in primary aldo: DBP -12.5 vs -5.6 mmHg/16 wk, at lower mg doses",
+    "kind": "efficacy",
+    "src": "https://pubmed.ncbi.nlm.nih.gov/21451421/"
+   },
+   {
+    "text": "Food raises AUC ~95% - label says take consistently with respect to meals",
+    "kind": "pharmacokinetics",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0fed2822-3a03-4b64-9857-c682fcd462bc"
+   },
+   {
+    "text": "Falsely elevates digoxin radioimmunoassay - use a non-interfering assay",
+    "kind": "lab-interference",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0fed2822-3a03-4b64-9857-c682fcd462bc"
+   }
+  ],
+  "eplerenone": [
+   {
+    "text": "Contraindicated w/ strong CYP3A inhibitors (ketoconazole AUC 5.4x); spironolactone has no bar",
+    "kind": "drug_interaction",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=25a1c77c-7008-4b07-af14-5522a282783a"
+   },
+   {
+    "text": "In HTN only: contraindicated if CrCl <50 or T2DM w/ microalbuminuria; spiro has no such bar",
+    "kind": "contraindication",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=25a1c77c-7008-4b07-af14-5522a282783a"
+   }
+  ],
+  "amiloride": [
+   {
+    "text": "PATHWAY-2 open-label phase: clinic SBP -20.4 mmHg on amiloride 10mg vs -18.3 on spiro 25mg",
+    "kind": "efficacy",
+    "src": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5966620/"
+   }
+  ]
+ },
+ "noneNotable": [],
+ "rejected": [
+  {
+   "drug": "benazepril",
+   "text": "Only ACEI with RCT data in advanced nondiabetic CKD (Cr 3.1-5.0): 41% vs 60% endpoint",
+   "why": "(b) NOT DRUG-SPECIFIC + (a) FALSE EXCLUSIVITY. Every number checks out against PMID 16407508 (422 enrolled; group 2 = 224 pts Cr 3.1-5.0 randomized 112/112 to benazepril 20 mg/d vs placebo; mean 3.4 yr; primary composite 44/108 = 41% vs 65/107 = 60%; 43% RRR, P=0.005; proteinuria -52%; nondiabetic). The trial is real and correctly cited. What fails is the word 'Only.' At least two classmates have randomized placebo-controlled data in advanced nondiabetic CKD: (1) ENALAPRIL - Ihle 1996, Am J Kidney Dis 27:489-95 (PMID 8678058), double-blind enalapril 5 mg/d vs placebo in nondiabetic severe chronic renal impairment with plasma creatinine 2.8-6.8 mg/dL and mean CrCl 15 mL/min/1.73m2 - a MORE advanced population than Hou's window, directly refuting 'no other ACEI has a dedicated RCT above Cr 3.0'; significant benefit on GFR slope (P=0.038), 1/Cr (P=0.017), CrCl (P=0.031) and proteinuria (P=0.007). (2) RAMIPRIL - REIN, Lancet 1997;349:1857-63 (PMID 9217756), double-blind ramipril vs placebo in proteinuric nondiabetic nephropathy, entry CrCl 20-70 mL/min, using the SAME hard endpoint construct (doubling of baseline creatinine or ESRD): 18 ramipril vs 40 placebo, p=0.04; REIN follow-up (PMID 9788454) confirms durable GFR benefit. The claim survives only if the parenthetical '(Cr 3.1-5.0)' is treated as the boundary, but that range is merely a restatement of one trial's enrollment criteria - uniqueness by over-specification, not a genuine pharmacologic or evidentiary difference. By that logic every ACEI trial is 'unique.' Benazepril's own AIPRI/AIPRI-Extension (PMID 9407424) covers the milder range, showing the 3.1-5.0 cut is a protocol artifact. (c) ALSO NOT DECISION-CHANGING: renal protection from RAS blockade is handled as a class effect; benazepril's US label is hypertension-only (this use is off-label), and the only ACEI with a labeled nephropathy indication is captopril (diabetic nephropathy) - not benazepril. No guideline or practice pattern selects benazepril over lisinopril/ramipril for advanced CKD on the strength of Hou. Ancillary basis items (HTN-only label, benazeprilat effective t1/2 10-11 h, once-daily dosing) are conceded by the submitter as 'plain workhorse' features and are shared across the class, so they add no differentiation."
+  },
+  {
+   "drug": "captopril",
+   "text": "Must be taken 1 h before meals (food cuts absorption 30-40%)",
+   "why": "NOT DRUG-SPECIFIC (b). The 30-40% figure is correct on the captopril label, but the meal-timing differentiator is shared with moexipril, whose label carries the identical instruction in two places -- DOSAGE AND ADMINISTRATION ('7.5 mg, one hour prior to meals, once daily' and '7.5 to 30 mg daily... one hour before meals') and Information for Patients ('Patients should be advised to take moexipril one hour before meals') -- and whose food effect is larger, not smaller: 'Bioavailability varies with formulation and food intake which reduces Cmax and AUC by about 70% and 40% respectively after... a low-fat breakfast or by 80% and 50% respectively after... a high-fat breakfast,' with CLINICAL PHARMACOLOGY concluding 'Moexipril should therefore be taken in a fasting state.' Since a second agent in the class carries the same empty-stomach requirement, this cannot be used to distinguish captopril from its classmates. The BID-TID dosing half of the original claim was verified as genuinely unique and is retained separately in the kept list. (Also noted, though not the basis for rejection: the claim's supporting text said 'max 50 mg TID,' whereas the label says the dose 'usually does not exceed 50 mg three times a day' but may be increased to 100 mg and then 150 mg BID or TID alongside a diuretic.)"
+  },
+  {
+   "drug": "fosinopril",
+   "text": "Falsely low serum digoxin on the Digi-Tab RIA kit - no other ACEI label lists this",
+   "why": "(c) NOT CLINICALLY MEANINGFUL. The quote and the uniqueness are both real \u2014 the fosinopril SPL states verbatim 'Fosinopril may cause a false low measurement of serum digoxin levels with the Digi-Tab RIA Kit for Digoxin. Other kits, such as the Coat-A-Count RIA Kit, may be used,' and I confirmed zero 'Digi-Tab' hits across all nine classmate labels (the only other ACEI Drug/Laboratory Test Interaction heading is captopril's, which is a false-POSITIVE urine acetone test, an unrelated finding). It fails anyway on clinical meaningfulness: Digi-Tab is an obsolete radioimmunoassay kit. Serum digoxin in US labs is now measured by automated non-isotopic immunoassays on Abbott/Roche/Siemens platforms; isotopic RIA kits left routine clinical use decades ago. This is a label fossil carried forward from the original 1991-era PI into generic SPLs, not a live hazard \u2014 a resident will never encounter this kit, so the fact cannot change an ACEI choice or a digoxin dosing decision. It is also an assay artifact rather than a drug property: the remedy named by the label is switching lab kits, not switching the ACE inhibitor. The stated rationale ('ACEI + digoxin is a common HF pairing and a falsely low level invites overdosing') is only true conditional on an assay nobody runs."
+  },
+  {
+   "drug": "lisinopril",
+   "text": "Only ACEI with an active-comparator HTN outcome trial: ALLHAT stroke 6.3% vs CTD 5.6%",
+   "why": "(a) Factually wrong attribution, and (b) not drug-specific. The ALLHAT numbers themselves all verify exactly against the JAMA 2002;288:2981 abstract (n=33,357; CHD RR 0.99, 95% CI 0.91-1.08; stroke 6.3% vs 5.6%, RR 1.15, 95% CI 1.02-1.30; HF 8.7% vs 7.7%, RR 1.19; combined CVD 33.3% vs 30.9%, RR 1.10; 5-yr SBP 2 mm Hg higher). But the differentiator framing is false. Lisinopril is NOT the only ACEI with an active-comparator hypertension outcome trial: CAPPP (Hansson, Lancet 1999;353:611, PMID 10030325) randomized 10,985 patients to captopril vs conventional diuretic/beta-blocker therapy, and ANBP2 (Wing, NEJM 2003;348:583, PMID 12584366) randomized 6,083 elderly patients to an ACE inhibitor vs a diuretic; STOP-Hypertension-2 is a third. Nor is lisinopril the only class member with a known active-comparator loss: in CAPPP captopril had a significantly higher stroke rate than conventional therapy (189 vs 148 events, RR 1.25, p=0.044) - the same directional signal ALLHAT found, in a different ACEI. So the sentence's load-bearing word 'only' fails on both halves, and the underlying 'ACEI underperforms a diuretic for stroke' finding is a shared class observation rather than a lisinopril-specific one. A narrower statement (e.g. that lisinopril is the ACEI carrying the ALLHAT chlorthalidone comparison) would be defensible, but that is a different claim from the one submitted."
+  },
+  {
+   "drug": "moexipril",
+   "text": "Bioavailability as moexiprilat only ~13%, so a missed fasting window guts the dose",
+   "why": "(a) faulty inference + (c) not actionable + (b) supporting point not drug-specific. The numbers check out verbatim on the moexipril PI ('bioavailability as moexiprilat of about 13%'; 'a functional elimination t1/2 of about 12 hours'), so this is not unsourced. But low absolute bioavailability does not make a dose food-sensitive \u2014 the approved 7.5\u201330 mg doses are already calibrated to that 13%, and what 'guts the dose' when the fasting window is missed is the food effect itself, which is kept claim 1. Stripped of that borrowed causality, an absolute-bioavailability number alone never changes a prescribing decision. The supporting HTN-only-indication element also fails drug-specificity: benazepril's DailyMed label is likewise indicated only 'for the treatment of hypertension,' with no HF, post-MI, or CV-risk-reduction indication."
+  },
+  {
+   "drug": "quinapril",
+   "text": "Label uniquely states no controlled trials show risk reduction with quinapril",
+   "why": "(c) not clinically meaningful / (b) label artifact, not a real evidence difference. The sentence is verbatim in the quinapril PI and, per an openFDA full-label phrase query, no other ACEI label carries it - so the labeling fact checks out. But it is generic antihypertensive boilerplate, not a quinapril-specific evidence statement: the same phrase appears in 73 olmesartan, 36 nebivolol, 34 olmesartan/HCTZ, 32 torsemide and 23 nadolol labels. Its absence from the benazepril, moexipril and fosinopril labels does not mean those drugs have hypertension outcome data - they equally lack it. So the disclaimer distinguishes quinapril's label drafting, not quinapril's evidence base, and a clinician told 'quinapril is the only ACEI with no proven risk reduction' would draw a false inference. Would not change a prescribing decision beyond what is already known (pick ramipril or perindopril if you want outcome data)."
+  },
+  {
+   "drug": "quinapril",
+   "text": "Quinaprilat effective t1/2 ~3 h, vs 12 h lisinopril and 22.5 h trandolapril",
+   "why": "(b) not drug-specific - the uniqueness framing ('shortest effective half-life in the class') is refuted by two classmates. Captopril's own label states 'An accurate determination of half-life of unchanged captopril is not, at present, possible, but it is probably less than two hours' - shorter than quinaprilat's ~3 h, which is why captopril is dosed BID-TID. Moexipril's label gives moexiprilat elimination t1/2 'estimated at 2 to 9 hours,' overlapping and partly undercutting 3 h. The individual numbers quoted (quinaprilat 3 h, lisinopril 12 h, trandolaprilat 22.5 h) are label-accurate, but the comparator set is cherry-picked to the long-acting end of the class while omitting the two ACEIs that are as short or shorter. Additional caveat: the quinapril label also describes a prolonged terminal phase (~25 h) reflecting tight ACE binding, and the label still supports once-daily dosing for hypertension, so the practical rider ('watch trough BP if dosed once daily') is not a labeled quinapril-specific caution."
+  },
+  {
+   "drug": "ramipril",
+   "text": "Only ACEI whose label allows opening the capsule onto applesauce, water or juice",
+   "why": "FACTUALLY WRONG BASIS + NOT A MEANINGFUL WITHIN-CLASS DIFFERENTIATOR. The ramipril text itself is real (PI 2.4: capsule may be opened, contents sprinkled on ~4 oz applesauce or mixed in 4 oz water/apple juice, mixture stable 24 h room temp / 48 h refrigerated). But the claim's supporting premise -- that no other ACEI label carries sprinkle/dispersion instructions -- is refuted by the classmate labels. Benazepril's PI carries section 2.3 'Preparation of Suspension (for 150 mL of a 2 mg/mL Suspension)' (Ora-Plus / Ora-Sweet, refrigerated, stable 30 days; ANI Pharmaceuticals setid ff732cfa-9ded-4226-b464-19c90a6865ae). Enalapril maleate's PI carries 'Preparation of Suspension (for 200 mL of a 1.0 mg/mL suspension)' under Dosage and Administration (sodium citrate/citric acid oral solution plus Ora-Sweet SF, stable 30 days refrigerated; setid 074fe718-88d8-365c-e063-6394a90a299d). Lisinopril's PI also references administering a suspension to patients unable to swallow tablets (section 2.1 cross-reference, setid 0e6364a4-6d66-4151-8197-d45e2a762895). So the label-sanctioned route for a dysphagia or enteral-tube patient is NOT unique to ramipril. Furthermore, ramipril is the only ACE inhibitor in the class marketed as a capsule (all nine classmates are tablets), so 'only ACEI whose label allows opening the capsule' is an artifact of dosage form rather than a drug-specific property -- no classmate has a capsule to open. Rejected on grounds (a) incorrect supporting attribution and (b) the clinical need it claims to uniquely serve is met in-label by at least two classmates."
+  },
+  {
+   "drug": "trandolapril",
+   "text": "Trandolaprilat effective t1/2 22.5 h vs 12 h lisinopril - longest in the class",
+   "why": "Rejected on (c) not clinically meaningful, with a supporting (a) error. The 22.5 h figure is verbatim in the label and is the highest printed 'effective half-life' among the six classmate labels checked (lisinopril 12 h, ramipril 13-17 h, benazepril 10-11 h, moexipril ~12 h, quinapril ~3 h, perindopril 3-10 h), but the 'most forgiving of a late or missed dose' inference is contradicted by trandolapril's own label, which states the antihypertensive effect 'diminished somewhat at the end of the dosing interval' and that 'patients inadequately treated with once-daily dosing at 4 mg may be treated with twice-daily dosing' \u2014 it is the label in this set that offers BID escalation for inadequate 24-hour control. Every ACEI compared is dosed once daily for hypertension, so the number changes neither dosing frequency nor agent selection, and no comparative missed-dose data support trandolapril over lisinopril or ramipril. The ranking is additionally metric-dependent and not a valid cross-label head-to-head: 'effective half-life' is defined and measured inconsistently across labels of different eras, and on terminal elimination half-life the ordering reverses (perindoprilat 30-120 h, ramiprilat >50 h, quinaprilat 25 h vs trandolapril's prolonged terminal phase). Minor factual slip in the basis: current ramipril labeling states 13-17 h, not the cited 9-18 h."
+  },
+  {
+   "drug": "azilsartan",
+   "text": "Label states outright: no trials show CV risk reduction, unlike telmisartan or losartan",
+   "why": "(b) Not drug-specific. The Edarbi sentence is genuine, but the current olmesartan medoxomil label (DailyMed setid 812d2d57-14d6-48a9-9687-85c2d125197e) carries the equivalent disclaimer verbatim -- 'There are no controlled trials demonstrating risk reduction with olmesartan medoxomil tablets' -- with an identical hypertension-only indication, and irbesartan's hypertension indication (setid e8635a1c-ae06-4e23-99f7-e704f91d6f43) likewise makes no CV-outcome claim (its second indication is renal, diabetic nephropathy). So 'no CV outcome data' separates a subgroup of ARBs, not azilsartan alone; at least two classmates checked do not differ. The claim's selective comparison to telmisartan/losartan hides that olmesartan is in the same boat. Secondary issue: the quoted label sentence is truncated -- it continues '...but at least one pharmacologically similar drug has demonstrated such benefits' -- which softens the intended contrast."
+  },
+  {
+   "drug": "candesartan",
+   "text": "Moderate hepatic impairment raises AUC 145%; start 8 mg (irbesartan needs no change)",
+   "why": "(b) Not a genuine within-class differentiator \u2014 uniqueness is manufactured by cherry-picking one comparator. The label numbers are correct (DailyMed candesartan: AUC +30% Child-Pugh A, +145% Child-Pugh B; 'Initiate with 8 mg candesartan cilexetil tablets in patients with moderate hepatic insufficiency'), and irbesartan's label does state 'No dosage adjustment is necessary in patients with hepatic insufficiency.' But candesartan is not the ARB that stands out here. Losartan's label carries a STRICTER hepatic instruction: 'In patients with mild-to-moderate hepatic impairment the recommended starting dose of COZAAR is 25 mg once daily' (half the usual 50 mg start), driven by plasma concentrations 5 times those in healthy volunteers, ~50% lower clearance, and doubled oral bioavailability \u2014 a far larger exposure change than candesartan's 145% AUC rise. Telmisartan's label likewise instructs 'Monitor carefully and uptitrate slowly in patients with biliary obstructive disorders or hepatic insufficiency,' with absolute bioavailability approaching 100% (vs 42-58% normally). Valsartan shows roughly twice the AUC in mild-to-moderate liver disease with 'care should be exercised.' So at least three ARBs carry hepatic dosing cautions and candesartan's is the middle of the pack, not the outlier; the claim only reads as distinctive because irbesartan \u2014 one of the four ARBs needing no change (with valsartan, olmesartan, azilsartan) \u2014 was selected as the sole comparator. Worse, as a decision aid it inverts the correct signal: a resident who learns 'candesartan is the ARB to dose-reduce in liver disease' would switch a Child-Pugh B patient to losartan, which requires the larger reduction."
+  },
+  {
+   "drug": "irbesartan",
+   "text": "Lacks losartan's urate effect: SUA fell 12 vs 63 umol/L on losartan at 8 wk",
+   "why": "(b) Not an irbesartan differentiator \u2014 it is a losartan property stated as an irbesartan negative. Numbers are accurate (Dang 2006 confirms 63 vs 12 umol/L at 8 wk, P<0.0001, comparable BP 137/83 vs 135/83), but irbesartan sits in the majority: 6 of the 7 class members lack urate lowering. Losartan alone inhibits URAT1; comparative data show valsartan, telmisartan, candesartan, and olmesartan leave SUA unchanged or slightly increase it, and azilsartan has no uricosuric effect either. The cited abstract itself concludes it demonstrates 'the unique uricosuric effect of this ARB', i.e. losartan. Knowing irbesartan lacks the effect never selects irbesartan over candesartan/valsartan/telmisartan/olmesartan/azilsartan, so it also fails (c) as a prescribing driver for this drug. Additional weaknesses: the effect appears nowhere in losartan's FDA label, and Dang 2006 explicitly limits its conclusion to a Chinese population."
+  },
+  {
+   "drug": "telmisartan",
+   "text": "Only ARB >97% fecally excreted: no renal adjustment, but go slow in biliary/liver disease",
+   "why": "(b) NOT DRUG-SPECIFIC \u2014 every actionable half of this is a class effect. The PI quotes are accurate ('>97% was eliminated unchanged in feces via biliary excretion'; initiate low/titrate slowly in biliary obstruction or hepatic insufficiency; not removed by hemodialysis), but classmates behave the same way at the bedside. No renal adjustment: irbesartan's label says 'No dosage adjustment is necessary in patients with mild to severe renal impairment' and 'Irbesartan is not removed by hemodialysis' \u2014 an identical statement; valsartan, olmesartan, azilsartan and losartan likewise need no initial renal dose change. Not dialyzable: Diovan states valsartan 'is not removed from the plasma by hemodialysis,' same as telmisartan. Predominantly fecal elimination: valsartan is ~83% feces / ~13% urine, so 'mostly non-renal' is shared and only the exact >97% threshold is unique \u2014 a PK trivium that changes nothing beyond what the class already does. Go slow in liver disease: losartan mandates a 25 mg starting dose in hepatic impairment and candesartan an 8 mg start in moderate hepatic insufficiency \u2014 both more prescriptive than telmisartan's qualitative 'titrate slowly,' so the hepatic caution is if anything a class norm telmisartan does not lead. Nothing here would make a prescriber pick telmisartan over irbesartan or valsartan in CKD/dialysis."
+  },
+  {
+   "drug": "atenolol",
+   "text": "LIFE: 25% more strokes vs losartan at the same BP (309 vs 232 events)",
+   "why": "(b) not within-class, plus (a) a stat inversion. The event counts are real (232 losartan vs 309 atenolol, RR 0.75, 95% CI 0.63-0.89, p=0.001), but LIFE compared atenolol with an ARB, never with another beta blocker: no head-to-head data show metoprolol, bisoprolol, carvedilol or nebivolol do better, so nothing here separates atenolol from its classmates. Its actual prescribing message - don't lead with a beta blocker in hypertension - is the excluded class fact. Also misstated: RR 0.75 is losartan's 25% reduction; atenolol's excess is ~33% (309/232), and BP was not identical (SBP fell 1.1 mmHg more on losartan, 30.2/16.6 vs 29.1/16.8, p=0.017)."
+  },
+  {
+   "drug": "atenolol",
+   "text": "2nd-trimester use linked to small-for-gestational-age infants",
+   "why": "(b) class effect. The atenolol label says this, but fetal growth restriction is labeled across the class: the propranolol label reports 'intrauterine growth retardation, small placentas, and congenital abnormalities... in neonates whose mothers received propranolol during pregnancy,' and the metoprolol succinate label reports inconsistent reports of intrauterine growth restriction, preterm birth and perinatal mortality 'with maternal use of beta-blockers, including metoprolol' - i.e. attributed to the class by name. SGA therefore does not distinguish atenolol from classmates as worded."
+  },
+  {
+   "drug": "betaxolol",
+   "text": "Bioavailability 89% +/- 5% with minimal first-pass - predictable dose to dose",
+   "why": "(c) not clinically meaningful, plus (b) not drug-specific. The label quote is accurate ('a small and consistent first-pass effect resulting in an absolute bioavailability of 89% +/- 5%'), but bisoprolol's label reports the same property: 'absolute bioavailability after a 10 mg oral dose... is about 80%' with 'first pass metabolism... about 20%'. An 89% vs 80% gap is not a reason to pick betaxolol over the far more commonly used bisoprolol. And because every beta blocker in this class is titrated to heart rate and blood pressure response rather than to a target plasma level, absolute bioavailability does not change a prescribing decision. The 'predictable dose to dose' inference also overreads the label, which states consistency of the first-pass effect and lack of food/alcohol effect, not within-patient dose-to-dose reproducibility."
+  },
+  {
+   "drug": "betaxolol",
+   "text": "Severe renal impairment or dialysis: start 5 mg, half the usual 10 mg dose",
+   "why": "(b) not drug-specific. The label text is accurate, but halving the starting dose in renal impairment is the shared pattern for the renally-eliminated members of this class, and betaxolol is not distinctive within it. Bisoprolol: usual starting dose 5 mg once daily, but 'in patients with... renal dysfunction (creatinine clearance less than 40 mL/min), the initial daily dose should be 2.5 mg' - the identical halving. Nebivolol: 'the recommended starting dose is 5 mg once daily', and 'in patients with severe renal impairment (ClCr less than 30 mL/min) the recommended initial dose is 2.5 mg once daily' - again the identical halving. Atenolol goes further with an explicit CrCl-banded cap (50 mg daily at CrCl 15-35, 25 mg daily below 15) and post-dialysis dosing of 25 or 50 mg. A resident who knows to renally dose-reduce beta blockers has nothing extra to learn from the betaxolol number."
+  },
+  {
+   "drug": "bisoprolol",
+   "text": "Not dialyzable, no post-HD dose; atenolol needs 25-50 mg after each session",
+   "why": "(b) NOT DRUG-SPECIFIC. Label quotes verified, but non-dialyzability is shared across most of the class, not unique to bisoprolol. Carvedilol label: 'consistent with its high degree of plasma protein-binding, carvedilol does not appear to be cleared significantly by hemodialysis' (>98% protein bound). Propranolol label: 'not significantly dialyzable.' Neither metoprolol nor nebivolol carries a post-dialysis replacement dose (nebivolol label: 'have not been studied in patients receiving dialysis'). Atenolol is the sole outlier requiring 25-50 mg post-HD, so this is a fact ABOUT ATENOLOL restated as a bisoprolol differentiator. Betaxolol is the only other agent dialysis affects, and it takes a lower initial dose (5 mg), not a supplemental one. Choosing bisoprolol over metoprolol/carvedilol/propranolol in an HD patient gains nothing here."
+  },
+  {
+   "drug": "bisoprolol",
+   "text": "Start 2.5 mg if CrCl <40 or cirrhosis; half-life roughly triples below CrCl 40",
+   "why": "(b) NOT DRUG-SPECIFIC, with a secondary (c) problem. Label quotes verified verbatim, but reduced starting dose in organ impairment is the class norm. Nebivolol's label carries an IDENTICAL 2.5 mg initial dose for both indications: 'In patients with severe renal impairment (ClCr less than 30 mL/min) the recommended initial dose is 2.5 mg once daily' and 'In patients with moderate hepatic impairment, the recommended initial dose is 2.5 mg once daily.' Betaxolol: 5 mg initial in severe renal impairment and dialysis. Atenolol: capped at 50 mg (CrCl 15-35) and 25 mg (<15). (c) The only residual difference is the threshold (40 vs 35 vs 30 mL/min), which would not change drug selection \u2014 you dose-reduce whichever agent you chose. Also note this claim partially contradicts claim 1's 'no single-organ dependence' framing, since bisoprolol requires dose reduction in BOTH renal and hepatic impairment."
+  },
+  {
+   "drug": "carvedilol",
+   "text": "Take with food - slows absorption, cuts orthostatic effects; unique food rule here",
+   "why": "(b) NOT DRUG-SPECIFIC. The Coreg quote is accurate, but the uniqueness premise ('No other beta blocker in this set carries a food requirement') is factually false. The current Lopressor (metoprolol tartrate) label carries an explicit food instruction: 'Lopressor tablets should be taken with or immediately following meals' and 'Administer once daily with food or after a meal' (DailyMed setid 0283bc9d-6998-493a-824a-d4c85f704111). A classmate label therefore does carry a food requirement. The stated rationale differs (carvedilol slows absorption to reduce orthostasis; metoprolol standardizes/increases absorption), but the claim as written asserts a unique food rule, and that assertion is refuted by a single classmate counterexample."
+  },
+  {
+   "drug": "carvedilol",
+   "text": "IR tablets are twice daily; only the CR phosphate capsule is once daily",
+   "why": "(b) NOT DRUG-SPECIFIC. The IR-is-BID / ER-is-once-daily pattern is shared with propranolol, which the claim's contrast list conspicuously omits even though propranolol is in the specified set: IR propranolol is dosed 40 mg twice daily for hypertension (usual range 160-240 mg/day in divided doses), with Inderal LA / Inderal XL as the once-daily extended-release capsule - structurally identical to carvedilol IR vs carvedilol phosphate ER. The metoprolol contrast is also inaccurate as drawn: the Lopressor label permits '100 mg daily in single or divided doses' for hypertension, so metoprolol tartrate IR is not strictly a twice-daily-only agent either. Carvedilol dosing frequency is verified but does not differentiate it within this class."
+  },
+  {
+   "drug": "metoprolol",
+   "text": "CYP2D6 substrate - paroxetine, fluoxetine, quinidine raise levels several-fold",
+   "why": "(b) Not drug-specific. The quoted inhibitor list is not unique to metoprolol: the carvedilol/Coreg CR label carries the same sentence verbatim ('potent inhibitors of CYP2D6 isoenzyme (such as quinidine, fluoxetine, paroxetine, and propafenone)... would be expected to increase blood levels of the R(+) enantiomer') and also discusses poor metabolizers. Nebivolol is likewise CYP2D6-metabolized, with a far LARGER poor-metabolizer effect than metoprolol (AUC ~15-fold higher in PMs vs roughly 2-5x for metoprolol), and propranolol is a CYP2D6 substrate too. Three of six classmates share the interaction, and metoprolol is not even the most affected, so 'CYP2D6 substrate' does not differentiate metoprolol within this set. That atenolol, betaxolol and bisoprolol are exempt makes CYP2D6-independence their differentiator, not CYP2D6-dependence metoprolol's."
+  },
+  {
+   "drug": "metoprolol",
+   "text": "GEMINI: HbA1c rose and weight +1.19 kg vs no gain on carvedilol",
+   "why": "(d) Unsourced as cited, and (b) not drug-specific. The cited PMID 19040589 is a demographic subanalysis (J Cardiometab Syndr 2008) that reports HbA1c and HOMA-IR by race/age/sex and says nothing about body weight \u2014 the +1.19 kg (SE 0.16) figure and the -1.02 kg treatment difference come from a different paper (Messerli et al., Am J Med 2007, PMID 17602935), and the primary HbA1c result (+0.15% metoprolol vs +0.02% carvedilol) is from JAMA 2004, PMID 15536109. Substantively, the effect is a non-vasodilating beta-blocker property, not a metoprolol one: a systematic analysis of beta-blocker RCTs found a median 1.2 kg weight excess across atenolol, metoprolol and propranolol, and atenolol worsens glycemia (ASCOT: 34% more new-onset diabetes vs amlodipine-based therapy). The real split is vasodilating (carvedilol, nebivolol) vs non-vasodilating, so this does not separate metoprolol from atenolol, propranolol or bisoprolol."
+  },
+  {
+   "drug": "nebivolol",
+   "text": "Beta-1 selective only at <=10 mg; selectivity fades at higher doses",
+   "why": "(b) Not drug-specific. Dose-dependent loss of cardioselectivity is stated on every cardioselective classmate's label: Zebeta says 'At higher doses (>=20 mg), bisoprolol fumarate also inhibits beta2-adrenoceptors, chiefly located in the bronchial and vascular musculature'; the metoprolol succinate label says beta1-selectivity diminishes above ~300 nmol/L plasma and directs use of the lowest possible dose; Tenormin says higher doses inhibit beta2-adrenoceptors and may increase airway resistance, especially in asthma/COPD. The reactive-airway caveat is a class property of all beta-1 selective agents (and carvedilol/propranolol are non-selective at every dose), so nothing here separates nebivolol from its classmates."
+  },
+  {
+   "drug": "nebivolol",
+   "text": "Label lists rises in BUN, uric acid, triglycerides; falls in HDL and platelets",
+   "why": "(b) Not drug-specific. The Zebeta (bisoprolol) label reports nearly the identical panel: 'small increases in uric acid, creatinine, BUN, serum potassium, glucose, and phosphorus and decreases in WBC and platelets,' plus increased serum triglycerides as the most frequently reported laboratory change. Raised triglycerides and lowered HDL are documented across the older beta blockers including atenolol, metoprolol, and propranolol. Every element of the claimed cluster (BUN up, uric acid up, triglycerides up, platelets down, HDL down) appears in classmate labeling, so the 'surprising for the metabolically clean one' framing does not hold up."
+  },
+  {
+   "drug": "propranolol",
+   "text": "Highly lipophilic, crosses BBB - vivid dreams, hallucinations vs hydrophilic atenolol",
+   "why": "(b) NOT DRUG-SPECIFIC. The metoprolol tartrate label states metoprolol 'crosses the blood-brain barrier and has been reported in the CSF in a concentration 78% of the simultaneous plasma concentration,' and its ADVERSE REACTIONS list CNS effects with frequencies the propranolol label lacks: depression ~5 of 100, tiredness/dizziness ~10 of 100, plus nightmares, insomnia, mental confusion, short-term memory loss and hallucinations. The COREG label calls carvedilol 'a basic, lipophilic compound.' So lipophilicity/BBB penetration with neuropsychiatric labeling is shared by at least metoprolol and carvedilol; the contrast is really lipophilic-vs-hydrophilic (atenolol, and to a degree bisoprolol/betaxolol), not propranolol-vs-class. Propranolol is not distinguishable from its two most-prescribed classmates on this point."
+  },
+  {
+   "drug": "propranolol",
+   "text": "IR half-life 3-6 h, start 40 mg BID - not once daily unless the LA capsule is used",
+   "why": "(b) NOT DRUG-SPECIFIC. Both halves are shared. Half-life: the metoprolol tartrate label gives an elimination half-life of 'about 7.5 hours in poor metabolizers and 2.8 hours in extensive metabolizers' - shorter than propranolol's 3-6 h in the majority phenotype. BID start: the COREG label's hypertension dosing is 'Start at 6.25 mg twice daily and increase if needed... to 12.5 mg then 25 mg twice daily,' i.e. carvedilol IR is BID from the first dose with no once-daily IR option, and carvedilol's own half-life is only 7-10 h. Propranolol is therefore not the class outlier for short half-life or for twice-daily dosing; only atenolol, betaxolol, bisoprolol and nebivolol are the once-daily comparators. The verbatim propranolol quotes ('40 mg... twice daily', 'plasma half-life... 3 to 6 hours') are accurate, but the differentiator is not."
+  },
+  {
+   "drug": "propranolol",
+   "text": "Never with thioridazine - raises its level 55-369%, QT and torsades risk",
+   "why": "(d) UNSOURCED, plus (a) on the attribution. The cited label's only thioridazine text is one sentence under 'Neuroleptic Drugs': 'Co-administration of long-acting propranolol at doses greater than or equal to 160 mg/day resulted in increased thioridazine plasma concentrations ranging from 55% to 369% and increased thioridazine metabolite (mesoridazine) concentrations ranging from 33% to 209%.' A full-text grep of the label for 'thioridazine', 'torsade', 'QTc' and 'QT interval' returns no statement that the two should not be coadministered, no QTc prolongation language, no torsades, and no CYP2D6 attribution for this interaction (the label's CYP2D6 text concerns propranolol's own 4-hydroxylation and calls 4-hydroxypropranolol only 'a weak inhibitor of CYP2D6'). The operative content of the claim - the prohibition and the arrhythmia rationale - is supplied by the claim, not the source. Note for re-drafting: the percentage figures ARE label-supported and ARE propranolol-specific (thioridazine appears zero times in the atenolol, nebivolol and carvedilol labels, and only once in the metoprolol label in the opposite direction, as a CYP2D6 inhibitor that raises metoprolol levels), so a rewritten claim confined to the labeled PK effect could pass."
+  },
+  {
+   "drug": "felodipine",
+   "text": "Grapefruit juice >2\u00d7 AUC and Cmax; amlodipine exposure is unaffected",
+   "why": "(b) NOT DRUG-SPECIFIC. The grapefruit/CYP3A4 first-pass interaction is a shared dihydropyridine effect of the same or greater magnitude. The Procardia XL label states co-administration of nifedipine with grapefruit juice 'resulted in approximately a doubling in nifedipine AUC and Cmax with no change in half-life' \u2014 indistinguishable from felodipine's '>2-fold.' The Sular label reports nisoldipine Cmax increased 'about 3-fold (ranging up to about 7-fold)' and AUC almost 2-fold \u2014 larger than felodipine. Both labels carry avoid-grapefruit warnings. Amlodipine being unaffected is a differentiator FOR amlodipine, not for felodipine; felodipine sits with the majority of the class, so classmates do not genuinely differ from it."
+  },
+  {
+   "drug": "felodipine",
+   "text": "ER tablet must be swallowed whole; a high-fat meal raises Cmax ~60%",
+   "why": "(b) NOT DRUG-SPECIFIC, both halves. 'Swallow whole' is a generic extended-release formulation caution shared near-verbatim by classmates: Procardia XL \u2014 'should be swallowed whole. Do not chew, divide or crush tablets'; Sular \u2014 'swallowed whole, not bitten, divided or crushed.' The food effect is likewise shared and actually cuts against felodipine: the Sular label reports a high-fat meal increases nisoldipine Cmax 'up to 245%' with AUC decreased 25%, and imposes a real dosing rule (empty stomach, 1 h before or 2 h after a meal). Felodipine's effect is smaller, its AUC is unchanged, a light meal has no effect, and the label imposes no fasting requirement \u2014 so it is also (c) NOT CLINICALLY MEANINGFUL, as it changes no prescribing or counseling decision."
+  },
+  {
+   "drug": "nifedipine",
+   "text": "Some ER tablets must be taken on an empty stomach, not with food \u2014 not a class rule",
+   "why": "(b) NOT DRUG-SPECIFIC. The sentence is genuine in the nifedipine ER label ('swallowed whole and taken on an empty stomach. It should not be administered with food'), but classmates do NOT differ. The SULAR (nisoldipine) ER label carries the identical requirement: 'SULAR should be taken on an empty stomach (1 hour before or 2 hours after a meal)' (high-fat meal raises Cmax up to 245%). Felodipine ER also carries a food restriction: 'Felodipine extended-release tablets should regularly be taken either without food or with a light meal' (high-fat/carbohydrate meal increases Cmax ~60%). The stated basis checked only amlodipine and isradipine \u2014 the two DHPs that happen to lack food language \u2014 and omitted the two DHPs that share it. Secondarily, the rule is not even nifedipine-wide: the nifedipine GITS product (Procardia XL) shows no dose dumping in the presence or absence of food and is not restricted to an empty stomach, so this is a property of the coat-core ER formulation, not of nifedipine. Fails the within-class differentiator test."
+  },
+  {
+   "drug": "nisoldipine",
+   "text": "10.9% discontinued for adverse events vs 1.5% on amlodipine",
+   "why": "REJECTED (b) not drug-specific + (d) unsourced comparator. The nisoldipine figure verifies (Sular label: 10.9% of 921 vs 2.9% of 280 placebo), but the framing fails on three grounds. (1) Class effect: the Plendil (felodipine) label reports 'Discontinuation of therapy due to any clinical adverse event occurred in about 6% of the patients receiving PLENDIL' \u2014 the same order of magnitude as nisoldipine. High AE-driven discontinuation is a dihydropyridine class phenomenon that varies by agent; amlodipine is the low outlier, not nisoldipine a high outlier. The claim manufactures uniqueness by cherry-picking the single best-tolerated classmate as comparator. (2) Restates an out-of-scope class effect: felodipine's discontinuations are 'principally for peripheral edema, headache, or flushing,' and nisoldipine's are driven by the same dose-dependent edema/headache explicitly excluded from scope \u2014 an aggregate discontinuation rate is just that class effect repackaged as a percentage. (3) Invalid cross-trial comparison: there is no head-to-head. The two placebo arms differ 3-fold (2.9% vs ~1%), which proves the trial programs, populations, and AE-ascertainment methods were not comparable, so the two active-arm numbers cannot be set against each other. The cited source (Sular DailyMed label) contains no amlodipine data at all; the comparator was imported from a separate label."
+  },
+  {
+   "drug": "isradipine",
+   "text": "IR capsules dosed BID; terminal t\u00bd ~8 h, shortest of the oral DHPs",
+   "why": "(a) Factually wrong superlative, and (b) the residual dosing point is not drug-specific. The label facts check out (2.5 mg b.i.d.; biphasic elimination, early t\u00bd 1.5\u20132 h, terminal ~8 h), but 8 h is NOT the shortest among oral DHPs: the nifedipine immediate-release capsule label states 'The elimination half-life of nifedipine is approximately two hours' with a starting dose of 10 mg '3 times/day' (DailyMed setid b8b8cfee-ea71-44c2-81af-675efecfdf15), roughly four-fold shorter than isradipine. Nicardipine IR capsules report a terminal plasma half-life averaging 8.6 h (with faster 2\u20134 h early elimination) and are started at 20 mg three times daily (DailyMed setid c6fd802a-136a-455d-9bff-9a28583ffa6d) \u2014 the same ballpark terminal t\u00bd, dosed more often. The basis only compares isradipine with amlodipine (30\u201350 h) and felodipine (11\u201316 h), i.e. the two longest-acting classmates, while omitting the two immediate-release classmates that refute it. Nor is 'not once-daily' a differentiator: nifedipine IR and nicardipine IR are both TID, so multiple-daily dosing is shared across oral DHPs rather than unique to isradipine."
+  },
+  {
+   "drug": "nicardipine",
+   "text": "Oral capsules require TID \u2014 the only DHP needing three doses daily",
+   "why": "FACTUALLY WRONG / not drug-specific. The TID part of the nicardipine capsule label checks out (begin 20 mg TID, effective 20-40 mg TID, >=3 days between increases), but the uniqueness claim is false: immediate-release nifedipine capsules are also TID \u2014 'The starting dose is one 10mg capsule, swallowed whole, 3 times/day,' usual effective range 10-20 mg three times daily, with 20-30 mg three or four times daily in some patients (DailyMed nifedipine capsule, liquid filled, setid a3daa0fc-7ec3-42c2-91b2-8418331dd0fc). So nicardipine IR is not the only DHP dosed three times daily. The claim is also internally imprecise: it is IR nicardipine capsules that are TID, while sustained-release nicardipine is BID, so 'oral capsules require TID' is not even uniformly true within the drug."
+  },
+  {
+   "drug": "nicardipine",
+   "text": "Severe hepatic disease: t1/2 19 h and AUC 4x higher \u2014 start 20 mg BID, not TID",
+   "why": "NOT DRUG-SPECIFIC (class effect). The numbers are label-accurate (Cmax 1.8-fold, AUC 4-fold, terminal t1/2 19 h, suggested start 20 mg BID), but increased exposure in hepatic impairment with a reduced starting dose is a DHP class property, and nicardipine's magnitude is unremarkable within the class: nisoldipine is 4- to 5-fold higher in cirrhosis with the lowest dose recommended (Sular label, DailyMed setid 589157fa-d129-4de3-be3d-e0e1c22c5873); amlodipine's plasma half-life rises to 56 h with a recommended 2.5 mg initial dose in hepatic impairment (DailyMed amlodipine besylate tablet, setid a10fa641-ac6b-466d-bcba-31c678a74be8); felodipine clearance falls to ~60% of normal with a 2.5 mg start (DailyMed felodipine ER, setid 0bef7cf2-012b-4804-ac93-0a8b333035db); isradipine Cmax/AUC rise 32%/52% (DailyMed isradipine capsule, setid bf3425e0-428d-4bdb-ac9a-3b9d483df83a). Classmates do not genuinely differ on the actionable point \u2014 every oral DHP label lowers exposure-adjusted starting dose in liver disease. The only nominally distinct element, changing frequency TID to BID rather than lowering the dose, is a corollary of the TID schedule that claim 1 already fails to establish as unique."
+  },
+  {
+   "drug": "diltiazem",
+   "text": "IR tablets are angina-only; only ER forms carry the hypertension indication",
+   "why": "NOT DRUG-SPECIFIC (b). Nifedipine has the identical IR/ER split: nifedipine IR capsules are indicated only for vasospastic angina and chronic stable angina, and the label's WARNINGS section states 'Nifedipine capsules should not be used for the control of essential hypertension,' while PROCARDIA XL (ER) reads 'indicated for the treatment of hypertension, to lower blood pressure.' So the pattern IR=angina-only / ER=hypertension is shared with a classmate; verapamil IR (which does carry 'Essential Hypertension' plus angina and arrhythmias) is the exception in the class, not diltiazem. Secondary grounds: this is a formulation-level regulatory artifact rather than a property of the diltiazem molecule, and it is not clinically meaningful (c) \u2014 anyone treating hypertension with diltiazem prescribes an ER product regardless, so the fact never arbitrates a choice between diltiazem and another CCB. The Cardizem IR and Cardizem LA label text quoted in the basis is accurate; the failure is the uniqueness inference, not the source."
+  },
+  {
+   "drug": "verapamil",
+   "text": "IR tablets need 80 mg TID for hypertension \u2014 no once-daily immediate-release option",
+   "why": "(b) not drug-specific + misleading comparison. The verapamil IR label text is accurate ('usual initial monotherapy dose in clinical trials was 80 mg three times a day'), but the claim sets verapamil's IMMEDIATE-RELEASE tablet against diltiazem's EXTENDED-RELEASE product (Cardizem LA) \u2014 apples to oranges. Verapamil has its own once-daily ER products labeled for hypertension: the Verelan label states the usual dose is 240 mg once daily in the morning, and Calan SR/Isoptin SR start at 120 mg/day in the morning. So 'no once-daily option' is false at the drug level; it is true only of one formulation. The underlying property (short-acting IR form requiring multiple daily doses) is shared across the class: the diltiazem IR tablet label directs 30 mg 'four times daily, before meals and at bedtime' and is indicated ONLY for chronic stable angina and angina due to coronary artery spasm \u2014 not hypertension at all, so it cannot even be the once-daily hypertension comparator implied; immediate-release nicardipine is 20 mg three times a day for hypertension; isradipine IR is twice daily. Amlodipine is the only CCB that is once-daily in an immediate-release form, and that is an amlodipine differentiator, not a verapamil one. Also (c) not clinically meaningful: no prescriber picks diltiazem over verapamil for hypertension on dosing frequency, because verapamil ER is prescribed once daily for exactly this reason."
+  },
+  {
+   "drug": "hydrochlorothiazide",
+   "text": "Cholestyramine cuts HCTZ absorption up to 85%, colestipol 43%; not on classmates' labels",
+   "why": "(b) NOT DRUG-SPECIFIC. The 85%/43% figures are correct on the HCTZ label, and the chlorthalidone, indapamide, and metolazone labels do indeed omit any bile acid sequestrant entry \u2014 but that omission is a labeling artifact of those older, sparser labels, not a genuine pharmacologic difference. Cholestyramine and colestipol are non-selective anion-exchange resins that bind diuretics as a class; interaction references document cholestyramine reducing absorption and serum levels of chlorthalidone and inhibiting GI absorption of indapamide. Criterion (b) requires that classmates genuinely differ, and they do not. Also fails (c): the management is the same for every drug in the class \u2014 separate the doses by ~4 hours \u2014 so it would never steer the choice of HCTZ vs chlorthalidone vs indapamide."
+  },
+  {
+   "drug": "chlorthalidone",
+   "text": "SHEP: chlorthalidone-based Rx cut stroke 36% in isolated systolic HTN; HCTZ lacks this",
+   "why": "FACTUALLY WRONG on the differentiator + NOT DRUG-SPECIFIC. Every SHEP number checks out verbatim (5.2 vs 8.2 per 100, RR 0.64, P=.0003, major CV events RR 0.68, n=4,736, chlorthalidone 12.5-25 mg step 1). The failure is the second half. The MRC trial in older adults (BMJ 1992;304:405-12, PMID 1445513) WAS placebo-controlled with a hydrochlorothiazide-based arm (HCTZ 25/50 mg + amiloride 2.5/5 mg) in n=4,396 aged 65-74 with SBP 160-209, and the diuretic group had a 31% stroke reduction (95% CI 3-51%, p=0.04) plus 44% fewer coronary events; the abstract's own conclusion states that hydrochlorothiazide and amiloride reduce stroke risk. Calling that 'not monotherapy' because of co-formulated amiloride is a technicality that does not survive the plain reading 'HCTZ lacks this.' The second classmate also breaks it: HYVET (NEJM 2008, PMID 18378519) was placebo-controlled with indapamide SR \u00b1 perindopril and cut fatal/nonfatal stroke 30%, so chlorthalidone is not the only thiazide-like agent with placebo-controlled hard-outcome data. And the head-to-head test of exactly this hypothesis (DCP, kept claim 2) found no difference, so the evidence-base asymmetry does not translate into an outcome difference. Absence of an identical SHEP-replica trial for HCTZ is absence of evidence, not a demonstrated within-class difference."
+  },
+  {
+   "drug": "chlorthalidone",
+   "text": "generics 25/50 mg only, 12.5 mg = split (second half of the Thalitone claim)",
+   "why": "FACTUALLY OUTDATED \u2014 trimmed from the kept claim 4. ANDA chlorthalidone is indeed only 25 mg and 50 mg (and the common Mylan 25 mg is unscored, which makes halving worse, not better), but a 12.5 mg chlorthalidone tablet is now marketed: HEMICLOR, NDA 218647, Ingenus Pharmaceuticals, marketing start 2025-03-17 in the FDA NDC directory. Thalitone 15 mg is a second sub-25 mg option. So 'the 12.5 mg dose requires tablet splitting' is no longer true as an absolute and would misinform a prescriber. The Thalitone non-substitutability statement it was bundled with is independently verified and drug-specific (neither the hydrochlorothiazide nor the indapamide label carries any 'cannot be substituted' language), so that half is kept on its own."
+  },
+  {
+   "drug": "indapamide",
+   "text": "Titrate only every 4 weeks; 5 mg adds no BP lowering beyond 2.5 mg - dead-end dose",
+   "why": "(b) class effect + (c) not decision-changing. The label quotes check out, but both halves fail the classmate test. Dose ceiling: the chlorthalidone label states 'Dosage above 100 mg daily usually does not increase effectiveness' (DailyMed setid 15dd224a) and the HCTZ label caps hypertension dosing at 50 mg with the same dose-related hypokalemia caveat - every thiazide label carries a ceiling statement, so a flat top dose is a class property, not an indapamide feature. Titration interval: chlorthalidone labels direct doubling only 'after 2 to 4 weeks,' essentially the same wait, so 'slowest mandated titration of the three' is a technicality (HCTZ simply says individualize) that would never change which agent is chosen. The claim also truncates the label sentence, which reads 'no additional effects on blood pressure or heart failure, but are associated with a greater degree of hypokalemia' - the dropped clause is a rejected class effect."
+  },
+  {
+   "drug": "indapamide",
+   "text": "Label states no adverse lipid effect; HCTZ label warns of higher cholesterol and TG",
+   "why": "(c) not clinically meaningful + (b) contrast is a labeling artifact. Both quotes exist as written, but the 'difference' is between label vintages, not between drugs: the generic chlorthalidone label checked (DailyMed setid 15dd224a) carries no lipid statement at all, so the classmates do not uniformly warn, and no head-to-head trial underlies indapamide's neutrality sentence - it is absence of a warning, not demonstrated superiority. Thiazide lipid changes are small and largely transient, chlorthalidone still outperformed on hard outcomes in ALLHAT despite them, and no guideline selects a thiazide on lipid grounds. This would not change a prescribing decision."
+  },
+  {
+   "drug": "furosemide",
+   "text": "HTN label dose is 40 mg BID; diuretic effect lasts only 6-8 h vs once-daily torsemide",
+   "why": "FACTUALLY WRONG (a) - the stated contrast is refuted by the comparator's own label. Demadex/torsemide states 'With oral dosing, the onset of diuresis occurs within 1 hour and the peak effect occurs during the first or second hour and diuresis lasts about 6 to 8 hours' - the SAME 6-8 h duration as Lasix's 'The duration of diuretic effect is 6 to 8 hours.' Torsemide is not longer-acting on diuresis, so duration cannot be what drives its once-daily HTN dosing. Bumetanide breaks the logic outright in the opposite direction: its diuretic action is SHORTER ('at usual doses (1 mg to 2 mg) diuresis is largely complete within 4 hours; with higher doses, the diuretic action lasts for 4 to 6 hours') yet it is 'in most patients... given as a single dose.' The bare dosing fact is label-accurate (Lasix: 'The usual initial dose of LASIX for hypertension is 80mg, usually divided into 40mg twice a day' vs Demadex 'The usual initial dose is 5 mg once daily'), but the claim as written asserts a duration-based mechanism that both classmate labels contradict, so it fails as stated."
+  },
+  {
+   "drug": "eplerenone",
+   "text": "Often needs 50 mg BID in HTN vs once-daily spironolactone; full effect takes 4 weeks",
+   "why": "Fails (a) and (b). (a) The comparator is factually wrong: the Aldactone label gives the hypertension dose as '25 to 100 mg of ALDACTONE administered in either single or divided doses' \u2014 spironolactone is not a once-daily-only drug. The eplerenone label also says the full effect is 'apparent within 4 weeks' (i.e. fully manifest by 4 weeks), not that it 'takes' 4 weeks, and it never says 50 mg BID is 'often' needed \u2014 BID is a conditional titration step 'for patients with an inadequate blood pressure response to 50 mg once daily.' (b) Twice-daily dosing is not drug-specific within this class: the Lasix label's usual initial adult hypertension dose is 80 mg/day 'usually divided into 40 mg twice a day.' The 4-week statement is also non-comparative \u2014 no classmate label asserts a shorter time to full effect, so nothing establishes it as a within-class differentiator."
+  },
+  {
+   "drug": "amiloride",
+   "text": "Gynecomastia <=1% on label vs 21.2% for spironolactone head-to-head",
+   "why": "(b) not amiloride-specific + (d) source mismatch. Low gynecomastia separates amiloride from spironolactone only; classmates eplerenone and furosemide share it. The cited 21.2% figure is from Parthasarathy 2011, which randomised spironolactone against EPLERENONE (gynaecomastia 21.2% vs 4.5%) and never included amiloride \u2014 so the trial actually establishes eplerenone's advantage, not amiloride's. The DailyMed amiloride label supports only the '<=1%' half, and a label incidence category from spontaneous/uncontrolled reporting is not comparable to an RCT-measured rate. This is spironolactone's liability restated, not an amiloride differentiator."
+  },
+  {
+   "drug": "amiloride",
+   "text": "Not hepatically metabolized - excreted unchanged renally, unlike spiro and eplerenone",
+   "why": "(b) not drug-specific across the stated class. The amiloride label wording is accurate, but furosemide \u2014 a named classmate \u2014 is likewise 'predominantly excreted unchanged in the urine,' with glucuronide as its only major biotransformation product and no meaningful hepatic clearance. So the property splits the class 2-2 rather than isolating amiloride. The inference is also shaky: only ~50% of a 20 mg dose appears in urine (40% in stool), and spironolactone's active metabolites (canrenone/TMS/HTMS) are themselves renally eliminated and accumulate in CKD, so there is no real 'hepatic escape route' advantage for spironolactone. The actionable residue (caution as GFR falls) collapses into class hyperkalaemia, which is out of scope."
+  },
+  {
+   "drug": "amiloride",
+   "text": "Contraindicated in diabetic nephropathy; close monitoring if SCr >1.5 or BUN >30",
+   "why": "(b) not drug-specific \u2014 the basis compared only against spironolactone and skipped eplerenone. The current eplerenone label carries an equivalent and stricter set for the hypertension indication: contraindicated in 'type 2 diabetes with microalbuminuria,' serum creatinine >2.0 mg/dL (males) or >1.8 mg/dL (females), and CrCl <50 mL/min (plus CrCl <=30 mL/min for all patients). Furosemide is also contraindicated in anuria. So neither the diabetic-kidney-disease contraindication nor the presence of numeric renal thresholds distinguishes amiloride within this class; the claim's premise that 'the class has no numeric renal threshold' is false once eplerenone is checked."
+  }
+ ],
+ "keptCount": 77,
+ "rejectedCount": 47
+}
