@@ -146,16 +146,23 @@ MRA = dict(
     important=['Hyperkalemia risk compounds with an ACEi/ARB, CKD, or K supplements'],
     monitoring='K+ and creatinine at baseline, 1 week, and 1 month', cls=True)
 
+LOOP = dict(
+    common=['Frequent urination starting within an hour', 'Hypokalemia', 'Volume depletion'],
+    important=['Boxed warning: profound diuresis with electrolyte depletion',
+               'Not first-line unless eGFR under 30 or heart failure'],
+    monitoring='K+, Na+, Mg, creatinine, volume status', cls=True)
+
 # Which shared template each drug is built on. Everything a drug adds on top of
 # its template is, by construction, a within-class differentiator.
 CLASS_TEMPLATES = {'ACEI': ACEI, 'ARB': ARB, 'BB_SEL': BB_SEL, 'BB_NONSEL': BB_NONSEL,
-                   'DHP': DHP, 'NONDHP': NONDHP, 'THIAZIDE': THIAZIDE, 'MRA': MRA}
+                   'DHP': DHP, 'NONDHP': NONDHP, 'THIAZIDE': THIAZIDE, 'MRA': MRA, 'LOOP': LOOP}
 TEMPLATE_LABEL = {
     'ACEI': 'ACE inhibitors', 'ARB': 'Angiotensin receptor blockers',
     'BB_SEL': 'Beta-1 selective blockers', 'BB_NONSEL': 'Non-selective beta blockers',
     'DHP': 'Dihydropyridine calcium blockers', 'NONDHP': 'Non-dihydropyridine calcium blockers',
     'THIAZIDE': 'Thiazide and thiazide-like diuretics',
     'MRA': 'Mineralocorticoid receptor antagonists and potassium-sparing diuretics',
+    'LOOP': 'Loop diuretics',
 }
 TEMPLATE_OF = {}
 
@@ -165,18 +172,14 @@ AE = {d: dict(ACEI) for d in ['benazepril', 'captopril', 'enalapril', 'fosinopri
 AE.update({d: dict(ARB) for d in ['azilsartan', 'candesartan', 'irbesartan', 'losartan',
                                   'olmesartan', 'telmisartan', 'valsartan']})
 AE.update({d: dict(BB_SEL) for d in ['atenolol', 'betaxolol', 'bisoprolol', 'metoprolol']})
-AE['nebivolol'] = dict(
-    common=['Headache 6-9%', 'Fatigue 2-5%', 'Bradycardia under 1% at usual doses'],
-    important=['Never stop abruptly - rebound angina and MI (not a boxed warning)',
-               'Masks hypoglycemia; beta-1 selectivity is lost at higher doses',
-               'Not first-line unless coronary disease or heart failure'],
-    monitoring='Heart rate', cls=False)
+AE['nebivolol'] = dict(BB_SEL)
 AE.update({d: dict(BB_NONSEL) for d in ['propranolol', 'carvedilol']})
 AE.update({d: dict(DHP) for d in ['amlodipine', 'felodipine', 'isradipine', 'nicardipine',
                                   'nifedipine', 'nisoldipine']})
 AE.update({d: dict(NONDHP) for d in ['diltiazem', 'verapamil']})
 AE.update({d: dict(THIAZIDE) for d in ['hydrochlorothiazide', 'chlorthalidone', 'indapamide']})
 AE.update({d: dict(MRA) for d in ['spironolactone', 'eplerenone', 'amiloride']})
+AE['furosemide'] = dict(LOOP)
 
 # Drug-specific facts layered on the class defaults. Every figure here was read
 # from a current FDA label or the cited trial.
@@ -198,6 +201,10 @@ SPECIFIC = {
                                           'Avoid in pregnancy - fetal growth restriction']),
     'bisoprolol':     dict(add_important=['Beta-2 blockade appears at 20 mg and above']),
     'metoprolol':     dict(add_common=['CYP2D6 poor metabolizers lose cardioselectivity']),
+    'nebivolol':      dict(add_common=['Headache 6-9% is its commonest effect, ahead of fatigue',
+                                       'Bradycardia under 1%; its label lists no cold extremities'],
+                           add_important=['Start 2.5 mg if CrCl under 30 or moderate hepatic impairment',
+                                          'Vasodilatory, though the nitric-oxide mechanism is not in the FDA label']),
 
     'betaxolol':      dict(add_important=['Use 5-10 mg if bronchospastic disease is unavoidable']),
     'propranolol':    dict(add_common=['Vivid dreams and insomnia - crosses the blood-brain barrier'],
@@ -239,13 +246,10 @@ SPECIFIC = {
     'amiloride':      dict(add_common=['Hyperkalemia ~10% alone, 1-2% combined with a thiazide'],
                            add_important=['Boxed warning: hyperkalemia, which can be fatal',
                                           'Labelled as a thiazide add-on, but 10-20 mg alone matched HCTZ 25-50 mg in PATHWAY-3']),
-    'furosemide':     dict(common=['Hypokalemia', 'Volume depletion and orthostasis', 'Hypomagnesemia'],
-                           important=['Boxed warning: profound diuresis with electrolyte depletion',
-                                      'Ototoxicity with rapid IV, high dose, CKD, or aminoglycosides',
-                                      'Not first-line unless eGFR under 30 or heart failure'],
-                           monitoring='K+, Na+, Mg, creatinine, volume status', cls=False),
+    'furosemide':     dict(add_common=['Hypomagnesemia, more than with a thiazide'],
+                           add_important=['Ototoxicity with rapid IV, high dose, CKD, or aminoglycosides',
+                                          'About 6 h of action, so once-daily dosing leaves most of the day untreated']),
 }
-AE['furosemide'] = dict(common=[], important=[], monitoring=None, cls=False)
 
 for _name, _rec in AE.items():
     for _k, _t in CLASS_TEMPLATES.items():
