@@ -390,6 +390,24 @@ footer a{color:var(--ink-2)}
       <span class="lbl">Availability</span>
       <label class="toggle"><input type="checkbox" id="usonly" checked> US practice only</label>
     </div>
+    <div class="ctl">
+      <label for="maxcost">Cost ceiling</label>
+      <div class="pair">
+        <span class="u">under $</span>
+        <input type="number" id="maxcost" min="0" max="2000" step="1" placeholder="any"
+               aria-label="Maximum cost per month in dollars">
+        <span class="u">/mo</span>
+      </div>
+    </div>
+    <div class="ctl">
+      <label for="minsbp">Minimum effect</label>
+      <div class="pair">
+        <span class="u">at least</span>
+        <input type="number" id="minsbp" min="0" max="40" step="0.5" placeholder="any"
+               aria-label="Minimum systolic reduction in mmHg">
+        <span class="u">mmHg</span>
+      </div>
+    </div>
     <div class="ctl" id="ctl-search">
       <label for="q">Search</label>
       <input type="search" id="q" placeholder="drug name or class&hellip;" autocomplete="off">
@@ -457,6 +475,91 @@ footer a{color:var(--ink-2)}
       <label class="toggle"><input type="checkbox" id="norasras" checked> Exclude ACEi + ARB</label>
     </div>
   </div>
+  <p class="count" id="combocount"></p>
+  <div class="tablewrap">
+    <table id="combotable">
+      <thead><tr>
+        <th class="rank">#</th>
+        <th class="sortable" data-csort="name">Regimen<span class="arrow">&#8597;</span></th>
+        <th>Classes</th>
+        <th class="num sortable" data-csort="sbp">&Delta; SBP<span class="arrow">&#8597;</span></th>
+        <th class="barcell"></th>
+        <th class="num sortable" data-csort="dbp">&Delta; DBP<span class="arrow">&#8597;</span></th>
+        <th class="num sortable" data-csort="cost">Cost / mo<span class="arrow">&#8597;</span></th>
+        <th class="num sortable" data-csort="ev">Weakest evidence<span class="arrow">&#8597;</span></th>
+        <th>Intensity</th>
+      </tr></thead>
+      <tbody id="combobody"></tbody>
+    </table>
+  </div>
+  <div class="note"><b>These are efficacy rankings, not treatment recommendations.</b> The model knows
+  nothing about tolerability, comorbidity, or outcome data. A combination can top this table and still
+  be the wrong choice &mdash; the guideline first-line pairs, flagged here as
+  <span class="okflag">guideline pair</span>, are an ACEi or ARB plus either a calcium blocker or a
+  thiazide-like diuretic.</div>
+</section>
+
+<!-- ============ builder ============ -->
+<section class="panel" id="panel-build" role="tabpanel" aria-labelledby="tab-build" hidden>
+  <div class="builder">
+    <div class="card">
+      <h2>Build a regimen</h2>
+      <div id="slots"></div>
+      <button class="addbtn" id="adddrug">+ Add drug</button>
+      <div class="result">
+        <div class="metric"><div class="k">Systolic</div>
+          <div class="v" id="bSbp">&mdash;</div></div>
+        <div class="metric"><div class="k">Diastolic</div>
+          <div class="v" id="bDbp">&mdash;</div></div>
+        <div class="metric"><div class="k">Intensity band</div>
+          <div class="v" id="bBand" style="font-size:17px;padding-top:9px">&mdash;</div></div>
+      </div>
+      <div id="bFlags"></div>
+    </div>
+    <div class="card">
+      <h3>Projected on-treatment BP</h3>
+      <dl class="kv">
+        <dt>Baseline</dt><dd id="pBase">154 / 100</dd>
+        <dt>Reduction</dt><dd id="pDrop">&mdash;</dd>
+        <dt>On treatment</dt><dd id="pAfter">&mdash;</dd>
+        <dt>Drug cost</dt><dd id="pCost">&mdash;</dd>
+        <dt>Vs goal</dt><dd id="pGoal">&mdash;</dd>
+      </dl>
+      <p class="gnote" id="goalNote">Goal is &lt;130/80 mmHg for most adults (2025 ACC/AHA). Set your
+      own target if this patient's differs.</p>
+      <div class="pair" style="margin-top:8px">
+        <input type="number" id="goalSbp" min="100" max="180" step="1" value="130" aria-label="Systolic goal">
+        <span class="u">/</span>
+        <input type="number" id="goalDbp" min="50" max="110" step="1" value="80" aria-label="Diastolic goal">
+        <span class="u">mmHg goal</span>
+      </div>
+      <button class="addbtn" id="copyRx" style="margin-top:14px">Copy regimen summary</button>
+      <h3 style="margin-top:24px">Cardiovascular benefit</h3>
+      <div class="ctl" style="margin-bottom:12px">
+        <label for="cvrisk">Baseline 10-year CVD risk (%)</label>
+        <input type="number" id="cvrisk" min="0.5" max="90" step="0.5" value="10" style="width:110px">
+      </div>
+      <dl class="kv">
+        <dt>Relative &darr;</dt><dd id="pRrr">&mdash;</dd>
+        <dt>Absolute &darr;</dt><dd id="pArr">&mdash;</dd>
+        <dt>NNT / 10 yr</dt><dd id="pNnt">&mdash;</dd>
+      </dl>
+      <div class="flag info" style="margin-top:14px">
+        <span class="ic">i</span>
+        <span>Risk conversion uses the BPLTTC estimate of a 10% relative reduction in major
+        cardiovascular events per 5 mmHg systolic drop, compounded across the full reduction.</span>
+      </div>
+    </div>
+
+    <div class="card span2" id="aeCard">
+      <h3>What to counsel and watch for</h3>
+      <div id="bAeList"></div>
+      <p class="monitorline" id="bMonitor"></p>
+      <p class="mut" style="font-size:12.5px;margin:12px 0 0">Common effects first, then the ones that
+      matter even though they are uncommon. Sources are listed under How it works.</p>
+    </div>
+  </div>
+
   <div class="guide">
     <h3>Picking a pair</h3>
     <p class="guide-lede">Combination beats escalation. Doubling one drug buys about 1.5 mmHg;
@@ -544,91 +647,6 @@ footer a{color:var(--ink-2)}
     available as a fixed-dose combination in the US, which improves adherence. Nineteen of the pairs here
     exist as one tablet, plus one triple (amlodipine + valsartan + hydrochlorothiazide) &mdash; most of
     them something plus hydrochlorothiazide.</p>
-  </div>
-
-  <p class="count" id="combocount"></p>
-  <div class="tablewrap">
-    <table id="combotable">
-      <thead><tr>
-        <th class="rank">#</th>
-        <th>Regimen</th>
-        <th>Classes</th>
-        <th class="num">&Delta; SBP</th>
-        <th class="barcell"></th>
-        <th class="num">&Delta; DBP</th>
-        <th class="num">Cost / mo</th>
-        <th class="num">Weakest evidence</th>
-        <th>Intensity</th>
-      </tr></thead>
-      <tbody id="combobody"></tbody>
-    </table>
-  </div>
-  <div class="note"><b>These are efficacy rankings, not treatment recommendations.</b> The model knows
-  nothing about tolerability, comorbidity, or outcome data. A combination can top this table and still
-  be the wrong choice &mdash; the guideline first-line pairs, flagged here as
-  <span class="okflag">guideline pair</span>, are an ACEi or ARB plus either a calcium blocker or a
-  thiazide-like diuretic.</div>
-</section>
-
-<!-- ============ builder ============ -->
-<section class="panel" id="panel-build" role="tabpanel" aria-labelledby="tab-build" hidden>
-  <div class="builder">
-    <div class="card">
-      <h2>Build a regimen</h2>
-      <div id="slots"></div>
-      <button class="addbtn" id="adddrug">+ Add drug</button>
-      <div class="result">
-        <div class="metric"><div class="k">Systolic</div>
-          <div class="v" id="bSbp">&mdash;</div></div>
-        <div class="metric"><div class="k">Diastolic</div>
-          <div class="v" id="bDbp">&mdash;</div></div>
-        <div class="metric"><div class="k">Intensity band</div>
-          <div class="v" id="bBand" style="font-size:17px;padding-top:9px">&mdash;</div></div>
-      </div>
-      <div id="bFlags"></div>
-    </div>
-    <div class="card">
-      <h3>Projected on-treatment BP</h3>
-      <dl class="kv">
-        <dt>Baseline</dt><dd id="pBase">154 / 100</dd>
-        <dt>Reduction</dt><dd id="pDrop">&mdash;</dd>
-        <dt>On treatment</dt><dd id="pAfter">&mdash;</dd>
-        <dt>Drug cost</dt><dd id="pCost">&mdash;</dd>
-        <dt>Vs goal</dt><dd id="pGoal">&mdash;</dd>
-      </dl>
-      <p class="gnote" id="goalNote">Goal is &lt;130/80 mmHg for most adults (2025 ACC/AHA). Set your
-      own target if this patient's differs.</p>
-      <div class="pair" style="margin-top:8px">
-        <input type="number" id="goalSbp" min="100" max="180" step="1" value="130" aria-label="Systolic goal">
-        <span class="u">/</span>
-        <input type="number" id="goalDbp" min="50" max="110" step="1" value="80" aria-label="Diastolic goal">
-        <span class="u">mmHg goal</span>
-      </div>
-      <button class="addbtn" id="copyRx" style="margin-top:14px">Copy regimen summary</button>
-      <h3 style="margin-top:24px">Cardiovascular benefit</h3>
-      <div class="ctl" style="margin-bottom:12px">
-        <label for="cvrisk">Baseline 10-year CVD risk (%)</label>
-        <input type="number" id="cvrisk" min="0.5" max="90" step="0.5" value="10" style="width:110px">
-      </div>
-      <dl class="kv">
-        <dt>Relative &darr;</dt><dd id="pRrr">&mdash;</dd>
-        <dt>Absolute &darr;</dt><dd id="pArr">&mdash;</dd>
-        <dt>NNT / 10 yr</dt><dd id="pNnt">&mdash;</dd>
-      </dl>
-      <div class="flag info" style="margin-top:14px">
-        <span class="ic">i</span>
-        <span>Risk conversion uses the BPLTTC estimate of a 10% relative reduction in major
-        cardiovascular events per 5 mmHg systolic drop, compounded across the full reduction.</span>
-      </div>
-    </div>
-
-    <div class="card span2" id="aeCard">
-      <h3>What to counsel and watch for</h3>
-      <div id="bAeList"></div>
-      <p class="monitorline" id="bMonitor"></p>
-      <p class="mut" style="font-size:12.5px;margin:12px 0 0">Common effects first, then the ones that
-      matter even though they are uncommon. Sources are listed under How it works.</p>
-    </div>
   </div>
 </section>
 
@@ -776,7 +794,9 @@ const CLASS_LABEL = {ACEi: 'ACE inhibitor', ARB: 'ARB', BB: 'Beta blocker',
 const state = {
   sbp: 154, dbp: 100, rung: 'all', classes: new Set(CLASSES), minEv: 5,
   usOnly: true, q: '', sort: 'sbp', dir: -1, comboN: 2,
-  noSame: true, noRasRas: true, cvRisk: 10
+  noSame: true, noRasRas: true, cvRisk: 10,
+  maxCost: null, minSbp: null,          // column filters, null = no limit
+  comboSort: 'sbp', comboDir: -1
 };
 
 /* ---------- class marks: distinct SHAPE + colour + abbreviation ---------- */
@@ -860,14 +880,22 @@ function visibleDrugs() {
      (d.ae && [...d.ae.c, ...d.ae.i].join(' ').toLowerCase().includes(q)))
   );
 }
+/* Column filters, applied identically to single drugs and to combinations.
+   A row with no price cannot be shown to satisfy a cost ceiling, so it drops out. */
+function passesFilters(sbp, cost) {
+  if (state.minSbp != null && sbp < state.minSbp) return false;
+  if (state.maxCost != null && (cost == null || cost > state.maxCost)) return false;
+  return true;
+}
 function allRows() {
   const out = [];
   for (const d of visibleDrugs())
     for (const r of rowsFor(d)) {
       const reg = [[d, r.mg]];
+      const sbp = predict(reg, state.sbp, 'sbp');
+      if (!passesFilters(sbp, r.usd)) continue;
       out.push({
-        d, r,
-        sbp: predict(reg, state.sbp, 'sbp'),
+        d, r, sbp,
         dbp: predict(reg, state.dbp, 'dbp'),
         sbp154: predict(reg, REF.sbp, 'sbp')
       });
@@ -931,8 +959,12 @@ function renderDrugs() {
     : `re-standardised to ${state.sbp}/${state.dbp}`;
   const rungWord = {all: 'every clinically used dose', low: 'starting dose',
                     usual: 'usual dose', max: 'maximum dose'}[state.rung];
+  const active = [];
+  if (state.maxCost != null) active.push(`under $${state.maxCost}/mo`);
+  if (state.minSbp != null) active.push(`at least ${state.minSbp} mmHg`);
   document.getElementById('drugcount').textContent =
-    `${rows.length} drug-dose rows from ${visibleDrugs().length} drugs \u00b7 ${rungWord} \u00b7 mmHg reduction ${at}`;
+    `${rows.length} drug-dose rows from ${new Set(rows.map(r => r.d.n)).size} drugs \u00b7 ${rungWord}` +
+    (active.length ? ` \u00b7 ${active.join(', ')}` : '') + ` \u00b7 mmHg reduction ${at}`;
   document.querySelectorAll('#drugtable th[data-sort]').forEach(th => {
     if (th.dataset.sort === state.sort) th.setAttribute('aria-sort', state.dir < 0 ? 'descending' : 'ascending');
     else th.removeAttribute('aria-sort');
@@ -1022,8 +1054,24 @@ function renderCombos() {
     for (let i = start; i < pool.length; i++) build(i + 1, picked.concat(pool[i]));
   };
   build(0, []);
-  results.sort((a, b) => b.sbp - a.sbp);
-  const top = results.slice(0, 60);
+  const filtered = results.filter(r => passesFilters(r.sbp, r.cost));
+  const key = {
+    name: r => r.reg.map(x => x[0].n).join(' + '),
+    sbp: r => r.sbp, dbp: r => r.dbp,
+    cost: r => r.cost == null ? Infinity * state.comboDir : r.cost,
+    ev: r => r.minTr
+  }[state.comboSort];
+  filtered.sort((a, b) => {
+    const x = key(a), y = key(b);
+    if (typeof x === 'string') return state.comboDir * x.localeCompare(y);
+    return state.comboDir * (x - y);
+  });
+  const top = filtered.slice(0, 60);
+  document.querySelectorAll('#combotable th[data-csort]').forEach(th => {
+    if (th.dataset.csort === state.comboSort)
+      th.setAttribute('aria-sort', state.comboDir < 0 ? 'descending' : 'ascending');
+    else th.removeAttribute('aria-sort');
+  });
   const maxBar = n === 2 ? 40 : 50;
 
   document.getElementById('combobody').innerHTML = top.map((r, i) => {
@@ -1045,8 +1093,11 @@ function renderCombos() {
   }).join('');
   const rungWord = state.rung === 'all' ? 'usual dose' :
     {low: 'starting dose', usual: 'usual dose', max: 'maximum dose'}[state.rung];
+  const nar = filtered.length < results.length
+    ? ` \u00b7 ${filtered.length.toLocaleString()} match your filters`
+    : '';
   document.getElementById('combocount').textContent =
-    `Top ${top.length} of ${results.length.toLocaleString()} eligible ${n === 2 ? 'pairs' : 'triples'} \u00b7 each drug at its ${rungWord} \u00b7 baseline ${state.sbp}/${state.dbp}`;
+    `Showing ${top.length} of ${results.length.toLocaleString()} eligible ${n === 2 ? 'pairs' : 'triples'}${nar} \u00b7 each drug at its ${rungWord} \u00b7 baseline ${state.sbp}/${state.dbp}`;
 }
 
 /* ---------- builder ---------- */
@@ -1244,7 +1295,8 @@ function saveState() {
   try {
     localStorage.setItem(STORE, JSON.stringify({
       sbp: state.sbp, dbp: state.dbp, minEv: state.minEv, usOnly: state.usOnly,
-      rung: state.rung, classes: [...state.classes]
+      rung: state.rung, classes: [...state.classes],
+      maxCost: state.maxCost, minSbp: state.minSbp
     }));
   } catch (e) { /* private mode, or storage blocked - settings just do not persist */ }
 }
@@ -1259,6 +1311,8 @@ function loadState() {
     if (typeof v.usOnly === 'boolean') state.usOnly = v.usOnly;
     if (typeof v.rung === 'string') state.rung = v.rung;
     if (Array.isArray(v.classes) && v.classes.length) state.classes = new Set(v.classes);
+    if (typeof v.maxCost === 'number' || v.maxCost === null) state.maxCost = v.maxCost;
+    if (typeof v.minSbp === 'number' || v.minSbp === null) state.minSbp = v.minSbp;
   } catch (e) { /* ignore unreadable or malformed storage */ }
 }
 
@@ -1285,6 +1339,9 @@ function init() {
   document.getElementById('reset').addEventListener('click', () => {
     // Settings persist between visits, so this has to clear the filters too.
     state.rung = 'all'; state.minEv = 5; state.usOnly = true; state.q = '';
+    state.maxCost = null; state.minSbp = null;
+    document.getElementById('maxcost').value = '';
+    document.getElementById('minsbp').value = '';
     state.classes = new Set(CLASSES);
     document.getElementById('minev').value = 5;
     document.getElementById('minevn').value = 5;
@@ -1320,6 +1377,14 @@ function init() {
     renderAll();
   });
   document.getElementById('q').addEventListener('input', e => { state.q = e.target.value; renderAll(); });
+  for (const [id, key] of [['maxcost', 'maxCost'], ['minsbp', 'minSbp']]) {
+    document.getElementById(id).addEventListener('input', e => {
+      const v = e.target.value.trim();
+      state[key] = v === '' ? null : Math.max(0, parseFloat(v));
+      if (Number.isNaN(state[key])) state[key] = null;
+      renderAll();
+    });
+  }
   document.getElementById('nosame').addEventListener('change', e => { state.noSame = e.target.checked; renderCombos(); });
   document.getElementById('norasras').addEventListener('change', e => { state.noRasRas = e.target.checked; renderCombos(); });
   document.getElementById('cvrisk').addEventListener('input', renderBuilder);
@@ -1330,6 +1395,12 @@ function init() {
     if (state.sort === k) state.dir *= -1;
     else { state.sort = k; state.dir = (k === 'name' || k === 'cost') ? 1 : -1; }
     renderDrugs();
+  }));
+  document.querySelectorAll('#combotable th[data-csort]').forEach(th => th.addEventListener('click', () => {
+    const k = th.dataset.csort;
+    if (state.comboSort === k) state.comboDir *= -1;
+    else { state.comboSort = k; state.comboDir = (k === 'name' || k === 'cost') ? 1 : -1; }
+    renderCombos();
   }));
   document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', x === t ? 'true' : 'false'));
@@ -1348,6 +1419,8 @@ function init() {
                            ['minev', 'minEv'], ['minevn', 'minEv']])
     document.getElementById(id).value = state[key];
   document.getElementById('usonly').checked = state.usOnly;
+  if (state.maxCost != null) document.getElementById('maxcost').value = state.maxCost;
+  if (state.minSbp != null) document.getElementById('minsbp').value = state.minSbp;
   document.querySelectorAll('#doseseg button').forEach(b =>
     b.setAttribute('aria-pressed', b.dataset.rung === state.rung ? 'true' : 'false'));
   document.querySelectorAll('#classchips .chip').forEach(b =>
