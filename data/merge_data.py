@@ -1,7 +1,8 @@
 """Merge the efficacy model, US clinical dosing, NADAC cost, and adverse effects
 into the single payload the artifact embeds."""
 import json
-from clinical import DOSING, NOT_US_PRACTICE, RARE_IN_PRACTICE, AE, SOURCES
+from clinical import (DOSING, NOT_US_PRACTICE, RARE_IN_PRACTICE, AE, SOURCES,
+                      CLASS_TEMPLATES, TEMPLATE_LABEL, TEMPLATE_OF)
 from cost import monthly_cost
 from patient import CLASS_TEXT, DRUG_TEXT, PROFILES
 
@@ -100,8 +101,18 @@ for d in model:
         sub = d['cls']
 
     ae = AE.get(name)
+    tmpl_key = TEMPLATE_OF.get(name)
+    own_c, own_i = [], []
     if ae:
         ae = dict(ae, common=dedupe(ae['common']), important=dedupe(ae['important']))
+        if tmpl_key:
+            t = CLASS_TEMPLATES[tmpl_key]
+            tc, ti = set(t['common']), set(t['important'])
+            own_c = [x for x in ae['common'] if x not in tc]
+            own_i = [x for x in ae['important'] if x not in ti]
+        else:
+            # no shared template, so everything this drug carries is its own
+            own_c, own_i = list(ae['common']), list(ae['important'])
     out.append({
         'n': name, 'cls': d['cls'], 'clsf': d['clsf'], 'std': std,
         'tr': d['tr'], 'pt': d['pt'], 'us': 1 if us else 0,
@@ -109,8 +120,9 @@ for d in model:
         'fs': d['fs'], 'fd': d['fd'],
         'freq': freq, 'note': note, 'form': form,
         'rows': rows,
-        'ae': ({'c': ae['common'], 'i': ae['important'], 'm': ae['monitoring'],
-                'cl': 1 if ae.get('cls') else 0} if ae else None),
+        'ae': ({'c': ae['common'], 'i': ae['important'], 'm': ae['monitoring']} if ae else None),
+        'own': ({'c': own_c, 'i': own_i} if ae else None),   # within-class differentiators
+        'tmpl': tmpl_key,
         'sub': sub,
         'abbr': freq_abbr(freq),
         'when': 'morning' if (name in MORNING or 'morning' in (freq or '')) else None,
@@ -119,7 +131,10 @@ for d in model:
     })
 
 out.sort(key=lambda x: x['n'])
-json.dump({'drugs': out, 'sources': SOURCES,
+class_ae = {k: {'label': TEMPLATE_LABEL[k], 'c': t['common'], 'i': t['important'],
+                'm': t['monitoring']} for k, t in CLASS_TEMPLATES.items()}
+
+json.dump({'drugs': out, 'sources': SOURCES, 'classAe': class_ae,
            'singlePill': sorted(SINGLE_PILL.keys()), 'profiles': PROFILES},
           open('embed_v2.json', 'w'), separators=(',', ':'))
 
@@ -128,6 +143,8 @@ print(f'{len(out)} drugs ({len(us_drugs)} US practice), {total_rows} drug-dose r
 print(f'{extrapolated} rows beyond the studied 0.5-2x range')
 print('US rows:', sum(len(x["rows"]) for x in us_drugs))
 print('drugs missing adverse effects:', [x['n'] for x in us_drugs if not x['ae']])
+no_own = [x['n'] for x in us_drugs if x['pr'] and not (x['own'] and (x['own']['c'] or x['own']['i']))]
+print(f'drugs with NO within-class differentiator: {len(no_own)} -> {no_own}')
 print('rows missing cost:', [(x['n'], r['mg']) for x in us_drugs for r in x['rows'] if r['usd'] is None])
 import os
 print('bytes:', os.path.getsize('embed_v2.json'))

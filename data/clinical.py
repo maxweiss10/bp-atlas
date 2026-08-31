@@ -146,6 +146,19 @@ MRA = dict(
     important=['Hyperkalemia risk compounds with an ACEi/ARB, CKD, or K supplements'],
     monitoring='K+ and creatinine at baseline, 1 week, and 1 month', cls=True)
 
+# Which shared template each drug is built on. Everything a drug adds on top of
+# its template is, by construction, a within-class differentiator.
+CLASS_TEMPLATES = {'ACEI': ACEI, 'ARB': ARB, 'BB_SEL': BB_SEL, 'BB_NONSEL': BB_NONSEL,
+                   'DHP': DHP, 'NONDHP': NONDHP, 'THIAZIDE': THIAZIDE, 'MRA': MRA}
+TEMPLATE_LABEL = {
+    'ACEI': 'ACE inhibitors', 'ARB': 'Angiotensin receptor blockers',
+    'BB_SEL': 'Beta-1 selective blockers', 'BB_NONSEL': 'Non-selective beta blockers',
+    'DHP': 'Dihydropyridine calcium blockers', 'NONDHP': 'Non-dihydropyridine calcium blockers',
+    'THIAZIDE': 'Thiazide and thiazide-like diuretics',
+    'MRA': 'Mineralocorticoid receptor antagonists and potassium-sparing diuretics',
+}
+TEMPLATE_OF = {}
+
 AE = {d: dict(ACEI) for d in ['benazepril', 'captopril', 'enalapril', 'fosinopril',
                               'lisinopril', 'moexipril', 'perindopril', 'quinapril',
                               'ramipril', 'trandolapril']}
@@ -234,11 +247,24 @@ SPECIFIC = {
 }
 AE['furosemide'] = dict(common=[], important=[], monitoring=None, cls=False)
 
+for _name, _rec in AE.items():
+    for _k, _t in CLASS_TEMPLATES.items():
+        if _rec.get('common') == _t['common'] and _rec.get('important') == _t['important']:
+            TEMPLATE_OF[_name] = _k
+            break
+
 for name, spec in SPECIFIC.items():
     rec = AE.setdefault(name, dict(common=[], important=[], monitoring=None, cls=True))
     for k in ('common', 'important', 'monitoring'):
         if k in spec:
             rec[k] = spec[k]
+    rec['own_common'] = list(rec.get('own_common', [])) + spec.get('add_common', [])
+    rec['own_important'] = list(rec.get('own_important', [])) + spec.get('add_important', [])
+    if 'common' in spec or 'important' in spec:
+        # a full override replaces the template outright, so all of it is drug-specific
+        rec['own_common'] = list(spec.get('common', rec.get('own_common', [])))
+        rec['own_important'] = list(spec.get('important', rec.get('own_important', [])))
+        TEMPLATE_OF.pop(name, None)
     rec['common'] = list(rec.get('common', [])) + spec.get('add_common', [])
     rec['important'] = list(rec.get('important', [])) + spec.get('add_important', [])
     if 'cls' in spec:
