@@ -181,7 +181,7 @@ class_ae = {k: {'label': TEMPLATE_LABEL[k], 'c': t['common'], 'i': t['important'
 
 # Per-condition notes, keyed by the short tag the columns use.
 conditions = {(p.get('short') or p['label']): {'label': p['label'], 'note': p.get('note')}
-              for p in PROFILES if p.get('note')}
+              for p in PROFILES}
 
 json.dump({'drugs': out, 'sources': SOURCES, 'classAe': class_ae,
            'singlePill': sorted(SINGLE_PILL.keys()), 'conditions': conditions},

@@ -143,7 +143,7 @@ PROFILES = [
                   ('sub:nonDHP', 'Slows AV conduction - can complete the block')],
          note='Applies to resting heart rate under about 55, or second- or third-degree block '
               'without a pacemaker.'),
-    dict(id='as', label='Severe aortic stenosis', short='AS', group='Cardiac',
+    dict(id='as', label='Severe aortic stenosis', short='Severe AS', group='Cardiac',
          demote=[('sub:DHP', 'Afterload reduction against a fixed obstruction can drop cardiac output'),
                  ('sub:loop', 'Preload-dependent - aggressive diuresis causes hypotension')],
          note='Lower pressure cautiously and avoid abrupt afterload or preload reduction.'),
@@ -157,12 +157,12 @@ PROFILES = [
          exclude=[('sub:MRA', 'Hyperkalaemia risk'), ('sub:kSparing', 'Hyperkalaemia risk')],
          demote=[('cls:ACEi', 'Raises potassium - monitor closely'),
                  ('cls:ARB', 'Raises potassium - monitor closely')]),
-    dict(id='ras', label='Bilateral renal artery stenosis', short='BRAS', group='Renal',
+    dict(id='ras', label='Bilateral renal artery stenosis', short='Bilateral RAS', group='Renal',
          exclude=[('cls:ACEi', 'Efferent arteriolar dilation causes acute kidney injury'),
                   ('cls:ARB', 'Efferent arteriolar dilation causes acute kidney injury')],
          note='Suspect it when creatinine jumps more than 30% after starting a RAS blocker, or with '
               'flash pulmonary oedema.'),
-    dict(id='stones', label='Calcium kidney stones', short='Ca stones', group='Renal',
+    dict(id='stones', label='Calcium kidney stones', short='Kidney stones', group='Renal',
          promote=[('sub:thiazide', 'Reduces urinary calcium excretion and stone recurrence')]),
 
     # ---- metabolic --------------------------------------------------------
