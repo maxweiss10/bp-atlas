@@ -178,26 +178,44 @@ PROFILES = [
          promote=[('sub:thiazide', 'Reduces urinary calcium loss')]),
 
     # ---- respiratory ------------------------------------------------------
-    dict(id='asthma', label='Asthma or COPD', group='Respiratory',
+    dict(id='asthma', label='Asthma', group='Respiratory',
          exclude=[('propranolol', 'Non-selective - asthma is a contraindication'),
                   ('carvedilol', 'Non-selective - avoid in reactive airways')],
-         demote=[('cls:BB', 'Even beta-1 selective agents lose selectivity as the dose rises')]),
+         demote=[('cls:BB', 'Even beta-1 selective agents lose selectivity as the dose rises')],
+         note='Propranolol and carvedilol are the only non-selective beta blockers in this model, so '
+              'the exclusion list is complete.'),
+    dict(id='copd', label='COPD', group='Respiratory',
+         exclude=[('propranolol', 'Non-selective - avoid in obstructive airway disease'),
+                  ('carvedilol', 'Non-selective - avoid in obstructive airway disease')],
+         note='Unlike asthma, beta-1 selective blockers are NOT demoted here: the Cochrane review '
+              'found no change in FEV1 or symptoms even in severe airflow limitation, and they '
+              'should not be withheld when there is a cardiac indication.'),
 
     # ---- pregnancy --------------------------------------------------------
     dict(id='pregnancy', label='Pregnant or planning', group='Pregnancy',
          exclude=[('cls:ACEi', 'Fetal toxicity - stop before or as soon as pregnancy is confirmed'),
                   ('cls:ARB', 'Fetal toxicity - stop before or as soon as pregnancy is confirmed'),
-                  ('sub:MRA', 'Anti-androgen effects; not used in pregnancy'),
-                  ('atenolol', 'Fetal growth restriction')],
-         note='Labetalol and nifedipine ER are the usual choices, with methyldopa. Labetalol is not '
-              'in this model, so it cannot be ranked here.'),
+                  ('spironolactone', 'Anti-androgen effects on a male fetus'),
+                  ('eplerenone', 'Insufficient pregnancy data - not an anti-androgen concern'),
+                  ('atenolol', 'Fetal growth restriction - the signal is atenolol-specific')],
+         promote=[('nifedipine', 'ACOG first-line for chronic hypertension in pregnancy - use the ER form')],
+         note='Labetalol and methyldopa are the other first-line choices but are not in this model. '
+              'No class-wide beta blocker demote applies: the growth-restriction signal is specific '
+              'to atenolol, and metoprolol is the usual in-model alternative.'),
 
     # ---- neurologic -------------------------------------------------------
     dict(id='migraine', label='Migraine', group='Neurologic',
-         promote=[('propranolol', 'Labelled for migraine prophylaxis'),
-                  ('candesartan', 'Two positive prevention RCTs; non-inferior to propranolol 160 mg')]),
+         promote=[('propranolol', 'AAN/AHS Level A for episodic migraine prevention, and labelled for it'),
+                  ('metoprolol', 'AAN/AHS Level A - the same evidence tier as propranolol'),
+                  ('candesartan', 'Three positive prevention RCTs; non-inferior to propranolol 160 mg')],
+         note='Verapamil is Level U for migraine - its prophylactic role is cluster headache, not '
+              'migraine.'),
+    dict(id='cluster', label='Cluster headache', group='Neurologic',
+         promote=[('verapamil', 'First-line prophylaxis for episodic cluster headache')],
+         note='High doses are usual; get an ECG before and during escalation for heart block.'),
     dict(id='tremor', label='Essential tremor', group='Neurologic',
-         promote=[('propranolol', 'Labelled for essential tremor')]),
+         promote=[('propranolol', 'AAN Level A and the only one labelled for essential tremor'),
+                  ('atenolol', 'AAN Level B - an option when propranolol is contraindicated')]),
 
     # ---- other ------------------------------------------------------------
     dict(id='angioedema', label='Prior ACEi angioedema', group='Other',
@@ -214,7 +232,7 @@ PROFILES = [
                  ('sub:loop', 'Raises lithium levels'),
                  ('cls:ACEi', 'Raises lithium levels'), ('cls:ARB', 'Raises lithium levels')],
          note='If unavoidable, check a lithium level within a week and after any dose change.'),
-    dict(id='bph', label='Benign prostatic hyperplasia', group='Other',
+    dict(id='bph', label='BPH', group='Other',
          note='An alpha blocker treats both the prostate and the pressure, but no alpha blocker is '
               'in this model, so none can be ranked here.'),
     dict(id='black', label='Black adult, no CKD or HF', group='Other',
