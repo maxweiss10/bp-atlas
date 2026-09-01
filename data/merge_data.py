@@ -138,11 +138,53 @@ for d in model:
     })
 
 out.sort(key=lambda x: x['n'])
+# Invert the profile rules: each drug carries the conditions that rule it out,
+# call for caution, or make it a compelling choice.
+def _sub_of(d):
+    f = d['clsf'].lower()
+    if d['cls'] == 'CCB':
+        return 'nonDHP' if 'non-dihydropyridine' in f else 'DHP'
+    if d['cls'] == 'Diuretic':
+        return ('thiazide' if 'thiazide' in f else 'loop' if 'loop' in f
+                else 'MRA' if 'mineralocorticoid' in f else 'kSparing')
+    return d['cls']
+
+
+def _matches(d, sel):
+    if sel.startswith('cls:'):
+        return d['cls'] == sel[4:]
+    if sel.startswith('sub:'):
+        return _sub_of(d) == sel[4:]
+    return d['n'] == sel
+
+
+for rec in out:
+    x, c, i = [], [], []
+    for prof in PROFILES:
+        tag = prof.get('short') or prof['label']
+        for sel, why in prof.get('exclude', []):
+            if _matches(rec, sel):
+                x.append({'t': tag, 'w': why})
+        for sel, why in prof.get('demote', []):
+            if _matches(rec, sel):
+                c.append({'t': tag, 'w': why})
+        for sel, why in prof.get('promote', []):
+            if _matches(rec, sel):
+                i.append({'t': tag, 'w': why})
+    # a condition that rules the drug out should not also appear as a caution
+    ruled = {e['t'] for e in x}
+    c = [e for e in c if e['t'] not in ruled]
+    rec['ci'] = {'x': x, 'c': c, 'i': i}
+
 class_ae = {k: {'label': TEMPLATE_LABEL[k], 'c': t['common'], 'i': t['important'],
                 'm': t['monitoring']} for k, t in CLASS_TEMPLATES.items()}
 
+# Per-condition notes, keyed by the short tag the columns use.
+conditions = {(p.get('short') or p['label']): {'label': p['label'], 'note': p.get('note')}
+              for p in PROFILES if p.get('note')}
+
 json.dump({'drugs': out, 'sources': SOURCES, 'classAe': class_ae,
-           'singlePill': sorted(SINGLE_PILL.keys()), 'profiles': PROFILES},
+           'singlePill': sorted(SINGLE_PILL.keys()), 'conditions': conditions},
           open('embed_v2.json', 'w'), separators=(',', ':'))
 
 us_drugs = [x for x in out if x['us']]

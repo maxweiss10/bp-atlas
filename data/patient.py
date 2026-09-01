@@ -117,7 +117,7 @@ DRUG_TEXT = {
 # sel: 'cls:X' matches a display class, 'sub:X' a finer subclass, plain text a drug
 PROFILES = [
     # ---- cardiac ----------------------------------------------------------
-    dict(id='hfref', label='Heart failure, reduced EF (\u226440%)', group='Cardiac',
+    dict(id='hfref', label='Heart failure, reduced EF (\u226440%)', short='HFrEF', group='Cardiac',
          exclude=[('sub:nonDHP', 'Negative inotropes - avoid in HFrEF')],
          promote=[('carvedilol', 'One of the three beta blockers with mortality benefit'),
                   ('metoprolol', 'Succinate ER has mortality benefit in HFrEF'),
@@ -125,66 +125,66 @@ PROFILES = [
                   ('sub:MRA', 'Class 1: spironolactone or eplerenone, mortality benefit (RALES, EMPHASIS-HF)')],
          note='Treat this as heart-failure therapy, not blood-pressure therapy - the regimen is '
               'driven by mortality benefit, not mmHg.'),
-    dict(id='hfpef', label='Heart failure, EF \u226540%', group='Cardiac',
+    dict(id='hfpef', label='Heart failure, EF \u226540%', short='HFpEF', group='Cardiac',
          promote=[('sub:MRA', 'MRA benefit at EF \u226540% is finerenone-led (FINEARTS-HF); spironolactone cut '
                               'HF admissions in TOPCAT but its primary endpoints were neutral')],
          note='The agents that move outcomes at EF \u226540% - SGLT2 inhibitors and finerenone (FDA-approved '
               'for EF \u226540%, 2025) - are not in this model. Unlike HFrEF, verapamil and diltiazem are not '
               'contraindicated here. Decongest with a diuretic; treat the pressure to goal.'),
-    dict(id='cad', label='Coronary disease or prior MI', group='Cardiac',
+    dict(id='cad', label='Coronary disease or prior MI', short='CAD / post-MI', group='Cardiac',
          promote=[('cls:BB', 'The setting where a beta blocker is genuinely first-line'),
                   ('cls:ACEi', 'Mortality benefit after MI'),
                   ('cls:ARB', 'Alternative when an ACEi is not tolerated')]),
-    dict(id='afib', label='AF needing rate control', group='Cardiac',
+    dict(id='afib', label='AF needing rate control', short='AF rate control', group='Cardiac',
          promote=[('cls:BB', 'Rate control and blood pressure in one drug'),
                   ('sub:nonDHP', 'Rate control and blood pressure in one drug')]),
-    dict(id='brady', label='Bradycardia or AV block', group='Cardiac',
+    dict(id='brady', label='Bradycardia or AV block', short='Bradycardia, AV block', group='Cardiac',
          exclude=[('cls:BB', 'Further slows the sinus node and AV conduction'),
                   ('sub:nonDHP', 'Slows AV conduction - can complete the block')],
          note='Applies to resting heart rate under about 55, or second- or third-degree block '
               'without a pacemaker.'),
-    dict(id='as', label='Severe aortic stenosis', group='Cardiac',
+    dict(id='as', label='Severe aortic stenosis', short='Severe AS', group='Cardiac',
          demote=[('sub:DHP', 'Afterload reduction against a fixed obstruction can drop cardiac output'),
                  ('sub:loop', 'Preload-dependent - aggressive diuresis causes hypotension')],
          note='Lower pressure cautiously and avoid abrupt afterload or preload reduction.'),
 
     # ---- renal ------------------------------------------------------------
-    dict(id='ckd', label='CKD with albuminuria', group='Renal',
+    dict(id='ckd', label='CKD with albuminuria', short='CKD w/ albuminuria', group='Renal',
          promote=[('cls:ACEi', 'Slows progression - the mandatory component'),
                   ('cls:ARB', 'Slows progression - the mandatory component')],
          note='Use one RAS blocker, never two. Expect a creatinine rise of up to 30%.'),
-    dict(id='hyperk', label='High potassium or advanced CKD', group='Renal',
+    dict(id='hyperk', label='High potassium or advanced CKD', short='Hyperkalaemia, adv CKD', group='Renal',
          exclude=[('sub:MRA', 'Hyperkalaemia risk'), ('sub:kSparing', 'Hyperkalaemia risk')],
          demote=[('cls:ACEi', 'Raises potassium - monitor closely'),
                  ('cls:ARB', 'Raises potassium - monitor closely')]),
-    dict(id='ras', label='Bilateral renal artery stenosis', group='Renal',
+    dict(id='ras', label='Bilateral renal artery stenosis', short='Bilateral RAS', group='Renal',
          exclude=[('cls:ACEi', 'Efferent arteriolar dilation causes acute kidney injury'),
                   ('cls:ARB', 'Efferent arteriolar dilation causes acute kidney injury')],
          note='Suspect it when creatinine jumps more than 30% after starting a RAS blocker, or with '
               'flash pulmonary oedema.'),
-    dict(id='stones', label='Calcium kidney stones', group='Renal',
+    dict(id='stones', label='Calcium kidney stones', short='Ca kidney stones', group='Renal',
          promote=[('sub:thiazide', 'Reduces urinary calcium excretion and stone recurrence')]),
 
     # ---- metabolic --------------------------------------------------------
-    dict(id='diabetes', label='Diabetes with albuminuria', group='Metabolic',
+    dict(id='diabetes', label='Diabetes with albuminuria', short='Diabetes w/ albuminuria', group='Metabolic',
          promote=[('cls:ACEi', 'Slows nephropathy'), ('cls:ARB', 'Slows nephropathy')],
          demote=[('sub:thiazide', 'Raises glucose - a real but usually minor effect'),
                  ('cls:BB', 'Raises glucose and masks hypoglycaemia')]),
-    dict(id='gout', label='Gout', group='Metabolic',
+    dict(id='gout', label='Gout', short='Gout', group='Metabolic',
          demote=[('sub:thiazide', 'Raises urate and can trigger a flare'),
                  ('sub:loop', 'Raises urate')],
          promote=[('losartan', 'Mildly uricosuric - lowers urate')]),
-    dict(id='osteoporosis', label='Osteoporosis', group='Metabolic',
+    dict(id='osteoporosis', label='Osteoporosis', short='Osteoporosis', group='Metabolic',
          promote=[('sub:thiazide', 'Reduces urinary calcium loss')]),
 
     # ---- respiratory ------------------------------------------------------
-    dict(id='asthma', label='Asthma', group='Respiratory',
+    dict(id='asthma', label='Asthma', short='Asthma', group='Respiratory',
          exclude=[('propranolol', 'Non-selective - asthma is a contraindication'),
                   ('carvedilol', 'Non-selective - avoid in reactive airways')],
          demote=[('cls:BB', 'Even beta-1 selective agents lose selectivity as the dose rises')],
          note='Propranolol and carvedilol are the only non-selective beta blockers in this model, so '
               'the exclusion list is complete.'),
-    dict(id='copd', label='COPD', group='Respiratory',
+    dict(id='copd', label='COPD', short='COPD', group='Respiratory',
          exclude=[('propranolol', 'Non-selective - avoid in obstructive airway disease'),
                   ('carvedilol', 'Non-selective - avoid in obstructive airway disease')],
          note='Unlike asthma, beta-1 selective blockers are NOT demoted here: the Cochrane review '
@@ -192,7 +192,7 @@ PROFILES = [
               'should not be withheld when there is a cardiac indication.'),
 
     # ---- pregnancy --------------------------------------------------------
-    dict(id='pregnancy', label='Pregnant or planning', group='Pregnancy',
+    dict(id='pregnancy', label='Pregnant or planning', short='Pregnancy', group='Pregnancy',
          exclude=[('cls:ACEi', 'Fetal toxicity - stop before or as soon as pregnancy is confirmed'),
                   ('cls:ARB', 'Fetal toxicity - stop before or as soon as pregnancy is confirmed'),
                   ('spironolactone', 'Anti-androgen effects on a male fetus'),
@@ -204,38 +204,38 @@ PROFILES = [
               'to atenolol, and metoprolol is the usual in-model alternative.'),
 
     # ---- neurologic -------------------------------------------------------
-    dict(id='migraine', label='Migraine', group='Neurologic',
+    dict(id='migraine', label='Migraine', short='Migraine', group='Neurologic',
          promote=[('propranolol', 'AAN/AHS Level A for episodic migraine prevention, and labelled for it'),
                   ('metoprolol', 'AAN/AHS Level A - the same evidence tier as propranolol'),
                   ('candesartan', 'Three positive prevention RCTs; non-inferior to propranolol 160 mg')],
          note='Verapamil is Level U for migraine - its prophylactic role is cluster headache, not '
               'migraine.'),
-    dict(id='cluster', label='Cluster headache', group='Neurologic',
+    dict(id='cluster', label='Cluster headache', short='Cluster headache', group='Neurologic',
          promote=[('verapamil', 'First-line prophylaxis for episodic cluster headache')],
          note='High doses are usual; get an ECG before and during escalation for heart block.'),
-    dict(id='tremor', label='Essential tremor', group='Neurologic',
+    dict(id='tremor', label='Essential tremor', short='Essential tremor', group='Neurologic',
          promote=[('propranolol', 'AAN Level A and the only one labelled for essential tremor'),
                   ('atenolol', 'AAN Level B - an option when propranolol is contraindicated')]),
 
     # ---- other ------------------------------------------------------------
-    dict(id='angioedema', label='Prior ACEi angioedema', group='Other',
+    dict(id='angioedema', label='Prior ACEi angioedema', short='Prior ACEi angioedema', group='Other',
          exclude=[('cls:ACEi', 'Recurrence risk - never rechallenge')],
          note='An ARB may be started, but only about 6 weeks later, and with counselling.'),
-    dict(id='raynaud', label='Raynaud phenomenon', group='Other',
+    dict(id='raynaud', label='Raynaud phenomenon', short='Raynaud', group='Other',
          demote=[('cls:BB', 'Peripheral vasoconstriction worsens attacks')],
          promote=[('sub:DHP', 'Vasodilators; nifedipine is used to treat Raynaud itself')]),
-    dict(id='cirrhosis', label='Cirrhosis with ascites', group='Other',
+    dict(id='cirrhosis', label='Cirrhosis with ascites', short='Cirrhosis w/ ascites', group='Other',
          promote=[('spironolactone', 'The diuretic of choice in ascites')],
          note='Hepatic clearance matters here - avoid drugs needing hepatic activation where you can.'),
-    dict(id='lithium', label='On lithium', group='Other',
+    dict(id='lithium', label='On lithium', short='On lithium', group='Other',
          demote=[('sub:thiazide', 'Raises lithium levels - toxicity risk'),
                  ('sub:loop', 'Raises lithium levels'),
                  ('cls:ACEi', 'Raises lithium levels'), ('cls:ARB', 'Raises lithium levels')],
          note='If unavoidable, check a lithium level within a week and after any dose change.'),
-    dict(id='bph', label='BPH', group='Other',
+    dict(id='bph', label='BPH', short='BPH', group='Other',
          note='An alpha blocker treats both the prostate and the pressure, but no alpha blocker is '
               'in this model, so none can be ranked here.'),
-    dict(id='black', label='Black adult, no CKD or HF', group='Other',
+    dict(id='black', label='Black adult, no CKD or HF', short='Black adult', group='Other',
          promote=[('cls:CCB', 'More effective as initial monotherapy'),
                   ('sub:thiazide', 'More effective as initial monotherapy')],
          note='The gap largely disappears once a RAS blocker is combined with either of these.'),
