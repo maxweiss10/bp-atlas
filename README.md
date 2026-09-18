@@ -9,9 +9,12 @@ mentioning. Plus a combination builder that applies the source paper's own permu
 ## What it does
 
 - **Single drugs** — 128 real drug–dose rows across 37 US-marketed agents, sortable by systolic
-  drop, diastolic drop, cost, or weight of evidence. Because the rows are real prescribing steps
-  rather than multiples of a trial "standard dose", one drug at its maximum sits in the same
-  ranking as another at its starting dose.
+  drop, diastolic drop, cost, weight of evidence, or how fast the drug turns on and off. Because
+  the rows are real prescribing steps rather than multiples of a trial "standard dose", one drug at
+  its maximum sits in the same ranking as another at its starting dose.
+- **Onset and offset** — two columns for the question the mmHg figures cannot answer: how long
+  before blood pressure starts to move, how long a fixed dose needs before the effect levels off,
+  and how long the effect lasts once the drug is stopped.
 - **Combinations** — every eligible pair or triple ranked by predicted effect, with same-class and
   ACEi+ARB combinations excluded by default and guideline first-line pairs flagged.
 - **Build a regimen** — up to four drugs, live predicted BP, projected on-treatment BP, drug cost,
@@ -43,6 +46,23 @@ against 44 live combination queries spanning 2- and 3-drug regimens at baselines
 prescribable set, as total mg per day for hypertension. Doses beyond 4× the trial standard dose are
 dropped; those between 2× and 4× are marked as extrapolated.
 
+**Onset and offset.** FDA prescribing information via openFDA/DailyMed, read from the Clinical
+Pharmacology, Clinical Studies and Dosage sections of each drug's own single-ingredient label. Four
+figures per drug: time to the first blood-pressure effect after one dose, time to that dose's peak
+effect, time for a fixed dose to reach its full effect, and time for the effect to fade after
+stopping. Every mmHg figure elsewhere on the page is a plateau figure — the source trials ran a
+mean of 8.6 weeks — so these columns say how long you wait to get there.
+
+Among the drugs in US practice, 46% of the individual figures are stated in that drug's own label;
+the rest are inferred from its labelled pharmacokinetics, and the page marks which is which. The
+agents in the efficacy model with no US label carry the class profile, marked separately again.
+
+Offset is the weakest of the four. Only irbesartan (two-thirds of the effect still present a week
+after the last dose), telmisartan (baseline over several days to one week) and eplerenone (+6/3
+mmHg at one week) have a published withdrawal time course; every other offset is four to five
+effective half-lives, which is when the drug has gone rather than when the blood pressure has
+finished drifting back.
+
 **Cost.** CMS National Average Drug Acquisition Cost (NADAC), file dated 26 August 2026. Median
 generic price per unit for the cheapest whole-tablet regimen delivering the daily dose, × 30 days.
 This is an acquisition benchmark, not what a patient pays.
@@ -67,13 +87,15 @@ A few entries deliberately correct common teaching:
 
 ```
 index.html        the whole tool, self-contained, no build step
-data/model.json   per-drug coefficients, doses, costs, adverse effects
+data/model.json   per-drug coefficients, doses, costs, adverse effects, kinetics
 data/*.py         the pipeline that produced it
 ```
 
 `data/shiny_client.py` speaks the Shiny websocket protocol to the source calculator;
 `harvest.py` walks the dose grid; `prices.py` extracts NADAC pricing; `clinical.py` holds the
-dosing and adverse-effect layer; `merge_data.py` assembles `model.json`.
+dosing and adverse-effect layer; `kinetics.py` the onset/offset layer, with the label sentence
+behind each figure; `merge_data.py` assembles `model.json`, and `add_kinetics.py` folds the
+kinetics layer into it and re-embeds the payload in `index.html`.
 
 ## Limits
 
