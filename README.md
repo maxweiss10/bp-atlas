@@ -12,11 +12,11 @@ mentioning. Plus a combination builder that applies the source paper's own permu
   drop, diastolic drop, cost, weight of evidence, or how fast the drug turns on and off. Because
   the rows are real prescribing steps rather than multiples of a trial "standard dose", one drug at
   its maximum sits in the same ranking as another at its starting dose.
-- **Full effect / Wears off** — two columns for the question the mmHg figures cannot answer: how
-  long a fixed dose needs before the effect levels off (with the time to the first movement in
-  blood pressure beneath it), and how long the effect lasts once the drug is stopped. Each column
-  holds one figure in one unit, and sorts on it, so reading down the column and sorting it give the
-  same order.
+- **Onset / Full effect / Wears off** — three columns for the question the mmHg figures cannot
+  answer: when blood pressure first moves after a dose (with that dose's peak beneath it), how long
+  a fixed dose needs before the effect levels off, and how long the effect lasts once the drug is
+  stopped. Each column holds one figure and sorts on it, so reading down a column and sorting it
+  give the same order.
 - **Combinations** — every eligible pair or triple ranked by predicted effect, with same-class and
   ACEi+ARB combinations excluded by default and guideline first-line pairs flagged.
 - **Build a regimen** — up to four drugs, live predicted BP, projected on-treatment BP, drug cost,
@@ -52,7 +52,7 @@ dropped; those between 2× and 4× are marked as extrapolated.
 Clinical Pharmacology, Clinical Studies and Dosage sections of each drug's own single-ingredient
 label. Four figures per drug: time to the first blood-pressure effect after one dose, time to that
 dose's peak effect, time for a fixed dose to reach its full effect, and time for the effect to fade
-after stopping. The first two are the least used, so the columns show the other two and the
+after stopping. Three of the four get a column; the peak sits under the onset figure, and the
 expanded row carries all four with the label sentence behind each. Every mmHg figure elsewhere on the page is a plateau figure — the source trials ran a
 mean of 8.6 weeks — so these columns say how long you wait to get there.
 

@@ -32,7 +32,9 @@ import re
 
 UNIT = {'min': 1 / 60, 'h': 1, 'd': 24, 'wk': 168}
 # the two figures that are not a span of time
-ODD = {'1st dose': 2}
+# just under the 2 h the ARB class profile assumes, so the two labels that say
+# only "after the first dose" group together ahead of it
+ODD = {'1st dose': 1.9}
 
 
 def _hours(t):
@@ -52,7 +54,7 @@ def _hours(t):
     elif '+' in t:                           # '3+ wk' sits just past its floor
         v = lo * 1.25
     elif lead == '<':
-        v = lo / 2
+        v = lo * 0.6                         # after an explicit '30 min', before '1 h'
     elif lead == '>':
         v = lo * 1.15
     else:
@@ -60,8 +62,18 @@ def _hours(t):
     return v * UNIT[unit]
 
 
+def _spread(t):
+    """Half-width of a range, in hours - 0 for an exact figure.
+
+    Two figures with the same midpoint are ordered narrowest first, so a lone
+    '1-3 wk' sits after the run of '2 wk' rather than interrupting it.
+    """
+    m = re.fullmatch(r'[<>~]?([\d.]+)\s*-\s*([\d.]+)\s*(min|h|d|wk)', t)
+    return (float(m.group(2)) - float(m.group(1))) / 2 * UNIT[m.group(3)] if m else 0
+
+
 def _(t, s):
-    return {'t': t, 'h': _hours(t), 's': s}
+    return {'t': t, 'h': _hours(t), 'w': _spread(t), 's': s}
 
 
 # ------------------------------------------------------------------ classes
