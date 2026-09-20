@@ -12,9 +12,11 @@ mentioning. Plus a combination builder that applies the source paper's own permu
   drop, diastolic drop, cost, weight of evidence, or how fast the drug turns on and off. Because
   the rows are real prescribing steps rather than multiples of a trial "standard dose", one drug at
   its maximum sits in the same ranking as another at its starting dose.
-- **Onset and offset** — two columns for the question the mmHg figures cannot answer: how long
-  before blood pressure starts to move, how long a fixed dose needs before the effect levels off,
-  and how long the effect lasts once the drug is stopped.
+- **Full effect / Wears off** — two columns for the question the mmHg figures cannot answer: how
+  long a fixed dose needs before the effect levels off (with the time to the first movement in
+  blood pressure beneath it), and how long the effect lasts once the drug is stopped. Each column
+  holds one figure in one unit, and sorts on it, so reading down the column and sorting it give the
+  same order.
 - **Combinations** — every eligible pair or triple ranked by predicted effect, with same-class and
   ACEi+ARB combinations excluded by default and guideline first-line pairs flagged.
 - **Build a regimen** — up to four drugs, live predicted BP, projected on-treatment BP, drug cost,
@@ -46,11 +48,12 @@ against 44 live combination queries spanning 2- and 3-drug regimens at baselines
 prescribable set, as total mg per day for hypertension. Doses beyond 4× the trial standard dose are
 dropped; those between 2× and 4× are marked as extrapolated.
 
-**Onset and offset.** FDA prescribing information via openFDA/DailyMed, read from the Clinical
-Pharmacology, Clinical Studies and Dosage sections of each drug's own single-ingredient label. Four
-figures per drug: time to the first blood-pressure effect after one dose, time to that dose's peak
-effect, time for a fixed dose to reach its full effect, and time for the effect to fade after
-stopping. Every mmHg figure elsewhere on the page is a plateau figure — the source trials ran a
+**Full effect and wear-off.** FDA prescribing information via openFDA/DailyMed, read from the
+Clinical Pharmacology, Clinical Studies and Dosage sections of each drug's own single-ingredient
+label. Four figures per drug: time to the first blood-pressure effect after one dose, time to that
+dose's peak effect, time for a fixed dose to reach its full effect, and time for the effect to fade
+after stopping. The first two are the least used, so the columns show the other two and the
+expanded row carries all four with the label sentence behind each. Every mmHg figure elsewhere on the page is a plateau figure — the source trials ran a
 mean of 8.6 weeks — so these columns say how long you wait to get there.
 
 Among the drugs in US practice, 46% of the individual figures are stated in that drug's own label;
@@ -93,8 +96,8 @@ data/*.py         the pipeline that produced it
 
 `data/shiny_client.py` speaks the Shiny websocket protocol to the source calculator;
 `harvest.py` walks the dose grid; `prices.py` extracts NADAC pricing; `clinical.py` holds the
-dosing and adverse-effect layer; `kinetics.py` the onset/offset layer, with the label sentence
-behind each figure; `merge_data.py` assembles `model.json`, and `add_kinetics.py` folds the
+dosing and adverse-effect layer; `kinetics.py` the onset/wear-off layer, with the label sentence
+behind each figure and the sort value parsed back off the string the column prints; `merge_data.py` assembles `model.json`, and `add_kinetics.py` folds the
 kinetics layer into it and re-embeds the payload in `index.html`.
 
 ## Limits
