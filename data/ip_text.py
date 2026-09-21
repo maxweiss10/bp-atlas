@@ -58,8 +58,7 @@ ASSESS = (
 
 DZ_NOTES = [
  {'warn': True,
-  't': '<b>Shaded rows are the default; the rest are exceptions.</b> Two want it down in 20 min, '
-       'three in 1 h, three want it left alone.'},
+  't': 'Two want it down in 20 min, three in 1 h, three want it left alone.'},
 ]
 
 NOTES = [

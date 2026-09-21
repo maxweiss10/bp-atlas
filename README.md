@@ -178,6 +178,11 @@ carvedilol, losartan, chlorthalidone, spironolactone, nifedipine ER, and **cloni
 entry** rather than a treatment one. Fenoldopam is deliberately absent: it is still in the guideline
 tables but was discontinued in the US in 2023.
 
+Every citation chip is a direct link to a specific FDA label on DailyMed, resolved through its API
+and checked to return the right product — not a search URL, which is what the first version shipped
+and why several of them came up empty. DailyMed rather than a subscription reference because it is
+the actual label, it is free, and the link works for anyone the page is shared with.
+
 Sources: the FDA prescribing information on DailyMed for every dosing, onset and offset figure; the
 2024 AHA acute-care scientific statement (*Hypertension* 2024;81:e94, Bress et al) and the 2025 and
 2026 guidelines above for the targets; ACOG Practice Bulletin 222 for pregnancy; and the named

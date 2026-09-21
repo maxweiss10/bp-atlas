@@ -16,30 +16,23 @@ CONDS = [
          'and arrange outpatient f/u.',
  'avoid': '<span class="no">Intermittent IV <em>or</em> PO for the number alone &mdash; Class 3 '
           'Harm.</span> PRN orders. Immediate-acting PO.',
- 'why': '<b>Treat the patient, not the number.</b> Reasons this one is not ordinary: prior HTN emergency or established TOD &middot; chronic uncontrolled + high CVD risk &middot; recent ICH, stroke, ACS, aortic disease &middot; procedure pending &middot; home regimen never restarted. Otherwise: <b>44% resolve untreated in 3 h</b>, and there are no RCTs. Treated vs matched untreated: AKI <b>10.3 vs 7.9%</b>, MI 1.2 vs 0.6%.',
+ 'why': '<b>Treat the patient, not the number.</b> Not an ordinary pt if: prior HTN emergency or TOD &middot; chronic uncontrolled + high CVD risk &middot; recent ICH, stroke, ACS, aortic disease &middot; procedure pending &middot; home regimen never restarted. Otherwise <b>44% resolve untreated in 3 h</b>, no RCTs, and treating cost AKI <b>10.3 vs 7.9%</b>.',
 },
 {
  'name': 'Pre-procedure', 'sub': 'the surgeon wants it lower first', 'src': 'add', 'base': True,
  'goal': 'No number to hit. Anaesthesia proceeds at &lt;180/120 clinic',
  'win': 'do not cancel for the number', 'slow': True,
- 'pref': 'Give the <b>held home morning dose</b> with a sip of water &mdash; NPO at midnight is '
-         'usually the whole problem. Recheck after <b>30 min rest</b>, correct cuff. Treat pain, '
-         'anxiety, full bladder.',
- 'avoid': '<span class="no">IV hydralazine or labetalol the morning of</span> &mdash; you are '
-          'stacking an unpredictable drop onto induction. Adding a <em>new</em> agent. Starting a '
-          'BB day-of (Class 3 Harm). Abruptly stopping a BB or clonidine (Class 3 Harm).',
- 'why': 'The 180/110 rule is <b>COR 2b</b> and needs elective <em>high-risk</em> surgery + a <em>recent history</em> of poor control documented <em>before the day</em>. A one-off in holding is none of those. Howell, 30 studies: OR 1.35, <b>&ldquo;not clinically significant&rdquo;</b>. Only RCT: postponing changed no complication and lengthened stay. <b>No threshold exists for endoscopy, cath or IR.</b> Chronic HTN does not raise the intraop MAP floor.',
+ 'pref': 'Give the <b>held home morning dose</b> &mdash; NPO at midnight is usually the whole problem. Recheck after <b>30 min rest</b>, correct cuff. Treat pain, anxiety, full bladder.',
+ 'avoid': '<span class="no">IV hydralazine or labetalol the morning of.</span> A <em>new</em> agent. Starting a BB day-of, or stopping a BB or clonidine (both Class 3 Harm).',
+ 'why': '180/110 is <b>COR 2b</b> and needs elective <em>high-risk</em> surgery + poor control documented <em>before the day</em>. A one-off in holding is neither. Howell, 30 studies: OR 1.35, <b>&ldquo;not clinically significant&rdquo;</b>; the only RCT found postponing changed nothing and lengthened stay. <b>No threshold exists for endoscopy, cath or IR.</b> Chronic HTN does not raise the intraop MAP floor.',
 },
 {
  'name': 'Discharge', 'sub': 'asx in the 180s, medically ready', 'src': 'add', 'base': True,
  'goal': 'No discharge threshold exists',
  'win': 'f/u within 7 d', 'slow': True,
- 'pref': 'If the <em>chronic</em> disease is untreated or undertreated: restart or optimise the '
-         '<b>long-acting</b> regimen and book f/u &mdash; 7 d, or 1&ndash;3 d if severe or you '
-         'changed something. BMP at 2&ndash;4 wk if you started an ACEi, ARB or diuretic.',
- 'avoid': '<span class="no">Adding a drug to move today&rsquo;s number.</span> Discharging on a '
-          'regimen built around an inpatient reading nobody will reproduce at home.',
- 'why': '<b>14 guidelines, 11 countries, no inpatient BP goal and no discharge threshold</b> &mdash; the rule is institutional. <b>65%</b> were controlled as outpatients before admission, and intensification tracked the number (8&rarr;24&rarr;40%), not benefit. At discharge: readmit <b>NNH 27</b>, and <b>0.6 mmHg</b> at 1 yr.',
+ 'pref': 'If the <em>chronic</em> disease is undertreated: optimise the <b>long-acting</b> regimen, f/u in 7 d (1&ndash;3 d if severe), BMP at 2&ndash;4 wk on a new ACEi, ARB or diuretic.',
+ 'avoid': '<span class="no">Adding a drug to move today&rsquo;s number.</span>',
+ 'why': '<b>14 guidelines, 11 countries: no inpatient BP goal, no discharge threshold</b> &mdash; the rule is institutional. <b>65%</b> were controlled as outpatients before admission, and intensification tracked the number (8&rarr;24&rarr;40%), not benefit. At discharge: readmit <b>NNH 27</b>, <b>0.6 mmHg</b> at 1 yr.',
 },
 {
  'name': 'HTN emergency, general', 'sub': 'when no row below applies', 'src': 'fix', 'base': True,
@@ -76,10 +69,7 @@ CONDS = [
  'goal': 'SBP &lt;140 &middot; keep DBP &gt;60',
  'win': 'within 1 h',
  'pref': 'Nitro (topical or gtt). Esmolol or labetalol. Nicardipine or clevidipine.',
- 'avoid': '<span class="no">Nitroprusside</span> (coronary steal). Hydralazine. '
-          '<span class="no">Nitrates within 24 h sildenafil/vardenafil, 48 h tadalafil, 12 h '
-          'avanafil</span>, or RVMI. BB if HF signs, HR &lt;60, SBP &lt;100, shock, high-grade '
-          'block, bronchospasm.',
+ 'avoid': '<span class="no">Nitroprusside</span> (steal). Hydralazine. <span class="no">Nitrates within 24 h sildenafil/vardenafil, 48 h tadalafil, 12 h avanafil</span>, or RVMI. BB if HF signs, HR &lt;60, SBP &lt;100, shock, high-grade block, bronchospasm.',
  'why': 'DBP floor is physiology, not guideline: LV perfuses in diastole. COMMIT &mdash; early IV metoprolol bought no survival, +11 shocks/1000. 2025 wants <b>PO BB within 24 h</b>, not a drip. <em>Card: &ldquo;judicious nitro w/ RVMI&rdquo; is now <b>avoid</b>; PDE5i window missing entirely.</em>',
 },
 {
@@ -164,9 +154,7 @@ CONDS = [
  'name': 'Autonomic dysreflexia', 'sub': 'SCI at or above T6', 'src': 'add',
  'goal': '~20&ndash;40 mmHg above <em>their</em> baseline',
  'win': 'non-drug first',
- 'pref': '<b>Sit up, legs down, loosen binders, find the stimulus</b> &mdash; nearly always a '
-         'blocked catheter, full bladder or impacted bowel. Drug only if that fails and SBP '
-         '&ge;150: NTG ointment above the injury level, or bite-and-swallow nifedipine.',
+ 'pref': '<b>Sit up, legs down, loosen binders, find the stimulus</b> &mdash; nearly always blocked catheter, full bladder or impacted bowel. Drug only if that fails and SBP &ge;150: NTG ointment above the injury, or bite-and-swallow nifedipine.',
  'avoid': '<span class="no">Nitrates within 24&ndash;48 h of a PDE5i</span> &mdash; common here.',
  'why': 'Their usual SBP is often 90&ndash;110, so <b>a normal-looking 140 is a 40-point emergency</b>. Most episodes need no drug. Ointment because it can be wiped off.',
 },

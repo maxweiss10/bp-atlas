@@ -10,8 +10,6 @@ field that stops doses being stacked.
 Cheat-sheet register throughout - fragments, standard abbreviations.
 """
 
-DM = 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query='
-
 PO_AGENTS = [
 {
  'n': 'Nifedipine',
@@ -26,19 +24,19 @@ PO_AGENTS = [
  'abbr': 'CCB',
  'clsf': 'Dihydropyridine calcium blocker',
  'setting': 'floor',
- 'dose': {'start': '10&ndash;20 mg, swallowed', 'titr': 'recheck at 20 min and repeat; then 10&ndash;20 mg q2&ndash;6 h', 'max': '180 mg/day', 'was': '10&ndash;30 mg TID'},
+ 'dose': {'start': '10&ndash;20 mg, swallowed', 'titr': 'recheck at 20 min, repeat; then q2&ndash;6 h', 'max': '180 mg/day', 'was': '10&ndash;30 mg TID'},
  'on': {'v': 7, 's': '5&ndash;10 min', 's2': 'peak level ~30 min'},
  'off': {'v': 180, 's': '2&ndash;6 h', 's2': 'half-life ~2 h'},
  'ctrl': 1,
  'ind': [{'t': 'Severe HTN in pregnancy', 'full': 'One of ACOG’s three first-line agents for acute-onset severe hypertension, antepartum, intrapartum or postpartum'}],
  'avoid': [{'t': 'Acute BP lowering otherwise', 'full': 'The label says it in those words: "Nifedipine capsules should not be used for the acute reduction of blood pressure." Hypertension is not an approved indication at all'}, {'t': 'Sublingual or bitten', 'full': 'Confers no speed advantage and loses all control. ACOG: capsules are swallowed, never punctured'}, {'t': 'Non-pregnant adults', 'full': 'Cerebrovascular ischemia, infarction and death have been reported with sublingual capsules given for hypertensive pseudo-emergencies'}],
- 'watch': 'Reflex tachycardia and headache. Overshoot hypotension.',
+ 'watch': 'Reflex tachy &middot; overshoot',
  'src': 'fix',
  'fits': '<b>Two true statements that sound contradictory.</b> IR nifedipine is first-line for '
           'severe HTN in pregnancy and the classic wrong answer in anyone else. The card gives the '
           'indication without the warning.',
- 'fix': [{'field': 'Dose', 'was': '10-30 mg TID', 'now': '10-20 mg, repeat at 20 min, then 10-20 mg q2-6 h, max 180 mg/day', 'why': '30 mg is the label&rsquo;s rarely-exceed single dose for <em>angina</em>. For the card&rsquo;s own indication, print the ACOG regimen.', 'cite': {'t': 'ACOG Practice Bulletin 222, Table 3', 'u': 'https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2020/06/gestational-hypertension-and-preeclampsia'}}, {'field': 'Onset', 'was': '20 min', 'now': '5-10 min', 'why': '20 min is the ACOG <em>recheck interval</em>, not the onset. Reading it as onset doubles the wait before the second dose.', 'cite': {'t': 'ACOG Practice Bulletin 222, Table 3', 'u': 'https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2020/06/gestational-hypertension-and-preeclampsia'}}, {'field': 'Safety framing', 'was': 'no warning', 'now': 'the label prohibits it for acute BP lowering', 'why': 'The single most important sentence about this drug is missing from the card.', 'cite': {'t': 'Nifedipine capsules prescribing information', 'u': DM + 'nifedipine'}}],
- 'cites': [{'k': 'label', 't': 'Nifedipine capsules, immediate release', 'u': DM + 'nifedipine'}],
+ 'fix': [{'field': 'Dose', 'was': '10-30 mg TID', 'now': '10-20 mg, repeat at 20 min, then 10-20 mg q2-6 h, max 180 mg/day', 'why': '30 mg is the label&rsquo;s rarely-exceed single dose for <em>angina</em>. For the card&rsquo;s own indication, print the ACOG regimen.', 'cite': {'t': 'ACOG Practice Bulletin 222, Table 3', 'u': 'https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2020/06/gestational-hypertension-and-preeclampsia'}}, {'field': 'Onset', 'was': '20 min', 'now': '5-10 min', 'why': '20 min is the ACOG <em>recheck interval</em>, not the onset. Reading it as onset doubles the wait before the second dose.', 'cite': {'t': 'ACOG Practice Bulletin 222, Table 3', 'u': 'https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2020/06/gestational-hypertension-and-preeclampsia'}}, {'field': 'Safety framing', 'was': 'no warning', 'now': 'the label prohibits it for acute BP lowering', 'why': 'The single most important sentence about this drug is missing from the card.', 'cite': {'t': 'Nifedipine capsules prescribing information', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=acb493a3-b8f2-41a9-8ab2-550d97c4592a'}}],
+ 'cites': [{'k': 'label', 't': 'Nifedipine capsules, immediate release', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=acb493a3-b8f2-41a9-8ab2-550d97c4592a'}],
 },
 {
  'n': 'Captopril',
@@ -50,7 +48,7 @@ PO_AGENTS = [
  'abbr': 'ACEI',
  'clsf': 'ACE inhibitor, the short-acting one',
  'setting': 'floor',
- 'dose': {'start': '12.5&ndash;25 mg q8h. In scleroderma renal crisis, 6.25&ndash;12.5 mg', 'titr': 'in renal crisis, up by 12.5&ndash;25 mg <b>every 4&ndash;8 h</b> to goal', 'max': '450 mg/day &mdash; and renal crisis genuinely uses 300&ndash;450', 'was': '12.5&ndash;25 mg q8h for every indication'},
+ 'dose': {'start': '12.5&ndash;25 mg q8h &middot; SRC 6.25&ndash;12.5', 'titr': 'SRC: +12.5&ndash;25 mg q4&ndash;8 h', 'max': '450 mg/day', 'was': '12.5&ndash;25 mg q8h for every indication'},
  'on': {'v': 22, 's': '15&ndash;30 min', 's2': 'peak 60&ndash;90 min'},
  'off': {'v': 420, 's': '6&ndash;8 h', 's2': 'full effect over weeks', 'soft': True, 'note': 'The label says only that duration is dose-related. 6-8 hours is convention, consistent with three-times-daily dosing.'},
  'ctrl': 1,
@@ -58,17 +56,18 @@ PO_AGENTS = [
               'SRC.',
  'ind': [{'t': 'Scleroderma renal crisis', 'full': 'The one hypertensive emergency defined by a specific drug. Continue it through a rising creatinine and through dialysis'}],
  'avoid': [{'t': 'Pregnancy', 'full': 'BOXED WARNING - fetal toxicity'}, {'t': 'Prior ACEi angioedema', 'full': 'Label contraindication'}, {'t': 'With sacubitril', 'full': 'Label contraindication'}, {'t': 'Bilateral RAS', 'full': 'Acute renal failure'}, {'t': 'With food', 'full': 'Not a contraindication but a real one - food cuts absorption 30-40%, so give it an hour before meals'}],
- 'watch': 'Potassium, creatinine. Angioedema, at a higher rate in Black patients.',
+ 'watch': 'K, Cr &middot; angioedema',
  'src': 'fix',
- 'fix': [{'field': 'Onset', 'was': '30-90 min', 'now': '15-30 min, with the peak at 60-90 min', 'why': 'Card relabels the peak as the onset. Label: reductions are <em>maximal</em> at 60&ndash;90 min; ANG II nadir is 30&ndash;40 min. Waiting 90 min to call a dose failed is how the second gets stacked.', 'cite': {'t': 'Captopril prescribing information', 'u': DM + 'captopril'}}, {'field': 'Scleroderma renal crisis dose', 'was': 'the same 12.5-25 mg q8h', 'now': '6.25-12.5 mg escalated by 12.5-25 mg every 4-8 h, to 300-450 mg/day', 'why': 'Card gives the ordinary HTN dose for an indication that escalates q4&ndash;8h to 300&ndash;450 mg/d against a target of ~20 mmHg per 24 h.', 'cite': {'t': 'UK Scleroderma Study Group guidance', 'u': 'https://pubmed.ncbi.nlm.nih.gov/27749244/'}}],
- 'cites': [{'k': 'label', 't': 'Captopril tablets', 'u': DM + 'captopril'}, {'k': 'trial', 't': 'Steen 1990 - 1-year survival 76% with ACEi vs 15% without', 'u': 'https://www.acpjournals.org/doi/10.7326/0003-4819-113-5-352'}],
+ 'fix': [{'field': 'Onset', 'was': '30-90 min', 'now': '15-30 min, with the peak at 60-90 min', 'why': 'Card relabels the peak as the onset. Label: reductions are <em>maximal</em> at 60&ndash;90 min; ANG II nadir is 30&ndash;40 min. Waiting 90 min to call a dose failed is how the second gets stacked.', 'cite': {'t': 'Captopril prescribing information', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a43a5373-ded9-4912-8c98-edaec8352836'}}, {'field': 'Scleroderma renal crisis dose', 'was': 'the same 12.5-25 mg q8h', 'now': '6.25-12.5 mg escalated by 12.5-25 mg every 4-8 h, to 300-450 mg/day', 'why': 'Card gives the ordinary HTN dose for an indication that escalates q4&ndash;8h to 300&ndash;450 mg/d against a target of ~20 mmHg per 24 h.', 'cite': {'t': 'UK Scleroderma Study Group guidance', 'u': 'https://pubmed.ncbi.nlm.nih.gov/27749244/'}}],
+ 'dnote': 'Scleroderma renal crisis genuinely reaches 300&ndash;450 mg/day. Give it an hour before meals &mdash; food cuts absorption 30&ndash;40%.',
+ 'cites': [{'k': 'label', 't': 'Captopril tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a43a5373-ded9-4912-8c98-edaec8352836'}],
 },
 {
  'n': 'Clonidine',
  'brand': 'tablet and patch',
  'route': 'po',
  'alt': 'Tablet <em>or</em> weekly patch &mdash; overlap them, patch lags 2&ndash;3 d',
- 'mon': '<b>Remove before MRI</b> (aluminium) <b>and defibrillation</b>',
+ 'mon': '<b>Off before MRI and defib</b>',
  'tier': 3,
  'trigger': 'Recognise rebound. Never PRN',
  'routeAbbr': 'PO',
@@ -76,7 +75,7 @@ PO_AGENTS = [
  'abbr': 'CNS',
  'clsf': 'Central alpha-2 agonist',
  'setting': 'floor',
- 'dose': {'start': '0.1 mg twice daily', 'titr': '+0.1 mg/day at weekly intervals; usual range 0.2&ndash;0.6 mg/day. Patch TTS-1/2/3 delivers 0.1/0.2/0.3 mg per day, changed weekly', 'max': '2.4 mg/day, though few tolerate it'},
+ 'dose': {'start': '0.1 mg BID', 'titr': '+0.1 mg/day weekly &middot; patch 0.1/0.2/0.3 weekly', 'max': '2.4 mg/day'},
  'on': {'v': 45, 's': '30&ndash;60 min', 's2': 'nadir 2&ndash;4 h'},
  'off': {'v': 840, 's': 'half-life 12&ndash;16 h', 's2': 'up to 41 h in severe CKD'},
  'ctrl': 0,
@@ -84,12 +83,14 @@ PO_AGENTS = [
               'is hypotensive and bradycardic overnight.',
  'ind': [{'t': 'Recognising rebound', 'full': 'Listed here mainly so a rebound crisis in a patient whose home clonidine was held gets recognised'}],
  'avoid': [{'t': 'As an as-needed order', 'full': 'Pharmacologically the worst possible PRN drug, and ordering it repeatedly creates a drug that can no longer be stopped safely'}, {'t': 'Abrupt discontinuation', 'full': 'Rebound hypertension with catecholamine surge; encephalopathy, stroke and death are reported. Taper over 2-4 days'}, {'t': 'Stopping the beta blocker second', 'full': 'If both are being withdrawn, the beta blocker comes off SEVERAL DAYS FIRST - otherwise unopposed alpha'}, {'t': 'Assuming the patch works today', 'full': 'Therapeutic levels take 2-3 days. A patch placed to cover someone going NPO does nothing for 48-72 hours'}],
- 'watch': 'Sedation and delirium in exactly the patients least able to afford either.',
+ 'watch': 'Sedation, delirium',
  'src': 'add',
  'fits': '<b>Hazard entry, not a treatment.</b> Three things: recognise rebound when the home dose '
           'was held, never write it PRN, know the patch lags 2&ndash;3 d. Reversal is PO clonidine '
           'or IV phentolamine.',
- 'cites': [{'k': 'label', 't': 'Clonidine hydrochloride tablets', 'u': DM + 'clonidine'}, {'k': 'trial', 't': 'Mohandas 2021 - PRN antihypertensives and adverse outcomes', 'u': 'https://www.ahajournals.org/doi/10.1161/HYPERTENSIONAHA.121.17279'}],
+ 'dnote': 'Usual range 0.2&ndash;0.6 mg/day. Few tolerate the maximum.',
+ 'monitor': 'The patch contains aluminium and has caused skin burns during MRI, and can arc during cardioversion. Remove it for both.',
+ 'cites': [{'k': 'label', 't': 'Clonidine HCl tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=58772b44-dec0-7001-e063-6394a90ac40e'}, {'k': 'label', 't': 'Clonidine transdermal system', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0fcfcdb5-0662-41d9-919b-c66d4f4f0c8b'}],
 },
 {
  'n': 'Hydralazine',
@@ -101,16 +102,17 @@ PO_AGENTS = [
  'abbr': 'VASO',
  'clsf': 'Direct arteriolar vasodilator',
  'setting': 'floor',
- 'dose': {'start': '10 mg four times daily for 2&ndash;4 days', 'titr': '25 mg four times daily for the rest of week 1, then 50 mg four times daily', 'max': '200 mg/day usually; up to 300 mg/day in resistant patients', 'was': 'no maximum given'},
+ 'dose': {'start': '10 mg QID', 'titr': '25 QID by end of wk 1, then 50 QID', 'max': '200&ndash;300 mg/day', 'was': 'no maximum given'},
  'on': {'v': 90, 's': 'peak plasma 1&ndash;2 h', 'soft': True, 'note': 'The oral label gives no onset and no duration of antihypertensive effect at all. Only the injection label carries a timing figure.'},
  'off': {'v': 300, 's': '~5 h', 's2': 'half-life 3&ndash;7 h, dosed q6h', 'soft': True, 'note': 'Not stated in the label. Inferred from the half-life and the labelled four-times-daily interval.'},
  'ctrl': 0,
  'ind': [{'t': 'With a nitrate in HFrEF', 'full': 'The combination has a mortality benefit; alone it has almost nothing to recommend it'}],
  'avoid': [{'t': 'CAD', 'full': 'A LABELLED CONTRAINDICATION, and absent from the card. Reflex tachycardia raises myocardial oxygen demand and can provoke angina'}, {'t': 'Rheumatic MV disease', 'full': 'Label contraindication'}, {'t': 'As monotherapy', 'full': 'Reflex tachycardia plus renin-driven salt and water retention blunt the effect within days'}, {'t': 'Above 200 mg/day', 'full': 'Drug-induced lupus reached about 19% at three years in women taking 200 mg/day, against 5.5% at 50-100 mg/day'}],
- 'watch': 'Reflex tachycardia. Lupus-like syndrome. Peripheral neuritis &mdash; add pyridoxine.',
+ 'watch': 'Lupus &gt;200 mg/day &middot; pyridoxine',
  'src': 'fix',
- 'fix': [{'field': 'Duration', 'was': '~8 h', 'now': '~5 h', 'why': 'Not in the label; t&frac12; is 3&ndash;7 h and the labelled interval is q6h, so 8 overstates it.', 'cite': {'t': 'Hydralazine tablets', 'u': DM + 'hydralazine'}}, {'field': 'Contraindications', 'was': 'none listed', 'now': 'coronary artery disease and rheumatic mitral valve disease', 'why': 'Both are labelled contraindications. On a card read by someone covering a floor full of CAD, this is the omission that matters.', 'cite': {'t': 'Hydralazine tablets', 'u': DM + 'hydralazine'}}],
- 'cites': [{'k': 'label', 't': 'Hydralazine hydrochloride tablets', 'u': DM + 'hydralazine'}],
+ 'fix': [{'field': 'Duration', 'was': '~8 h', 'now': '~5 h', 'why': 'Not in the label; t&frac12; is 3&ndash;7 h and the labelled interval is q6h, so 8 overstates it.', 'cite': {'t': 'Hydralazine tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=58773e8c-b6bc-6bc6-e063-6294a90adc26'}}, {'field': 'Contraindications', 'was': 'none listed', 'now': 'coronary artery disease and rheumatic mitral valve disease', 'why': 'Both are labelled contraindications. On a card read by someone covering a floor full of CAD, this is the omission that matters.', 'cite': {'t': 'Hydralazine tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=58773e8c-b6bc-6bc6-e063-6294a90adc26'}}],
+ 'wnote': 'Reflex tachycardia. Lupus-like syndrome climbs above 200 mg/day. Peripheral neuritis &mdash; add pyridoxine.',
+ 'cites': [{'k': 'label', 't': 'Hydralazine HCl tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=58773e8c-b6bc-6bc6-e063-6294a90adc26'}],
 },
 {
  'n': 'Labetalol',
@@ -122,17 +124,18 @@ PO_AGENTS = [
  'abbr': 'BB',
  'clsf': 'Alpha-1 and non-selective beta blocker',
  'setting': 'floor',
- 'dose': {'start': '100 mg twice daily', 'titr': '+100 mg twice daily every 2&ndash;3 days; usual maintenance 200&ndash;400 mg twice daily', 'max': '2400 mg/day', 'was': 'start 100 mg q8&ndash;12h'},
+ 'dose': {'start': '100 mg BID', 'titr': '+100 mg BID q2&ndash;3 d', 'max': '2400 mg/day', 'was': 'start 100 mg q8&ndash;12h'},
  'on': {'v': 90, 's': '1&ndash;2 h', 's2': 'peak 2&ndash;4 h'},
  'off': {'v': 600, 's': '8&ndash;12 h', 's2': 'full effect 24&ndash;72 h'},
  'ctrl': 1,
  'ind': [{'t': 'Pregnancy', 'full': 'ACOG uses 200 mg q12h rising to 800 mg q8-12h for expectant management'}, {'t': 'Step-down from the drip', 'full': 'The natural oral partner for an intravenous labetalol or nicardipine infusion'}],
  'avoid': [{'t': 'Asthma or COPD', 'full': 'Label contraindication'}, {'t': 'Overt HF', 'full': 'Label contraindication'}, {'t': 'Bradycardia or block', 'full': 'Label contraindication'}],
- 'watch': 'Postural hypotension. Rare severe hepatocellular injury &mdash; check liver tests at the '
-           'first hint.',
+ 'watch': 'Postural drop &middot; LFTs',
  'src': 'fix',
- 'fix': [{'field': 'Onset', 'was': '20 min', 'now': '1-2 h, peaking at 2-4 h', 'why': '20 min is the <em>IV</em> figure, printed one row above. Expecting a PO dose to work in 20 min is how the second gets given too early.', 'cite': {'t': 'Labetalol tablets', 'u': DM + 'labetalol+tablets'}}, {'field': 'Starting schedule', 'was': '100 mg q8-12h', 'now': '100 mg twice daily', 'why': 'Labelled initial dose is BID. TID is used, but as a starting schedule it biases toward stacking.', 'cite': {'t': 'Labetalol tablets', 'u': DM + 'labetalol+tablets'}}],
- 'cites': [{'k': 'label', 't': 'Labetalol hydrochloride tablets', 'u': DM + 'labetalol+tablets'}],
+ 'fix': [{'field': 'Onset', 'was': '20 min', 'now': '1-2 h, peaking at 2-4 h', 'why': '20 min is the <em>IV</em> figure, printed one row above. Expecting a PO dose to work in 20 min is how the second gets given too early.', 'cite': {'t': 'Labetalol tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5954cc5c-3e73-e039-e063-6394a90a7d6a'}}, {'field': 'Starting schedule', 'was': '100 mg q8-12h', 'now': '100 mg twice daily', 'why': 'Labelled initial dose is BID. TID is used, but as a starting schedule it biases toward stacking.', 'cite': {'t': 'Labetalol tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5954cc5c-3e73-e039-e063-6394a90a7d6a'}}],
+ 'dnote': 'Usual maintenance 200&ndash;400 mg BID.',
+ 'wnote': 'Postural hypotension. Rare severe hepatocellular injury &mdash; check LFTs at the first hint.',
+ 'cites': [{'k': 'label', 't': 'Labetalol HCl tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5954cc5c-3e73-e039-e063-6394a90a7d6a'}],
 },
 {
  'n': 'Metoprolol',
@@ -145,18 +148,19 @@ PO_AGENTS = [
  'abbr': 'BB',
  'clsf': 'Beta-1 selective blocker',
  'setting': 'floor',
- 'dose': {'start': 'Tartrate 100 mg/day in one or two doses. Succinate ER 25&ndash;100 mg once daily', 'titr': 'weekly or longer &mdash; the full effect of any given dose shows within a week', 'max': '450 mg/day tartrate; 400 mg/day succinate'},
+ 'dose': {'start': 'Tartrate 100 mg/d &middot; succinate ER 25&ndash;100 mg/d', 'titr': 'weekly or longer', 'max': '450 / 400 mg/day'},
  'on': {'v': 60, 's': '~1 h', 's2': 'meaningful beta blockade'},
  'off': {'v': 210, 's': 'half-life 3&ndash;4 h', 's2': 'full effect ~1 week', 'soft': True, 'note': 'The label states no duration of antihypertensive effect, so the column prints the half-life. Tartrate is dosed twice daily for hypertension and does wane before the next dose; succinate ER is once daily.'},
  'ctrl': 1,
  'ind': [{'t': 'HFrEF', 'full': 'SUCCINATE only - that is the salt with the mortality data. The two are not interchangeable here'}, {'t': 'Post-MI', 'full': 'Oral within 24 h is Class 1'}, {'t': 'Rate control', 'full': 'Atrial fibrillation'}],
  'avoid': [{'t': 'Abrupt withdrawal', 'full': 'Taper over 1-2 weeks; the label warns against stopping abruptly even when it is being used only for hypertension'}, {'t': 'Decompensated HF', 'full': 'For initiation - continue an established dose unless the patient is hypotensive or low-output'}, {'t': 'CYP2D6 inhibitors', 'full': 'Fluoxetine, paroxetine, bupropion, quinidine and propafenone raise levels two- to five-fold and erode beta-1 selectivity'}],
- 'watch': 'No renal adjustment needed &mdash; one of its practical advantages inpatient.',
+ 'watch': 'No renal adjustment',
  'src': 'add',
  'practical': 'Two label-stated conversions. <b>IV&rarr;PO ~1:2.5</b> (5 mg IV &asymp; 12.5 mg PO). '
                '<b>Tartrate&rarr;succinate 1:1</b> on total daily dose, though ER peaks are a quarter to '
                'a half as high.',
- 'cites': [{'k': 'label', 't': 'Metoprolol tartrate tablets', 'u': DM + 'metoprolol+tartrate'}, {'k': 'label', 't': 'Metoprolol succinate extended-release', 'u': DM + 'metoprolol+succinate'}],
+ 'dnote': 'The full effect of any given dose shows within a week.',
+ 'cites': [{'k': 'label', 't': 'Metoprolol tartrate tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=63d45147-9b37-40e2-9619-cd1a3e77ff31'}, {'k': 'label', 't': 'Metoprolol succinate extended-release', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=151079c5-6360-45ed-8118-885543d6a4ad'}],
 },
 {
  'n': 'Carvedilol',
@@ -167,15 +171,16 @@ PO_AGENTS = [
  'abbr': 'BB',
  'clsf': 'Non-selective beta with alpha-1 blockade',
  'setting': 'floor',
- 'dose': {'start': '6.25 mg twice daily for hypertension; <b>3.125 mg twice daily</b> in heart failure', 'titr': 'hold 7&ndash;14 days, then 12.5 mg twice daily, then 25. In heart failure, double no faster than every 2 weeks', 'max': '50 mg twice daily above 85 kg'},
+ 'dose': {'start': '6.25 mg BID &middot; HF 3.125 BID', 'titr': '&times;2 q7&ndash;14 d; HF no faster than q2 wk', 'max': '50 mg BID above 85 kg'},
  'on': {'v': 60, 's': '~1 h', 's2': 'judge on the STANDING pressure'},
  'off': {'v': 540, 's': 'half-life 7&ndash;10 h', 's2': 'full effect 7&ndash;14 d'},
  'ctrl': 1,
  'ind': [{'t': 'HFrEF', 'full': 'Mortality benefit across the US Carvedilol Program, COPERNICUS and CAPRICORN'}, {'t': 'Cirrhosis', 'full': 'Also lowers portal pressure'}, {'t': 'Needs more BP effect', 'full': 'The alpha blockade lowers pressure more than metoprolol at equivalent beta blockade'}],
  'avoid': [{'t': 'On an empty stomach', 'full': 'A LABELLED INSTRUCTION - take with food to slow absorption and blunt first-dose orthostasis'}, {'t': 'Asthma', 'full': 'Non-selective'}, {'t': 'Decompensated HF', 'full': 'For initiation; up-titration during fluid retention calls for more diuretic, not abandoning the drug'}],
- 'watch': 'Hypotension and syncope concentrate in the first 30 days.',
+ 'watch': '<b>With food</b> &middot; syncope first 30 d',
  'src': 'add',
- 'cites': [{'k': 'label', 't': 'Carvedilol tablets', 'u': DM + 'carvedilol'}],
+ 'wnote': 'Take with food &mdash; a labelled instruction that blunts first-dose orthostasis. Hypotension and syncope concentrate in the first 30 days.',
+ 'cites': [{'k': 'label', 't': 'Carvedilol tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=58280d18-5960-1730-e063-6394a90a4f64'}],
 },
 {
  'n': 'Lisinopril',
@@ -194,8 +199,8 @@ PO_AGENTS = [
  'avoid': [{'t': 'Pregnancy', 'full': 'BOXED WARNING'}, {'t': 'Prior ACEi angioedema', 'full': 'Label contraindication'}, {'t': 'With an ARB or aliskiren', 'full': 'No added benefit, more harm'}, {'t': 'Bilateral RAS', 'full': 'Acute renal failure'}],
  'watch': 'Potassium above 5.7 in about 2% of hypertensive patients. Creatinine after starting.',
  'src': 'fix',
- 'fix': [{'field': 'Starting dose and titration', 'was': 'start 2.5-5 mg, increase 10 mg every 2 weeks', 'now': '10 mg for uncomplicated hypertension; 2.5-5 mg only when there is a reason; titrate to response', 'why': 'The &ldquo;+10 mg q2 weeks&rdquo; rule is the label&rsquo;s <em>HF</em> titration. The low start is right for most floor patients, but the card states the exception as the rule.', 'cite': {'t': 'Lisinopril prescribing information', 'u': DM + 'lisinopril'}}, {'field': 'Renal dosing', 'was': 'not given', 'now': 'CrCl 10-30 gets 5 mg, under 10 or dialysis gets 2.5 mg', 'why': 'Renally cleared and unbound, so it accumulates.', 'cite': {'t': 'Lisinopril prescribing information', 'u': DM + 'lisinopril'}}],
- 'cites': [{'k': 'label', 't': 'Lisinopril tablets', 'u': DM + 'lisinopril'}],
+ 'fix': [{'field': 'Starting dose and titration', 'was': 'start 2.5-5 mg, increase 10 mg every 2 weeks', 'now': '10 mg for uncomplicated hypertension; 2.5-5 mg only when there is a reason; titrate to response', 'why': 'The &ldquo;+10 mg q2 weeks&rdquo; rule is the label&rsquo;s <em>HF</em> titration. The low start is right for most floor patients, but the card states the exception as the rule.', 'cite': {'t': 'Lisinopril prescribing information', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0e6364a4-6d66-4151-8197-d45e2a762895'}}, {'field': 'Renal dosing', 'was': 'not given', 'now': 'CrCl 10-30 gets 5 mg, under 10 or dialysis gets 2.5 mg', 'why': 'Renally cleared and unbound, so it accumulates.', 'cite': {'t': 'Lisinopril prescribing information', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0e6364a4-6d66-4151-8197-d45e2a762895'}}],
+ 'cites': [{'k': 'label', 't': 'Lisinopril tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0e6364a4-6d66-4151-8197-d45e2a762895'}],
 },
 {
  'n': 'Losartan',
@@ -215,7 +220,7 @@ PO_AGENTS = [
  'watch': 'Potassium. The trough effect can fade before 24 hours &mdash; losartan is the ARB most '
            'likely to do this.',
  'src': 'add',
- 'cites': [{'k': 'label', 't': 'Losartan potassium tablets', 'u': DM + 'losartan'}],
+ 'cites': [{'k': 'label', 't': 'Losartan potassium tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c15387df-87a4-4784-acb5-7dd550498f8f'}],
 },
 {
  'n': 'Amlodipine',
@@ -234,8 +239,8 @@ PO_AGENTS = [
  'avoid': [{'t': 'For anything acute', 'full': 'The gradual onset that makes it safe also makes it useless tonight'}, {'t': 'Severe aortic stenosis', 'full': 'Symptomatic hypotension'}, {'t': 'Severe obstructive CAD', 'full': 'Worsening angina on starting or increasing the dose'}],
  'watch': 'Dose-related ankle edema &mdash; 1.8% at 2.5 mg, 3% at 5 mg, <b>10.8% at 10 mg</b>.',
  'src': 'fix',
- 'fix': [{'field': 'Onset', 'was': '24-48 h', 'now': 'measurable the same day; full effect 7-14 days', 'why': 'No onset figure exists in the label. 24&ndash;48 h is wrong both ways: BP moves day 1, and what takes a week or two is the <em>full</em> effect &mdash; the number that stops premature up-titration.', 'cite': {'t': 'Amlodipine besylate tablets', 'u': DM + 'amlodipine'}}, {'field': 'Indications', 'was': 'no specific indications', 'now': 'the CKD default', 'why': 'No renal adjustment, not dialysed, no reflex tachy, safe in HFrEF. That is a specific indication.', 'cite': {'t': 'Amlodipine besylate tablets', 'u': DM + 'amlodipine'}}],
- 'cites': [{'k': 'label', 't': 'Amlodipine besylate tablets', 'u': DM + 'amlodipine'}],
+ 'fix': [{'field': 'Onset', 'was': '24-48 h', 'now': 'measurable the same day; full effect 7-14 days', 'why': 'No onset figure exists in the label. 24&ndash;48 h is wrong both ways: BP moves day 1, and what takes a week or two is the <em>full</em> effect &mdash; the number that stops premature up-titration.', 'cite': {'t': 'Amlodipine besylate tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5af8493b-2b73-859c-e063-6394a90a4620'}}, {'field': 'Indications', 'was': 'no specific indications', 'now': 'the CKD default', 'why': 'No renal adjustment, not dialysed, no reflex tachy, safe in HFrEF. That is a specific indication.', 'cite': {'t': 'Amlodipine besylate tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5af8493b-2b73-859c-e063-6394a90a4620'}}],
+ 'cites': [{'k': 'label', 't': 'Amlodipine besylate tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5af8493b-2b73-859c-e063-6394a90a4620'}],
 },
 {
  'n': 'Nifedipine ER',
@@ -258,7 +263,7 @@ PO_AGENTS = [
  'src': 'add',
  'fits': 'Added because the card gives only the IR capsule &mdash; the one form that should '
           '<em>not</em> be used for ongoing control outside pregnancy.',
- 'cites': [{'k': 'label', 't': 'Nifedipine extended-release tablets', 'u': DM + 'nifedipine+extended'}],
+ 'cites': [{'k': 'label', 't': 'Nifedipine extended-release tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d9a501be-8523-3924-e053-2995a90a8569'}],
 },
 {
  'n': 'Diltiazem ER',
@@ -279,7 +284,7 @@ PO_AGENTS = [
  'avoid': [{'t': 'HFrEF', 'full': 'Negative inotrope'}, {'t': 'With a beta blocker', 'full': 'Excessive bradycardia and complete heart block have been reported'}, {'t': 'Immediate-release for BP', 'full': 'Plain diltiazem tablets are approved only for angina - hypertension is not an indication for the immediate-release form'}],
  'watch': 'Bradycardia. CYP3A4 inhibition raises tacrolimus and cyclosporine levels.',
  'src': 'add',
- 'cites': [{'k': 'label', 't': 'Diltiazem extended-release', 'u': DM + 'diltiazem+extended'}],
+ 'cites': [{'k': 'label', 't': 'Diltiazem extended-release tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e8c8dd18-9d95-4068-9762-bec1eb1bc25c'}],
 },
 {
  'n': 'Hydrochlorothiazide',
@@ -299,8 +304,8 @@ PO_AGENTS = [
  'watch': 'Potassium, sodium, urate, calcium, glucose. Acute angle-closure glaucoma, hours to weeks '
            'in. Non-melanoma skin cancer.',
  'src': 'fix',
- 'fix': [{'field': 'Duration', 'was': '6-12 h', 'now': 'up to 24 h', 'why': 'Card quotes the <em>diuresis</em> curve. Label separates them: diuresis 6&ndash;12 h, antihypertensive activity <b>up to 24 h</b> &mdash; hence once daily.', 'cite': {'t': 'Hydrochlorothiazide capsules', 'u': DM + 'hydrochlorothiazide'}}, {'field': 'Electrolyte threshold', 'was': 'above 25 mg', 'now': 'above 50 mg is the label’s stated threshold, though 12.5 mg is still the right dose', 'why': 'Label attaches marked K&plus; loss to &gt;50 mg. The card&rsquo;s advice is right for another reason: 12.5 keeps most of 25&rsquo;s BP benefit.', 'cite': {'t': 'Hydrochlorothiazide tablets', 'u': DM + 'hydrochlorothiazide'}}, {'field': 'Indication', 'was': 'CKD stage 1-3a/b', 'now': 'eGFR 30 or above; below that, chlorthalidone rather than HCTZ', 'why': 'The eGFR-30 rule no longer holds for thiazide-<em>like</em> agents. CLICK: chlorthalidone &minus;10.5 mmHg at eGFR 15&ndash;30.', 'cite': {'t': 'CLICK, NEJM 2021', 'u': 'https://www.nejm.org/doi/full/10.1056/NEJMoa2110730'}}],
- 'cites': [{'k': 'label', 't': 'Hydrochlorothiazide', 'u': DM + 'hydrochlorothiazide'}],
+ 'fix': [{'field': 'Duration', 'was': '6-12 h', 'now': 'up to 24 h', 'why': 'Card quotes the <em>diuresis</em> curve. Label separates them: diuresis 6&ndash;12 h, antihypertensive activity <b>up to 24 h</b> &mdash; hence once daily.', 'cite': {'t': 'Hydrochlorothiazide capsules', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a85f69f5-ba97-478d-e053-2a95a90a0a97'}}, {'field': 'Electrolyte threshold', 'was': 'above 25 mg', 'now': 'above 50 mg is the label’s stated threshold, though 12.5 mg is still the right dose', 'why': 'Label attaches marked K&plus; loss to &gt;50 mg. The card&rsquo;s advice is right for another reason: 12.5 keeps most of 25&rsquo;s BP benefit.', 'cite': {'t': 'Hydrochlorothiazide tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a85f69f5-ba97-478d-e053-2a95a90a0a97'}}, {'field': 'Indication', 'was': 'CKD stage 1-3a/b', 'now': 'eGFR 30 or above; below that, chlorthalidone rather than HCTZ', 'why': 'The eGFR-30 rule no longer holds for thiazide-<em>like</em> agents. CLICK: chlorthalidone &minus;10.5 mmHg at eGFR 15&ndash;30.', 'cite': {'t': 'CLICK, NEJM 2021', 'u': 'https://pubmed.ncbi.nlm.nih.gov/34739197/'}}],
+ 'cites': [{'k': 'label', 't': 'Hydrochlorothiazide tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a85f69f5-ba97-478d-e053-2a95a90a0a97'}],
 },
 {
  'n': 'Chlorthalidone',
@@ -322,7 +327,7 @@ PO_AGENTS = [
  'practical': 'The guideline moved: <b>2017</b> preferred chlorthalidone over HCTZ outright; '
                '<b>2025</b> dropped that after the Diuretic Comparison Project found no outcome '
                'difference. It still clearly wins in advanced CKD and resistant HTN.',
- 'cites': [{'k': 'label', 't': 'Chlorthalidone tablets', 'u': DM + 'chlorthalidone'}, {'k': 'trial', 't': 'CLICK, NEJM 2021 - chlorthalidone at eGFR 15-30', 'u': 'https://www.nejm.org/doi/full/10.1056/NEJMoa2110730'}],
+ 'cites': [{'k': 'label', 't': 'Chlorthalidone tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2de92cea-8f03-4af0-9d91-d4578510cc53'}],
 },
 {
  'n': 'Spironolactone',
@@ -344,7 +349,7 @@ PO_AGENTS = [
  'watch': '<b>Potassium within one week of starting</b>, then regularly. Gynecomastia is the '
            'commonest adverse effect and is dose- and duration-related.',
  'src': 'add',
- 'cites': [{'k': 'label', 't': 'Spironolactone tablets', 'u': DM + 'spironolactone'}, {'k': 'trial', 't': 'PATHWAY-2', 'u': 'https://pubmed.ncbi.nlm.nih.gov/26414968/'}],
+ 'cites': [{'k': 'label', 't': 'Spironolactone tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c23b6b9b-aec3-48a8-a518-76e4097f6479'}],
 },
 {
  'n': 'Isosorbide dinitrate',
@@ -366,7 +371,7 @@ PO_AGENTS = [
  'watch': 'The label asks for a dose-free interval of <b>at least 14 hours</b> every day. Headache '
            'is dose-limiting.',
  'src': 'fix',
- 'fix': [{'field': '"Mononitrate = long-acting"', 'was': 'stated without qualification', 'now': 'true of the extended-release form only', 'why': 'ISMN <em>IR</em> is twice daily 7 h apart, a deliberately asymmetric schedule leaving a 17-h nitrate-free gap. Only ER is once daily.', 'cite': {'t': 'Isosorbide mononitrate labels', 'u': DM + 'isosorbide+mononitrate'}}],
- 'cites': [{'k': 'label', 't': 'Isosorbide dinitrate tablets', 'u': DM + 'isosorbide+dinitrate'}, {'k': 'trial', 't': 'A-HeFT, NEJM 2004', 'u': 'https://www.nejm.org/doi/full/10.1056/NEJMoa042934'}],
+ 'fix': [{'field': '"Mononitrate = long-acting"', 'was': 'stated without qualification', 'now': 'true of the extended-release form only', 'why': 'ISMN <em>IR</em> is twice daily 7 h apart, a deliberately asymmetric schedule leaving a 17-h nitrate-free gap. Only ER is once daily.', 'cite': {'t': 'Isosorbide mononitrate labels', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8cbb364a-bafe-454b-a53f-bd7cd69a5593'}}],
+ 'cites': [{'k': 'label', 't': 'Isosorbide dinitrate tablets', 'u': 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6df6a2fa-c56c-4eb6-a485-c16585420eb0'}],
 },
 ]
