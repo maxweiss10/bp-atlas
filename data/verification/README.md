@@ -12,6 +12,7 @@ appears in the Inpatient & emergency tab traces to one of these files.
 | `research-4-po-drugs.md` | Oral agents, same fields, plus the agents the card omits |
 | `research-5-workflow.md` | Workup, measurement technique, the as-needed antihypertensive literature, drip-to-oral transition, discharge, and cost |
 | `research-6-preop-discharge.md` | The two situations where someone else wants the number lower: pre-procedure and discharge |
+| `research-7-routes.md` | Every agent's other routes, and what each label actually asks for by way of monitoring |
 
 ## What was found
 
@@ -40,6 +41,23 @@ are not in the abstract; any follow-up interval attributed to the 2019 NEJM revi
 could not be retrieved; and the widely repeated "47% were normotensive before admission", which
 traces to no primary statement. The page uses the verifiable figure instead — 65% of hospitalised
 hypertensives were well controlled as outpatients before admission.
+
+## Two places the research passes contradicted each other
+
+Both were resolved by reading the label directly, and both are worth recording because the page had
+already shipped one of them wrong.
+
+**Nitroprusside's ten-minute rule.** One pass called it legacy Nitropress labelling; another found it
+in a current label. The second is right. The Mylan label, revised April 2026, carries it in the boxed
+warning verbatim: infusion at the maximum rate "should never last more than 10 minutes", and stop the
+drug if BP is not controlled by then. Nipride RTU instead gives the one-hour cyanide-buffering figure.
+Both are marketed. The card quotes the first, so the "correction" was retracted.
+
+**Metoprolol's IV-to-oral ratio.** One pass quoted the 2.5:1 ratio from the label; another said the
+current label has no such statement. The ratio is there, in section 12.2 of the Hospira label revised
+May 2024. What *was* removed is the old post-infarct chain (50 mg orally every six hours starting
+fifteen minutes after the last intravenous dose), which the current label replaces with a pointer to
+the oral prescribing information. The page carries the ratio and not the chain.
 
 ## Things deliberately not carried over
 

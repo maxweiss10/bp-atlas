@@ -48,7 +48,7 @@ IV_AGENTS = [
  'n': 'Nicardipine',
  'brand': 'Cardene IV',
  'route': 'gtt',
- 'alt': '<b>IV push 2.5 mg</b> off-label &middot; PO cap 20&ndash;30 TID',
+ 'alt': '<b>IV push 0.5&ndash;2.5 mg</b> off-label &middot; PO cap 20&ndash;30 TID',
  'mon': 'Cont. BP &mdash; cuff OK, no a-line in the label. Large vein, rotate q12h',
  'tier': 1,
  'routeAbbr': 'gtt',
@@ -69,9 +69,7 @@ IV_AGENTS = [
  'mech': 'Dihydropyridine calcium blocker; a peripherally selective arterial vasodilator with '
           'essentially no negative inotropy, and it does not raise intracranial pressure. That last '
           'property is why it is the neuro-ICU workhorse.',
- 'practical': 'Beat labetalol in a mixed ICU population: goal 83 vs 67%, fewer add-ons, fewer '
-               'hypotensive episodes. Use the 0.2 mg/mL bag when volume matters. Large vein or central '
-               'line.',
+ 'practical': 'Beat labetalol in a mixed ICU population: goal 83 vs 67%, fewer add-ons, fewer hypotensive episodes. <b>It does not need an ICU.</b> A 1,278-patient study ran these drips in intermediate care on an hourly cuff with no a-line in 95%, and saw <em>less</em> hypotension than the ICU arm (24 vs 38%). Use the 0.2 mg/mL bag when volume matters.',
  'src': 'fix',
  'fix': [{'field': 'Offset', 'was': '15 min - 4 h', 'now': '~30 min to half the effect, 2-6 h to full, longer after a prolonged infusion', 'why': 'Label says <b>50% offset in ~30 min</b>; the 15-min floor is not in it. Stop the drip expecting 15 min and you stop it too late.', 'cite': {'t': 'Nicardipine prescribing information', 'u': DM + 'nicardipine'}}],
  'cites': [{'k': 'label', 't': 'Nicardipine hydrochloride injection', 'u': DM + 'nicardipine'}],
@@ -185,8 +183,7 @@ IV_AGENTS = [
  'ctrlNote': 'Each dose is a commitment for hours. This is the drug people overshoot with.',
  'ind': [{'t': 'Stroke', 'full': 'Ischemic and hemorrhagic - the standard floor agent'}, {'t': 'Pre-eclampsia', 'full': 'One of the three ACOG first-line agents'}, {'t': 'Ao dissection', 'full': 'Can serve as the beta blocker alone, since it also blocks alpha'}, {'t': 'ACS', 'full': 'Acute coronary syndrome'}],
  'avoid': [{'t': 'Asthma or COPD', 'full': 'Label contraindication - bronchial asthma or obstructive airway disease'}, {'t': 'Overt HF', 'full': 'Label says avoid in overt congestive heart failure'}, {'t': 'Bradycardia or block', 'full': 'Label contraindication - severe sinus bradycardia or block beyond first degree'}, {'t': 'Cardiogenic shock', 'full': 'Label contraindication'}, {'t': 'With IV non-DHP CCB', 'full': 'Label contraindication'}],
- 'watch': 'Keep the patient supine and mobilise gradually for up to 3 hours. Rare but real '
-           'hepatocellular injury.',
+ 'watch': 'Supine for <b>3 h</b> — 58% are symptomatically orthostatic if they stand sooner. Rare hepatocellular injury.',
  'mech': 'IV alpha:beta is ~1:7, so it acts mostly as a BB &mdash; while the problem in most '
           'emergencies is arterial vasoconstriction. PO is ~1:3.',
  'src': 'fix',
@@ -240,8 +237,7 @@ IV_AGENTS = [
  'ctrl': 3,
  'ind': [{'t': 'Pheochromocytoma', 'full': 'The labelled indication, and the crisis drug during tumour manipulation'}, {'t': 'Stimulant toxicity', 'full': 'Cocaine or methamphetamine - after benzodiazepines, which are first-line'}, {'t': 'MAOI reaction', 'full': 'The tyramine or sympathomimetic pressor crisis'}, {'t': 'Clonidine withdrawal', 'full': 'Though the definitive fix is restarting the clonidine'}, {'t': 'Vasopressor extravasation', 'full': 'The labelled dermal-necrosis indication'}],
  'avoid': [{'t': 'CAD or prior MI', 'full': 'Label contraindication - angina, coronary insufficiency or any evidence of coronary disease'}],
- 'watch': 'Rebound tachycardia, flushing, headache. Myocardial infarction and cerebrovascular spasm '
-           'are in the label’s warnings.',
+ 'watch': 'Rebound tachycardia, flushing, headache. If it overshoots, rescue with <b>norepinephrine, never epinephrine</b> — beta effects are unopposed once alpha is blocked.',
  'mech': 'Competitive &alpha;1/&alpha;2 blockade. The only agent here that addresses the actual '
           'mechanism of a catecholamine surge.',
  'fits': '<b>The card has no agent for catecholamine excess.</b> Pheo rule: <b>alpha before '

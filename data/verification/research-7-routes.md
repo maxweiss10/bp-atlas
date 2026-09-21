@@ -3,6 +3,29 @@
 **Audit date:** 2026-09-21
 **Purpose:** correct a reference table that assigns each agent ONE route and ONE care setting. That mapping is wrong for several agents.
 
+---
+
+## HEADLINE CORRECTIONS — read this first
+
+**Where the one-route-one-setting assignment is flatly WRONG:**
+
+1. **Nicardipine is not ICU-only.** No label, no guideline requires an ICU for the drug. A 2026 multihospital cohort (n=1,278) ran nicardipine/NTG/nitroprusside drips in **intermediate care** with telemetry, 1:3 nursing, hourly cuff, **no arterial line in 95%** — 4% escalation, no LOS/mortality difference, and **less hypotension than the ICU arm**. 38–52% of US hypertensive-emergency patients are already managed outside the ICU.
+2. **Nicardipine is not infusion-only in practice.** IV bolus exists (0.5–2.5 mg), is well-characterised in randomised anaesthesia dose-ranging trials, and is off-label. The label describes a 2.5 mg bolus pharmacologically but gives no bolus dose.
+3. **Nicardipine does not need an arterial line.** Neither does clevidipine, esmolol or labetalol — the word does not appear in any of their labels. Only nitroprusside mentions it, and only as *"preferably."*
+4. **Nitroprusside's boxed warning does NOT mandate an art line.** It requires *"blood pressure to be continuously monitored."* The dosing section explicitly permits *"a continually reinflated sphygmomanometer or (preferably) an intra-arterial pressure sensor."*
+5. **Labetalol has NO IM route.** Hydralazine and phentolamine do. If there is no IV access, hydralazine IM is the labelled answer.
+6. **Labetalol IV push is floor-appropriate** — and comes with a 3-hour supine requirement (58% symptomatic orthostasis otherwise) that almost nobody writes.
+7. **Nitroglycerin has five inpatient routes**, not one: IV infusion, IV bolus (SCAPE), SL tablet, lingual spray, topical ointment, transdermal patch.
+8. **Diltiazem IV and metoprolol IV are not labelled for hypertension.** Diltiazem = rate control; metoprolol = acute MI. Both are off-label for BP.
+9. **Furosemide has four routes**: IV push, **IM (labelled)**, continuous infusion, and **subcutaneous (Furoscix)**.
+10. **Phentolamine's commonest real use — local infiltration for extravasation — is a labelled route and a bedside floor procedure**, not an ICU activity.
+
+**The single most important reframing:** *the ICU requirement tracks the DIAGNOSIS, not the drug.* 2025 ACC/AHA Class 1 puts **hypertensive emergency** in an ICU whichever agent you choose. The same nicardipine drip for post-op BP control carries no such recommendation.
+
+**Corrections to assumptions in the original brief:** Cardene SR is **discontinued** (IR capsules TID are what exists); the current metoprolol label contains **no PO:IV conversion ratio**; furosemide's labelled oral bioavailability is **60–64%**, not 50%; "Appli-Ruler" is **not** FDA-label language.
+
+---
+
 ## How to read the labelling column
 
 Three distinct categories are used throughout, and they are NOT interchangeable:
@@ -216,7 +239,7 @@ Label pharmacology notes worth carrying: bioavailability ~35% at 30 mg steady st
 
 **On Cardene SR specifically — a correction.** The **brand Cardene SR (sustained-release capsules, 30/45/60 mg BID) has been discontinued in the US.** FDA formally determined in 2017 that it *"Were Not Withdrawn From Sale for Reasons of Safety or Effectiveness"* — i.e. it was a commercial withdrawal, which is the finding that permits ANDAs. — [Federal Register, 82 FR, 27 Oct 2017](https://www.federalregister.gov/documents/2017/10/27/2017-23438/determination-that-cardene-sr-nicardipine-hcl-extended-release-capsules-30-milligrams-45-milligrams) · [archived Cardene SR label](https://www.accessdata.fda.gov/drugsatfda_docs/label/2016/020005s014lbl.pdf)
 
-So: **do not put "Cardene SR" in the table as a current option.** What exists orally today is the immediate-release capsule, TID. <!--CARDENE_SR_CONFIRM-->
+So: **do not put "Cardene SR" in the table as a current option.** What exists orally today is the immediate-release capsule, TID.
 
 ## (c) Doses
 
@@ -261,7 +284,66 @@ Their titration: rapid 5 mg/h start, +2.5 mg/h q5 min, max 15 mg/h; gradual (eld
 
 **Caveat, stated so this is not over-read:** this is a Canadian health authority where nicardipine is available only through the Health Canada Special Access Programme, which makes their protocol unusually restrictive and positions nicardipine as a later-line agent than it is in the US. It is a good illustration that **"IV direct: NO" is a policy an institution can and does write**, not evidence about US practice.
 
-<!--SETTING_NICARDIPINE_LIT-->
+### Does a nicardipine infusion actually require an ICU? The best evidence says no.
+
+**Hochberg CH, Yan L, Card ME, et al. Outcomes of patients with hypertensive emergency managed in intensive vs intermediate care settings: a multihospital retrospective cohort study.** *Ann Am Thorac Soc* 2026;23(4):565–574. — [PMID 41915559](https://pubmed.ncbi.nlm.nih.gov/41915559/) · [full text PMC13052349](https://pmc.ncbi.nlm.nih.gov/articles/PMC13052349/)
+
+| | |
+|---|---|
+| Design | Retrospective multihospital cohort, 3 Johns Hopkins hospitals |
+| n | **1,278** (649 ICU, **629 intermediate care**) |
+| Drugs | **nicardipine, nitroglycerin, or nitroprusside infusions** |
+| IMC staffing/monitoring | **Nurse:patient 1:3**, continuous pulse oximetry + cardiac telemetry for all; vitals **q1h** (community IMCs) to q4h (academic IMCs) |
+| **Arterial line** | **ICU 24% vs IMC 5%** (p<0.001) |
+| BP measurements, first 24 h | ICU median 45 vs IMC median 20 |
+| **Escalation IMC → ICU** | **3% within 48 h; 4% ever** |
+| **Hypotension, first 24 h** | **ICU 38% vs IMC 24%** (p<0.001) — *more* hypotension in the ICU |
+| Primary outcome | **No difference** in death-penalized hospital LOS, ICU/IMC LOS, readmission, mortality, or time to BP target |
+
+**Two things follow.** First, a nicardipine infusion ran safely in intermediate care with **telemetry, 1:3 nursing, hourly cuff checks and no arterial line in 95% of patients.** Second, the ICU did not do better — it did more BP measurements and had *more* hypotension.
+
+**And this already reflects practice.** The authors note: *"in observational studies in the United States, **38–52% of patients with hypertensive emergency are cared for outside the ICU**"* (citing [Posen 2022, Am J Emerg Med](https://pubmed.ncbi.nlm.nih.gov/34673475/) and the [STAT registry, Katz 2009](https://pubmed.ncbi.nlm.nih.gov/19781420/)).
+
+**Honest caveat, which the authors state themselves:** these three hospitals were selected *because* IV antihypertensives and arterial lines were permitted in **both** settings. Single health system. Retrospective. It does not license running nicardipine anywhere — it shows that a properly resourced intermediate care unit is adequate.
+
+### What society documents say about level of care
+
+The **SCCM model institutional policy** accompanying Nates JL et al., *Crit Care Med* 2016;44:1553–1602 draws the line in a way that directly contradicts "nicardipine = ICU" — it assigns titrated **vasoactive** infusions to intermediate care, and reserves **inotropes/vasopressors** for the ICU:
+
+> **ICU:** *"...the management instituted such as invasive mechanical ventilation, **infusion and titration of intravenous inotropes and vasopressor medications** constitute the highest level of care."*
+
+> **Intermediate Medical Unit:** *"...the management instituted such as assisted non-invasive ventilation and **infusion and titration of intravenous vasoactive medications** constitute a higher level of care than the regular inpatient unit."*
+
+Its explicit ICU-level infusion list is: *"dobutamine, epinephrine, isoproterenol, phenylephrine, norepinephrine, vasopressin, **labetalol**, dopamine >10 mcg/kg/min, **nitroprusside**, lidocaine, procainamide."* — **Nicardipine is not on it. Labetalol and nitroprusside are.** — [SCCM model policy, Supplemental Digital Content 2](https://cdn-links.lww.com/permalink/ccm/b/ccm_44_7_2016_03_17_nates_ccmed-d-15-02023_sdc2.doc) · [guideline](https://journals.lww.com/ccmjournal/fulltext/2016/08000/icu_admission,_discharge,_and_triage_guidelines__a.15.aspx)
+
+*(Caveat: this is a non-graded sample policy offered as a template, explicitly intended for local adaptation — not a graded recommendation.)*
+
+**The 2019 stroke guideline gives explicit society-level permission for non-ICU care**, Table 9: *"**Admit the patient to an intensive care or stroke unit** for monitoring"* — and it actively discourages arterial catheters: *"Delay placement of nasogastric tubes, indwelling bladder catheters, **or intra-arterial pressure catheters** if the patient can be safely managed without them."* — [Stroke 2019;50:e344–e418](https://doi.org/10.1161/STR.0000000000000211)
+
+**And the AHA 2024 statement hedges the ICU too**, Table 3 item 5: *"Hypertensive emergencies require immediate and acute treatment usually with parenteral medications and **often** in the ICU setting."* — "often," not "always."
+
+### The cuff-vs-arterial-line data, both directions
+
+| Study | Setting / n | Finding |
+|---|---|---|
+| Saherwala et al., *Neurocrit Care* 2018;28:265 | Neuro ICU, 70 patients on vasoactive infusions, 2,177 paired readings | Strong correlation (SBP r=0.84) but **NIBP–arterial SBP difference >20 mmHg in ~20% of nicardipine observations.** *"NBP and IAP values are not interchangeable."* [PMID 29569130](https://pubmed.ncbi.nlm.nih.gov/29569130/) |
+| Tran QK et al., *West J Emerg Med* 2023;24:763 | Critical Care Resuscitation Unit, 212 hypertensive-emergency patients | *"88 of 212 patients (42%) had a clinically significant difference between CBP and ABP."* Mean difference 17 mmHg. [PMC10393462](https://pmc.ncbi.nlm.nih.gov/articles/PMC10393462/) |
+| Zhang et al., *Pregnancy Hypertens* 2021;24:100 | Maternal ICU, 89 women on **IV nicardipine**, 337 paired SBP | Error grid: **97.8% of MAP pairs in no-risk zone A; 0% in zones D/E.** Intra-arterial MAP reliable; oscillometric SBP less so. [PMID 33773326](https://pubmed.ncbi.nlm.nih.gov/33773326/) |
+
+**The honest reading:** the argument for an arterial line is **measurement accuracy at extremes**, not a regulatory or guideline requirement. And crucially — **no head-to-head trial of arterial line vs cuff during antihypertensive infusion with clinical outcomes exists.** The agreement studies tell you the numbers differ; none tells you whether that changes outcomes.
+
+### A real institutional protocol that requires neither ICU nor art line
+
+Dartmouth-Hitchcock's *Intravenous Nicardipine Quick Reference*, verbatim:
+> *"Who administers: **RN**. Must MD be present during administration: **No**. Monitoring required: Patients are always placed on **telemetry and noninvasive BP monitoring**. Monitor BP before initial dose and **every 15 minutes for 1 hour** after the infusion is initiated and after a dose change. Thereafter, blood pressure is followed at a minimum of every 30 minutes..."*
+
+**No arterial line. No unit restriction stated.** — [Dartmouth-Hitchcock nicardipine quick reference](https://www.dartmouth-hitchcock.org/sites/default/files/2020-12/nicardipine-quick-reference.pdf)
+
+### Verdict for the table
+
+**Nicardipine infusion: step-down / intermediate care / monitored floor is well supported. ICU is required by the DIAGNOSIS (hypertensive emergency, 2025 ACC/AHA Class 1), not by the drug. Arterial line is preferred at extremes, never required.** The practical monitoring floor that recurs across every real document: **telemetry + pulse oximetry + noninvasive BP q15min during active titration, stepping down to q30min–q1h once stable**, with a defined maximum dose and a defined escalation trigger.
+
+**NOT FOUND, and worth knowing:** there is **no published study of a nicardipine infusion run on a general medical/surgical floor**, and no peer-reviewed nurse-driven nicardipine *floor* protocol. The non-ICU evidence is intermediate care, not ward.
 
 ## (e) Commonly gotten wrong
 
@@ -315,7 +397,12 @@ Both are explicitly acceptable — a contrast with nicardipine, which requires a
 
 This is an 8-hour monitoring tail after the drip is off — it affects when a patient can leave a monitored bed, and it is routinely missed.
 
-<!--SETTING_CLEVIDIPINE-->
+**Can it run outside an ICU?** The published evidence is ED-based, not floor-based:
+- **VELOCITY** (Pollack CV, Varon J, Peacock WF, et al. *Ann Emerg Med* 2009;53:329–38) — prospective open-label, n=126, enrolled *"in the emergency department or ICU"* with SBP >180 and/or DBP >115; 81% had end-organ injury. 88.9% reached target within 30 min (median 10.9 min). **No arterial line requirement reported.** [PMID 18534716](https://pubmed.ncbi.nlm.nih.gov/18534716/)
+- **Brehaut SS, Roche AM.** *Crit Pathw Cardiol* 2025;24(1):e0375 — retrospective, **n=295 acute stroke patients** given clevidipine **in the ED or ICU**; clevidipine was made first-line in that institution's stroke protocol. Median time to goal BP 15 min (ischaemic), 39 min (haemorrhagic). Industry-funded. [PMC11841717](https://pmc.ncbi.nlm.nih.gov/articles/PMC11841717/)
+- **Kamp A et al.** *Am J Emerg Med* 2022;52:220–4 — multicentre retrospective, ED pre-alteplase, continuous infusion (nicardipine or clevidipine, n=57) vs intermittent bolus (labetalol/hydralazine, n=122). No difference in door-to-needle or in reaching <185/110 within 15 min. **Cost $71.40 vs $2.20.** [PMC10077818](https://pmc.ncbi.nlm.nih.gov/articles/PMC10077818/)
+
+**Verdict: step-down/intermediate care is reasonable by analogy to nicardipine (same monitoring language, same class, shorter half-life), and clevidipine was included in the same practice pattern. But state this honestly — I found NO published study of clevidipine on a step-down, telemetry, or general floor unit. Nothing. The ED and ICU evidence is all there is.** Arterial line: not required by label, not required by any guideline.
 
 ## (e) Commonly gotten wrong
 
@@ -377,7 +464,11 @@ That is intermittent cuff monitoring — deliverable on any medicine floor. **Co
 
 **58% symptomatic orthostasis if the patient stands within 3 hours.** The label further says the patient's ability to tolerate upright position must be established *"before permitting any ambulation, such as using toilet facilities."* On a floor, this means a bedside commode order or a 3-hour bedrest order — which almost nobody writes.
 
-**Infusion:** needs a pump and more frequent monitoring; typically telemetry or step-down. <!--SETTING_LABETALOL-->
+**Infusion:** needs a pump and more frequent monitoring; typically telemetry or step-down.
+
+**A notable wrinkle:** the **SCCM model institutional policy puts LABETALOL INFUSION on its ICU-level infusion list** — alongside nitroprusside, the vasopressors and the inotropes — while assigning titrated vasoactive infusions generally to intermediate care. Labetalol is the one antihypertensive infusion that model policy explicitly escalates. ([SCCM model policy](https://cdn-links.lww.com/permalink/ccm/b/ccm_44_7_2016_03_17_nates_ccmed-d-15-02023_sdc2.doc))
+
+Set against that, the **2019 AHA/ASA stroke guideline runs labetalol at 2–8 mg/min on a stroke unit** with q15min cuff monitoring. The two documents disagree, which is itself the answer: **there is no national standard, and I found no published non-ICU safety study for labetalol infusion.**
 
 **A worked example of how institution-dependent this is.** The Vancouver Coastal Health / Providence Health Care / BC Women's *Adult Parenteral Drug Therapy Manual* (reviewed 19 Dec 2024) tabulates labetalol routes as:
 
@@ -447,7 +538,9 @@ The practical constraints are (i) weight-based dosing with a pump, (ii) hypotens
 
 Offset is the redeeming feature: *"Decrease of dose or termination of infusion reverses hypotension, usually within 30 minutes."* Steady state in ~30 min without a load, ~5 min with one.
 
-<!--SETTING_ESMOLOL-->
+**Setting: institution-dependent, and the evidence base is empty.** **I found no non-ICU, telemetry, or step-down safety data for esmolol infusion at all.** Its labelled indications are perioperative and emergent rate control, and the ACCP critical care self-assessment recommends esmolol first-line in aortic dissection but pairs it with ICU admission ([CCSAP hypertensive emergencies chapter](https://www.accp.com/docs/bookstore/ccsap/ccsap2018b1_sample.pdf)).
+
+Practically: a **bolus or a short bolus-plus-brief-infusion** is done on telemetry and in EDs routinely. A **sustained titrated esmolol infusion** is an ICU/step-down activity at most centres. Where exactly the line falls is your hospital's policy. Say "institution-dependent," not a number.
 
 ## (e) Commonly gotten wrong
 
@@ -515,7 +608,219 @@ That is a **PA catheter**, not an arterial line, and it applies only to the HF i
 
 # 6. NITROGLYCERIN — ALL FORMS
 
-<!--NITROGLYCERIN_SECTION-->
+Nitroglycerin is the agent for which "one route, one setting" fails hardest — it has **five distinct inpatient routes** with different indications, different settings and different labelling status.
+
+## (a) All forms and their inpatient roles
+
+| Form | Inpatient role | Labelled for |
+|---|---|---|
+| **IV infusion** | Titratable BP/preload control; ACS; SCAPE | **Peri-op HTN, CHF in acute MI, angina unresponsive to SL + beta-blocker, induced intra-op hypotension** |
+| **IV bolus (push)** | SCAPE | **NOT labelled — the label explicitly prohibits it** |
+| **SL tablet (Nitrostat)** | Acute angina | Acute anginal attack |
+| **Lingual spray (Nitrolingual / NitroMist)** | Acute angina, esp. dry mouth | Acute anginal attack |
+| **Topical 2% ointment (Nitro-Bid)** | Floor-level BP/preload, NPO patients | **ANGINA PREVENTION ONLY** |
+| **Transdermal patch (Nitro-Dur)** | Chronic angina prophylaxis | **ANGINA PREVENTION ONLY** |
+
+**ISDN and ISMN are separate drugs, not nitroglycerin forms** — see §15.
+
+## (b) IV nitroglycerin — labelling and the bolus question
+
+### The label prohibits direct injection, in capitals, three times
+
+> **"FOR INTRAVENOUS USE ONLY. NOT FOR DIRECT INTRAVENOUS INJECTION.** NITROGLYCERIN INJECTION MUST BE DILUTED IN DEXTROSE (5%) INJECTION OR SODIUM CHLORIDE (0.9%) INJECTION PRIOR TO ITS INFUSION"
+
+That phrase appears in the boxed lead-in, again as the first line of Dosage and Administration, and again on the vial: *"NOT FOR DIRECT INTRAVENOUS INJECTION. FOR INTRAVENOUS INFUSION ONLY. MUST BE DILUTED BEFORE USE."*
+— [Nitroglycerin Injection USP, American Regent, DailyMed setid 8c52cdf6-87be-4719-b105-f08be096d462](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8c52cdf6-87be-4719-b105-f08be096d462)
+
+**The words "bolus" and "IV push" appear ZERO times across all seven nitroglycerin injection labels currently on DailyMed.**
+
+**So bolus NTG in SCAPE is off-label on TWO counts: the method (explicitly contraindicated) and the indication (SCAPE is none of the four labelled uses).** That is a stronger off-label status than nicardipine bolus, where the label is merely silent.
+
+### Infusion dosing per label
+
+> *"When using a non-absorbing infusion set, the initial dosage should be **5 mcg/min**... Initial titration should be in 5 mcg/min increments, with increases every 3-5 minutes until some response is noted. If no response is seen at 20 mcg/min, increments of 10 and later 20 mcg/min can be used."*
+
+**The label states no maximum dose.** *"There is no fixed optimum dose of nitroglycerin."* The commonly quoted 400 mcg/min ceiling is a practice convention, not a label number.
+
+> *"Administer... **only via an infusion pump** that can maintain a constant infusion rate."*
+
+### SCAPE bolus — the actual evidence
+
+**It is a real, published, increasingly mainstream emergency-medicine practice.** But: **no trial has ever randomised bolus vs no bolus.** Every RCT compares a *high-dose strategy* (bolus + fast infusion) against a *low-dose strategy*, so the bolus is confounded with the infusion rate.
+
+| Study | Design / n | Bolus protocol |
+|---|---|---|
+| **Levy 2007**, *Ann Emerg Med* 50:144–52 | Nonrandomised open-label single-arm, n=29 vs 45 historical | **2,000 mcg IV bolus, repeat q3–5 min, up to 10 doses (max 20 mg)**, plus an infusion. **Mean total bolus dose 6,500 mcg.** Intubation 13.8% vs 26.7%; ICU 37.9% vs 80.0%. [PMID 17509731](https://pubmed.ncbi.nlm.nih.gov/17509731/) |
+| **Wilson 2017**, *Am J Emerg Med* 35:126–31 | Retrospective, n=395 | Median push **2 mg** q3–5 min. ICU admission 48.4% (bolus) vs 68.7% (infusion) vs 83.0% (combination), p<0.0001. No difference in hypotension or renal injury. [PMID 27825693](https://pubmed.ncbi.nlm.nih.gov/27825693/) |
+| **Mathew 2021**, *J Emerg Med* 61:271–7 | Prospective observational pilot, n=25 | **SBP-stratified, weight-independent, over 2 min: SBP 160–179 → 600 mcg; 180–199 → 800 mcg; ≥200 → 1,000 mcg**, then infusion 100 mcg/min. Mean bolus 872 mcg. **No post-bolus hypotension.** 24/25 discharged from the ED. [PMID 34215472](https://pubmed.ncbi.nlm.nih.gov/34215472/) |
+| **Siddiqua/Mathew 2024**, *Emerg Med J* 41:96–102 | **Open-label pragmatic RCT, n=52** | High-dose: 600–1,000 mcg bolus then 100 mcg/min. Low-dose: **no bolus**, 20–40 mcg/min. Symptom resolution at 6 h **65.4% vs 11.5%** (p<0.001); MACE **3.8% vs 26.9%** (p=0.02); intubation 3.8% vs 19.2% (p=0.08). Only adverse event: headache. [PMID 38050078](https://pubmed.ncbi.nlm.nih.gov/38050078/) |
+| **Patrick 2023**, *JACEP Open* 4:e13079 | Retrospective prehospital, n=235 | **1 mg IV NTG.** SBP 198 → 168. **3 episodes (1.3%) asymptomatic hypotension, none needing intervention.** [PMID 38073706](https://pubmed.ncbi.nlm.nih.gov/38073706/) |
+
+Two older RCTs frequently cited here — **Cotter 1998** (*Lancet*, 3 mg boluses q5min) and **Sharon 2000** (*JACC*, 4 mg boluses q4min) — used **isosorbide dinitrate, not nitroglycerin.** Worth knowing before quoting them as NTG evidence.
+
+Meta-analysis: **Pramudyo 2025**, *BMJ Open* 15:e099142 — 4 studies, **185 patients total**. High-dose reduced mechanical ventilation (RR 0.31, 0.10–0.96), improved 6-h symptom resolution (RR 3.88, 1.95–7.71). [PMID 40506079](https://pubmed.ncbi.nlm.nih.gov/40506079/)
+
+### What guidelines say — and the discordance that matters
+
+**ACEP 2022 Clinical Policy on Acute Heart Failure Syndromes** is the only society document that endorses it, and only at the weakest level:
+
+> *"**Level A recommendations.** None specified. **Level B recommendations.** None specified. **Level C recommendations.** Consider using high-dose nitroglycerin as a safe and effective treatment option when administered to patients with acute heart failure syndrome and elevated blood pressure (Consensus recommendation)."*
+
+The footnote carries the dose:
+> *"'High dose' nitroglycerin has also been described as **bolus intravenous dosing of 2,000 mcg every 3 to 5 minutes**."*
+
+**Both footnote citations point to Levy 2007 — the entire ACEP endorsement rests on one Class III study of 29 patients.** ACEP's own text notes "zero Class I studies, zero Class II studies, and 1 Class III study." — *Ann Emerg Med* 2022;80(4):e31–e59, [full text](https://www.annemergmed.com/article/S0196-0644(22)00366-3/fulltext)
+
+**The 2022 AHA/ACC/HFSA heart failure guideline does not mention SCAPE or bolus nitroglycerin at all.** Its only nitrate recommendation is:
+
+> **COR 2b, LOE B-NR:** *"In patients who are admitted with decompensated HF, in the absence of systemic hypotension, intravenous nitroglycerin or nitroprusside may be considered as an adjuvant to diuretic therapy for relief of dyspnea."*
+
+and it cautions: *"there are no data that suggest that intravenous vasodilators improve outcomes in the patient hospitalized with HF."* — *Circulation* 2022;145:e895–e1032, [DOI 10.1161/CIR.0000000000001063](https://doi.org/10.1161/CIR.0000000000001063)
+
+**This is the single most important discordance in this document: emergency medicine practice has moved well ahead of the cardiology guideline on SCAPE.** Say so plainly rather than implying consensus.
+
+### Setting for SCAPE bolus — ED resus bay, and NO arterial line
+
+**No study used an arterial line.** Mathew 2021, verbatim: *"All eligible patients were managed in a high-dependency unit of the ED... **Blood pressure was measured noninvasively.**"* Siddiqua 2024: *"managed in the high-dependency unit of the ED, with close monitoring of their vitals."*
+
+Note that the **2022 ACC/AHA guideline mentions an arterial line only for nitroprusside, explicitly not for nitroglycerin:** *"Because of sodium nitroprusside's potential for producing marked hypotension, invasive hemodynamic blood pressure monitoring (eg, an arterial line) is typically required, and nitroprusside is usually used in the intensive care setting."*
+
+**Avoiding the ICU is the point of the strategy** — ICU admission is the primary outcome in both Levy 2007 and Wilson 2017.
+
+**A useful workaround where pharmacy or nursing policy forbids IV push NTG:** run the pump at a high rate briefly to deliver the same load. EMCrit's IBCC SCAPE chapter describes both: *"Pushing a 1,000-2,000 mcg bolus nitroglycerine over ~2 minutes"* **or** *"Nitroglycerine infusion at 400-800 mcg/min for 2.5 minutes."* — [emcrit.org/ibcc/scape](https://emcrit.org/ibcc/scape/) *(FOAM, secondary source)*
+
+## (c) Sublingual tablet — NITROSTAT
+
+> *"Administer one tablet **under the tongue or in the buccal pouch** at the first sign of an acute anginal attack. Allow tablet to dissolve without swallowing. One additional tablet may be administered **every 5 minutes** until relief is obtained. **No more than three tablets are recommended within a 15-minute period.**"*
+
+> *"**Administer NITROSTAT at rest, preferably in the sitting position.**"*
+> *"For patients with xerostomia, a small sip of water prior to placing the tablet under the tongue may help maintain mucosal hydration and aid dissolution."*
+
+**Onset/duration (§12.2):** *"onset of the vasodilatory effect occurs approximately **1 to 3 minutes** after sublingual nitroglycerin administration and reaches a maximum by **5 minutes** postdose. Effects persist for at least **25 minutes**."* Bioavailability ~40%; elimination half-life 2–3 min.
+
+— [NITROSTAT, DailyMed setid 9a52da75-d0af-4237-96c0-0b12adfa8636](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9a52da75-d0af-4237-96c0-0b12adfa8636)
+
+**A teaching point the label explicitly debunks:** *"You may feel a 'burning or tingling' sensation at the site of tablet placement. **Lack of 'burning or tingling' in your mouth does not indicate failure of Nitrostat release.**"* The old "if it doesn't fizz it's expired" heuristic is wrong and the label says so.
+
+## (d) Lingual spray — and the placement myth
+
+**400 mcg per metered spray; repeat q5 min; maximum 3 sprays in 15 minutes** — same as the tablet.
+
+**The common teaching that the spray goes ON the tongue while the tablet goes UNDER it is not supported by either label. Both permit either placement:**
+- Nitrolingual: *"onto or under the tongue"* / *"Spray the dose **preferably onto or under the tongue**"*
+- NitroMist: *"The dose should **preferably be sprayed into the mouth on or under the tongue**"*
+
+Both labels do carry one absolute: **"THE SPRAY SHOULD NOT BE INHALED."** And Nitrolingual adds: *"The medication should not be expectorated or the mouth rinsed for 5 to 10 minutes following administration."*
+
+**The real bedside difference is PRIMING, not placement:**
+
+| | Nitrolingual PumpSpray | NitroMist |
+|---|---|---|
+| Initial prime | **5 sprays** | **10 sprays** |
+| Re-prime after 6 weeks | **1 spray** | **2 sprays** |
+| Shake? | "Do not shake" | "Do not shake container" |
+
+— [Nitrolingual, DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d19b5f51-ca85-48d6-9ccd-8ae26249cdc3) · [NitroMist, DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=db97f3b9-6608-482f-a0ef-ad1cf610e520)
+
+**NOT VERIFIABLE:** neither spray label states an onset of action. **Do not quote the tablet's 1–3 minutes for a spray.**
+
+## (e) Topical 2% ointment — NITRO-BID
+
+**Concentration, verbatim:** *"Each inch (2.5 cm), as squeezed from the tube, contains approximately **15 mg** of nitroglycerin."*
+→ ½ inch = **7.5 mg**; 1 inch = **15 mg**; 2 inches = **30 mg**.
+
+**Dose range:** *"Doses used in clinical trials have ranged from 1/2 inch (7.5 mg) to 2 inches (30 mg), typically applied to 36 square inches of truncal skin."*
+
+**The dosing schedule most people state wrongly:**
+> *"one appropriate dosing schedule for NITRO-BID would begin with **two daily 1/2-inch (7.5 mg) doses, one applied on rising in the morning and one applied six hours later.** The dose could be doubled, and even doubled again, in patients tolerating this dose but failing to respond to it."*
+
+**That is NOT q6h around the clock, and NOT q8h.** It is **two doses per day, six hours apart, both in waking hours**, leaving a 10–12 hour overnight nitrate-free interval. **No maximum dose is stated anywhere in the label** — 2 inches is the top of the studied range, not a labelled ceiling.
+
+**Onset and duration, verbatim:**
+- *"nitroglycerin levels rise to steady state **within an hour or so** of application... and after removal of nitroglycerin ointment, levels wane with a half-life of about **half an hour**."*
+- *"can effectively reduce exercise-related angina for **up to 7 hours** after a single application"*
+- *"the maximal achievable daily duration of anti-anginal effect from nitroglycerin ointment will be **about 12 hours**."*
+
+**Application:** measure on the supplied applicator paper, *"Spread the ointment using the dose measuring applicator lightly onto the chest... **Do not rub into the skin.**"* Tape the applicator in place. It stains clothing — cover with plastic wrap.
+
+— [NITRO-BID, DailyMed setid e464e9bb-48e8-4b9f-9fff-e220cfbac0c5](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e464e9bb-48e8-4b9f-9fff-e220cfbac0c5)
+
+**A citation correction: "Appli-Ruler" is NOT FDA-label language.** The term appears in zero US nitroglycerin labels. FDA calls it a *"dose measuring applicator"* or *"ruled, impermeable, paper applicator."* Appli-Ruler is a legacy/Canadian trade term (Nitrol). Do not cite it as labelling.
+
+## (f) Transdermal patch — NITRO-DUR
+
+**Strengths:** 0.1, 0.2, 0.3, 0.4, 0.6 and 0.8 mg/hr (20/40/60/80/120/160 mg total content). *"Each cm² of applied system delivers approximately 0.02 mg of nitroglycerin per hour."*
+
+**Dose:** *"The suggested starting dose is between **0.2 mg/hr and 0.4 mg/hr**. Doses between 0.4 mg/hr and 0.8 mg/hr have shown continued effectiveness for 10 to 12 hours daily for at least 1 month."*
+
+**Onset and duration, verbatim:**
+- *"steady-state plasma concentrations of nitroglycerin are reached by about **2 hours** after application"*
+- *"Upon removal of the patch, the plasma concentration declines with a half-life of **about an hour**."*
+- *"Starting about **2 hours** after application and continuing until **10 to 12 hours** after application, patches that deliver at least 0.4 mg of nitroglycerin per hour have consistently demonstrated greater antianginal activity than placebo."*
+
+**The mandatory nitrate-free interval, verbatim:**
+> *"an appropriate dosing schedule for nitroglycerin patches would include a daily **patch-on period of 12 to 14 hours** and a daily **patch-off period of 10 to 12 hours**."*
+
+> *"the large majority of such controlled trials have shown the development of tolerance (ie, **complete loss of effect**) within the first 24 hours after therapy was initiated. **Dose adjustment, even to levels much higher than generally used, did not restore efficacy.**"*
+
+— [NITRO-DUR, DailyMed setid 5e15296c-5acd-4bcc-80a8-b49cb1ef3eb0](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5e15296c-5acd-4bcc-80a8-b49cb1ef3eb0)
+
+**Two label facts worth quoting rather than paraphrasing:**
+1. *"patches delivering **0.2 mg/hr had significantly less antianginal activity than placebo**."* The label really does say worse than placebo. A 0.2 mg/hr patch is close to a placebo order.
+2. *"A cardioverter/defibrillator should not be discharged through a paddle electrode that overlies a NITRO-DUR patch."* Same class of hazard as the clonidine patch.
+
+**Application site:** *"Select a reasonably hair-free application site. **Avoid extremities below the knee or elbow**, skin folds, scar tissue, burned or irritated areas."*
+
+## (g) Which forms are floor-appropriate?
+
+| Form | Setting |
+|---|---|
+| SL tablet, lingual spray | **Any floor**, routine vitals |
+| Topical 2% ointment | **Any floor**, routine vitals |
+| Transdermal patch | **Any floor**, routine vitals |
+| IV infusion |  Telemetry/step-down commonly; ICU at some institutions |
+| **IV bolus (SCAPE)** | **ED resuscitation bay / high-dependency area.** Not a floor activity. No arterial line used in any published study. |
+
+## (h) Is topical NTG for BLOOD PRESSURE off-label? Yes, unambiguously
+
+**Both the 2% ointment and the patch are labelled for "prevention of angina pectoris" ONLY.** Neither label mentions hypertension. Both state that benefit in MI or CHF *"have not been established."* Note the asymmetry: the **IV** label *does* include peri-operative hypertension and CHF in acute MI — **the inpatient nitrate with a hypertension indication is the drip, not the paste.**
+
+**The best direct evidence for the "floor-friendly alternative to a drip" practice, and it is thin:**
+
+**Brower KA et al. Topical nitroglycerin ointment for treatment of acute hypertension in hospitalized inpatients.** *J Cardiovasc Pharmacol Ther* 2015;20(3):284–8. Retrospective chart review, **72 patients / 112 applications.** The paper states the rationale and the off-label status outright:
+
+> *"Acute antihypertensive treatment options can be limited in this setting by **monitoring requirements of intravenous medications** and patients' inability to take oral medications... **Nitroglycerin is not approved by the Food and Drug Administration for this condition, and limited evidence exists to support this indication.**"*
+
+> Results: *"**systolic blood pressure decreased 20 mm Hg or more in 42% of occurrences with a median decrease of 16 mm Hg.**"* Conclusion: *"Study results suggest **possible** efficacy."*
+
+— [PMID 25193736](https://pubmed.ncbi.nlm.nih.gov/25193736/)
+
+**A median 16 mmHg SBP drop, with only 42% achieving a 20 mmHg reduction, from a 72-patient uncontrolled chart review.** That is the whole evidence base. It supports "reasonable, low-risk, modest effect" — not "equivalent to a drip."
+
+**And a mechanistic caution against substituting paste for a drip in SCAPE:** Mumma BE et al., *J Emerg Med* 2014;47:192–7 — prospective observational, n=64, impedance cardiography. **MAP and thoracic fluid content fell (p=0.001, p=0.043), but cardiac index, cardiac output, SVR and stroke volume did NOT change.** [PMID 24698507](https://pubmed.ncbi.nlm.nih.gov/24698507/) The ointment lowers MAP without a detectable afterload effect — which is precisely the effect you *need* in SCAPE and did not get.
+
+## (i) Tolerance — the label language
+
+The same boilerplate appears in the IV, ointment and patch labels:
+
+> *"Dosing regimens for most chronically used drugs are designed to provide plasma concentrations that are continuously greater than a minimally effective concentration. **This strategy is inappropriate for organic nitrates.**... In the large majority of these trials, active agents were **indistinguishable from placebo after 24 hours (or less) of continuous therapy. Attempts to overcome nitrate tolerance by dose escalation, even to doses far in excess of those used acutely, have consistently failed.**"*
+
+> *"To avoid development of tolerance to nitroglycerin, **drug-free intervals of 10-12 hours are known to be sufficient**... In one well-controlled clinical trial, subjects receiving nitroglycerin appeared to exhibit a **rebound or withdrawal effect**, so that their exercise tolerance at the end of the daily drug-free interval was **less than that exhibited by the parallel group receiving placebo.**"*
+
+**A structural point that matters clinically:** the 10–12 hour drug-free-interval language sits in **DOSAGE AND ADMINISTRATION** for the ointment and the patch — i.e. it is an *instruction*. For the IV products it appears only in **CLINICAL PHARMACOLOGY** — i.e. *pharmacology*. **No IV label prescribes a nitrate holiday.** The relevant IV data point is the ACC/AHA line: *"tachyphylaxis may develop within 24 hours, and up to 20% of those with HF may develop resistance to even high doses."*
+
+## (j) Commonly gotten wrong
+
+1. **"There's no IV bolus of nitroglycerin."** There is, in SCAPE — but it is off-label on **two** counts, and the label prohibits direct injection in capital letters.
+2. **Citing Cotter 1998 and Sharon 2000 as nitroglycerin evidence.** Both used **isosorbide dinitrate**.
+3. **Implying guideline consensus on SCAPE.** ACEP gives it Level C consensus; the 2022 ACC/AHA HF guideline does not mention SCAPE or bolus NTG at all.
+4. **"Spray on the tongue, tablet under it."** Both spray labels permit either placement. The real difference is priming (5+1 vs 10+2 sprays).
+5. **Ointment "q6h."** The label's schedule is **two doses a day, six hours apart, both in waking hours** — a deliberate 10–12 h overnight holiday.
+6. **Forgetting the nitrate-free interval on a patch**, which produces complete loss of effect within 24 hours that no dose increase can rescue.
+7. **Leaving a patch on for defibrillation** or forgetting it is there (same hazard class as the clonidine patch).
+8. **Treating paste as equivalent to a drip.** Median SBP drop ~16 mmHg, and in one study no measurable SVR effect.
+9. **PVC tubing absorbs nitroglycerin** — 20–60% of the dose is lost to standard PVC sets. Use non-absorbing tubing, and note the label's warning that *"recommended doses based on this experience will be too high when the low-absorbing infusion sets are used."*
+10. **Absolute contraindication with PDE5 inhibitors.** The NTG label does not give an hour-based window — it says only *"use within a few days of one another is not recommended."* The familiar 24 h (sildenafil/vardenafil) and 48 h (tadalafil) figures come from the PDE5 drugs' own labels, not the nitrate label.
 
 ---
 
@@ -678,7 +983,11 @@ After stopping an infusion: *"heart rate reduction may last from 0.5 hours to mo
 - **Infusion: telemetry at minimum.** Whether a telemetry floor (vs step-down) may run a diltiazem drip is **institution-dependent** — many community hospitals restrict titratable diltiazem infusions to step-down/ICU, many academic centres run them on cardiology telemetry. There is no national standard. State that rather than picking one.
 - **Arterial line: no**, not for either route, and there is no label language about it.
 
-<!--SETTING_DILTIAZEM-->
+**Setting: telemetry at minimum for both routes; step-down vs telemetry floor for the infusion is institution-dependent.** IV diltiazem bolus is routine in EDs and on cardiology telemetry. Whether a telemetry medicine floor may run a titratable diltiazem *infusion* varies — many academic centres do, many community hospitals restrict it to step-down.
+
+Note that the **SCCM model policy's ICU-level infusion list does NOT include diltiazem** (it names labetalol and nitroprusside among the antihypertensives). **No arterial line**, and no label language about one.
+
+**NOT VERIFIED:** I found no study establishing the safety of diltiazem infusion specifically on a non-ICU floor. The practice is widespread and the drug is not on any ICU-only list, but that is an absence of restriction rather than positive evidence.
 
 ## (e) Commonly gotten wrong
 
@@ -983,7 +1292,7 @@ Dose: *"Therapy for either hypertension or angina should be initiated with 30 or
 
 **There is no NPO workaround for nifedipine.** No IV nifedipine exists in the US, the ER tablet cannot be crushed, and the IR capsule must not be used for BP. A patient on nifedipine ER who goes NPO needs a different drug class, not a different nifedipine formulation.
 
-<!--NIFEDIPINE_GITS-->
+*(For the GITS mechanism, the ghost-tablet phenomenon and the GI-obstruction warning, see §15 under "Nifedipine ER".)*
 
 ## (d) Setting
 
@@ -1000,7 +1309,156 @@ ER tablet: general medicine floor. IR capsule: should not be used for BP at all.
 
 # 15. REMAINING ORAL AGENTS — ROUTE AND FORMULATION TRAPS
 
-<!--ORAL_AGENTS_SECTION-->
+One line each on the route/formulation trap, with the label language where it carries weight.
+
+## Metoprolol tartrate IR vs metoprolol succinate ER
+
+- **Tartrate IR:** plain scored IR tablet, label silent on crushing, **crushable**. Has an IV form.
+- **Succinate ER (Toprol-XL):** *"scored and can be divided; however, the whole or half tablet should be swallowed whole and not chewed or crushed."* — **[DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=31d8610a-ab22-49e5-a762-6b08244ee93a)**
+
+**The trap:** metoprolol succinate ER can be **HALVED but never CRUSHED**. This half-permission is unusual and is the single most misremembered fact in this section. And **there is no IV metoprolol succinate** — a patient on Toprol-XL who goes NPO gets IV metoprolol *tartrate*, which is a different salt with a different duration.
+
+## Carvedilol
+
+- **IR tablet (Coreg):** label silent on crushing, not on any do-not-crush list, plain film-coated IR — **crushable by inference, not by label statement.**
+- **Coreg CR capsule — CAN be opened and sprinkled**, and the label says so explicitly:
+  > *"The capsules may be carefully opened and the beads sprinkled over a spoonful of applesauce. **The applesauce should not be warm** because it could affect the modified-release properties of this formulation. The mixture of drug and applesauce should be consumed immediately in its entirety."*
+
+  PK backing: *"sprinkling the contents of the COREG CR capsule on applesauce did not appear to have a significant effect on overall exposure (AUC)... but did result in a decrease in C max (18%)."* — [Coreg CR, DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d3625d78-6eb6-41fe-8f6f-664965c104c4)
+- **Take with food — and the reason is orthostasis, per the label:** *"COREG should be taken with food to slow the rate of absorption and reduce the incidence of orthostatic effects."*
+- **No IV carvedilol exists.**
+
+## Lisinopril
+
+- Tablet crushable (label silent, plain IR).
+- **An FDA-approved oral solution exists: QBRELIS 1 mg/mL, 150 mL, stored at ROOM TEMPERATURE** (no refrigeration). — [QBRELIS, DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9f6e4e57-a489-4b36-b093-b93865d3717c)
+- **No IV lisinopril exists.** The parenteral ACE inhibitor is enalaprilat, which is a **different drug** — converting means switching molecules.
+
+## Losartan
+
+- Tablet crushable; the Cozaar label carries an official extemporaneous **2.5 mg/mL suspension** recipe (Ora-Plus/Ora-Sweet SF, refrigerated, 4 weeks).
+- **There is NO intravenous ARB in the United States — none, for any agent in the class.** Verified across losartan, valsartan, candesartan, olmesartan, irbesartan and telmisartan: zero injection-form labels. For an NPO patient who needs parenteral RAAS blockade, the only option is enalaprilat — **a class switch from ARB to ACE inhibitor**, which carries the angioedema-history caveat that implies.
+
+## Amlodipine
+
+**Three** FDA-approved liquids exist, and the storage differences matter:
+
+| Product | Form | Strength | Storage |
+|---|---|---|---|
+| **KATERZIA** | Oral suspension | 1 mg/mL, 150 mL | **Refrigerated 2–8 °C**, shake, protect from light |
+| **NORLIQVA** | Oral solution | 1 mg/mL, 150 mL | **Room temperature** |
+| **SDAMLO** | Powder for oral solution, unit-dose | 2.5 / 5 / 10 mg | **Room temperature** |
+
+Sdamlo is the best NG-tube option — single-dose, reconstituted at the bedside in 15 mL of water, no bulk-bottle measuring. Tablet is crushable. **No IV amlodipine.**
+
+## Hydrochlorothiazide
+
+- Tablet crushable; the **12.5 mg capsule** (formerly Microzide) can be **opened** rather than crushed.
+- **An FDA-approved oral suspension exists: INZIRQO, 10 mg/mL** after reconstitution, room temperature, **30-day expiry post-reconstitution**. — [INZIRQO, DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=41aaea48-6c1b-42c8-a96f-5923d49dc934)
+- **No IV HCTZ.** But **IV chlorothiazide (Sodium DIURIL) does exist** and is the parenteral thiazide: **0.5–1 g once or twice daily**, reconstituted with ≥18 mL sterile water (*"Never add less than 18 mL"*) to 28 mg/mL. *"Reserved for patients unable to take oral medication or for emergency situations."* Onset 15 min, peak 30 min. **PO↔IV is 1:1** — *"using the same dosage schedule as for the parenteral route."* Do not give SC or IM; avoid extravasation. — [Sodium DIURIL, DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1d9fa4e6-6516-45cd-a316-292c6a529ecc)
+
+## Chlorthalidone
+
+Crushable. **No liquid form. No IV form.** For NPO thiazide-type diuresis, the answer is IV chlorothiazide, not chlorthalidone.
+
+## Spironolactone — the biggest conversion trap in this list
+
+**CAROSPIR oral suspension 25 mg/5 mL exists — and it is NOT interchangeable with the tablet.** The warning is in the Highlights, not buried:
+
+> **"CAROSPIR is not therapeutically equivalent to Aldactone (2.1)"**
+
+> *"In patients requiring a dose greater than 100 mg, use another formulation. Doses of the suspension greater than 100 mg may result in spironolactone concentrations higher than expected."*
+
+> §12.3: *"For an equivalent dose, CAROSPIR results in **15 to 37% higher serum concentration** compared to Aldactone tablets."*
+
+> §14.1: *"The RALES study was conducted with a formulation of spironolactone that is **not therapeutically equivalent to CAROSPIR**."*
+
+— [CAROSPIR, DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c4f70a04-7d89-4b73-8b02-17d43471bf08)
+
+**CaroSpir has its own dosing, which is not the tablet's:** heart failure **initiate at 20 mg daily** (not 25); hypertension 20–75 mg daily; cirrhotic oedema 75 mg daily. **Above 100 mg, switch formulations.**
+
+**So a patient on spironolactone 50 mg tablets who goes NPO does NOT simply get 10 mL of CaroSpir.** Generic spironolactone suspension carries identical non-equivalence language. No IV spironolactone exists.
+
+## Isosorbide dinitrate vs mononitrate — different drugs
+
+| | ISDN IR | ISMN IR | ISMN ER |
+|---|---|---|---|
+| Dose | 5–20 mg BID–TID (maint. 10–40 mg) | **20 mg BID, doses 7 HOURS APART** | 30–120 mg once daily, morning |
+| Nitrate-free interval | *"at least 14 hours long"* | built into the 7-hour asymmetric schedule | overnight |
+| Crush? | Yes, scored | Yes | **Halve only — scored, but never crush** |
+
+**Label language on the nitrate-free interval (ISDN):**
+> *"Every dosing regimen for isosorbide dinitrate tablets must provide a daily dose-free interval to minimize the development of this tolerance. With immediate-release ISDN, it appears that one daily dose-free interval must be at least 14 hours long."* and *"no dosing regimen with isosorbide dinitrate tablets should be expected to provide more than about 12 hours of continuous anti-anginal efficacy per day."*
+
+**ISMN IR, the 7-hour rule, verbatim:**
+> *"The recommended regimen of isosorbide mononitrate tablets is **20 mg twice daily, with the doses seven hours apart**."* — i.e. 8 a.m. and 3 p.m., NOT q12h.
+
+**ISMN ER:** *"should not be chewed or crushed and should be swallowed together with a half-glassful of fluid."*
+
+**Two route facts:**
+- **Sublingual ISDN is no longer marketed in the US.** The FDA NDC Directory lists zero sublingual-route ISDN products; the only SL ISDN label on DailyMed is from 2012 and the Isordil brand is discontinued. Treat it as historical.
+- **There is no IV isosorbide of either salt in the US.** (IV ISDN exists in Europe and in older literature.) **The NPO nitrate is nitroglycerin** — which has IV, SL tablet, lingual spray, patch and ointment.
+
+## Diltiazem ER — brand-dependent, not capsule-vs-tablet
+
+This is the most commonly mis-simplified item on the list. The distinction is **not** "capsules can be sprinkled, tablets cannot." It is brand-specific:
+
+| Product | Form | Sprinkle on applesauce? |
+|---|---|---|
+| **TIAZAC** | ER capsule | **YES — label explicitly permits it** |
+| **TAZTIA XT** | ER capsule | **YES** (generic of Tiazac) |
+| **CARDIZEM CD** | ER capsule | **Label is SILENT** — no sprinkle instruction |
+| Cartia XT / Dilt-CD / Diltia XT / Dilacor XR | ER capsule | Label silent |
+| **CARDIZEM LA** | ER tablet | **NO** — *"swallowed whole and not chewed or crushed"* |
+
+Tiazac's label, quoted:
+> *"Tiazac Extended-Release Capsules may also be administered by carefully opening the capsule and sprinkling the capsule contents on a spoonful of applesauce. The applesauce should be swallowed immediately without chewing... **Subdividing the contents of a Tiazac Extended-Release Capsule is not recommended.**"*
+— [TIAZAC, DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c567fe7e-887e-4291-a0d1-2dd3f25cbf25)
+
+Note you may sprinkle the **whole** capsule's contents but may not split the beads for a partial dose. **Practical rule: the brand your pharmacy stocks determines the answer — call pharmacy rather than assume.** IV diltiazem exists as a rate-control (not antihypertensive) option.
+
+## Nifedipine ER — GITS, and two things worth knowing
+
+**Swallow-whole, quoted twice:** *"PROCARDIA XL Extended Release Tablets should be swallowed whole and should not be bitten or divided"* / *"Do not chew, divide or crush tablets."*
+
+**The ghost tablet is normal and is in the label:**
+> *"Do not be concerned if you occasionally notice in your stool something that looks like a tablet. In PROCARDIA XL, the medication is contained within a **nonabsorbable shell**... When this process is completed, the empty tablet is eliminated from your body."*
+
+The mechanism is an osmotic pump with a *"precision laser-drilled tablet orifice."* **Crushing does not just speed release — it dose-dumps.** Each 90 mg tablet contains 99 mg of nifedipine.
+
+**A ward-relevant warning most people don't know:** *"Cases of serious gastrointestinal obstruction have been identified in patients with no known gastrointestinal disease, including the need for hospitalization and surgical intervention."* Risk factors listed include severe GI narrowing, bowel resection, gastric bypass, colostomy, diverticulitis, IBD, and hypomotility states. — [PROCARDIA XL, DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8ebcb33c-f43b-4b36-9f94-9774b2a59e06)
+
+## Furosemide (oral) — and a bioavailability correction
+
+- **Oral solution exists in two strengths: 10 mg/mL and 40 mg/5 mL (8 mg/mL).**
+- **The label's bioavailability figure is 60–64%, not 50%:**
+  > *"In fasted normal men, the mean bioavailability of furosemide from Furosemide Tablets and Furosemide Oral Solution is **64% and 60%, respectively**, of that from an intravenous injection of the drug."*
+  — [Furosemide oral solution, DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9c342198-7162-4cc5-bda1-bc4054a4292b)
+
+**So the clinical 2:1 rule (40 mg PO ≈ 20 mg IV) deliberately rounds DOWN from the label.** That is the right call, and the justification is worth stating: 60–64% was measured in **fasted healthy men**, and oral absorption in decompensated heart failure with gut wall oedema is both lower and far more erratic. State it as *"label 60–64% in healthy fasted subjects; assume ~50% (2:1) in decompensated patients."*
+
+## Clonidine (oral formulations)
+
+- **An FDA-approved oral solution exists: QLONILIK 0.05 mg/mL**, 120 mL, room temperature. Two label practicalities: *"Discard unused portion 60 days after"* opening, and *"A household teaspoon or tablespoon is not an adequate measuring device."* — [QLONILIK, DailyMed](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=826de1dc-378e-4c90-86d1-e33f7a4248cd)
+- **Clonidine ER is NOT interchangeable with IR**, and is unscored:
+  > **"Do not crush, chew or break tablet before swallowing."** and **"Do not substitute for other clonidine products on a mg-per-mg basis, because of differing pharmacokinetic profiles."**
+- **Do not be misled by "clonidine injection."** A parenteral clonidine product exists (**DURACLON**, epidural/IV routes listed) but it is labelled for **continuous epidural infusion for severe cancer pain**. It is **not** an IV antihypertensive and is not a substitute for oral clonidine. The NDC route field alone is misleading here.
+
+## A status change worth knowing: the ISMP "Do Not Crush" list
+
+**ISMP no longer owns or maintains the "Oral Dosage Forms That Should Not Be Crushed" list.** It was removed, and ISMP has stated it does not update or review its content. ISMP now recommends hospitals maintain their own list built from package inserts, manufacturer inquiries and tertiary references. *Pharmacist's Letter* published a replacement in February 2023.
+
+A full 2016 copy remains accessible and is still useful, with the caveat that it is a decade old: [LA County DMH mirror](https://file.lacounty.gov/SDSInter/dmh/1042766_MedicationsDoNotCrushList.pdf)
+
+Its two most useful footnotes for this table:
+- **(a)** *"Capsule may be opened and the contents taken without crushing or chewing; soft food such as applesauce or pudding may facilitate administration; contents may generally be administered via nasogastric tube..."* — applies to **Coreg CR, Tiazac, Taztia XT**.
+- **(h)** *"Tablet is scored and may be broken in half without affecting release characteristics."* — applies to **Toprol-XL and Imdur (ISMN ER)**.
+
+Agents from this audit that appear on it: Coreg CR, Toprol-XL/metoprolol ER, Imdur/ISMN ER, Dilatrate-SR, Isordil SL, Cardizem CD/LA/IR, Tiazac, Taztia XT, Cartia XT, Dilt-CD, Diltia XT, Dilacor XR, Procardia XL, Adalat CC, **Cardene SR**, Kapvay.
+
+Agents NOT on it (no crushing restriction): carvedilol IR, metoprolol tartrate IR, lisinopril, losartan, amlodipine, HCTZ, chlorthalidone, spironolactone, furosemide, ISDN IR, ISMN IR, clonidine IR, nicardipine IR.
+
+**Important caveat on all "crushable" calls above:** for carvedilol IR, metoprolol tartrate IR, lisinopril, chlorthalidone and HCTZ, the evidence is **"label silent + not on the do-not-crush list,"** which is an absence of prohibition rather than an affirmative label endorsement. The inference is sound for a plain IR tablet with no modified-release mechanism, but it is an inference.
 
 ---
 
@@ -1036,11 +1494,11 @@ Assumption: ordinary telemetry is available on or adjacent to the unit. Everythi
 
 | Agent | Notes |
 |---|---|
-| **Nicardipine infusion** | Label requires only continual BP/HR monitoring; no art line. <!--T3_NICARDIPINE--> |
+| **Nicardipine infusion** | Label requires only continual BP/HR monitoring; no art line. **Best-supported item here** — Hochberg 2026, n=1,278: intermediate care with telemetry, 1:3 nursing, q1h cuff, no art line in 95%; 4% escalation; *less* hypotension than ICU. |
 | **Clevidipine infusion** | Same monitoring requirement; central OR peripheral line explicitly permitted. Plus an 8-hour rebound-monitoring tail. |
 | **Labetalol infusion** | VCH manual: approved, pump mandatory, *"see site-specific restrictions."* |
 | **Esmolol infusion** | |
-| **Nitroglycerin infusion** | <!--T3_NTG--> |
+| **Nitroglycerin infusion** | Near-universal on telemetry floors for ACS — **but I could find no society statement, trial, or cohort supporting it. This one is pure institutional custom.** The only non-ICU outcome data including NTG infusion is Hochberg 2026 (intermediate care). |
 | **Diltiazem infusion** | Telemetry at minimum; step-down vs telemetry floor varies by centre. |
 
 ## Tier 4 — Genuinely ICU
@@ -1055,13 +1513,153 @@ Assumption: ordinary telemetry is available on or adjacent to the unit. Everythi
 
 **Nicardipine does not require an ICU. Hypertensive emergency requires an ICU.** Those are different statements, and conflating them is the root error in a one-drug-one-setting table. A nicardipine infusion for post-operative hypertension, or for permissive-hypertension management in a stable stroke patient on a neuro step-down unit, carries no Class 1 ICU recommendation at all.
 
-<!--NPO_SECTION-->
+# THE NPO PATIENT — WHICH ORAL AGENTS HAVE A USABLE ALTERNATIVE
 
-<!--FINAL_TABLE-->
+"NPO" splits into two different problems. **A patient with an NG tube** can take anything crushable or liquid. **A truly nil-by-mouth patient with no enteral access** needs a parenteral or transdermal route. The table below separates them.
+
+| Home oral drug | NG-tube / dysphagia option | True NPO (no enteral access) option | Verdict |
+|---|---|---|---|
+| **Metoprolol tartrate** | Crush tablet; no liquid | **IV metoprolol tartrate 5 mg** | **Fully covered** |
+| **Metoprolol succinate ER** | **Halve only — NEVER crush** | **IV metoprolol TARTRATE** (different salt, shorter duration) | Covered, but the salt changes |
+| **Carvedilol** | IR crushable; **Coreg CR beads on cool applesauce** (label-endorsed) | **NONE — no IV carvedilol** | **GAP.** Substitute IV labetalol (also α+β) or IV metoprolol |
+| **Labetalol** | IR tablet crushable | **IV labetalol** (push or infusion) | **Fully covered** |
+| **Lisinopril** | **QBRELIS 1 mg/mL oral solution** (room temp) | **NONE.** Nearest is **enalaprilat IV 1.25 mg q6h** — a different molecule | Covered by class switch |
+| **Losartan** | Cozaar extemporaneous 2.5 mg/mL suspension | **NONE — there is no IV ARB in the US, for any agent** | **HARD GAP.** Only option is enalaprilat, an ACE inhibitor |
+| **Amlodipine** | **Katerzia** (fridge) / **Norliqva** (RT) / **Sdamlo** (RT unit-dose) | **NONE.** Same-class IV options are **nicardipine** or **clevidipine** | Enteral: excellent. True NPO: class-level only |
+| **Nifedipine ER** | **NONE** — GITS cannot be crushed; no liquid | **NONE — no IV nifedipine** | **HARD GAP.** Change drug, not formulation |
+| **Diltiazem ER** | **Tiazac / Taztia XT beads on applesauce.** Cardizem CD label silent. Cardizem LA: no | **IV diltiazem** (bolus or infusion; rate-control labelled) | Covered — but check the brand |
+| **HCTZ** | Crush tablet, or **open the 12.5 mg capsule**, or **INZIRQO 10 mg/mL suspension** | **NONE for HCTZ.** Use **IV chlorothiazide 0.5–1 g**, PO↔IV **1:1** | Covered by class switch |
+| **Chlorthalidone** | Crush tablet; **no liquid** | **NONE** | **GAP.** Use IV chlorothiazide |
+| **Spironolactone** | **CaroSpir 25 mg/5 mL — but NOT mg-for-mg equivalent** (HF start 20 mg; >100 mg switch back) | **NONE — no IV MRA exists** | Enteral: yes, with a dose trap. True NPO: hold |
+| **Furosemide** | Crush, or **oral solution 10 mg/mL or 40 mg/5 mL** | **IV or IM push; IV infusion; SC (Furoscix)** | **Fully covered — every route** |
+| **ISDN / ISMN** | ISDN IR and ISMN IR crushable; **ISMN ER halve only** | **NONE — no IV isosorbide in the US.** Use **nitroglycerin**: IV, SL, spray, **patch**, **2% ointment** | Covered by switching to NTG |
+| **Clonidine** | **QLONILIK 0.05 mg/mL oral solution**; IR tablet crushable; **ER never crush** | **Catapres-TTS patch** — but it takes **2–3 days** to work | Covered, **with a 2–3 day lag** |
+| **Nicardipine PO** | IR capsule — opening it is plausible (hard capsule, powder fill) but **NOT label-endorsed; verify with pharmacy** | **IV nicardipine** | Covered via IV |
+| **Hydralazine** | Tablet crushable | **IV push or IM** | **Fully covered** |
+
+## The four true gaps
+
+1. **ARBs.** There is no intravenous ARB in the United States, for any agent in the class. A losartan/valsartan patient who is truly NPO either gets enalaprilat (accepting the switch to an ACE inhibitor, and its angioedema history caveat) or a different class entirely.
+2. **Nifedipine ER.** No crushable form, no liquid, no IV. The formulation cannot be worked around — change the drug.
+3. **Carvedilol.** No IV form. Substitute IV labetalol if you want to keep alpha-plus-beta blockade.
+4. **Chlorthalidone / spironolactone.** No parenteral form of either. Chlorthalidone can be swapped to IV chlorothiazide; spironolactone simply gets held.
+
+## The three traps inside the "covered" column
+
+1. **CaroSpir is not mg-for-mg equivalent to the tablet** — 15–37% higher serum concentrations, HF starting dose 20 mg not 25 mg, and above 100 mg you must switch back. This is the one where an apparently simple formulation swap changes the dose.
+2. **The clonidine patch does not work for 2–3 days.** A patient whose home clonidine is simply held on admission is at real risk of rebound hypertension before the patch takes effect. Overlap, or use the oral solution via tube.
+3. **Metoprolol succinate ER can be halved but never crushed**, and there is no IV succinate.
+
+# MASTER SUMMARY TABLE
+
+**Legend for "Labelled?":** ✅HTN = labelled route AND hypertension indication · ⚠️OTHER = labelled route, different indication (BP lowering is off-label) · ⛔OFF = not in the label · 🚫ANTI = the label warns against it.
+
+**Legend for "Setting":** Floor = general medicine ward, routine vitals · Tele = continuous ECG · SD = step-down/progressive care · ICU = intensive care · **INST** = institution-dependent, no national standard.
+
+| Agent | Route | Dose | Setting | Monitoring | Labelled? |
+|---|---|---|---|---|---|
+| **NICARDIPINE** | IV infusion | 5 mg/h → +2.5 mg/h q5–15 min, max 15 mg/h | **SD / Tele — INST** (ICU only if the *diagnosis* demands it) | Continual BP+HR; **NO art line in label**; stroke guideline uses q15min cuff | ✅HTN |
+| | IV bolus | 0.5–2.5 mg (studied 0.125–7 mg; 1 mg in the ICH RCT) | OR / ED resus / ICU | Continuous BP; anaesthesia context | ⛔OFF (label describes 2.5 mg bolus PK only) |
+| | PO IR capsule | 20–30 mg TID | Floor | Routine | ✅HTN (**Cardene SR discontinued**) |
+| | Intra-arterial | 10–40 mg | Neuro-IR suite only | Invasive | 🚫ANTI (*"Avoid intraarterial administration"*) |
+| **CLEVIDIPINE** | IV infusion ONLY | 1–2 mg/h, double q90 s; max 16–32 mg/h; **≤21 mg/h avg per 24 h (lipid cap)** | **SD / Tele — INST** | Continual BP+HR; **NO art line in label**; central OR peripheral line OK; **8 h rebound watch after stopping** | ✅HTN |
+| **LABETALOL** | **IV push** | 20 mg over 2 min, then 40 or 80 mg q10 min, **max 300 mg** | **Floor** ✔ | BP at 0, 5, 10 min. **Supine 3 h — 58% orthostasis if not** | ✅HTN |
+| | IV infusion | Label 2 mg/min; practice 0.5–2; stroke guideline **2–8 mg/min** | Tele / SD — **INST** | Pump; frequent BP | ✅HTN |
+| | PO | 100 mg q8–12h, max 2400 mg/d | Floor | Routine | ✅HTN |
+| | **IM** | — | — | — | **⛔ NOT A LABELLED ROUTE** |
+| **ESMOLOL** | **IV bolus alone** | 1 mg/kg over 30 s (immediate) or 500 mcg/kg over 1 min | Tele | ECG + BP | ✅ (intraop/postop HTN) |
+| | IV infusion | 50–200 mcg/kg/min; **250–300 for HTN**; max 48 h | SD / ICU — **INST** | Pump, continuous | ✅ (intraop/postop HTN) |
+| **NITROPRUSSIDE** | IV infusion ONLY | 0.3 → max 10 mcg/kg/min; **never >10 min at max**; CN⁻ accumulates >2 mcg/kg/min | **ICU — genuinely** | **Boxed warning: "continuously monitored."** Art line *"preferably"*, cuff acceptable. Dedicated volumetric pump. Light-protected | ✅HTN · **ISMP high-alert, named individually** |
+| **NITROGLYCERIN** | IV infusion | 5 mcg/min → titrate; **no label maximum** | Tele / SD — **INST** | Continuous BP+HR; pump; **non-PVC tubing** | ✅ (peri-op HTN, CHF in MI, angina, induced hypotension) |
+| | **IV bolus (SCAPE)** | **0.6–2 mg**, repeat q3–5 min (Levy: 2 mg ×10, max 20 mg) | **ED resus bay.** No art line in any study | Noninvasive BP, close | **🚫ANTI** (*"NOT FOR DIRECT INTRAVENOUS INJECTION"*) + off-label indication. ACEP **Level C consensus** only |
+| | SL tablet | 0.4 mg q5 min, **max 3 in 15 min**; onset 1–3 min, peak 5 min, lasts ≥25 min | Floor | Routine | ✅ (acute angina) |
+| | Lingual spray | 400 mcg/spray, q5 min, max 3 in 15 min; **on OR under tongue; never inhale** | Floor | Routine | ✅ (acute angina) |
+| | **Topical 2% ointment** | **15 mg per inch.** ½–2 inches; **two doses/day, 6 h apart, both in waking hours.** Onset ~1 h, lasts ~7 h | **Floor** ✔ | Routine | **⚠️OTHER — angina prevention only. BP use is OFF-LABEL** (Brower 2015: median SBP −16 mmHg, n=72) |
+| | Transdermal patch | 0.1–0.8 mg/hr; start 0.2–0.4. **Onset steady state ~2 h; off ~1 h.** **On 12–14 h / OFF 10–12 h** | Floor | Routine. **Remove before defibrillation** | ⚠️OTHER — angina prevention only |
+| **HYDRALAZINE** | IV push | Label **20–40 mg**; practice 5–20 mg q15–30 min | **Floor** ✔ | Frequent BP. **Peak up to 80 min — do not stack** | ✅HTN |
+| | **IM** | 20–40 mg (practice 10–40) | **Floor** ✔ — the no-IV-access answer | Frequent BP | ✅HTN |
+| | Infusion | — | — | — | **🚫ANTI** (*"should not be added to infusion solutions"*) |
+| **PHENTOLAMINE** | IV bolus | 5 mg (1 mg peds) | OR / ICU | Continuous BP | ⚠️ pheochromocytoma only |
+| | IM | 5 mg, 1–2 h pre-op | OR / ICU | BP | ⚠️ pheochromocytoma only |
+| | **Local infiltration** | **5–10 mg in 10 mL saline, within 12 h** | **Floor** ✔ bedside | Routine + site check | ✅ (norepinephrine extravasation) |
+| | Continuous infusion | — | ICU | Continuous | ⛔OFF |
+| **DILTIAZEM** | IV bolus | 0.25 mg/kg over 2 min (~20 mg), then 0.35 mg/kg (~25 mg) | **Tele** | Continuous ECG + BP | ⚠️OTHER — **AF/flutter and PSVT, not HTN** |
+| | IV infusion | 5–15 mg/h, **max 24 h** | Tele / SD — **INST** | Continuous ECG. **Offset median 7 h** | ⚠️OTHER |
+| | PO ER | varies | Floor | Routine | ✅HTN |
+| | ⚠️ **ADD-Vantage vial** | — | — | — | **"For Continuous Intravenous Infusion — NOT FOR BOLUS"** |
+| **METOPROLOL tartrate** | **IV push only** | 5 mg × 3 at 2-min intervals | **Tele** — label says *"coronary care or similar unit"* | **ECG required by label** + BP, HR | ⚠️OTHER — **acute MI only; HTN and rate control are off-label** · ISMP high-alert class |
+| | *infusion* | — | — | — | **Does not exist** |
+| **ENALAPRILAT** | **IV only, over 5 min** | 1.25 mg q6h; **0.625 mg** if on a diuretic or CrCl ≤30 | **Floor** ✔ | Routine BP; 1 h close watch after first dose if on diuretic | ✅HTN |
+| **FUROSEMIDE** | IV push | 20–40 mg **over 1–2 min**; pulm oedema 40 → 80 mg | **Floor** ✔ | Routine | ✅ (oedema) |
+| | **IM** | 20–40 mg | **Floor** ✔ | Routine | ✅ (oedema) |
+| | Continuous infusion | **≤4 mg/min — an OTOTOXICITY limit** | **Floor** ✔ (pump, not a monitor) | Routine | ✅ *for high-dose therapy*; infusion-for-efficacy is ⛔OFF |
+| | **SC (Furoscix)** | 80 mg over 5 h (30 mg h1, then 12.5 mg/h ×4) | Floor / home | Routine | ✅ (NYHA II/III chronic HF congestion) |
+| **CLONIDINE** | PO tablet | 0.1 mg BID → 0.2–0.6 mg/d; onset 30–60 min | Floor | Routine. **Taper over 2–4 d** | ✅HTN |
+| | **Transdermal patch** | TTS-1/2/3 = **0.1/0.2/0.3 mg/day, weekly**; **2–3 day lag**; persists 8 h then declines over days | Floor | Routine. **REMOVE before MRI (aluminium → burns) and before defibrillation** | ✅HTN |
+| **NIFEDIPINE** | IR capsule swallowed | — | — | — | **🚫ANTI for BP** — *"should not be used for the control of essential hypertension"* AND *"for the acute reduction of blood pressure"* |
+| | **IR bitten / "sublingual"** | — | — | — | **🚫ANTI — "profound hypotension, myocardial infarction, and death."** Bioavailability is **the same** by all three methods; there is no true SL absorption |
+| | ER tablet | 30–60 mg daily, max 120 mg | Floor | Routine | ✅HTN — **swallow whole; ghost shell in stool is normal; crushing DOSE-DUMPS** |
+
+## Oral agents — formulation traps in one line each
+
+| Agent | Trap |
+|---|---|
+| Metoprolol succinate ER | **Halve OK, crush NEVER.** No IV succinate exists |
+| Metoprolol tartrate IR | Crushable; IV exists; **no PO:IV ratio in any current label** (~2.5:1 is convention) |
+| Carvedilol IR | Crushable; **take WITH FOOD to reduce orthostasis** (label states the reason) |
+| Coreg CR | **Capsule may be opened onto COOL applesauce** — label-endorsed; C_max −18% |
+| Lisinopril | **QBRELIS 1 mg/mL oral solution**, room temp. No IV lisinopril |
+| Losartan | Cozaar label has a 2.5 mg/mL suspension recipe. **NO IV ARB EXISTS — none in the class** |
+| Amlodipine | **Katerzia** (fridge) / **Norliqva** (RT) / **Sdamlo** (RT unit-dose). No IV |
+| HCTZ | Crushable; capsule openable; **INZIRQO 10 mg/mL suspension**. No IV — use **IV chlorothiazide 0.5–1 g, PO↔IV 1:1** |
+| Chlorthalidone | Crushable. **No liquid, no IV** |
+| Spironolactone | **CaroSpir is NOT equivalent to Aldactone** — 15–37% higher levels, HF start **20 mg**, >100 mg switch back |
+| ISDN vs ISMN | **Different drugs.** ISDN IR: 14 h nitrate-free interval. **ISMN IR: 20 mg BID, doses 7 HOURS APART.** ISMN ER: halve only, once daily. **No IV isosorbide in the US;** SL ISDN no longer marketed |
+| Diltiazem ER | **Brand-dependent:** Tiazac/Taztia XT beads **may** be sprinkled; Cardizem CD label **silent**; Cardizem LA **cannot** |
+| Nicardipine PO | **Cardene SR discontinued.** IR capsule TID is what exists |
+| Nifedipine ER | GITS — **no crushing, no liquid, no IV.** Also a labelled **GI obstruction** risk |
+| Furosemide PO | Oral solution 10 mg/mL and 40 mg/5 mL. **Label bioavailability 60–64%**; use 2:1 in decompensated patients |
+| Clonidine | **QLONILIK 0.05 mg/mL** oral solution. ER is **not** mg-for-mg interchangeable, never crush. **"Clonidine injection" = Duraclon, an EPIDURAL cancer-pain product, NOT an IV antihypertensive** |
 
 ---
 
 # THINGS I COULD NOT VERIFY
 
-<!--UNVERIFIED-->
+These are stated so nothing in this document is read as more settled than it is.
+
+## Claims I could not verify at all
+
+1. **Whether Lexicomp, UpToDate, Micromedex or AHFS list bolus nicardipine** as accepted off-label dosing. All four are subscription-gated. Every *accessible* secondary source is infusion-only. A search snippet suggested AHFS may carry a **paediatric** "direct IV (bolus) injection" statement (~30 mcg/kg, up to 2 mg) — **not verified; check the monograph before relying on it.** This is the one item worth 60 seconds of institutional access.
+2. **Komura & Awad, Am J Emerg Med 2016** ("The utility of bolus intravenous nicardipine for hypertensive emergencies in the ED") — MEDLINE types it as a **Case Report** with no abstract; full text was not retrievable. Do not cite it as efficacy evidence.
+3. **Wilson 2017's exact NTG bolus dose** (median 2 mg q3–5 min, up to 10 doses) is **not in the abstract**; full text paywalled. Confirmed only from secondary sources.
+4. **Nashed & Allegra 1995** (the origin case series for SCAPE bolus NTG) — PubMed carries no abstract; full text not retrievable.
+5. **The onset of action of nitroglycerin lingual SPRAY.** Neither spray label states one. Do not borrow the tablet's 1–3 minutes.
+6. **Current US Minitran labelling.** All four Minitran ANDAs are discontinued; the DailyMed record is export-only foreign carton art. Patch strengths quoted here are from Nitro-Dur and current generics.
+7. **PDE5-inhibitor washout windows (24 h / 48 h).** These are **not in any nitroglycerin label** — the NTG label says only *"use within a few days of one another is not recommended."* The hour-based numbers come from the PDE5 drugs' own labels, which were not retrieved.
+
+## Things that genuinely do not exist in the literature (absence of evidence, stated as such)
+
+8. **No published study of a nicardipine infusion on a general medical/surgical floor**, and no peer-reviewed nurse-driven nicardipine *floor* protocol. The non-ICU evidence is **intermediate care**, not ward.
+9. **No clevidipine data outside the ED/ICU.** Nothing on step-down, telemetry or floor.
+10. **No evidence supporting nitroglycerin infusion on telemetry floors for ACS**, despite it being near-universal US practice. No society statement, no trial, no cohort. **Pure institutional custom.**
+11. **No esmolol or labetalol non-ICU safety data.**
+12. **No head-to-head trial of arterial line vs cuff monitoring during antihypertensive infusion with clinical outcomes.** The agreement studies (Saherwala, Tran, Zhang) establish that the numbers differ; none establishes that the difference changes outcomes.
+13. **No society document listing which infusions a "progressive care unit" may run.** AACN does not publish one; SCCM's is a non-graded sample policy.
+14. **No RCT or cohort of *intermittent repeated* bolus nicardipine** as a standalone strategy. Every controlled bolus study is a single loading bolus, or a single bolus timed to a discrete stimulus.
+15. **No trial has randomised NTG bolus vs no bolus in SCAPE.** Every RCT compares a high-dose *strategy* against a low-dose *strategy*, so the bolus is confounded with the infusion rate.
+16. **No study comparing NTG ointment to an NTG infusion**, and none on transitioning a drip to paste. The "apply paste, stop the drip 30 minutes later" rule is tertiary-source only.
+
+## Inferences flagged as inferences, not label statements
+
+17. **"Crushable" for carvedilol IR, metoprolol tartrate IR, lisinopril, chlorthalidone and HCTZ** rests on **"label silent + not on the do-not-crush list."** That is an absence of prohibition. Sound for a plain IR tablet with no modified-release mechanism, but an inference.
+18. **Opening the nicardipine IR capsule** is plausible (hard capsule, powder fill) but is **not label-endorsed.** Verify with pharmacy.
+19. **Cardizem CD sprinkling:** the label is *silent* (verified by exhaustive keyword search), which is not the same as prohibited. The ISMP list's omission of the sprinkle footnote for Cardizem CD while granting it to Tiazac and Taztia XT supports treating them differently — but confirm with pharmacy if it drives a decision.
+
+## Primary texts I could not open directly
+
+20. **2017 ACC/AHA hypertension guideline**, **2025 AHA/ACC hypertension guideline full text**, **2022 AHA/ASA ICH guideline**, **Nates 2016 main text**, and **Nasraway 1998 intermediate care unit guidelines** — all returned 403 to automated fetch. Statements attributed to them here come from guideline-summary services or from other papers citing them, and are flagged at the point of use. **Anything taught from those four should be checked against the primary text via UCSF library access.**
+
+## A generic caution
+
+21. **Generic-label variation.** Several findings were drawn from one representative generic SPL. Generic labels differ between manufacturers in scoring, excipients and occasionally administration wording. For anything load-bearing, check the label for the specific product your pharmacy stocks.
 
