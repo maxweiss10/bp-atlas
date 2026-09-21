@@ -61,8 +61,8 @@ EOD = [
 ]
 
 EOD_NOTE = (
- 'Items in <span class="add" style="color:var(--accent-ink)">green</span> are on the 2024 AHA '
- 'statement’s list but not the card’s. Two items on the card appear in none of the '
+ 'Items marked <sup class="addmark">+</sup> are on the 2024 AHA statement’s list but not '
+ 'the card’s. Two items on the card appear in none of the '
  'source lists: <b>TIA</b>, which is not acute organ damage the way a completed stroke is, and '
  '<b>hematuria</b>, which is a useful clue to glomerulonephritis or microangiopathy but is not a '
  'criterion &mdash; acute kidney injury is. And the thresholds are not a wall: the 2024 statement '

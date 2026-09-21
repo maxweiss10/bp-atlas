@@ -148,6 +148,30 @@ Sources: the FDA prescribing information on DailyMed for every dosing, onset and
 trials behind each claim — COMMIT, ATACH-2, INTERACT2/3, ENCHANTED2/MT, OPTIMAL-BP, CLICK,
 PATHWAY-2, A-HeFT.
 
+## Design
+
+Set like the MGH housestaff manual, matching the White Book treatment already used on
+[Pearl](https://maxweiss10.github.io/pearls) so the two sites read as one system: Arial Narrow in
+the data zone, a flat `#D9D9D9` small-caps band over every section, black header rows with white
+type, hairline grids, and the manual's own blue for citations. No shadows, no rounded corners, no
+dark mode — the manual is paper.
+
+The palette is sampled from the book itself, plus Pearl's category inks:
+
+| Token | Value | Use |
+|---|---|---|
+| band | `#D9D9D9` | the strip behind every section header |
+| rule / rule-2 | `#000000` / `#B4B4B4` | table edges and the inner grid |
+| link | `#0432FF` | citations, underlined |
+| accent | `#1F6B45` | indications |
+| warn | `#A61B1B` | contraindications and "avoid" |
+| caution | `#8A5A12` | a figure corrected against its source |
+
+Two deliberate departures from a literal copy. The drug-class marks keep distinct hues, because
+eleven classes cannot be told apart in one colour — each also carries a distinct shape and a
+letter abbreviation, so the class survives greyscale printing and colour-vision deficiency. And
+the equation blocks keep a real monospace, because a condensed face will not align them.
+
 ## Repository layout
 
 ```
