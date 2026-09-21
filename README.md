@@ -20,11 +20,15 @@ mentioning. Plus a combination builder that applies the source paper's own permu
   Every step clears 4.5:1 body-text contrast on white and the lightness is strictly monotonic,
   which is what a sequential ramp has to satisfy. Weight rises with it as a second channel, so the
   scale survives greyscale printing and colour-vision deficiency.
-- **Onset / Full effect / Wears off** — three columns for the question the mmHg figures cannot
+- **Onset / Peak / Full effect / Wears off / Stopping** — five columns for the question the mmHg figures cannot
   answer: when blood pressure first moves after a dose (with that dose's peak beneath it), how long
   a fixed dose needs before the effect levels off, and how long the effect lasts once the drug is
   stopped. Each column holds one figure and sorts on it, so reading down a column and sorting it
-  give the same order.
+  give the same order. **Peak** is blank where the label times only one of the two, so onset and
+  peak would otherwise print the same number twice. **Stopping** says what the label says about
+  abrupt withdrawal: *taper* where it warns, *no rebound* where it reports none, and a dash where
+  it is silent — which is not the same as safe, and is why the three states are distinguished
+  rather than collapsed.
 - **Combinations** — every eligible pair or triple ranked by predicted effect, with same-class and
   ACEi+ARB combinations excluded by default and guideline first-line pairs flagged.
 - **Build a regimen** — up to four drugs, live predicted BP, projected on-treatment BP, drug cost,

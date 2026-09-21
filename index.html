@@ -269,7 +269,12 @@ tbody tr:hover{background:var(--card-2)}
 /* kmain is a block so the sub-line could sit under it; with the sub-line gone
    it has to go back inline or the taper mark drops to a second row */
 #drugtable .kin .kmain,#combotable .kin .kmain{display:inline}
-.tapdot{color:var(--warn);font-size:11px;margin-left:3px;cursor:help}
+.stopcell{white-space:nowrap}
+.stopmark{display:inline-block;font-family:var(--narrow);font-size:11.5px;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;padding:1px 5px;border:1px solid currentColor;
+  cursor:help}
+.stopmark.tap{color:var(--warn)}
+.stopmark.ok{color:var(--ink-3)}
 .bar{height:7px;background:var(--bar-track);border-radius:100px;overflow:hidden}
 .bar > i{display:block;height:100%;background:var(--bar);border-radius:100px}
 .band{display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;
@@ -957,11 +962,15 @@ select,input[type=search],input[type=number]{border-radius:0}
         <th class="num sortable" data-sort="sbp">&Delta; SBP<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="dbp">&Delta; DBP<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="kon"
-            title="When blood pressure first starts to move after a single dose. Open the row for that dose's peak.">Onset<span class="arrow">&#8597;</span></th>
+            title="When blood pressure first starts to move after a single dose.">Onset<span class="arrow">&#8597;</span></th>
+        <th class="num sortable" data-sort="kpk"
+            title="When that single dose reaches its maximum effect. Blank where the label times only one of the two, so onset and peak would print the same number.">Peak<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="kfull"
             title="How long a fixed dose needs before its effect stops growing - the interval to wait before judging the dose or titrating.">Full effect<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="koff"
             title="How long the blood-pressure effect lasts once the drug is stopped - and so how much a missed dose costs.">Wears off<span class="arrow">&#8597;</span></th>
+        <th class="sortable" data-sort="kreb"
+            title="What the label says about stopping. Taper = it warns against abrupt withdrawal. No rebound = it reports none. A dash = the label does not address it, which is not the same as safe.">Stopping<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="cost">$ / mo<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="ev">Trials<span class="arrow">&#8597;</span></th>
         <th class="sortable" data-sort="band">Intensity<span class="arrow">&#8597;</span></th>
@@ -1814,20 +1823,28 @@ function kinTitle(k) {
    large - so the order the eye reads down a column is the order it sorts in. */
 function kinCells(d) {
   const k = d.kin;
-  if (!k) return '<td class="num kin"></td>'.repeat(3);
+  if (!k) return '<td class="num kin"></td>'.repeat(4) + '<td class="stopcell"></td>';
   const t = esc(kinTitle(k));
   // when the only thing known is Tmax, onset and peak carry the same number;
   // printing it twice reads like a bug, so the second line is dropped
-  const pk = '';   // peak moved to the open row so the column stays one line
-  const off = k.reb === 'taper'
-    ? '<span class="tapdot" title="Do not stop abruptly - taper. Abrupt withdrawal risks rebound angina, myocardial infarction, or thyroid storm.">&#9888;</span>'
-    : '';   // label silent on withdrawal - say nothing rather than a filler dash
+  const pk = '';
+  const off = '';   // stopping is its own column now
+  // peak gets a column too; blank when it would only repeat onset
+  const pkCell = k.pk.t === k.on.t ? '<td class="num kin"></td>'
+    : `<td class="num kin" data-l="Peak" title="${t}"><span class="kmain">${kfig(k.pk)}</span></td>`;
+  const rebCell = k.reb === 'taper'
+    ? '<td class="stopcell" data-l="Stopping"><span class="stopmark tap" title="The label warns against abrupt withdrawal - rebound angina, infarction or thyroid storm.">taper</span></td>'
+    : k.reb === 'ok'
+      ? '<td class="stopcell" data-l="Stopping"><span class="stopmark ok" title="The label reports no rebound rise in BP after abrupt withdrawal.">no rebound</span></td>'
+      : '<td class="stopcell" data-l="Stopping"><span class="mut" title="The label does not address abrupt withdrawal. Silence is not reassurance.">&mdash;</span></td>';   // label silent on withdrawal - say nothing rather than a filler dash
   return `<td class="num kin" data-l="Onset" title="${t}"><span class="kwrap">
       <span class="kmain">${kfig(k.on)}</span>${pk}</span></td>
+    ${pkCell}
     <td class="num kin" data-l="Full effect" title="${t}"><span class="kwrap">
       <span class="kmain">${kfig(k.full)}</span></span></td>
     <td class="num kin" data-l="Wears off" title="${t}"><span class="kwrap">
-      <span class="kmain">${kfig(k.off)}</span>${off}</span></td>`;
+      <span class="kmain">${kfig(k.off)}</span>${off}</span></td>
+    ${rebCell}`;
 }
 function aeCell(d) {
   const own = d.own, n = diffCount(own);
@@ -1937,6 +1954,8 @@ function renderDrugs() {
     // each keys off the figure its column prints large, so the order down the
     // column is the order it sorts in; the others only break ties
     kon: r => kinKey(r.d, 'on', 'full'),
+    kpk: r => r.d.kin && r.d.kin.pk.t !== r.d.kin.on.t ? kinKey(r.d, 'pk', 'full') : Infinity * state.dir,
+    kreb: r => ({taper: 0, ok: 1}[r.d.kin && r.d.kin.reb] ?? 2),
     kfull: r => kinKey(r.d, 'full', 'off'),
     koff: r => kinKey(r.d, 'off', 'full'),
     contra: r => r.d.ci ? r.d.ci.x.length * 10 + r.d.ci.c.length : 0,
@@ -1985,7 +2004,7 @@ function renderDrugs() {
       ${ciCell(d, 'i')}
       <td class="exp" aria-hidden="true">+</td>
     </tr>
-    ${detailRow(d, r, 18)}`;
+    ${detailRow(d, r, 20)}`;
   }).join('');
 
   const at = (state.sbp === REF.sbp && state.dbp === REF.dbp)
@@ -3118,7 +3137,7 @@ function init() {
     if (state.sort === k) state.dir *= -1;
     // ascending on first click where small is the interesting end: cheapest,
     // alphabetical, and the drugs that turn on and off fastest
-    else { state.sort = k; state.dir = ['name', 'cost', 'kon', 'kfull', 'koff'].includes(k) ? 1 : -1; }
+    else { state.sort = k; state.dir = ['name', 'cost', 'kon', 'kpk', 'kfull', 'koff', 'kreb'].includes(k) ? 1 : -1; }
     renderDrugs();
   }));
   document.querySelectorAll('#combotable th[data-csort]').forEach(th => th.addEventListener('click', () => {
