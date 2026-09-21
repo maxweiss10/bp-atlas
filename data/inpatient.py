@@ -16,7 +16,7 @@ Provenance marks, carried by every agent and every condition row:
 
 Run `python3 build_inpatient.py` to embed the result in index.html.
 """
-from ip_text import LEDE, DEFS, EOD, EOD_NOTE, ASSESS, TRIAGE, DZ_NOTES, NOTES
+from ip_text import LEDE, DEFS, EOD, EOD_NOTE, ASSESS, DZ_NOTES, NOTES
 from ip_conds import CONDS
 from ip_agents import AGENTS
 
@@ -26,7 +26,6 @@ INPATIENT = {
     'eod': EOD,
     'eodNote': EOD_NOTE,
     'assess': ASSESS,
-    'triage': TRIAGE,
     'conds': CONDS,
     'dzNotes': DZ_NOTES,
     'agents': AGENTS,

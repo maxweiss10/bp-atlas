@@ -24,8 +24,8 @@ mentioning. Plus a combination builder that applies the source paper's own permu
 - Baseline BP is adjustable by slider or typed value; everything re-standardises live.
 - **Inpatient & emergency** — a self-contained fourth view for hypertensive emergency and severe
   inpatient hypertension, reproducing a White Book cardiology card and checking every line of it
-  against the primary sources. Definitions, a triage comparison, 15 situations with their own BP
-  targets, and 29 agents with onset, offset, dosing, indications and how finely each can be
+  against the primary sources. Definitions, 17 situations with their own BP targets, and 29
+  agents with onset, offset, dosing, indications and how finely each can be
   steered. Nothing here touches the efficacy model, and the model never reads it.
 
 ## Where the numbers come from
@@ -157,8 +157,17 @@ The corrections that change what you would actually do:
 - **Captopril onset** — the card's 30–90 minutes is the label's *peak*; onset is 15–30 minutes.
   The same error pattern appears in oral labetalol (20 minutes is the IV figure) and amlodipine
   (24–48 hours is not in the label at all).
-- **Nitroprusside** — the current label carries no ten-minute rule at the maximum rate; it says the
-  cyanide buffer is exhausted in under an hour.
+- **Routes.** Several agents can be given more than one way, and the way decides where. Nicardipine
+  can be pushed and runs on a monitored floor, not only in an ICU. Hydralazine is push *or* IM and
+  must never be an infusion. Labetalol has no IM route at all. Each row now names the alternatives
+  and what the *label* asks for by way of monitoring, which is usually less than local policy: of
+  the parenteral agents here, only nitroprusside's label mentions an arterial line, and only as a
+  preference.
+- **Nitroprusside** — an earlier version of this page "corrected" the card's ten-minute limit at the
+  maximum rate. That was wrong and has been retracted. Two labels are currently marketed and they
+  differ: the older-format one (Mylan, revised April 2026) carries the ten-minute rule in its boxed
+  warning, and Nipride RTU instead says the cyanide buffer is exhausted in under an hour. The card
+  quotes the first. Neither is legacy.
 - **Nifedipine** — the immediate-release label says in those words that it "should not be used for
   the acute reduction of blood pressure." It is first-line in pregnancy and the wrong answer
   everywhere else, and the card gives the indication without the counter-warning.
