@@ -101,9 +101,9 @@ TRIAGE = {
 
 DZ_NOTES = [
  {'warn': True,
-  't': '<b>Default is &le;25% in the first hour. This table is the exceptions.</b> Two want it down '
-       'in 20 min, three in 1 h, three want it left alone. '
-       '<b>All 6 card rows changed; 7 conditions added.</b>'},
+  't': '<b>Shaded rows are the default; the rest are exceptions.</b> Two want the pressure down in '
+       '20 min, three in 1 h, three want it left alone. '
+       '<b>All 6 of the card&rsquo;s condition rows changed; 9 rows added.</b>'},
 ]
 
 NOTES = [

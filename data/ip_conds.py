@@ -7,6 +7,33 @@ add = not on the card. Corrections read `card: X` rather than arguing the case.
 """
 
 CONDS = [
+# --- the two defaults. Everything after this is an exception to one of them. ---
+{
+ 'name': 'Severe HTN, asx', 'sub': 'no acute TOD', 'src': 'fix', 'base': True,
+ 'goal': 'No acute target',
+ 'win': 'days to weeks', 'slow': True,
+ 'pref': 'Fix the reversible cause first. Then restart or adjust the <b>long-acting</b> regimen, '
+         'and arrange outpatient f/u.',
+ 'avoid': '<span class="no">Intermittent IV <em>or</em> PO for the number alone &mdash; Class 3 '
+          'Harm.</span> PRN orders. Immediate-acting PO.',
+ 'why': '<b>Treat the patient, not the number.</b> Reasons this one is not an ordinary floor pt: '
+        'prior HTN emergency or established TOD &middot; chronically uncontrolled w/ high CVD risk '
+        '&middot; recent ICH, stroke, ACS or aortic disease &middot; procedure or surgery pending '
+        '&middot; home regimen held and never restarted. Absent one of those the threshold is high '
+        '&mdash; <b>44% resolve untreated within 3 h</b>, and there are no RCTs.',
+},
+{
+ 'name': 'HTN emergency, general', 'sub': 'when no row below applies', 'src': 'fix', 'base': True,
+ 'goal': '&le;25% in 1st h &rarr; &lt;160/100 by 2&ndash;6 h &rarr; 130&ndash;140 by 24&ndash;48 h',
+ 'win': 'the default rule',
+ 'pref': 'Titratable IV &mdash; labetalol or nicardipine cover most. <b>ICU is Class 1.</b> A-line '
+         'if on a gtt.',
+ 'avoid': '<span class="no">Dropping &gt;25% in the first hour.</span> Hydralazine. PO or SL for '
+          'acute control.',
+ 'why': 'TOD makes the dx, not the number. Overcorrection is the documented harm: <b>57%</b> given '
+        'nicardipine or nitroprusside dropped MAP &gt;25% within 30 min. Every row below moves this '
+        'target in one direction or the other.',
+},
 {
  'name': 'Aortic dissection', 'src': 'fix',
  'goal': 'SBP &lt;120 &middot; HR 60&ndash;80',

@@ -24,7 +24,7 @@ mentioning. Plus a combination builder that applies the source paper's own permu
 - Baseline BP is adjustable by slider or typed value; everything re-standardises live.
 - **Inpatient & emergency** — a self-contained fourth view for hypertensive emergency and severe
   inpatient hypertension, reproducing a White Book cardiology card and checking every line of it
-  against the primary sources. Definitions, a triage comparison, 13 conditions with their own BP
+  against the primary sources. Definitions, a triage comparison, 15 situations with their own BP
   targets, and 29 agents with onset, offset, dosing, indications and how finely each can be
   steered. Nothing here touches the efficacy model, and the model never reads it.
 
@@ -122,8 +122,12 @@ Every agent and every condition also carries a provenance mark, so the reader ca
 | `WB ✎` | on the card, but at least one figure is corrected here — the row holds the original |
 | `+` | not on the card, added here |
 
-Of 29 agents, 1 is unchanged, 15 carry a correction and 13 are additions; of 13 conditions, all six
-that appear on the card needed a change and seven are new. **28 individual figures were corrected.**
+Of 29 agents, 1 is unchanged, 15 carry a correction and 13 are additions; of 15 condition rows, all six
+that appear on the card needed a change and nine are new. The first two rows are the defaults,
+shaded and ruled off: **severe asymptomatic hypertension**, where the answer is usually to treat
+nothing and the row instead lists the reasons this patient is not an ordinary one, and
+**hypertensive emergency with no specific organ target**, which is the gradual-lowering rule every
+row beneath it departs from. **28 individual figures were corrected.**
 Most of that is not error but age: the card predates the
 [2025 AHA/ACC hypertension guideline](https://doi.org/10.1161/HYP.0000000000000249) (August 2025,
 which retired the 2017 one and renamed hypertensive urgency "severe hypertension") and the
