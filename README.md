@@ -99,7 +99,22 @@ esmolol drip in the same ranking as amlodipine 5 mg would imply a comparison tha
 What it carries instead are the columns that decide an inpatient choice — onset, offset, and how
 finely the agent can be steered.
 
-Every agent and every condition carries a provenance mark, so the reader can see what moved:
+It is written at cheat-sheet density: fragments, standard abbreviations, and no sentence a
+physician could have finished themselves.
+
+**Every agent carries a use tier**, and the table sorts on it first, so a floor BP question does
+not mean scrolling past phentolamine to find labetalol:
+
+| Tier | Meaning | n |
+|---|---|---|
+| first reach | the default answer for an ordinary inpatient BP problem | 13 |
+| specific | right only for the situation named beside it | 14 |
+| know only | listed to be recognised and declined, not given | 2 |
+
+A segmented control filters to one tier, and each specific agent states its trigger in the same
+cell, so "catecholamine excess" sits next to phentolamine rather than three columns away.
+
+Every agent and every condition also carries a provenance mark, so the reader can see what moved:
 
 | Mark | Meaning |
 |---|---|
