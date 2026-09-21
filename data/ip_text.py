@@ -103,7 +103,7 @@ DZ_NOTES = [
  {'warn': True,
   't': '<b>Shaded rows are the default; the rest are exceptions.</b> Two want the pressure down in '
        '20 min, three in 1 h, three want it left alone. '
-       '<b>All 6 of the card&rsquo;s condition rows changed; 9 rows added.</b>'},
+       '<b>All 6 of the card&rsquo;s condition rows changed; 11 rows added.</b>'},
 ]
 
 NOTES = [
@@ -132,6 +132,12 @@ NOTES = [
   't': '<b>Two situations where lowering BP is the harm.</b> <b>Cushing reflex</b> (HTN + '
        'bradycardia + irregular resps) &mdash; treat the ICP. <b>Autonomic dysreflexia</b> (SCI '
        '&ge;T6) &mdash; sit up, find the stimulus. Neither is on the card.'},
+ {'warn': True,
+  't': '<b>ACEi/ARB on the morning of surgery is genuinely unsettled.</b> The 2024 ACC/AHA '
+       'perioperative guideline and POQI say hold 24 h before elevated-risk surgery, to limit '
+       'intraop hypotension. The <b>2026</b> Association of Anaesthetists and BIHS guideline says '
+       'take them, ACEi and ARB included, on the day. Know that your anaesthetist may hold the '
+       'opposite view, and ask rather than assume.'},
  {'t': '<b>Cost</b> is duration, not agent. Clevidipine ~$199/vial vs ~$25 for a nicardipine bag '
        '(682% more, same time to goal). Nitroprusside went $27 &rarr; $881 per 50 mg, 2012&ndash;15; '
        'use fell 53%. <b>Fenoldopam</b> is still in the guideline tables but left the US market in '

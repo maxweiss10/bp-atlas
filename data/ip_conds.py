@@ -23,6 +23,45 @@ CONDS = [
         '&mdash; <b>44% resolve untreated within 3 h</b>, and there are no RCTs.',
 },
 {
+ 'name': 'Pre-procedure', 'sub': 'the surgeon wants it lower first', 'src': 'add', 'base': True,
+ 'goal': 'No number to hit. Anaesthesia proceeds at &lt;180/120 clinic',
+ 'win': 'do not cancel for the number', 'slow': True,
+ 'pref': 'Give the <b>held home morning dose</b> with a sip of water &mdash; NPO at midnight is '
+         'usually the whole problem. Recheck after <b>30 min rest</b>, correct cuff. Treat pain, '
+         'anxiety, full bladder.',
+ 'avoid': '<span class="no">IV hydralazine or labetalol the morning of</span> &mdash; you are '
+          'stacking an unpredictable drop onto induction. Adding a <em>new</em> agent. Starting a '
+          'BB day-of (Class 3 Harm). Abruptly stopping a BB or clonidine (Class 3 Harm).',
+ 'why': 'The 180/110 rule is <b>COR 2b, &ldquo;may be considered&rdquo;</b>, and it needs elective '
+        '<em>elevated-risk</em> surgery + CV risk factors + a <em>recent history</em> of poor '
+        'control documented <em>before the day of surgery</em>. A one-off in holding meets none of '
+        'that. Howell, 30 studies: OR 1.35, <b>&ldquo;statistically but not clinically '
+        'significant&rdquo;</b>, and surgery <b>&ldquo;should not be cancelled on the grounds of '
+        'elevated preoperative arterial pressure&rdquo;</b>. The only RCT (n=989, DBP '
+        '110&ndash;130 <em>in the OR</em>) found postponing changed no postop complication and '
+        'lengthened stay. Rest alone normalised 32%; rest matched telmisartan in an RCT. And the '
+        'chronic hypertensive does <b>not</b> need a higher intraop MAP &mdash; the &lt;65 harm '
+        'threshold is identical to everyone else&rsquo;s. <b>No society sets any threshold for '
+        'endoscopy, cath, IR or bronch.</b>',
+},
+{
+ 'name': 'Discharge', 'sub': 'asx in the 180s, medically ready', 'src': 'add', 'base': True,
+ 'goal': 'No discharge threshold exists',
+ 'win': 'f/u within 7 d', 'slow': True,
+ 'pref': 'If the <em>chronic</em> disease is untreated or undertreated: restart or optimise the '
+         '<b>long-acting</b> regimen and book f/u &mdash; 7 d, or 1&ndash;3 d if severe or you '
+         'changed something. BMP at 2&ndash;4 wk if you started an ACEi, ARB or diuretic.',
+ 'avoid': '<span class="no">Adding a drug to move today&rsquo;s number.</span> Discharging on a '
+          'regimen built around an inpatient reading nobody will reproduce at home.',
+ 'why': '<b>14 guidelines across 11 countries set no inpatient BP goal and no discharge '
+        'threshold</b> &mdash; the rule is institutional, not clinical. The AHA names it: such '
+        'policies &ldquo;perpetuate a culture of routinely treating asymptomatic elevated inpatient '
+        'BP&rdquo;. <b>65% of hospitalised hypertensives were well controlled as outpatients before '
+        'admission</b>, and intensification tracked the inpatient number (8 &rarr; 24 &rarr; 40%) '
+        'rather than who would benefit. Intensifying at discharge: 30-d readmit <b>NNH 27</b>, '
+        'serious AE NNH 63, and <b>0.6 mmHg</b> difference at 1 yr.',
+},
+{
  'name': 'HTN emergency, general', 'sub': 'when no row below applies', 'src': 'fix', 'base': True,
  'goal': '&le;25% in 1st h &rarr; &lt;160/100 by 2&ndash;6 h &rarr; 130&ndash;140 by 24&ndash;48 h',
  'win': 'the default rule',
@@ -158,7 +197,7 @@ CONDS = [
         'arteriole and drops filtration further. <em>Card lists MAHA as TOD but gives it no row.</em>',
 },
 {
- 'name': 'Perioperative', 'src': 'add',
+ 'name': 'Intra- and post-op', 'sub': 'not the pre-op ask &mdash; see Pre-procedure', 'src': 'add',
  'goal': 'Avoid hypotension as hard as HTN &mdash; MAP &ge;60&ndash;65',
  'pref': 'Esmolol, nicardipine, clevidipine. Treat pain, hypoxia, hypercarbia, full bladder and '
          'shivering first.',
