@@ -99,8 +99,12 @@ esmolol drip in the same ranking as amlodipine 5 mg would imply a comparison tha
 What it carries instead are the columns that decide an inpatient choice — onset, offset, and how
 finely the agent can be steered.
 
-It is written at cheat-sheet density: fragments, standard abbreviations, and no sentence a
-physician could have finished themselves.
+It is written in ward shorthand: arrows, standard abbreviations, no articles and no sentence a
+physician could have finished themselves. "Extravasation causes necrosis and blistering — large
+vein, never a butterfly" becomes "Extrav→necrosis/blisters; lg vein only." The same pass ran over
+the outpatient drug text via `data/abbrev.py`, which keeps the substitution list reviewable. The
+**How it works** tab is deliberately exempt — it is the provenance record and has to stay
+readable.
 
 **Every agent carries a use tier**, and the table sorts on it first, so a floor BP question does
 not mean scrolling past phentolamine to find labetalol:
