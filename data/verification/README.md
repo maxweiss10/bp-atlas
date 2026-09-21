@@ -11,6 +11,7 @@ appears in the Inpatient & emergency tab traces to one of these files.
 | `research-3-iv-drugs.md` | Parenteral agents — dosing, onset, offset, boxed warnings, from the FDA labels on DailyMed |
 | `research-4-po-drugs.md` | Oral agents, same fields, plus the agents the card omits |
 | `research-5-workflow.md` | Workup, measurement technique, the as-needed antihypertensive literature, drip-to-oral transition, discharge, and cost |
+| `research-6-preop-discharge.md` | The two situations where someone else wants the number lower: pre-procedure and discharge |
 
 ## What was found
 
@@ -24,6 +25,21 @@ recheck interval relabelled as onset.** Captopril's 30–90 minutes is the label
 labetalol's 20 minutes is the intravenous number; nifedipine's 20 minutes is the ACOG recheck
 interval. Each error pushes the reader to wait too long before judging a dose, which is how doses
 get stacked.
+
+## The pre-procedure and discharge rows
+
+Two findings do most of the work there. The 2024 perioperative guideline's 180/110 threshold is
+**COR 2b, "may be considered"**, and its own wording requires elective *elevated-risk* surgery,
+cardiovascular risk factors, and a *recent history* of poor control documented *before the day of
+surgery* — a single reading in the pre-op bay satisfies none of those. And a systematic review of
+14 guidelines across 11 countries (*Ann Intern Med* 2024;177:497) found that **no guideline sets
+an inpatient BP goal, an antihypertensive class to use inpatient, or any threshold for discharge**.
+
+Unverified and deliberately left off the page: the exact complication rates in Weksler 2003, which
+are not in the abstract; any follow-up interval attributed to the 2019 NEJM review, whose full text
+could not be retrieved; and the widely repeated "47% were normotensive before admission", which
+traces to no primary statement. The page uses the verifiable figure instead — 65% of hospitalised
+hypertensives were well controlled as outpatients before admission.
 
 ## Things deliberately not carried over
 

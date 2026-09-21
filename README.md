@@ -122,12 +122,20 @@ Every agent and every condition also carries a provenance mark, so the reader ca
 | `WB ✎` | on the card, but at least one figure is corrected here — the row holds the original |
 | `+` | not on the card, added here |
 
-Of 29 agents, 1 is unchanged, 15 carry a correction and 13 are additions; of 15 condition rows, all six
-that appear on the card needed a change and nine are new. The first two rows are the defaults,
-shaded and ruled off: **severe asymptomatic hypertension**, where the answer is usually to treat
-nothing and the row instead lists the reasons this patient is not an ordinary one, and
-**hypertensive emergency with no specific organ target**, which is the gradual-lowering rule every
-row beneath it departs from. **28 individual figures were corrected.**
+Of 29 agents, 1 is unchanged, 15 carry a correction and 13 are additions; of 17 condition rows, all six
+that appear on the card needed a change and eleven are new. The first four are shaded and ruled
+off, because they are the situations you are in most of the time: **severe asymptomatic
+hypertension**, where the answer is usually to treat nothing; **pre-procedure** and **discharge**,
+the two where someone else wants the number lower; and **hypertensive emergency with no specific
+organ target**, the gradual-lowering rule every row beneath it departs from.
+
+The two pressure rows carry the evidence you would need to hold the line. The perioperative
+guideline's 180/110 is COR 2b, "may be considered", and requires elective *elevated-risk* surgery
+plus a *recent history* of poor control documented *before the day of surgery* — a one-off reading
+in the pre-op bay meets none of it. No society sets any threshold at all for endoscopy,
+catheterisation or interventional radiology. And a systematic review of 14 guidelines across 11
+countries found none setting an inpatient BP goal or a discharge threshold, which makes the local
+"not above 180" rule institutional rather than clinical. **28 individual figures were corrected.**
 Most of that is not error but age: the card predates the
 [2025 AHA/ACC hypertension guideline](https://doi.org/10.1161/HYP.0000000000000249) (August 2025,
 which retired the 2017 one and renamed hypertensive urgency "severe hypertension") and the
