@@ -22,6 +22,11 @@ mentioning. Plus a combination builder that applies the source paper's own permu
 - **Build a regimen** — up to four drugs, live predicted BP, projected on-treatment BP, drug cost,
   interaction warnings, and number needed to treat from a baseline cardiovascular risk.
 - Baseline BP is adjustable by slider or typed value; everything re-standardises live.
+- **Inpatient & emergency** — a self-contained fourth view for hypertensive emergency and severe
+  inpatient hypertension, reproducing a White Book cardiology card and checking every line of it
+  against the primary sources. Definitions, a triage comparison, 13 conditions with their own BP
+  targets, and 29 agents with onset, offset, dosing, indications and how finely each can be
+  steered. Nothing here touches the efficacy model, and the model never reads it.
 
 ## Where the numbers come from
 
@@ -86,19 +91,79 @@ A few entries deliberately correct common teaching:
   its label, which reports no rate and makes no comparison.
 - The 2025 guideline **dropped** its preference for chlorthalidone over hydrochlorothiazide.
 
+## The inpatient layer
+
+The fourth tab is a closed compartment. The Wang model is built from chronic oral monotherapy
+trials and has no coefficient for a titrated infusion, so there is no mmHg column there: putting an
+esmolol drip in the same ranking as amlodipine 5 mg would imply a comparison that does not exist.
+What it carries instead are the columns that decide an inpatient choice — onset, offset, and how
+finely the agent can be steered.
+
+Every agent and every condition carries a provenance mark, so the reader can see what moved:
+
+| Mark | Meaning |
+|---|---|
+| `WB` | on the White Book card, checked against the primary source, unchanged |
+| `WB ✎` | on the card, but at least one figure is corrected here — the row holds the original |
+| `+` | not on the card, added here |
+
+Of 29 agents, 1 is unchanged, 15 carry a correction and 13 are additions; of 13 conditions, all six
+that appear on the card needed a change and seven are new. **28 individual figures were corrected.**
+Most of that is not error but age: the card predates the
+[2025 AHA/ACC hypertension guideline](https://doi.org/10.1161/HYP.0000000000000249) (August 2025,
+which retired the 2017 one and renamed hypertensive urgency "severe hypertension") and the
+[2026 AHA/ASA acute ischemic stroke guideline](https://doi.org/10.1161/STR.0000000000000513)
+(February 2026), and those two rewrote the intracerebral haemorrhage target, the aortic dissection
+heart rate, and the whole of the ischemic stroke row.
+
+The corrections that change what you would actually do:
+
+- **Intracerebral haemorrhage** — entry band is 150–220, not 180–220; target is 130 to <140 held for
+  seven days, not 140–160; and SBP <130 is Class 3: Harm, which the card has no floor for.
+- **Ischemic stroke** — 220/120 is a treatment *threshold*, not a target. The post-thrombolysis
+  <180/105 window and the Class 3: Harm rule against SBP <140 after successful thrombectomy are
+  both absent from the card.
+- **Aortic dissection** — heart rate 60–80, which is the 2022 target; <60 is the 2010 one.
+- **Asymptomatic severe hypertension** — the card suggests captopril or labetalol. The 2025
+  guideline makes intermittent IV *or oral* dosing for the number alone a Class 3: Harm
+  recommendation, and the hospital-medicine paper the card itself cites says the same.
+- **Captopril onset** — the card's 30–90 minutes is the label's *peak*; onset is 15–30 minutes.
+  The same error pattern appears in oral labetalol (20 minutes is the IV figure) and amlodipine
+  (24–48 hours is not in the label at all).
+- **Nitroprusside** — the current label carries no ten-minute rule at the maximum rate; it says the
+  cyanide buffer is exhausted in under an hour.
+- **Nifedipine** — the immediate-release label says in those words that it "should not be used for
+  the acute reduction of blood pressure." It is first-line in pregnancy and the wrong answer
+  everywhere else, and the card gives the indication without the counter-warning.
+
+Agents added because the card has no equivalent: **phentolamine** (it had no agent at all for
+catecholamine excess), metoprolol IV and PO, diltiazem IV and ER, furosemide IV, enalaprilat,
+carvedilol, losartan, chlorthalidone, spironolactone, nifedipine ER, and **clonidine as a hazard
+entry** rather than a treatment one. Fenoldopam is deliberately absent: it is still in the guideline
+tables but was discontinued in the US in 2023.
+
+Sources: the FDA prescribing information on DailyMed for every dosing, onset and offset figure; the
+2024 AHA acute-care scientific statement (*Hypertension* 2024;81:e94, Bress et al) and the 2025 and
+2026 guidelines above for the targets; ACOG Practice Bulletin 222 for pregnancy; and the named
+trials behind each claim — COMMIT, ATACH-2, INTERACT2/3, ENCHANTED2/MT, OPTIMAL-BP, CLICK,
+PATHWAY-2, A-HeFT.
+
 ## Repository layout
 
 ```
-index.html        the whole tool, self-contained, no build step
-data/model.json   per-drug coefficients, doses, costs, adverse effects, kinetics
-data/*.py         the pipeline that produced it
+index.html          the whole tool, self-contained, no build step
+data/model.json     per-drug coefficients, doses, costs, adverse effects, kinetics
+data/ip_*.py        the inpatient layer: text, conditions, parenteral and oral agents
+data/*.py           the pipeline that produced it
 ```
 
 `data/shiny_client.py` speaks the Shiny websocket protocol to the source calculator;
 `harvest.py` walks the dose grid; `prices.py` extracts NADAC pricing; `clinical.py` holds the
 dosing and adverse-effect layer; `kinetics.py` the onset/wear-off layer, with the label sentence
 behind each figure and the sort value parsed back off the string the column prints; `merge_data.py` assembles `model.json`, and `add_kinetics.py` folds the
-kinetics layer into it and re-embeds the payload in `index.html`.
+kinetics layer into it and re-embeds the payload in `index.html`. The inpatient layer is separate
+all the way down: `ip_text.py`, `ip_conds.py`, `ip_agents_iv.py` and `ip_agents_po.py` hold the
+data, `inpatient.py` assembles it, and `build_inpatient.py` embeds it as its own constant.
 
 ## Limits
 
