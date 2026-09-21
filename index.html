@@ -65,32 +65,32 @@ h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.6vw,44px);lin
 
 /* ---------- control rail ---------- */
 .rail{position:sticky;top:0;z-index:20;background:var(--paper);
-  border-bottom:1px solid var(--rule);padding:14px 0 13px;margin-bottom:20px}
-.rail-grid{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:flex-end}
-.ctl{display:flex;flex-direction:column;gap:5px;min-width:0}
+  border-bottom:1px solid var(--rule);padding:8px 0 8px;margin-bottom:14px}
+.rail-grid{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:flex-end}
+.ctl{display:flex;flex-direction:column;gap:3px;min-width:0}
 .ctl > label,.ctl > .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--ink-3)}
-.ctl input[type=range]{width:150px;accent-color:var(--accent);margin:0;height:20px}
+.ctl input[type=range]{width:120px;accent-color:var(--accent);margin:0;height:20px}
 .pair{display:flex;align-items:center;gap:9px}
-.pair input[type=number]{width:66px;font-family:var(--mono);font-variant-numeric:tabular-nums;
-  text-align:right;padding:5px 7px}
+.pair input[type=number]{width:58px;font-family:var(--mono);font-variant-numeric:tabular-nums;
+  text-align:right;padding:4px 6px}
 .pair .u{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
 /* cost + adverse-effect cells */
 .cost{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
 .cost .amt{font-weight:500}
-.cost .tier{display:block;font-size:12px;letter-spacing:.07em;color:var(--ink-3);text-transform:uppercase}
 .cost.pricey .amt{color:var(--warn)}
+.cost .tier{display:block;font-size:12px;letter-spacing:.07em;color:var(--ink-3);text-transform:uppercase}
 .span2{grid-column:1/-1}
 /* frequency + formulation marks */
 .subline{display:block;margin-top:2px;white-space:normal;line-height:1.35}
 .subtag{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.04em;
   padding:1px 5px;margin-left:6px;border-radius:3px;vertical-align:1px;cursor:help;
   border:1px solid var(--rule);color:var(--ink-2);background:var(--card-2);white-space:nowrap}
-.freq{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:600;
-  letter-spacing:.06em;padding:1px 5px;margin-left:6px;border-radius:3px;
+.freq{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:600;
+  letter-spacing:.05em;padding:0 4px;margin-left:6px;border-radius:3px;
   background:var(--accent-soft);color:var(--accent-ink);vertical-align:1px}
-.when{display:inline-block;font-family:var(--mono);font-size:11.5px;font-weight:600;
-  letter-spacing:.06em;padding:1px 4px;margin-left:3px;border-radius:3px;
+.when{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:600;
+  letter-spacing:.05em;padding:0 3px;margin-left:3px;border-radius:3px;
   border:1px solid var(--rule);color:var(--ink-3);vertical-align:1px}
 .forms{margin-top:4px;display:flex;flex-wrap:wrap;gap:4px;align-items:baseline}
 .formlbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
@@ -137,7 +137,7 @@ h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.6vw,44px);lin
   font-size:13px;color:var(--ink-2)}
 .monitorline b{color:var(--ink)}
 .xtrap.far{color:var(--warn);font-weight:700}
-.ae{font-size:13px;line-height:1.35;color:var(--ink-2);max-width:132px;min-width:84px}
+.ae{font-size:16px;line-height:1.25;color:var(--ink-2);max-width:165px;min-width:0}
 .ae .imp{color:var(--warn);font-weight:500}
 a.cite{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;
   text-transform:uppercase;text-decoration:none;vertical-align:2px;margin-left:4px;
@@ -149,16 +149,16 @@ a.cite:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .difitem:last-child{margin-bottom:0}
 .aesum{color:var(--ink-2);font-size:13px}
 .ci{max-width:none;min-width:108px}
-.subcol{font-size:12.5px;color:var(--ink-2);white-space:nowrap}
+.subcol{font-size:15.5px;color:var(--ink-2);white-space:nowrap}
 td .cbadge{margin:0}
-.cond{display:inline-block;font-size:12px;line-height:1.3;padding:1px 6px;margin:1px 3px 1px 0;
+.cond{display:inline-block;font-size:14px;line-height:1.25;padding:0 4px;margin:0 3px 0 0;
   border-radius:3px;white-space:nowrap;cursor:help;border:1px solid transparent}
 .cond.x{background:var(--warn-soft);color:var(--warn);border-color:var(--warn-soft)}
 .cond.c{background:var(--card-2);color:#8A5E14;border-color:var(--rule)}
 .cond.i{background:var(--accent-soft);color:var(--accent-ink);border-color:var(--accent-soft)}
 .condnote{display:block;font-size:12.5px;color:var(--ink-3);margin-top:2px}
-.morechip{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;
-  padding:0 5px;margin-left:5px;border-radius:3px;background:var(--accent-soft);
+.morechip{display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;
+  padding:0 4px;margin-left:2px;border-radius:3px;background:var(--accent-soft);
   color:var(--accent-ink);white-space:nowrap}
 .detailgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:10px 24px;padding-top:6px}
@@ -171,17 +171,17 @@ td .cbadge{margin:0}
   font-variant-numeric:tabular-nums}
 .readout .u{color:var(--ink-3);font-weight:400}
 select,input[type=search],input[type=number]{font:500 13px/1.3 var(--sans);color:var(--ink);
-  background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:7px 9px}
+  background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:5px 8px}
 select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
-input[type=search]{min-width:190px}
+input[type=search]{min-width:170px}
 .seg{display:inline-flex;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;background:var(--card)}
-.seg button{appearance:none;background:none;border:0;padding:7px 12px;cursor:pointer;
+.seg button{appearance:none;background:none;border:0;padding:5px 10px;cursor:pointer;
   font:500 12.5px/1.3 var(--mono);color:var(--ink-2);border-right:1px solid var(--rule-2)}
 .seg button:last-child{border-right:0}
 .seg button[aria-pressed="true"]{background:var(--band);color:var(--ink)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-start}
 .chip{appearance:none;border:1px solid var(--rule);background:var(--card);color:var(--ink-2);
-  border-radius:100px;padding:5px 11px;font:500 12px/1.2 var(--sans);cursor:pointer;
+  border-radius:100px;padding:4px 9px;font:500 12px/1.2 var(--sans);cursor:pointer;
   display:inline-flex;align-items:center;gap:6px;transition:border-color .13s,background .13s}
 .chip .dot{width:7px;height:7px;border-radius:100px;background:currentColor;flex:none}
 .chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink)}
@@ -196,13 +196,13 @@ input[type=search]{min-width:190px}
    columns get the room they need and a sideways scroll is a last resort rather
    than the default on a wide screen. 100svw rather than 100vw so a vertical
    scrollbar cannot push the page sideways. */
-.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--rule);
+.tablewrap{overflow:visible;background:var(--card);border:1px solid var(--rule);
   border-radius:var(--r);box-shadow:var(--shadow);
-  margin-inline:calc(50% - 50svw + 10px);
-  overscroll-behavior-x:contain}
+  margin-inline:calc(50% - 50svw + 10px)}
 @supports not (width:100svw){.tablewrap{margin-inline:0}}
 table{border-collapse:collapse;width:100%;min-width:0}
-thead th{position:sticky;top:0;z-index:2;background:var(--card-2);border-bottom:1px solid var(--rule);
+/* the rail is sticky too, so the header sticks just below it, never under it */
+thead th{position:sticky;top:var(--railH,0px);z-index:2;background:var(--card-2);border-bottom:1px solid var(--rule);
   font-family:var(--mono);font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
   color:var(--ink-3);text-align:left;padding:7px 7px;font-weight:500;
   white-space:nowrap;line-height:1.25}
@@ -230,39 +230,52 @@ tr[aria-expanded="true"] .exp{color:var(--accent-ink)}
 tbody tr:last-child td{border-bottom:0}
 tbody tr:hover{background:var(--card-2)}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
-.rank{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);text-align:right;width:34px}
+.rank{font-family:var(--mono);font-size:13.5px;color:var(--ink-3);text-align:right;width:30px}
 .drug{font-weight:600;letter-spacing:-.005em}
-.drug .sub{display:block;font-weight:400;font-size:12.5px;color:var(--ink-3);font-family:var(--mono);margin-top:0}
+.drug .sub{display:block;font-weight:400;font-size:13px;color:var(--ink-3);font-family:var(--mono);margin-top:0}
 .cls-ACEi{color:var(--c-acei)} .cls-ARB{color:var(--c-arb)} .cls-BB{color:var(--c-bb)}
 .cls-CCB{color:var(--c-ccb)} .cls-Diuretic{color:var(--c-diu)}
 .cls-Nitro{color:var(--c-nit)} .cls-Vasodil{color:var(--c-vas)}
 .cls-Alpha{color:var(--c-alp)} .cls-D1{color:var(--c-d1)} .cls-Central{color:var(--c-cen)}
 /* class badge: distinct shape AND distinct colour AND a text abbreviation,
    so the class survives greyscale printing and colour-vision deficiency */
-.cbadge{display:inline-flex;align-items:center;gap:5px;padding:2px 7px 2px 5px;border-radius:4px;
+.cbadge{display:inline-flex;align-items:center;gap:4px;padding:1px 5px 1px 4px;border-radius:4px;
   border:1px solid currentColor;background:color-mix(in srgb,currentColor 11%,transparent);
-  font:600 12.5px/1.35 var(--mono);letter-spacing:.06em;white-space:nowrap;vertical-align:1px}
+  font:600 14px/1.3 var(--mono);letter-spacing:.04em;white-space:nowrap;vertical-align:1px}
 .cbadge svg{display:block;flex:none}
 .legend{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 12px;
   font-family:var(--mono);font-size:12px;color:var(--ink-3)}
 .legend .item{display:inline-flex;align-items:center;gap:6px}
-.bigval{font-family:var(--mono);font-size:14.5px;font-weight:500;font-variant-numeric:tabular-nums}
-.pi{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
-/* Sequential ramp for the delta-SBP column, replacing the bar. One hue, five
-   steps, light to dark; every step clears 4.5:1 on white and lightness is
-   strictly monotonic. Weight rises with it as a second channel, so the scale
-   survives greyscale printing and colour-vision deficiency. */
-.bigval.s0{color:#157C8C;font-weight:400}
-.bigval.s1{color:#0F6675;font-weight:500}
-.bigval.s2{color:#0A505C;font-weight:600}
-.bigval.s3{color:#063C46;font-weight:700}
-.bigval.s4{color:#042B32;font-weight:700}
-/* one line per row */
-#drugtable tbody td,#combotable tbody td{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#drugtable tbody td.ci,#combotable tbody td.ci{max-width:168px}
-#drugtable tbody td.ae{max-width:150px}
-#drugtable tbody td.drug{max-width:150px}
-#drugtable tbody td.subcol{max-width:110px}
+.bigval{font-family:var(--mono);font-size:18px;font-weight:500;font-variant-numeric:tabular-nums}
+.pi{font-family:var(--mono);font-size:13px;color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
+/* Magnitude ramp for the two mmHg columns (and onset/offset inpatient, where
+   there is no mmHg to rank on): seven muted steps, cool to warm - blue, teal,
+   green, olive, bronze, rust, brick - so adjacent steps differ in hue and not
+   only in darkness, which is what lets 10 and 15 be told apart at a glance,
+   without shouting. Every step clears 5:1 on white; weight rises with the
+   step as a second channel for greyscale print. */
+.r0,.cost .amt.r0,.ipkin.r0{color:#466AAA;font-weight:400}
+.r1,.cost .amt.r1,.ipkin.r1{color:#34757F;font-weight:500}
+.r2,.cost .amt.r2,.ipkin.r2{color:#317748;font-weight:500}
+.r3,.cost .amt.r3,.ipkin.r3{color:#5B742F;font-weight:600}
+.r4,.cost .amt.r4,.ipkin.r4{color:#826935;font-weight:600}
+.r5,.cost .amt.r5,.ipkin.r5{color:#9C5B40;font-weight:600}
+.r6,.cost .amt.r6,.ipkin.r6{color:#AE4747;font-weight:700}
+.r1,.kin .kmain.r1,.cost .amt.r1,.ipkin.r1{color:#0E7490;font-weight:500}
+.r2,.kin .kmain.r2,.cost .amt.r2,.ipkin.r2{color:#15803D;font-weight:500}
+.r3,.kin .kmain.r3,.cost .amt.r3,.ipkin.r3{color:#4D7C0F;font-weight:600}
+.r4,.kin .kmain.r4,.cost .amt.r4,.ipkin.r4{color:#B45309;font-weight:600}
+.r5,.kin .kmain.r5,.cost .amt.r5,.ipkin.r5{color:#C2410C;font-weight:700}
+.r6,.kin .kmain.r6,.cost .amt.r6,.ipkin.r6{color:#B91C1C;font-weight:700}
+/* one line per row, in all three tables; the open row is where text wraps */
+#drugtable tbody td,#combotable tbody td,#iptable tbody td{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#drugtable tbody tr.detail > td,#combotable tbody tr.detail > td,#iptable tbody tr.detail > td{
+  white-space:normal;overflow:visible;text-overflow:clip;max-width:none}
+#drugtable tbody td.ci,#combotable tbody td.ci{max-width:230px}
+#drugtable tbody td.ae{max-width:165px}
+#drugtable tbody td.drug{max-width:160px}
+#drugtable tbody td.subcol{max-width:120px}
+td .freq{margin-left:0}
 #combotable tbody td.drug{max-width:330px}
 #combotable tbody td.cmarks{white-space:nowrap}
 .kin .ksub{display:none}
@@ -270,8 +283,8 @@ tbody tr:hover{background:var(--card-2)}
    it has to go back inline or the taper mark drops to a second row */
 #drugtable .kin .kmain,#combotable .kin .kmain{display:inline}
 .stopcell{white-space:nowrap}
-.stopmark{display:inline-block;font-family:var(--narrow);font-size:11.5px;font-weight:700;
-  letter-spacing:.04em;text-transform:uppercase;padding:1px 5px;border:1px solid currentColor;
+.stopmark{display:inline-block;font-family:var(--narrow);font-size:12.5px;font-weight:700;
+  letter-spacing:.03em;text-transform:uppercase;padding:0 4px;border:1px solid currentColor;
   cursor:help}
 .stopmark.tap{color:var(--warn)}
 .stopmark.ok{color:var(--ink-3)}
@@ -282,7 +295,7 @@ tbody tr:hover{background:var(--card-2)}
   border:1px solid var(--rule);color:var(--ink-2);background:var(--card-2)}
 .band.moderate{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
 .band.high{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.ev{font-family:var(--mono);font-size:12px;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ev{font-family:var(--mono);font-size:15px;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
 .ev.thin{color:var(--warn)}
 /* onset / offset: how quickly the drug turns on and off. A dotted underline
    marks a figure that was not measured as a blood-pressure time course but
@@ -290,7 +303,7 @@ tbody tr:hover{background:var(--card-2)}
 .kin{line-height:1.25}
 .kin .kwrap{display:inline-block;text-align:right}
 /* the figure the column sorts on, sized to be read at a glance down the column */
-.kin .kmain{display:block;font-size:13.5px;color:var(--ink);font-weight:500}
+.kin .kmain{display:block;font-size:16.5px;color:var(--ink);font-weight:500}
 .kin .ksub{display:block;font-size:12px;color:var(--ink-3);letter-spacing:.01em}
 .kin .ksub.mut{color:var(--rule)}
 .kin .soft{border-bottom:1px dotted var(--ink-3);cursor:help}
@@ -318,7 +331,7 @@ tbody tr:hover{background:var(--card-2)}
   box-shadow:var(--shadow);padding:18px}
 .card h2,.card h3{margin:0 0 14px;font-family:var(--serif);font-weight:600;letter-spacing:-.01em}
 .card h2{font-size:19px} .card h3{font-size:16px}
-.slot{display:grid;grid-template-columns:1fr 128px 32px;gap:8px;align-items:center;margin-bottom:9px}
+.slot{display:grid;grid-template-columns:1fr minmax(210px,.8fr) 32px;gap:8px;align-items:center;margin-bottom:9px}
 .slot select{width:100%}
 .slot .rm{appearance:none;background:none;border:1px solid var(--rule);border-radius:var(--r);
   color:var(--ink-3);cursor:pointer;font-size:15px;line-height:1;padding:7px 0;width:32px}
@@ -522,52 +535,57 @@ footer a{color:var(--ink-2)}
 .dz em{font-style:italic;color:var(--ink)}
 .dz td.goal{max-width:210px;white-space:normal}
 /* provenance mark: on the card, on the card but corrected, or added here */
-.src{display:inline-block;font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.07em;
-  padding:1px 5px;border-radius:3px;white-space:nowrap;cursor:help;border:1px solid transparent;
+.src{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.05em;
+  padding:0 4px;border-radius:3px;white-space:nowrap;cursor:help;border:1px solid transparent;
   vertical-align:1px}
 .src.wb{background:var(--accent-soft);color:var(--accent-ink);border-color:var(--accent-soft)}
 .src.fix{background:#F3E6CC;color:#7A5610;border-color:#E3D0A8}
 .src.add{background:var(--card-2);color:var(--ink-3);border-color:var(--rule)}
 /* how often you reach for it - the column that stops a floor BP question
    turning into a scroll past phentolamine */
-.tier{display:inline-block;font-family:var(--narrow);font-size:11px;font-weight:700;
-  letter-spacing:.04em;text-transform:uppercase;padding:1px 5px;white-space:nowrap;cursor:help;
+.tier{display:inline-block;font-family:var(--narrow);font-size:12px;font-weight:700;
+  letter-spacing:.03em;text-transform:uppercase;padding:0 4px;white-space:nowrap;cursor:help;
   border:1px solid currentColor}
 .tier.t1{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .tier.t2{background:none;color:var(--ink-2);border-color:var(--rule-2)}
 .tier.t3{background:none;color:var(--warn);border-color:var(--warn)}
-.usecell{max-width:170px}
+.usecell{max-width:120px}
 /* a drug named in the prose jumps to its row */
 .dlink{border-bottom:1px dashed currentColor;cursor:pointer;color:inherit;text-decoration:none}
 .dlink:hover{border-bottom-style:solid;background:var(--band)}
 .dlink:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
 @keyframes ipflash{0%,55%{background:var(--band)}100%{background:transparent}}
 #ipbody tr.flash td{animation:ipflash 1.8s ease-out}
-.trigger{display:block;margin-top:2px;font-size:12px;line-height:1.3;color:var(--ink-3)}
+/* the situation a specific agent is for: in the tier chip's tooltip on the
+   row, spelled out in the open row */
+.trigger{display:none}
 .trigger b{color:var(--ink-2)}
 .srckey{display:flex;flex-wrap:wrap;gap:7px 18px;align-items:center;margin:0 0 12px;
   font-family:var(--mono);font-size:12px;color:var(--ink-3)}
 .srckey .item{display:inline-flex;align-items:center;gap:6px}
-/* dosing cell: start / titrate / ceiling on their own lines */
-.dose{font-size:13px;line-height:1.45;color:var(--ink-2);min-width:210px;max-width:310px}
+/* dosing: one line in the row (start, titrate, ceiling), three in the open row */
+.doseline .d1{color:var(--ink);font-weight:600}
+.doseline .d2,.doseline .sep{color:var(--ink-3)}
+.doseline .dmax{color:var(--ink-3)} .doseline .dmax b{color:var(--ink-2);font-weight:600}
+#iptable tbody td.dosecell{max-width:290px}
+.dose{font-size:14px;line-height:1.45;color:var(--ink-2)}
 .dose .d1{display:block;color:var(--ink);font-weight:500}
 .dose .d2{display:block;color:var(--ink-3);font-size:12.5px}
 .dose .dmax{display:block;font-family:var(--mono);font-size:12px;color:var(--ink-3)}
 .dose .dmax b{color:var(--ink-2);font-weight:600}
 .dose .was{display:block;font-family:var(--mono);font-size:12.5px;color:#8A5E14;margin-top:2px}
 /* how controllable the agent is - the property that decides drip vs push */
-.ctrlb{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.06em;
-  text-transform:uppercase;padding:2px 6px;border-radius:4px;white-space:nowrap;cursor:help;
+.ctrlb{display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;
+  text-transform:uppercase;padding:0 5px;border-radius:4px;white-space:nowrap;cursor:help;
   border:1px solid var(--rule);background:var(--card-2);color:var(--ink-2)}
 .ctrlb.t3{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .ctrlb.t2{background:var(--accent-soft);color:var(--accent-ink);border-color:var(--accent-soft)}
 .ctrlb.t0{background:var(--warn-soft);color:var(--warn);border-color:var(--warn-soft)}
-.route{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.07em;
-  padding:2px 6px;border-radius:3px;border:1px solid var(--rule);color:var(--ink-2);
+.route{display:inline-block;font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.05em;
+  padding:0 5px;border-radius:3px;border:1px solid var(--rule);color:var(--ink-2);
   background:var(--card-2);white-space:nowrap}
 .route.gtt{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
-.setting{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);white-space:normal;
-  max-width:134px}
+.setting{font-family:var(--mono);color:var(--ink-2);cursor:help}
 /* what the LABEL asks for, not what the hospital happens to require */
 .setting .monline{display:block;margin-top:2px;font-size:11.5px;line-height:1.3;color:var(--ink-3);
   letter-spacing:0;text-transform:none}
@@ -580,12 +598,15 @@ footer a{color:var(--ink-2)}
   white-space:nowrap;text-align:right}
 .ipkin .k2{display:block;font-size:12px;color:var(--ink-3);letter-spacing:.01em}
 .ipkin .soft{border-bottom:1px dotted var(--ink-3);cursor:help}
-.ipnote{font-size:12.5px;color:var(--ink-3);line-height:1.45;max-width:260px}
-/* Two cells were holding the table wider than the window purely because their
-   second line refused to wrap: the subclass name and the figure under Onset.
-   Letting both wrap buys back more width than any amount of padding. */
-#iptable .subcol.subline{white-space:normal;line-height:1.3}
-#iptable .ipkin .k2{white-space:normal}
+#iptable tbody td.ipnote{max-width:185px}
+.ipnote{color:var(--ink-2)}
+#iptable tbody td.subcol{max-width:125px}
+#iptable tbody td.drug{max-width:172px}
+#iptable tbody td.ci{max-width:160px}
+#iptable tbody td.num{max-width:104px}
+.ipdetail .glance{grid-column:1/-1}
+.ipdetail .glance .body b{margin-right:3px}
+.ipdetail .glance .body .difitem .cond{margin-right:4px}
 .ipdetail{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:10px 24px;
   padding:8px 0 3px}
 .ipdetail h5{margin:0 0 4px;font-family:var(--mono);font-size:12px;letter-spacing:.11em;
@@ -663,10 +684,10 @@ h1 .topic{font-weight:400;font-size:clamp(18px,2.8vw,28px);text-align:right;flex
 
 /* tables: full hairline grid with a grey header band */
 table,.dz,.cmp{font-family:var(--narrow)}
-thead th{background:var(--ink);color:var(--paper);font-weight:700;font-size:13px;
+thead th{background:var(--ink);color:var(--paper);font-weight:700;font-size:13.5px;
   letter-spacing:.01em;text-transform:none;border-bottom:1px solid var(--rule);padding:2px 4px}
 thead th .arrow{opacity:.55}
-tbody td{padding:1px 4px;font-size:15px}
+tbody td{padding:1px 2px;font-size:17.5px;line-height:1.2}
 thead th.sortable:hover{color:var(--paper);text-decoration:underline}
 thead th[aria-sort] .arrow{color:var(--paper);opacity:1}
 thead th + th{border-left:1px solid #4A4A4A}
@@ -731,8 +752,6 @@ select,input[type=search],input[type=number]{border-radius:0}
 .classae summary{font-weight:700}
 #classAeBody,#condKeyBody{border-top:1px solid var(--rule-2);padding-top:11px}
 
-/* the shared theme toggle, if one is present, keeps its box */
-.tablewrap{overscroll-behavior-x:contain}
 
 /* ---------- phone: the wide tables become stacked cards ---------- */
 @media (max-width:720px){
@@ -809,6 +828,7 @@ select,input[type=search],input[type=number]{border-radius:0}
     display:block;margin-bottom:2px}
   #iptable tbody td.exp{display:none}
   #iptable .dose,#iptable .ipnote{max-width:none}
+  #iptable tbody td{white-space:normal;overflow:visible;text-overflow:clip;max-width:none}
   #iptable .ipkin{text-align:left}
   #iptable .ipkin .k2{display:inline;margin-left:8px}
   #iptable tbody tr.detail{display:block;padding:0 13px 11px;margin:-10px 0 10px;
@@ -973,7 +993,6 @@ select,input[type=search],input[type=number]{border-radius:0}
             title="What the label says about stopping. Taper = it warns against abrupt withdrawal. No rebound = it reports none. A dash = the label does not address it, which is not the same as safe.">Stopping<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="cost">$ / mo<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="ev">Trials<span class="arrow">&#8597;</span></th>
-        <th class="sortable" data-sort="band">Intensity<span class="arrow">&#8597;</span></th>
         <th class="sortable" data-sort="diff">Difference<span class="arrow">&#8597;</span></th>
         <th class="sortable" data-sort="contra">Contra&shy;indications<span class="arrow">&#8597;</span></th>
         <th class="sortable" data-sort="ind">Indications<span class="arrow">&#8597;</span></th>
@@ -1021,7 +1040,6 @@ select,input[type=search],input[type=number]{border-radius:0}
         <th class="sortable" data-csort="contra">Contra&shy;indications<span class="arrow">&#8597;</span></th>
         <th class="sortable" data-csort="ind">Indications<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-csort="ev">Weakest<span class="arrow">&#8597;</span></th>
-        <th class="sortable" data-csort="band">Intensity<span class="arrow">&#8597;</span></th>
       </tr></thead>
       <tbody id="combobody"></tbody>
     </table>
@@ -1319,11 +1337,12 @@ select,input[type=search],input[type=number]{border-radius:0}
             title="How often you actually reach for it. First reach = the default answer. Specific = only for the situation named beneath. Know only = recognise it, do not give it.">Use<span class="arrow">&#8597;</span></th>
         <th class="sortable" data-ipsort="route">Route<span class="arrow">&#8597;</span></th>
         <th class="sortable" data-ipsort="cls">Class<span class="arrow">&#8597;</span></th>
+        <th class="sortable" data-ipsort="sub">Subclass<span class="arrow">&#8597;</span></th>
         <th class="sortable" data-ipsort="setting"
-            title="Where the agent can be given, and what its LABEL asks for by way of monitoring - usually less than local policy. Note the unit tracks the diagnosis as much as the drug: a hypertensive emergency is a Class 1 ICU admission whichever agent you pick.">Setting<span class="arrow">&#8597;</span></th>
-        <th>Dosing</th>
+            title="Where the agent can be given. Hover a cell for what its LABEL asks for by way of monitoring - usually less than local policy. The unit tracks the diagnosis as much as the drug: a hypertensive emergency is a Class 1 ICU admission whichever agent you pick.">Setting<span class="arrow">&#8597;</span></th>
+        <th title="Start, then how to titrate, then the ceiling. Open the row for the full text and what the card says.">Dosing</th>
         <th class="num sortable" data-ipsort="on"
-            title="When blood pressure first starts to move, with the time to Open the row for that dose&rsquo;s peak.">Onset<span class="arrow">&#8597;</span></th>
+            title="When blood pressure first starts to move. Open the row for the peak.">Onset<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-ipsort="off"
             title="How long the effect lasts after the drug is stopped - for an infusion, how long you wait to undo an overshoot.">Offset<span class="arrow">&#8597;</span></th>
         <th class="sortable" data-ipsort="ctrl"
@@ -1577,14 +1596,21 @@ function formsLine(d) {
   }).join('');
   return `<div class="forms"><span class="formlbl">Available</span>${bits}</div>`;
 }
-/* The bar column is gone; the number itself carries the magnitude. One hue,
-   five steps, light to dark, cut at the quintiles of the real dose grid. Every
-   step clears 4.5:1 body-text contrast on white and the lightness is strictly
-   monotonic, which is what a sequential ramp has to satisfy. */
-const SBP_CUTS = [5.6, 7.2, 8.7, 11.6];
-const COMBO_CUTS = [20.4, 20.8, 21.8, 23];
-const comboStep = v => COMBO_CUTS.filter(c => v >= c).length;
-const sbpStep = v => SBP_CUTS.filter(c => v >= c).length;
+/* The number itself carries the magnitude, on a seven-step cool-to-warm ramp
+   (classes r0..r6 in the stylesheet). Cuts are fixed mmHg, not quantiles, so a
+   colour always means the same number whichever rows are on screen: 10 sits
+   two steps below 15. */
+const SBP_CUTS = [4, 6, 8, 10, 12, 15];
+const DBP_CUTS = [3, 4, 5, 6, 7, 8];
+const COMBO_CUTS = [14, 17, 20, 23, 26, 29];
+const COMBO_DBP_CUTS = [8, 10, 12, 14, 16, 18];
+const stepOf = (v, cuts) => cuts.filter(c => v >= c).length;
+/* a column with five bands samples the ramp so both ends stay blue and red */
+const RAMP5 = [0, 1, 2, 4, 6];
+const ramp = (v, cuts, map) => 'r' + (map ? map[stepOf(v, cuts)] : stepOf(v, cuts));
+/* the tables write minutes as m, the way the ward does; /min (a rate) is left alone */
+const shortMin = s => String(s == null ? '' : s).replace(/(?<!\/)\bmin\b/g, 'm');
+const strip = h => String(h == null ? '' : h).replace(/<[^>]+>/g, '');
 
 const badge = cls => `<span class="cbadge cls-${cls}">${mark(cls)}${cls === 'Diuretic' ? 'DIUR' : cls.toUpperCase()}</span>`;
 
@@ -1601,12 +1627,24 @@ function ciCell(d, which) {
     ? ci.x.map(e => ({ ...e, k: 'x' })).concat(ci.c.map(e => ({ ...e, k: 'c' })))
     : ci.i.map(e => ({ ...e, k: 'i' }));
   if (!items.length) return `<td class="ci"><span class="mut">&mdash;</span></td>`;
-  /* one row, one line: the first condition and a count. The rest are in the
-     open row, which is the only place they were ever readable anyway. */
-  const e = items[0];
-  const more = items.length > 1
-    ? `<span class="morechip" title="Open the row for all ${items.length}">${items.length}</span>` : '';
-  return `<td class="ci"><span class="cond ${e.k}" title="${esc(CONDITIONS[e.t] ? CONDITIONS[e.t].label + ' - ' : '')}${esc(e.w)}">${esc(e.t)}</span>${more}</td>`;
+  return `<td class="ci">${chipRun(items, e => (CONDITIONS[e.t] ? CONDITIONS[e.t].label + ' - ' : '') + e.w)}</td>`;
+}
+/* One row, one line: as many chips as fit a character budget, then a count of
+   the rest. The full list, with reasons, is in the open row. */
+const CI_BUDGET = 30;
+function chipRun(items, title, budget = CI_BUDGET, raw = false) {
+  const out = [];
+  let used = 0;
+  for (const e of items) {
+    const w = strip(e.t).replace(/&[^;]+;/g, 'x').length + 3;
+    if (out.length && used + w > budget) break;
+    used += w;
+    out.push(`<span class="cond ${e.k}" title="${attr(strip(title(e)))}">${raw ? e.t : esc(e.t)}</span>`);
+  }
+  const rest = items.slice(out.length);
+  const more = rest.length
+    ? `<span class="morechip" title="${attr(strip(rest.map(x => x.t).join(' \u00b7 ')))}">+${rest.length}</span>` : '';
+  return out.join('') + more;
 }
 
 /* Union across a regimen: any drug's contraindication is the regimen's. */
@@ -1625,11 +1663,7 @@ function ciCellCombo(drugs, which) {
   }
   const items = [...seen.values()];
   if (!items.length) return `<td class="ci"><span class="mut">&mdash;</span></td>`;
-  const e = items[0];
-  const rest = items.slice(1).map(x => x.t).join(' \u00b7 ');
-  const more = items.length > 1
-    ? `<span class="morechip" title="${attr(rest)}">${items.length}</span>` : '';
-  return `<td class="ci"><span class="cond ${e.k}" title="${esc(e.n)}: ${esc(e.w)}">${esc(e.t)}</span>${more}</td>`;
+  return `<td class="ci">${chipRun(items, e => e.n + ': ' + e.w)}</td>`;
 }
 
 /* Full list with reasons, for the expanded row. */
@@ -1801,11 +1835,13 @@ const KIN_WHY = {
   K: 'Inferred from this drug’s labelled pharmacokinetics (half-life, Tmax, time to steady state). No published blood-pressure time course.',
   C: 'Class-typical, carried from the labelled members of the class - either this agent has no US label, or its label does not time this.'
 };
-/* Wrap a figure in whatever marker its provenance earns. */
-function kfig(f) {
+/* Wrap a figure in whatever marker its provenance earns. The table cells ask
+   for the short form (minutes as m); the open row keeps the label's wording. */
+function kfig(f, short) {
   const why = KIN_WHY[f.s];
-  if (!why) return esc(f.t);
-  return `<span class="soft${f.s === 'C' ? ' cl' : ''}" title="${esc(why)}">${esc(f.t)}</span>`;
+  const t = esc(short ? shortMin(f.t) : f.t);
+  if (!why) return t;
+  return `<span class="soft${f.s === 'C' ? ' cl' : ''}" title="${esc(why)}">${t}</span>`;
 }
 /* Sort a time column on its own figure: midpoint first, then narrowest range,
    then a second column to settle what is still tied. */
@@ -1830,20 +1866,21 @@ function kinCells(d) {
   const pk = '';
   const off = '';   // stopping is its own column now
   // peak gets a column too; blank when it would only repeat onset
+  const kc = f => `<span class="kmain">${kfig(f, true)}</span>`;
   const pkCell = k.pk.t === k.on.t ? '<td class="num kin"></td>'
-    : `<td class="num kin" data-l="Peak" title="${t}"><span class="kmain">${kfig(k.pk)}</span></td>`;
+    : `<td class="num kin" data-l="Peak" title="${t}">${kc(k.pk)}</td>`;
   const rebCell = k.reb === 'taper'
     ? '<td class="stopcell" data-l="Stopping"><span class="stopmark tap" title="The label warns against abrupt withdrawal - rebound angina, infarction or thyroid storm.">taper</span></td>'
     : k.reb === 'ok'
       ? '<td class="stopcell" data-l="Stopping"><span class="stopmark ok" title="The label reports no rebound rise in BP after abrupt withdrawal.">no rebound</span></td>'
       : '<td class="stopcell" data-l="Stopping"><span class="mut" title="The label does not address abrupt withdrawal. Silence is not reassurance.">&mdash;</span></td>';   // label silent on withdrawal - say nothing rather than a filler dash
   return `<td class="num kin" data-l="Onset" title="${t}"><span class="kwrap">
-      <span class="kmain">${kfig(k.on)}</span>${pk}</span></td>
+      ${kc(k.on)}${pk}</span></td>
     ${pkCell}
     <td class="num kin" data-l="Full effect" title="${t}"><span class="kwrap">
-      <span class="kmain">${kfig(k.full)}</span></span></td>
+      ${kc(k.full)}</span></td>
     <td class="num kin" data-l="Wears off" title="${t}"><span class="kwrap">
-      <span class="kmain">${kfig(k.off)}</span>${off}</span></td>
+      ${kc(k.off)}${off}</span></td>
     ${rebCell}`;
 }
 function aeCell(d) {
@@ -1950,7 +1987,6 @@ function renderDrugs() {
     name: r => r.d.n, cls: r => r.d.cls, sub: r => subLabel(r.d),
     freq: r => dosesPerDay(r.d), dose: r => r.r.x, sbp: r => r.sbp, dbp: r => r.dbp,
     cost: r => r.r.usd == null ? Infinity * state.dir : r.r.usd, ev: r => r.d.tr || 0,
-    band: r => r.sbp154,
     // each keys off the figure its column prints large, so the order down the
     // column is the order it sorts in; the others only break ties
     kon: r => kinKey(r.d, 'on', 'full'),
@@ -1974,12 +2010,9 @@ function renderDrugs() {
     return state.dir * (x - y);
   });
 
-  const maxBar = 30;
   document.getElementById('drugbody').innerHTML = rows.map((row, i) => {
     const d = row.d, r = row.r;
-    const pi = r.pi && r.pi[0] != null ? `${r.pi[0]} &ndash; ${r.pi[1]}` : '&mdash;';
     const thin = (d.tr || 0) < 5 || (d.pt || 0) < 300;   // sparse evidence, by trials or patients
-    const band = bandOf(row.sbp154);
     const far = r.far === 2
       ? '<span class="xtrap far" title="Beyond model range: a real prescribable dose, but far outside the 0.5-2x range the model was fitted on - the source calculator will not compute it">\u2021</span>'
       : r.far ? '<span class="xtrap" title="Extrapolated: outside the 0.5-2x standard doses the model was fitted on">\u2020</span>' : '';
@@ -1992,19 +2025,18 @@ function renderDrugs() {
       <td class="subcol">${esc(subLabel(d))}</td>
       <td class="num">${freqTag(d)}${d.when ? '' : ''}</td>
       <td class="num" data-l="Daily dose">${fmtMg(r.mg)}${far}</td>
-      <td class="num" data-l="Delta SBP"><span class="bigval s${sbpStep(row.sbp)}">${fmt1(row.sbp)}</span></td>
-      <td class="num" data-l="Delta DBP">${fmt1(row.dbp)}</td>
+      <td class="num" data-l="Delta SBP"><span class="bigval ${ramp(row.sbp, SBP_CUTS)}">${fmt1(row.sbp)}</span></td>
+      <td class="num" data-l="Delta DBP"><span class="bigval ${ramp(row.dbp, DBP_CUTS)}">${fmt1(row.dbp)}</span></td>
       ${kinCells(d)}
       <td class="cost ${usd != null && usd >= 25 ? 'pricey' : ''}" data-l="Cost / month">
         ${usd == null ? '&mdash;' : `<span class="amt">${money(usd)}</span>`}</td>
       <td class="ev ${thin ? 'thin' : ''}" data-l="Evidence">${d.tr}t / ${d.pt.toLocaleString()}p</td>
-      <td><span class="band ${band}">${band}</span></td>
       ${aeCell(d)}
       ${ciCell(d, 'x')}
       ${ciCell(d, 'i')}
       <td class="exp" aria-hidden="true">+</td>
     </tr>
-    ${detailRow(d, r, 20)}`;
+    ${detailRow(d, r, 19)}`;
   }).join('');
 
   const at = (state.sbp === REF.sbp && state.dbp === REF.dbp)
@@ -2119,7 +2151,6 @@ function renderCombos() {
     cost: r => r.cost == null ? Infinity * state.comboDir : r.cost,
     pills: r => r.pills,
     cls: r => r.drugs.map(subLabel).join(' '),
-    band: r => r.sbp154,
     contra: r => { const s = new Set(); r.drugs.forEach(d => d.ci && d.ci.x.forEach(e => s.add(e.t))); return s.size; },
     ind: r => { const s = new Set(); r.drugs.forEach(d => d.ci && d.ci.i.forEach(e => s.add(e.t))); return s.size; },
     ev: r => r.minTr
@@ -2135,8 +2166,6 @@ function renderCombos() {
       th.setAttribute('aria-sort', state.comboDir < 0 ? 'descending' : 'ascending');
     else th.removeAttribute('aria-sort');
   });
-  const maxBar = n === 2 ? 40 : 50;
-
   document.getElementById('combobody').innerHTML = top.map((r, i) => {
     const names = r.reg.map(([d, mg]) => `${esc(d.n)} ${fmtMg(mg)}`).join(' + ');
     const marks = r.drugs.map(d => badge(d.cls)).join(' ');
@@ -2146,14 +2175,13 @@ function renderCombos() {
       <td class="rank">${i + 1}</td>
       <td class="drug" title="${attr(names)}">${esc(names)}${good ? '<span class="okflag">guideline pair</span>' : ''}${sp ? '<span class="okflag alt">single pill</span>' : ''}</td>
       <td class="cmarks" title="${attr(r.drugs.map(d => subLabel(d)).join(' + '))}">${marks}</td>
-      <td class="num" data-l="Delta SBP"><span class="bigval s${comboStep(r.sbp)}">${fmt1(r.sbp)}</span></td>
-      <td class="num" data-l="Delta DBP">${fmt1(r.dbp)}</td>
-      <td class="cost ${r.cost != null && r.cost >= 25 ? 'pricey' : ''}" data-l="Cost / month">${r.cost == null ? '&mdash;' : money(r.cost)}</td>
+      <td class="num" data-l="Delta SBP"><span class="bigval ${ramp(r.sbp, COMBO_CUTS)}">${fmt1(r.sbp)}</span></td>
+      <td class="num" data-l="Delta DBP"><span class="bigval ${ramp(r.dbp, COMBO_DBP_CUTS)}">${fmt1(r.dbp)}</span></td>
+      <td class="cost ${r.cost != null && r.cost >= 25 ? 'pricey' : ''}" data-l="Cost / month">${r.cost == null ? '&mdash;' : `<span class="amt">${money(r.cost)}</span>`}</td>
       <td class="num" data-l="Pills">${r.pills}/day</td>
       ${ciCellCombo(r.drugs, 'x')}
       ${ciCellCombo(r.drugs, 'i')}
       <td class="ev ${r.minTr < 5 || r.minPt < 300 ? 'thin' : ''}" data-l="Weakest evidence">${r.minTr} trial${r.minTr === 1 ? '' : 's'}</td>
-      <td><span class="band ${bandOf(r.sbp154)}">${bandOf(r.sbp154)}</span></td>
     </tr>`;
   }).join('');
   const rungWord = state.rung === 'all' ? 'usual dose' :
@@ -2661,6 +2689,8 @@ const ipState = {route: 'all', setting: 'all', cls: new Set(), tier: 'all', wbOn
    quote neutralised. esc() stays in use for anything interpolated into an id. */
 const attr = v => String(v).replace(/"/g, '&quot;');
 const CTRL_LABEL = {3: 'minutes', 2: 'tens of min', 1: 'hours', 0: 'unpredictable'};
+/* onset and offset in minutes, cut where the agents actually fall */
+const IP_KIN_CUTS = {on: [5, 15, 60, 240], off: [30, 120, 480, 1440]};
 const CTRL_HELP = {
   3: 'Effect is gone within minutes of turning it down, so an overshoot is taken back at the pump.',
   2: 'Tens of minutes to undo. Titratable, but a dose already given has to run its course.',
@@ -2686,22 +2716,44 @@ const TIER_HELP = {
   3: 'Listed so it can be recognised and declined, not given.'
 };
 function useMark(a) {
-  return `<span class="tier t${a.tier}" title="${attr(TIER_HELP[a.tier])}">${TIER_LABEL[a.tier]}</span>` +
+  const tip = TIER_HELP[a.tier] + (a.trigger ? ' ' + strip(a.trigger) : '');
+  return `<span class="tier t${a.tier}" title="${attr(tip)}">${TIER_LABEL[a.tier]}</span>` +
     (a.trigger ? `<span class="trigger">${a.trigger}</span>` : '');
 }
 const ipBadge = a => `<span class="cbadge cls-${a.cls}" title="${attr(a.clsf || '')}">${mark(a.cls)}${esc(a.abbr)}</span>`;
 
+/* the chips are authored HTML (entities, degree signs), so they go in raw */
 function ipChips(list, kind) {
-  if (!list || !list.length) return '<span class="ipnote">&mdash;</span>';
-  return list.map(c => `<span class="cond ${kind}" title="${attr(c.full || c.t)}">${c.t}</span>`).join('');
+  if (!list || !list.length) return '<span class="mut">&mdash;</span>';
+  return chipRun(list.map(c => ({t: c.t, k: kind, full: c.full})), c => c.full || c.t, 26, true);
 }
-function ipKin(k) {
-  if (!k) return '<span class="ipnote">&mdash;</span>';
-  const main = k.soft
-    ? `<span class="soft" title="${attr(k.note || 'Inferred from the labelled pharmacokinetics rather than measured as a blood-pressure time course')}">${k.s}</span>`
-    : k.s;
-  return `<span class="ipkin">${main}${k.s2 ? `<span class="k2">${k.s2}</span>` : ''}</span>`;
+/* every chip with its full name, for the open row */
+function ipChipList(list, kind) {
+  return (list || []).map(c =>
+    `<span class="difitem"><span class="cond ${kind}">${c.t}</span>${c.full && c.full !== c.t ? ' ' + c.full : ''}</span>`).join('');
 }
+/* one figure per cell, coloured on the shared ramp; the second figure and any
+   provenance note are in the tooltip and the open row */
+function ipKin(k, which) {
+  if (!k) return '<span class="mut">&mdash;</span>';
+  const tip = [k.s2 ? strip(k.s2) : '', k.note || (k.soft ? 'Inferred from the labelled pharmacokinetics rather than measured as a blood-pressure time course' : '')]
+    .filter(Boolean).join(' - ');
+  const t = shortMin(k.s);
+  const main = k.soft ? `<span class="soft">${t}</span>` : t;
+  return `<span class="ipkin ${ramp(k.v, IP_KIN_CUTS[which], RAMP5)}"${tip ? ` title="${attr(tip)}"` : ''}>${main}</span>`;
+}
+/* the row: start, titrate, ceiling on one line, full text in the tooltip */
+function ipDoseLine(a) {
+  const d = a.dose || {};
+  const bits = [];
+  if (d.start) bits.push(`<span class="d1">${shortMin(d.start)}</span>`);
+  if (d.titr) bits.push(`<span class="d2">${shortMin(d.titr)}</span>`);
+  if (d.max) bits.push(`<span class="dmax"><b>max</b> ${shortMin(d.max)}</span>`);
+  if (!bits.length) return '<span class="mut">&mdash;</span>';
+  const tip = [d.start, d.titr, d.max ? 'max ' + d.max : ''].filter(Boolean).map(strip).join(' \u00b7 ');
+  return `<span class="doseline" title="${attr(tip)}">${bits.join('<span class="sep"> &middot; </span>')}</span>`;
+}
+/* the open row: the same three on their own lines, plus what the card said */
 function ipDoseCell(a) {
   const d = a.dose || {};
   return `<div class="dose">
@@ -2731,7 +2783,8 @@ const IP_SORT = {
   tier: a => a.tier,
   name: a => a.n.toLowerCase(),
   route: a => ['gtt', 'iv', 'im', 'top', 'po'].indexOf(a.route),
-  cls: a => a.clsf.toLowerCase(),
+  cls: a => a.cls + ' ' + a.clsf.toLowerCase(),
+  sub: a => a.clsf.toLowerCase(),
   setting: a => ['icu', 'both', 'floor'].indexOf(a.setting),
   on: a => a.on ? a.on.v : 1e9,
   off: a => a.off ? a.off.v : 1e9,
@@ -2807,29 +2860,33 @@ function renderInpatient() {
     return (c * ipState.dir) || (IP_SORT.on(x) - IP_SORT.on(y)) || x.n.localeCompare(y.n);
   });
 
+  /* one line per row, like the outpatient table: what does not fit is in the
+     tooltip and in the open row */
   body.innerHTML = rows.map((a, i) => {
     const id = a.n + '|' + a.route;
     const open = ipState.open.has(id);
-    const mon = a.mon ? `<span class="monline">${a.mon}</span>` : '';
     const setLbl = a.setting === 'icu' ? 'ICU' : a.setting === 'floor' ? 'Floor' : 'Either';
+    const setTip = a.mon ? `Label asks for: ${strip(a.mon)}` : 'The label asks for no specific monitoring';
+    const routeTip = ROUTE_LABEL[a.route] + (a.alt ? ' - ' + strip(a.alt) : '');
     const main = `<tr class="drugrow" data-ip="${esc(id)}" aria-expanded="${open}">
       <td class="rank">${i + 1}</td>
-      <td class="drug">${esc(a.n)} ${ipSrcMark(a)}${a.brand ? `<span class="sub">${esc(a.brand)}</span>` : ''}</td>
+      <td class="drug" title="${attr(a.brand ? a.n + ' (' + a.brand + ')' : a.n)}">${esc(a.n)} ${ipSrcMark(a)}</td>
       <td data-l="Use" class="usecell">${useMark(a)}</td>
-      <td data-l="Route" class="routecell"><span class="route ${a.route === 'gtt' ? 'gtt' : ''}" title="${attr(ROUTE_LABEL[a.route])}">${esc(a.routeAbbr)}</span>${a.alt ? `<span class="alt">${a.alt}</span>` : ''}</td>
-      <td data-l="Class">${ipBadge(a)}<span class="subcol subline">${a.clsf}</span></td>
-      <td class="setting" data-l="Setting">${setLbl}${mon}</td>
-      <td data-l="Dosing">${ipDoseCell(a)}</td>
-      <td class="num" data-l="Onset / peak">${ipKin(a.on)}</td>
-      <td class="num" data-l="Offset">${ipKin(a.off)}</td>
-      <td data-l="Control"><span class="ctrlb t${a.ctrl}" title="${attr(a.ctrlNote || CTRL_HELP[a.ctrl])}">${CTRL_LABEL[a.ctrl]}</span></td>
+      <td data-l="Route" class="routecell"><span class="route ${a.route === 'gtt' ? 'gtt' : ''}" title="${attr(routeTip)}">${esc(a.routeAbbr)}</span></td>
+      <td data-l="Class">${ipBadge(a)}</td>
+      <td class="subcol" data-l="Subclass" title="${attr(strip(a.clsf))}">${a.clsf}</td>
+      <td class="setting" data-l="Setting" title="${attr(setTip)}">${setLbl}</td>
+      <td class="dosecell" data-l="Dosing">${ipDoseLine(a)}</td>
+      <td class="num" data-l="Onset">${ipKin(a.on, 'on')}</td>
+      <td class="num" data-l="Offset">${ipKin(a.off, 'off')}</td>
+      <td data-l="Control"><span class="ctrlb t${a.ctrl}" title="${attr(strip(a.ctrlNote || CTRL_HELP[a.ctrl]))}">${CTRL_LABEL[a.ctrl]}</span></td>
       <td class="ci" data-l="Indications">${ipChips(a.ind, 'i')}</td>
       <td class="ci" data-l="Avoid in">${ipChips(a.avoid, 'x')}</td>
-      <td class="ipnote" data-l="Watch">${a.watch || '&mdash;'}</td>
-      <td class="exp">${open ? '&#9662;' : '&#9656;'}</td>
+      <td class="ipnote" data-l="Watch" title="${attr(strip(a.watch || ''))}">${shortMin(a.watch) || '&mdash;'}</td>
+      <td class="exp" aria-hidden="true">${open ? '&minus;' : '+'}</td>
     </tr>`;
     return main + `<tr class="detail" data-ipdetail="${esc(id)}"${open ? '' : ' hidden'}>
-      <td colspan="14">${ipDetail(a)}</td></tr>`;
+      <td colspan="15">${ipDetail(a)}</td></tr>`;
   }).join('');
 
   const n1 = rows.filter(a => a.tier === 1).length;
@@ -2847,6 +2904,21 @@ function renderInpatient() {
 function ipDetail(a) {
   const cite = (a.cites || []).map(c =>
     `<a class="cite" href="${esc(c.u)}" target="_blank" rel="noopener" title="${attr(c.t)}">${esc(c.k || 'source')}</a>`).join(' ');
+  /* what the one-line row had to leave out */
+  const glance = [];
+  if (a.brand) glance.push(`<b>Brand</b> ${a.brand}`);
+  if (a.trigger) glance.push(`<b>When</b> ${a.trigger}`);
+  glance.push(`<b>Route</b> ${ROUTE_LABEL[a.route]}${a.alt ? '; ' + a.alt : ''}`);
+  if (a.mon) glance.push(`<b>Label monitoring</b> ${a.mon}`);
+  if (a.on) glance.push(`<b>Onset</b> ${a.on.s}${a.on.s2 ? '; ' + a.on.s2 : ''}${a.on.note ? ` <span class="mut">${a.on.note}</span>` : ''}`);
+  if (a.off) glance.push(`<b>Offset</b> ${a.off.s}${a.off.s2 ? '; ' + a.off.s2 : ''}${a.off.note ? ` <span class="mut">${a.off.note}</span>` : ''}`);
+  if (a.ctrlNote) glance.push(`<b>Control</b> ${a.ctrlNote}`);
+  if (a.watch) glance.push(`<b>Watch</b> ${a.watch}`);
+  const head = `<div class="glance"><h5>At a glance</h5><div class="body">${
+    glance.map(g => `<span class="difitem">${g}</span>`).join('')}</div></div>` +
+    `<div><h5>Dosing</h5><div class="body">${ipDoseCell(a)}</div></div>` +
+    ((a.ind || []).length ? `<div><h5>Indications</h5><div class="body">${ipChipList(a.ind, 'i')}</div></div>` : '') +
+    ((a.avoid || []).length ? `<div><h5>Avoid in</h5><div class="body">${ipChipList(a.avoid, 'x')}</div></div>` : '');
   const fields = [
     ['Dosing, in full', a.dnote],
     ['Watch, in full', a.wnote],
@@ -2859,7 +2931,7 @@ function ipDetail(a) {
     a.fix.map(f => `<div><b>${f.field}</b> &mdash; <span class="from">card says ${f.was}</span>;
       this page says ${f.now}. ${f.why}${f.cite ? citeChip(f.cite.u, f.cite.t) : ''}</div>`).join('')
   }</div>` : '';
-  return `<div class="ipdetail">${fields}${fixes}${cite ? `<div class="span2"><h5>Sources</h5><div class="body">${cite}</div></div>` : ''}</div>`;
+  return `<div class="ipdetail">${linkDrugs(head)}${fields}${fixes}${cite ? `<div class="span2"><h5>Sources</h5><div class="body">${cite}</div></div>` : ''}</div>`;
 }
 
 /* ---------- the static blocks above the agent table ---------- */
@@ -3051,9 +3123,19 @@ function init() {
       b.setAttribute('aria-pressed', state.classes.has(b.dataset.cls) ? 'true' : 'false'));
     renderAll();
   }));
+  const rampKey = [['&lt;4', 0], ['4', 1], ['6', 2], ['8', 3], ['10', 4], ['12', 5], ['15+', 6]]
+    .map(([t, i]) => `<span class="r${i}">${t}</span>`).join(' ');
   document.getElementById('legend').innerHTML =
     CLASSES.map(c => `<span class="item cls-${c}">${badge(c)} ${esc(CLASS_LABEL[c])}</span>`).join('') +
-    '<span class="item" style="color:var(--ink-3)">Shape and colour both encode the class.</span>';
+    '<span class="item" style="color:var(--ink-3)">Shape and colour both encode the class.</span>' +
+    `<span class="item" title="The two mmHg columns are coloured by size on one cool-to-warm ramp. These are the &Delta; SBP cuts; &Delta; DBP uses the same colours on its own cuts (3 to 8 mmHg).">&Delta;&nbsp;SBP coloured by size: ${rampKey} mmHg</span>`;
+
+  /* the rail is sticky, so the column headers stick just below it */
+  const railEl = document.getElementById('rail');
+  const setRailH = () => document.documentElement.style.setProperty('--railH',
+    (railEl.style.display === 'none' ? 0 : Math.ceil(railEl.getBoundingClientRect().height)) + 'px');
+  if (window.ResizeObserver) new ResizeObserver(setRailH).observe(railEl);
+  setRailH();
 
   const applySbp = linkPair('sbp', 'sbpn', 'sbp');
   const applyDbp = linkPair('dbp', 'dbpn', 'dbp');
@@ -3152,6 +3234,7 @@ function init() {
     const ownControls = t.id === 'tab-method' || t.id === 'tab-inpt';
     document.getElementById('rail').style.display = ownControls ? 'none' : '';
     document.getElementById('ctl-search').style.display = t.id === 'tab-build' ? 'none' : '';
+    setRailH();
     renderAll();
   }));
 
