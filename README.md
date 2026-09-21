@@ -12,6 +12,14 @@ mentioning. Plus a combination builder that applies the source paper's own permu
   drop, diastolic drop, cost, weight of evidence, or how fast the drug turns on and off. Because
   the rows are real prescribing steps rather than multiples of a trial "standard dose", one drug at
   its maximum sits in the same ranking as another at its starting dose.
+- **One line per row.** Every row in the drug and combination tables is a single line, so a screen
+  holds three times what it used to. Where a cell held a list — contraindications, indications — the
+  column shows the first entry and a count, and the full list is in the open row.
+- **Δ SBP carries its own magnitude.** The bar column is gone; the number is coloured on a
+  five-step sequential ramp, one hue, light to dark, cut at the quintiles of the real dose grid.
+  Every step clears 4.5:1 body-text contrast on white and the lightness is strictly monotonic,
+  which is what a sequential ramp has to satisfy. Weight rises with it as a second channel, so the
+  scale survives greyscale printing and colour-vision deficiency.
 - **Onset / Full effect / Wears off** — three columns for the question the mmHg figures cannot
   answer: when blood pressure first moves after a dose (with that dose's peak beneath it), how long
   a fixed dose needs before the effect levels off, and how long the effect lasts once the drug is

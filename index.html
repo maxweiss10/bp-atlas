@@ -248,7 +248,28 @@ tbody tr:hover{background:var(--card-2)}
 .legend .item{display:inline-flex;align-items:center;gap:6px}
 .bigval{font-family:var(--mono);font-size:14.5px;font-weight:500;font-variant-numeric:tabular-nums}
 .pi{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
-.barcell{width:132px}
+/* Sequential ramp for the delta-SBP column, replacing the bar. One hue, five
+   steps, light to dark; every step clears 4.5:1 on white and lightness is
+   strictly monotonic. Weight rises with it as a second channel, so the scale
+   survives greyscale printing and colour-vision deficiency. */
+.bigval.s0{color:#157C8C;font-weight:400}
+.bigval.s1{color:#0F6675;font-weight:500}
+.bigval.s2{color:#0A505C;font-weight:600}
+.bigval.s3{color:#063C46;font-weight:700}
+.bigval.s4{color:#042B32;font-weight:700}
+/* one line per row */
+#drugtable tbody td,#combotable tbody td{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#drugtable tbody td.ci,#combotable tbody td.ci{max-width:168px}
+#drugtable tbody td.ae{max-width:150px}
+#drugtable tbody td.drug{max-width:150px}
+#drugtable tbody td.subcol{max-width:110px}
+#combotable tbody td.drug{max-width:330px}
+#combotable tbody td.cmarks{white-space:nowrap}
+.kin .ksub{display:none}
+/* kmain is a block so the sub-line could sit under it; with the sub-line gone
+   it has to go back inline or the taper mark drops to a second row */
+#drugtable .kin .kmain,#combotable .kin .kmain{display:inline}
+.tapdot{color:var(--warn);font-size:11px;margin-left:3px;cursor:help}
 .bar{height:7px;background:var(--bar-track);border-radius:100px;overflow:hidden}
 .bar > i{display:block;height:100%;background:var(--bar);border-radius:100px}
 .band{display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;
@@ -755,6 +776,10 @@ select,input[type=search],input[type=number]{border-radius:0}
   #drugtable tbody tr.detail[hidden]{display:none}
   .guide{padding:16px}
   .slot{grid-template-columns:1fr 1fr 32px}
+  /* the one-line rule is a desktop-table rule; as cards these must wrap again */
+  #drugtable tbody td,#combotable tbody td{white-space:normal;overflow:visible;text-overflow:clip;
+    max-width:none}
+  #drugtable .kin .kmain,#combotable .kin .kmain{display:inline}
   /* the inpatient tables get the same card treatment */
   #iptable,.dz,.triage{min-width:0;width:100%}
   #iptable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -930,10 +955,9 @@ select,input[type=search],input[type=number]{border-radius:0}
         <th class="num sortable" data-sort="freq">Freq<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="dose">Dose<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="sbp">&Delta; SBP<span class="arrow">&#8597;</span></th>
-        <th class="barcell"></th>
         <th class="num sortable" data-sort="dbp">&Delta; DBP<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="kon"
-            title="When blood pressure first starts to move after a single dose, with that dose's peak effect underneath.">Onset<span class="arrow">&#8597;</span></th>
+            title="When blood pressure first starts to move after a single dose. Open the row for that dose's peak.">Onset<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="kfull"
             title="How long a fixed dose needs before its effect stops growing - the interval to wait before judging the dose or titrating.">Full effect<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-sort="koff"
@@ -950,7 +974,7 @@ select,input[type=search],input[type=number]{border-radius:0}
     </table>
   </div>
   <div class="note"><b>Every row is a dose you could actually write.</b> Doses are the real US total-daily-dose steps for HTN, so a drug at its maximum sits in the same ranking as another at its starting dose &mdash; sort by &Delta;&nbsp;SBP to compare them directly. Doses marked <span class="xtrap">&dagger;</span> sit outside the half-to-double standard dose range the model was fitted on. Four real doses sit further out still &mdash; ramipril 20 mg, captopril 300 mg, fosinopril 80 mg, nebivolol 40 mg &mdash; and the source calculator refuses to compute them, so their numbers cannot be checked against the original. They are available in <b>Build a regimen</b>, marked <span class="xtrap far">&Dagger;</span>, but are kept out of this ranking so an unverifiable estimate cannot lead the table.</div>
-  <div class="note"><b>Every mmHg on this page is a plateau figure.</b> The source trials ran a mean of 8.6 wk, so the &Delta;&nbsp;SBP column is what the drug does once it has finished arriving. The three time columns say how long that takes and how long it lasts. <b>Onset</b> is when blood pressure first starts to move after a single dose, w/ that dose's peak effect underneath. <b>Full effect</b> is how long a fixed dose needs before the effect stops growing &mdash; the interval to wait before judging the dose or titrating. <b>Wears off</b> is the mirror image: how long the effect lasts once the drug is stopped, and so how much a missed dose costs. Each column holds one figure and sorts on it, so reading down a column and sorting it give the same order. Figures w/ a <span class="kin"><span class="soft">dotted underline</span></span> were not measured as a blood-pressure time course; they are inferred from the drug's labelled pharmacokinetics, or, in <span class="kin"><span class="soft cl">grey</span></span>, carried from the class &mdash; either b/c the agent has no US label or b/c its own label does not time that particular figure. Hover any figure for which it is, and open a row for the label sentence behind each number. Wear-off is the softest of the three &mdash; only irbesartan, telmisartan and eplerenone have a published withdrawal time course &mdash; so read it as the earliest the effect fades, not the latest.</div>
+  <div class="note"><b>Every mmHg on this page is a plateau figure.</b> The source trials ran a mean of 8.6 wk, so the &Delta;&nbsp;SBP column is what the drug does once it has finished arriving. The three time columns say how long that takes and how long it lasts. <b>Onset</b> is when blood pressure first starts to move after a single dose; the peak is in the open row. <b>Full effect</b> is how long a fixed dose needs before the effect stops growing &mdash; the interval to wait before judging the dose or titrating. <b>Wears off</b> is the mirror image: how long the effect lasts once the drug is stopped, and so how much a missed dose costs. Each column holds one figure and sorts on it, so reading down a column and sorting it give the same order. Figures w/ a <span class="kin"><span class="soft">dotted underline</span></span> were not measured as a blood-pressure time course; they are inferred from the drug's labelled pharmacokinetics, or, in <span class="kin"><span class="soft cl">grey</span></span>, carried from the class &mdash; either b/c the agent has no US label or b/c its own label does not time that particular figure. Hover any figure for which it is, and open a row for the label sentence behind each number. Wear-off is the softest of the three &mdash; only irbesartan, telmisartan and eplerenone have a published withdrawal time course &mdash; so read it as the earliest the effect fades, not the latest.</div>
   <div class="note warn"><b>Beta blockers are the exception to stopping.</b> Every beta blocker in the table is marked <span class="kin"><span class="tap">taper</span></span>: the labels warn against abrupt d/c 2/2 rebound angina and infarction, and propranolol's asks for a withdrawal over several wk. Where a label states that abrupt withdrawal caused no rebound rise, the row says so instead.</div>
   <div class="note"><b>Read the evidence column before the ranking.</b> The largest point estimates tend to come from the smallest trial sets. Drop the evidence floor to zero and cyclopenthiazide tops the list at 23 mmHg on 3 trials in 41 pts, while hydrochlorothiazide's 8 mmHg rests on 68 trials in 3,627.</div>
 </section>
@@ -982,7 +1006,6 @@ select,input[type=search],input[type=number]{border-radius:0}
         <th class="sortable" data-csort="name">Regimen<span class="arrow">&#8597;</span></th>
         <th class="sortable" data-csort="cls">Classes<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-csort="sbp">&Delta; SBP<span class="arrow">&#8597;</span></th>
-        <th class="barcell"></th>
         <th class="num sortable" data-csort="dbp">&Delta; DBP<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-csort="cost">Cost / mo<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-csort="pills">Pills<span class="arrow">&#8597;</span></th>
@@ -1291,7 +1314,7 @@ select,input[type=search],input[type=number]{border-radius:0}
             title="Where the agent can be given, and what its LABEL asks for by way of monitoring - usually less than local policy. Note the unit tracks the diagnosis as much as the drug: a hypertensive emergency is a Class 1 ICU admission whichever agent you pick.">Setting<span class="arrow">&#8597;</span></th>
         <th>Dosing</th>
         <th class="num sortable" data-ipsort="on"
-            title="When blood pressure first starts to move, with the time to peak effect underneath.">Onset<span class="arrow">&#8597;</span></th>
+            title="When blood pressure first starts to move, with the time to Open the row for that dose&rsquo;s peak.">Onset<span class="arrow">&#8597;</span></th>
         <th class="num sortable" data-ipsort="off"
             title="How long the effect lasts after the drug is stopped - for an infusion, how long you wait to undo an overshoot.">Offset<span class="arrow">&#8597;</span></th>
         <th class="sortable" data-ipsort="ctrl"
@@ -1545,6 +1568,15 @@ function formsLine(d) {
   }).join('');
   return `<div class="forms"><span class="formlbl">Available</span>${bits}</div>`;
 }
+/* The bar column is gone; the number itself carries the magnitude. One hue,
+   five steps, light to dark, cut at the quintiles of the real dose grid. Every
+   step clears 4.5:1 body-text contrast on white and the lightness is strictly
+   monotonic, which is what a sequential ramp has to satisfy. */
+const SBP_CUTS = [5.6, 7.2, 8.7, 11.6];
+const COMBO_CUTS = [20.4, 20.8, 21.8, 23];
+const comboStep = v => COMBO_CUTS.filter(c => v >= c).length;
+const sbpStep = v => SBP_CUTS.filter(c => v >= c).length;
+
 const badge = cls => `<span class="cbadge cls-${cls}">${mark(cls)}${cls === 'Diuretic' ? 'DIUR' : cls.toUpperCase()}</span>`;
 
 /* ---------- conditions ---------------------------------------------------
@@ -1560,9 +1592,12 @@ function ciCell(d, which) {
     ? ci.x.map(e => ({ ...e, k: 'x' })).concat(ci.c.map(e => ({ ...e, k: 'c' })))
     : ci.i.map(e => ({ ...e, k: 'i' }));
   if (!items.length) return `<td class="ci"><span class="mut">&mdash;</span></td>`;
-  return `<td class="ci">${items.map(e =>
-    `<span class="cond ${e.k}" title="${esc(CONDITIONS[e.t] ? CONDITIONS[e.t].label + ' - ' : '')}${esc(e.w)}">${esc(e.t)}</span>`
-  ).join('')}</td>`;
+  /* one row, one line: the first condition and a count. The rest are in the
+     open row, which is the only place they were ever readable anyway. */
+  const e = items[0];
+  const more = items.length > 1
+    ? `<span class="morechip" title="Open the row for all ${items.length}">${items.length}</span>` : '';
+  return `<td class="ci"><span class="cond ${e.k}" title="${esc(CONDITIONS[e.t] ? CONDITIONS[e.t].label + ' - ' : '')}${esc(e.w)}">${esc(e.t)}</span>${more}</td>`;
 }
 
 /* Union across a regimen: any drug's contraindication is the regimen's. */
@@ -1581,8 +1616,11 @@ function ciCellCombo(drugs, which) {
   }
   const items = [...seen.values()];
   if (!items.length) return `<td class="ci"><span class="mut">&mdash;</span></td>`;
-  return `<td class="ci">${items.map(e =>
-    `<span class="cond ${e.k}" title="${esc(e.n)}: ${esc(e.w)}">${esc(e.t)}</span>`).join('')}</td>`;
+  const e = items[0];
+  const rest = items.slice(1).map(x => x.t).join(' \u00b7 ');
+  const more = items.length > 1
+    ? `<span class="morechip" title="${attr(rest)}">${items.length}</span>` : '';
+  return `<td class="ci"><span class="cond ${e.k}" title="${esc(e.n)}: ${esc(e.w)}">${esc(e.t)}</span>${more}</td>`;
 }
 
 /* Full list with reasons, for the expanded row. */
@@ -1780,12 +1818,10 @@ function kinCells(d) {
   const t = esc(kinTitle(k));
   // when the only thing known is Tmax, onset and peak carry the same number;
   // printing it twice reads like a bug, so the second line is dropped
-  const pk = k.pk.t === k.on.t ? '' : `<span class="ksub">peak ${kfig(k.pk)}</span>`;
+  const pk = '';   // peak moved to the open row so the column stays one line
   const off = k.reb === 'taper'
-    ? '<span class="ksub tap" title="Do not stop abruptly - taper. Abrupt withdrawal risks rebound angina, myocardial infarction, or thyroid storm.">taper</span>'
-    : k.reb === 'ok'
-      ? '<span class="ksub" title="The label reports no rebound rise in blood pressure after abrupt withdrawal.">no rebound</span>'
-      : '';   // label silent on withdrawal - say nothing rather than a filler dash
+    ? '<span class="tapdot" title="Do not stop abruptly - taper. Abrupt withdrawal risks rebound angina, myocardial infarction, or thyroid storm.">&#9888;</span>'
+    : '';   // label silent on withdrawal - say nothing rather than a filler dash
   return `<td class="num kin" data-l="Onset" title="${t}"><span class="kwrap">
       <span class="kmain">${kfig(k.on)}</span>${pk}</span></td>
     <td class="num kin" data-l="Full effect" title="${t}"><span class="kwrap">
@@ -1811,6 +1847,18 @@ function detailRow(d, r, colspan) {
   const cells = [];
   cells.push(`<div><h5>Within-class differences</h5><div class="body">${
     list.length ? list.join('') : '<span class="mut">Nothing beyond the class effects.</span>'}</div></div>`);
+  /* the columns show the first condition and a count, so the full lists live here */
+  const condBlock = (which, label) => {
+    const ci = d.ci; if (!ci) return;
+    const items = which === 'x'
+      ? ci.x.map(e => ({ ...e, k: 'x' })).concat(ci.c.map(e => ({ ...e, k: 'c' })))
+      : ci.i.map(e => ({ ...e, k: 'i' }));
+    if (!items.length) return;
+    cells.push(`<div><h5>${label}</h5><div class="body">${items.map(e =>
+      `<span class="difitem"><span class="cond ${e.k}">${esc(e.t)}</span> ${esc(e.w)}</span>`).join('')}</div></div>`);
+  };
+  condBlock('x', 'Contraindications and cautions');
+  condBlock('i', 'Indications');
   if (t) cells.push(`<div><h5>Class effects &mdash; ${esc(t.label.toLowerCase())}</h5><div class="body">${
     t.c.map(esc).join(' &middot; ')}${t.i.length ? ' &middot; ' + t.i.map(x => `<span class="imp">${esc(x)}</span>`).join(' &middot; ') : ''}${
     t.m ? `<div class="aenote">Watch: ${esc(t.m)}</div>` : ''}</div></div>`);
@@ -1925,8 +1973,7 @@ function renderDrugs() {
       <td class="subcol">${esc(subLabel(d))}</td>
       <td class="num">${freqTag(d)}${d.when ? '' : ''}</td>
       <td class="num" data-l="Daily dose">${fmtMg(r.mg)}${far}</td>
-      <td class="num" data-l="Delta SBP"><span class="bigval">${fmt1(row.sbp)}</span></td>
-      <td class="barcell"><div class="bar"><i style="width:${Math.max(1, Math.min(100, row.sbp / maxBar * 100))}%"></i></div></td>
+      <td class="num" data-l="Delta SBP"><span class="bigval s${sbpStep(row.sbp)}">${fmt1(row.sbp)}</span></td>
       <td class="num" data-l="Delta DBP">${fmt1(row.dbp)}</td>
       ${kinCells(d)}
       <td class="cost ${usd != null && usd >= 25 ? 'pricey' : ''}" data-l="Cost / month">
@@ -1938,7 +1985,7 @@ function renderDrugs() {
       ${ciCell(d, 'i')}
       <td class="exp" aria-hidden="true">+</td>
     </tr>
-    ${detailRow(d, r, 19)}`;
+    ${detailRow(d, r, 18)}`;
   }).join('');
 
   const at = (state.sbp === REF.sbp && state.dbp === REF.dbp)
@@ -2078,10 +2125,9 @@ function renderCombos() {
     const sp = isSinglePill(r.drugs);
     return `<tr>
       <td class="rank">${i + 1}</td>
-      <td class="drug">${esc(names)}${good ? '<span class="okflag">guideline pair</span>' : ''}${sp ? '<span class="okflag alt">single pill</span>' : ''}</td>
-      <td>${marks}<span class="pi subline">${r.drugs.map(d => esc(subLabel(d))).join(' + ')}</span></td>
-      <td class="num" data-l="Delta SBP"><span class="bigval">${fmt1(r.sbp)}</span></td>
-      <td class="barcell"><div class="bar"><i style="width:${Math.max(1, Math.min(100, r.sbp / maxBar * 100))}%"></i></div></td>
+      <td class="drug" title="${attr(names)}">${esc(names)}${good ? '<span class="okflag">guideline pair</span>' : ''}${sp ? '<span class="okflag alt">single pill</span>' : ''}</td>
+      <td class="cmarks" title="${attr(r.drugs.map(d => subLabel(d)).join(' + '))}">${marks}</td>
+      <td class="num" data-l="Delta SBP"><span class="bigval s${comboStep(r.sbp)}">${fmt1(r.sbp)}</span></td>
       <td class="num" data-l="Delta DBP">${fmt1(r.dbp)}</td>
       <td class="cost ${r.cost != null && r.cost >= 25 ? 'pricey' : ''}" data-l="Cost / month">${r.cost == null ? '&mdash;' : money(r.cost)}</td>
       <td class="num" data-l="Pills">${r.pills}/day</td>
