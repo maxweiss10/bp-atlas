@@ -75,6 +75,10 @@ finished drifting back.
 generic price per unit for the cheapest whole-tablet regimen delivering the daily dose, × 30 days.
 This is an acquisition benchmark, not what a patient pays.
 
+The **Difference** column carries a short label — "More ↓K", "Sprue-like enteropathy", "Less
+constipation than verapamil" — with a count chip for how many findings sit behind it. The sentences
+are in the open row, which is where they were always duplicated to.
+
 **Adverse effects.** FDA prescribing information via DailyMed and the 2017/2025 ACC/AHA hypertension
 guideline drug tables, plus Bangalore 2010 (ACE inhibitor cough), the FDA Drug Safety Communication
 of July 2013 (olmesartan and sprue-like enteropathy), the FDA label change of August 2020
@@ -223,6 +227,8 @@ the equation blocks keep a real monospace, because a condensed face will not ali
 index.html          the whole tool, self-contained, no build step
 data/model.json     per-drug coefficients, doses, costs, adverse effects, kinetics
 data/ip_*.py        the inpatient layer: text, conditions, parenteral and oral agents
+data/abbrev.py      the ward-shorthand substitution list, applied to the outpatient text
+data/embed_model.py re-embeds model.json in the page without touching the kinetics layer
 data/*.py           the pipeline that produced it
 ```
 
