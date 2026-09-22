@@ -64,7 +64,8 @@ outpatient text. The **How it works** tab is deliberately exempt — it is the p
 Every row in the drug, combination and inpatient agent tables is **exactly one line** (26px, was
 ~70 outpatient and ~77 inpatient). Body text is 17.5px on 2px side padding. Every column except the
 two chip columns has `width:1%`, which a table clamps up to the content width, so the chip columns
-(`max-width:0`, so their content cannot widen the table) split the slack; `fitChips()` then runs
+(`max-width:0`, so their content cannot widen the table, with a 150px floor so a narrow window
+scrolls sideways rather than starving them) split the slack; `fitChips()` then runs
 after each render — one read pass, one write pass — and hides the chips that do not fit, with a
 `+n` chip that lists them in its tooltip. On a phone the cards wrap instead and it is skipped.
 
