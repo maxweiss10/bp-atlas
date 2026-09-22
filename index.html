@@ -278,6 +278,10 @@ tbody tr:hover{background:var(--card-2)}
    them. fitChips() then decides how many chips each cell can show. */
 #drugtable tbody td:not(.ci),#combotable tbody td:not(.ci),#iptable tbody td:not(.ci){width:1%}
 #drugtable tbody td.ci,#combotable tbody td.ci,#iptable tbody td.ci{max-width:0;width:auto;min-width:150px}
+/* a laptop window: a lower floor lets the table fit without a sideways scroll */
+@media (max-width:1500px){
+  #drugtable tbody td.ci,#combotable tbody td.ci,#iptable tbody td.ci{min-width:120px}
+}
 #drugtable tbody td.ae{max-width:165px}
 #drugtable tbody td.drug{max-width:240px}
 #drugtable tbody td.subcol{max-width:120px}
