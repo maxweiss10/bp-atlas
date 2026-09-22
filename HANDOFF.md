@@ -22,10 +22,10 @@ chronic oral monotherapy trials and has no coefficient for a titrated infusion, 
 
 | | Count |
 |---|---|
-| Agents | 29 — 2 unchanged from the card, 14 corrected, 13 added |
+| Agents | 31 — 2 unchanged from the card, 14 corrected, 15 added |
 | Conditions | 17 — 8 corrected, 9 added |
 | Individual corrections | 27 |
-| Use tiers | 13 first reach, 14 specific, 2 know-only |
+| Use tiers | 14 first reach, 14 specific, 3 know-only |
 
 **Use tiers** exist because Max objected to scrolling past phentolamine to reach labetalol. The
 table sorts on tier first, ties on onset, and each *specific* agent states its trigger in the same
@@ -61,14 +61,50 @@ outpatient text. The **How it works** tab is deliberately exempt — it is the p
 
 ### 4. Table density
 
-Every row in the drug and combination tables is **exactly one line** (27px, was ~70). Where a cell
-held a list, the column shows the first entry plus a count and the full list is in the open row.
+Every row in the drug, combination and inpatient agent tables is **exactly one line** (26px, was
+~70 outpatient and ~77 inpatient). Body text is 17.5px on 2px side padding. Every column except the
+two chip columns has `width:1%`, which a table clamps up to the content width, so the chip columns
+(`max-width:0`, so their content cannot widen the table) split the slack; `fitChips()` then runs
+after each render — one read pass, one write pass — and hides the chips that do not fit, with a
+`+n` chip that lists them in its tooltip. On a phone the cards wrap instead and it is skipped.
 
-**The Δ SBP bar column was replaced by colouring the number** on a five-step sequential ramp
-(`#157C8C` → `#042B32`): one hue, light to dark, cut at the quintiles of the real dose grid. Every
-step clears 4.5:1 body-text contrast on white and lightness is strictly monotonic — the two tests a
-sequential ramp must pass, both verified, not eyeballed. Weight rises with darkness as a second
-channel so it survives greyscale print and colour-vision deficiency.
+**Δ SBP and Δ DBP are coloured on a seven-step muted cool-to-warm ramp** (`.r0`–`.r6`: blue, teal,
+green, olive, bronze, rust, brick) with **fixed mmHg cuts**, not quantiles — Δ SBP at 4/6/8/10/12/15
+— so a colour always means the same number and 10 sits two steps below 15. Every step clears 5:1 on
+white; weight rises with the step. Inpatient onset and offset use the same ramp (five of the seven
+steps). **Max asked for more contrast between 10 and 15, then said the first attempt — a saturated
+rainbow on the time, cost and evidence columns too — "hurt my eyes".** Muted, and only where it
+earns its place. The Intensity (low/moderate/high) column is gone: it restated Δ SBP.
+
+**Two bugs found on the way, both older than this session.** The open detail row inherited the
+one-line `nowrap` rule and rendered as overlapping text (fixed with id-specific `tr.detail > td`
+rules). The column header was `position:sticky` inside a wrapper with `overflow-x:auto`, so it stuck
+to the wrapper, never the window, and was never visible while scrolling — the wrapper no longer
+scrolls (the page does, sideways, on a narrow window) and the header sticks under the control rail
+at `top:var(--railH)`, which a ResizeObserver keeps current. That header sliding under the rail is
+almost certainly what he called "the dropdown menus overlapping".
+
+**Default dose rung is now the maximum dose** (`state.rung = 'max'`; the localStorage key moved to
+`bpatlas.v2` so his saved `all` did not override it). Minutes print as `m` everywhere in the tables
+via `shortMin()`, which leaves `/min` rates alone.
+
+**Formulation rows.** `metoprolol` in `model.json` became two entries, `metoprolol succinate` (the
+old row: ER, once daily, HF-approved) and `metoprolol tartrate` (IR, BID, 50/100/200/400 mg, costed
+from the 2026 NADAC API — dataset `fbb83258-11c7-47f5-8b18-5f8e79f7e704`, effective 2026-08-19,
+median unit price × whole tablets: $0.96/$1.11/$1.65/$3.30 — and no HFrEF indication). Both carry
+`base: 'metoprolol'`, `fdisp` (ER/IR) and `mform: 'shared'`, rendered as a dashed `model: metoprolol`
+tag: the Wang appendix (p. 18) lists metoprolol once with no formulation, and its trials used both.
+`fdisp` alone tags nifedipine/diltiazem/verapamil (ER) and propranolol (LA). The single-pill key is
+`hydrochlorothiazide|metoprolol tartrate` only — NADAC has no succinate combination. The renderAdvice
+list of HF-proven beta blockers names `metoprolol succinate`, not tartrate, on purpose.
+
+**Inpatient rows split the same way**: `Metoprolol tartrate` and `Metoprolol succinate ER` (both PO,
+tier 1), `Clonidine` and `Clonidine patch` (route `top`, tier 3), each from its own label. Hydralazine,
+phentolamine and furosemide show `IV/IM` on the route chip. The Dosing column left the row for the
+open row; the Subclass column prints `IP_SUB_SHORT` shorthand with the full name in the tooltip; the
+notes above the tables are full width in a two-column grid; every block above the tables now goes
+through `linkDrugs()` and `nitro`/`metoprolol`/`clonidine patch` are aliases. Atenolol and
+nimodipine are named in the conditions table but are not agents, so they do not link.
 
 The **Difference** column is now a short label ("More ↓K", "Sprue-like enteropathy") with a count
 chip; sentences live in the open row. **Peak** and **Stopping** are their own columns — Stopping
@@ -127,3 +163,7 @@ COR/LOE designation in a setting where the distinction matters.
 - **Sources must actually resolve.** Search URLs are not acceptable; use direct, verified links.
   DailyMed over a subscription reference, because it is the real label, it is free, and the link
   survives being shared.
+- **"Push intermittently."** Commit and push at each checkpoint rather than at the end; he watches
+  the live site while the work is going on.
+- **Colour is rationed.** He wants magnitude visible at a glance but the first saturated version
+  hurt his eyes. Muted tones, and only on the columns that are ranked on.

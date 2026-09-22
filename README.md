@@ -8,18 +8,30 @@ mentioning. Plus a combination builder that applies the source paper's own permu
 
 ## What it does
 
-- **Single drugs** — 128 real drug–dose rows across 37 US-marketed agents, sortable by systolic
+- **Single drugs** — 136 real drug–dose rows across 38 US-marketed agents, sortable by systolic
   drop, diastolic drop, cost, weight of evidence, or how fast the drug turns on and off. Because
   the rows are real prescribing steps rather than multiples of a trial "standard dose", one drug at
   its maximum sits in the same ranking as another at its starting dose.
-- **One line per row.** Every row in the drug and combination tables is a single line, so a screen
-  holds three times what it used to. Where a cell held a list — contraindications, indications — the
-  column shows the first entry and a count, and the full list is in the open row.
-- **Δ SBP carries its own magnitude.** The bar column is gone; the number is coloured on a
-  five-step sequential ramp, one hue, light to dark, cut at the quintiles of the real dose grid.
-  Every step clears 4.5:1 body-text contrast on white and the lightness is strictly monotonic,
-  which is what a sequential ramp has to satisfy. Weight rises with it as a second channel, so the
-  scale survives greyscale printing and colour-vision deficiency.
+- **One line per row.** Every row in the drug, combination and inpatient agent tables is a single
+  26px line. Every other column shrinks to its content and the two chip columns — contraindications
+  and indications — split whatever width is left; after each render the page measures each chip
+  cell and shows as many chips as fit, with a +n count for the rest. The full list is in the open
+  row. Minutes print as `m` in every table.
+- **Max dose by default.** The table opens on each drug's maximum dose; the Dose rung control
+  widens it to starting, usual or every dose.
+- **Formulations that are prescribed differently are separate rows.** Metoprolol succinate ER and
+  metoprolol tartrate each have their own row, cost and schedule. bpmodel.org lists metoprolol
+  once, with no formulation, and the trials behind it used both, so the two rows share its
+  coefficients and carry a dashed `model: metoprolol` tag that says so. Nifedipine, diltiazem,
+  verapamil and propranolol carry a tag naming the formulation the row doses (ER or LA).
+- **Δ SBP and Δ DBP carry their own magnitude.** Each number is coloured on a seven-step muted
+  cool-to-warm ramp — blue, teal, green, olive, bronze, rust, brick — with fixed mmHg cuts (Δ SBP
+  at 4, 6, 8, 10, 12 and 15; Δ DBP at 3 to 8), so a colour always means the same number whichever
+  rows are on screen and 10 sits two steps below 15. Adjacent steps differ in hue, not only in
+  darkness; every step clears 5:1 on white, and weight rises with the step for greyscale print. The
+  same ramp colours onset and offset in the inpatient table, where there is no mmHg to rank on. No
+  other column is coloured: an earlier pass that coloured the time, cost and evidence columns too
+  was reverted as too much.
 - **Onset / Peak / Full effect / Wears off / Stopping** — five columns for the question the mmHg figures cannot
   answer: when blood pressure first moves after a dose (with that dose's peak beneath it), how long
   a fixed dose needs before the effect levels off, and how long the effect lasts once the drug is
@@ -36,7 +48,7 @@ mentioning. Plus a combination builder that applies the source paper's own permu
 - Baseline BP is adjustable by slider or typed value; everything re-standardises live.
 - **Inpatient & emergency** — a self-contained fourth view for hypertensive emergency and severe
   inpatient hypertension, reproducing a White Book cardiology card and checking every line of it
-  against the primary sources. Definitions, 17 situations with their own BP targets, and 29
+  against the primary sources. Definitions, 17 situations with their own BP targets, and 31
   agents with onset, offset, dosing, indications and how finely each can be
   steered. Nothing here touches the efficacy model, and the model never reads it.
 
@@ -113,7 +125,14 @@ The fourth tab is a closed compartment. The Wang model is built from chronic ora
 trials and has no coefficient for a titrated infusion, so there is no mmHg column there: putting an
 esmolol drip in the same ranking as amlodipine 5 mg would imply a comparison that does not exist.
 What it carries instead are the columns that decide an inpatient choice — onset, offset, and how
-finely the agent can be steered.
+finely the agent can be steered. Each agent is one line: tier, route, class, subclass in ward
+shorthand (β1-sel, NO donor, arteriolar dilator), setting, onset, offset, control, indications,
+avoid-in and watch. Dosing — start, titration, ceiling and what the card said — is in the open
+row with the brand, the situation a specific agent is for, the alternate routes, what the label
+asks to be monitored, the peak figures and every chip with its full name. Formulations that behave
+differently on the ward are separate rows: metoprolol tartrate and succinate ER, clonidine tablet
+and patch (the patch does nothing for two to three days and keeps working for about eight hours
+after removal). The route chip says IV/IM where the label allows IM.
 
 It is written in ward shorthand: arrows, standard abbreviations, no articles and no sentence a
 physician could have finished themselves. "Extravasation causes necrosis and blistering — large
@@ -142,7 +161,7 @@ Every agent and every condition also carries a provenance mark, so the reader ca
 | `WB ✎` | on the card, but at least one figure is corrected here — the row holds the original |
 | `+` | not on the card, added here |
 
-Of 29 agents, 1 is unchanged, 15 carry a correction and 13 are additions; of 17 condition rows, all six
+Of 31 agents, 2 are unchanged, 14 carry a correction and 15 are additions; of 17 condition rows, all six
 that appear on the card needed a change and eleven are new. The first four are shaded and ruled
 off, because they are the situations you are in most of the time: **severe asymptomatic
 hypertension**, where the answer is usually to treat nothing; **pre-procedure** and **discharge**,
