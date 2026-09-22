@@ -844,7 +844,9 @@ select,input[type=search],input[type=number]{border-radius:0}
   #iptable tbody td.exp{display:none}
   #iptable .dose,#iptable .ipnote{max-width:none}
   #iptable tbody td{white-space:normal;overflow:visible;text-overflow:clip;max-width:none}
-  #drugtable tbody td,#combotable tbody td,#iptable tbody td{width:auto}
+  /* the desktop shrink rule carries a :not(.ci), so this has to match its specificity */
+  #drugtable tbody td:not(.ci),#drugtable tbody td.ci,#combotable tbody td:not(.ci),#combotable tbody td.ci,
+  #iptable tbody td:not(.ci),#iptable tbody td.ci{width:auto;max-width:none;min-width:0}
   #iptable .ipkin{text-align:left}
   #iptable .ipkin .k2{display:inline;margin-left:8px}
   #iptable tbody tr.detail{display:block;padding:0 13px 11px;margin:-10px 0 10px;
